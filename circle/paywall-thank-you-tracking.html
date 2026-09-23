@@ -1,0 +1,69 @@
+<!--
+  Paste into Circle: Paywalls > (your paywall) > Tracking tab > "Conversion tracking code".
+  Keep the <script> tags; Circle requires them on this field.
+
+  Circle replaces the {placeholders} on the thank-you page. This snippet:
+    1. Loads the Meta pixel (the site-wide snippet does not run on the thank-you page).
+    2. Computes the SAME event_id as the server bridge:
+         sha256(lowercase(email) + "|" + lowercase(paywall_internal_name) + "|" + YYYY-MM-DD).slice(0, 32)
+       so Meta counts the browser event and the server event as one purchase.
+    3. Fires Purchase with the real value (or StartTrial when nothing was paid yet).
+    4. Remembers it fired, so a page refresh does not double count.
+-->
+<script>
+(function () {
+  var PIXEL_ID = "REPLACE_WITH_PIXEL_ID";
+  var CURRENCY = "USD";
+
+  var email = "{member_email}";
+  var paywallKey = "{paywall_internal_name}";
+  var amountPaid = parseFloat(String("{amount_paid}").replace(/[^0-9.]/g, "")) || 0;
+  var priceAmount = parseFloat(String("{paywall_price_amount}").replace(/[^0-9.]/g, "")) || 0;
+  var trialDays = parseInt(String("{paywall_trial_days}").replace(/[^0-9]/g, ""), 10) || 0;
+
+  function norm(s) { return String(s || "").trim().toLowerCase(); }
+  function sha256Hex(str) {
+    var bytes = new TextEncoder().encode(str);
+    return crypto.subtle.digest("SHA-256", bytes).then(function (buf) {
+      return Array.prototype.map.call(new Uint8Array(buf), function (b) { return ("0" + b.toString(16)).slice(-2); }).join("");
+    });
+  }
+  function loadPixel() {
+    if (window.fbq) return;
+    !(function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+      if (!f._fbq) f._fbq = n;
+      n.push = n; n.loaded = !0; n.version = "2.0"; n.queue = [];
+      t = b.createElement(e); t.async = !0; t.src = v;
+      s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+    })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+  }
+
+  var day = new Date().toISOString().slice(0, 10);
+  sha256Hex(norm(email) + "|" + norm(paywallKey) + "|" + day).then(function (hex) {
+    var eventId = hex.slice(0, 32);
+    var storageKey = "aiskool_purchase_" + eventId;
+    try { if (window.localStorage.getItem(storageKey)) return; } catch (e) {}
+
+    loadPixel();
+    var match = { em: norm(email) };
+    window.fbq("init", PIXEL_ID, match);
+
+    if (amountPaid > 0) {
+      window.fbq("track", "Purchase",
+        { value: amountPaid, currency: CURRENCY, content_name: paywallKey, content_type: "product" },
+        { eventID: eventId });
+    } else if (trialDays > 0) {
+      window.fbq("track", "StartTrial",
+        { value: priceAmount, currency: CURRENCY, predicted_ltv: priceAmount * 3, content_name: paywallKey },
+        { eventID: eventId });
+    } else {
+      window.fbq("track", "Purchase",
+        { value: 0, currency: CURRENCY, content_name: paywallKey, content_type: "product" },
+        { eventID: eventId });
+    }
+    try { window.localStorage.setItem(storageKey, "1"); } catch (e) {}
+  });
+})();
+</script>

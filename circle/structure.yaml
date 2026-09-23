@@ -1,0 +1,137 @@
+# Community structure for the AI Skool launch on Circle.
+#
+# Used two ways:
+#   1. As the checklist for building the community by hand on the Professional plan
+#      (Settings > Spaces). Names, slugs and types map 1:1 to the Circle UI.
+#   2. As the input to `npm run provision`, which creates everything via the Admin API v2
+#      (Business plan and above). Re-running is safe: existing slugs are skipped.
+#
+# Course titles and lessons below are PLACEHOLDERS to show the shape. Replace them with
+# the real curriculum before provisioning. Lessons are created as drafts with no video.
+
+community:
+  name: AI Skool
+  tagline: Learn AI by building things. Ages 11 to 17, and the adults who want to keep up.
+
+space_groups:
+  - name: Start Here
+    slug: start-here
+    spaces:
+      - name: Welcome and Announcements
+        slug: welcome
+        type: basic
+        members_can_post: false
+        description: Team announcements, new course drops, and live event schedule.
+      - name: Ask Coach
+        slug: ask-coach
+        type: basic
+        members_can_post: true
+        description: >
+          Stuck on a lesson? Ask here. Coach, our AI helper, answers within a few minutes
+          and a human from the team reviews every thread. This is the space the answer bot watches.
+      - name: Course Requests
+        slug: course-requests
+        type: basic
+        members_can_post: true
+        description: >
+          Tell us what you want to learn next. One request per post. Upvote by liking.
+          We build the most-liked requests first.
+      - name: Parent Hub
+        slug: parent-hub
+        type: basic
+        members_can_post: true
+        description: For parents and guardians. Progress tips, safety settings, and how to help at home.
+
+  - name: Kids Courses (Ages 11 to 17)
+    slug: kids-courses
+    spaces:
+      - name: AI Foundations
+        slug: ai-foundations
+        type: course
+        description: Start here. What AI is, how it works, and how to use it well.
+        sections:
+          - name: "Module 1: What is AI?"
+            lessons:
+              - What AI is and is not
+              - Where AI shows up in your day
+              - "Project: Spot the AI"
+          - name: "Module 2: Talking to AI"
+            lessons:
+              - How to ask good questions (prompting basics)
+              - Fact-checking what AI tells you
+              - "Project: Build a study buddy prompt"
+      - name: Build Your First Chatbot
+        slug: first-chatbot
+        type: course
+        description: Make a working chatbot, step by step, with no coding experience needed.
+        sections:
+          - name: "Module 1: Plan your bot"
+            lessons:
+              - Pick a job for your bot
+              - Write the bot's personality
+          - name: "Module 2: Build and test"
+            lessons:
+              - Build it
+              - Test it with friends and fix what breaks
+              - "Project: Demo day"
+      - name: AI Art, Music and Video
+        slug: ai-creative
+        type: course
+        description: Make things with image, music and video tools, and learn what is fair to make.
+        sections:
+          - name: "Module 1: Images"
+            lessons:
+              - Your first AI image
+              - Style, mood and remixing
+          - name: "Module 2: Music and video"
+            lessons:
+              - Make a song
+              - Make a short video
+      - name: Smart and Safe with AI
+        slug: ai-safety
+        type: course
+        description: Privacy, deepfakes, bias, and how to be the person in the room who knows what is real.
+        sections:
+          - name: "Module 1: Staying safe"
+            lessons:
+              - What not to share with an AI
+              - Spotting deepfakes and fake news
+          - name: "Module 2: Thinking clearly"
+            lessons:
+              - When AI is wrong (and why)
+              - Bias, fairness and being a good AI citizen
+
+  - name: Adult Courses
+    slug: adult-courses
+    spaces:
+      - name: AI for Everyday Life
+        slug: ai-everyday
+        type: course
+        description: Practical AI for planning, writing, learning and getting things done.
+        sections:
+          - name: "Module 1: The basics"
+            lessons:
+              - The tools worth your time
+              - Prompting that actually works
+      - name: AI at Work
+        slug: ai-at-work
+        type: course
+        description: Use AI to do your job faster without embarrassing yourself.
+        sections:
+          - name: "Module 1: Writing and research"
+            lessons:
+              - Drafting emails, docs and summaries
+              - Research without hallucinations
+
+  - name: Community
+    slug: community
+    spaces:
+      - name: Show and Tell
+        slug: show-and-tell
+        type: basic
+        members_can_post: true
+        description: Share what you built. Screenshots, links, demos.
+      - name: Live Sessions
+        slug: live-sessions
+        type: event
+        description: Weekly build-along and Q&A calls.
