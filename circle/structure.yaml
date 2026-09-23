@@ -1,4 +1,4 @@
-# Community structure for the AI Skool launch on Circle.
+# Community structure for the Learn AI launch on Circle.
 #
 # Used two ways:
 #   1. As the checklist for building the community by hand on the Professional plan
@@ -10,7 +10,7 @@
 # the real curriculum before provisioning. Lessons are created as drafts with no video.
 
 community:
-  name: AI Skool
+  name: Learn AI
   tagline: Learn AI by building things. Ages 11 to 17, and the adults who want to keep up.
 
 # Community-wide settings applied by `npm run provision`.
@@ -74,7 +74,7 @@ space_groups:
         pinned_posts:
           - title: Start here
             body: |
-              # Welcome to AI Skool
+              # Welcome to Learn AI
               You're in. Here's how to get the most out of it.
 
               ## 1. Pick your first course

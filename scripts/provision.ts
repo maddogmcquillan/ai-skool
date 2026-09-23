@@ -4,6 +4,7 @@
  * Requires the Circle Business plan or above (the Professional plan has no Admin API).
  *
  *   CIRCLE_ADMIN_TOKEN=... npm run provision           # create anything missing, apply settings
+ *   npm run provision -- --update-posts                # also rewrite existing pinned posts from the yaml
  *   npm run provision:dry                              # print the plan, no token needed
  *
  * Idempotent: space groups and spaces match by slug; sections, lessons, tags and pinned posts
@@ -63,6 +64,8 @@ interface Member { id: number; email: string; name?: string }
 interface Post { id: number; name: string; space_id: number }
 
 const dryRun = process.argv.includes("--dry-run");
+/** With --update-posts, existing pinned posts get their body rewritten from the yaml. */
+const updatePosts = process.argv.includes("--update-posts");
 const token = process.env.CIRCLE_ADMIN_TOKEN;
 if (!dryRun && !token) {
   console.error("CIRCLE_ADMIN_TOKEN is required (or pass --dry-run).");
@@ -184,7 +187,12 @@ async function main() {
       const space = spaceBySlug.get(s.slug);
       const existing = space ? await listAll<Post>("/posts", { space_id: space.id }) : [];
       for (const post of s.pinned_posts) {
-        if (existing.find((p) => p.name === post.title)) log("keep", "post", `${s.name}: ${post.title}`);
+        const found = existing.find((p) => p.name === post.title);
+        if (found && updatePosts) {
+          await step("post", `${s.name}: ${post.title} (body refreshed)`, () =>
+            circleRequest(cfg, "PUT", `/posts/${found.id}`, { name: post.title, tiptap_body: { body: markdownToTiptap(post.body) }, is_pinned: true }),
+          );
+        } else if (found) log("keep", "post", `${s.name}: ${post.title}`);
         else {
           log("create", "post", `${s.name}: ${post.title}`);
           if (!dryRun && space) {

@@ -1,9 +1,9 @@
-# AI Skool community FAQ
+# Learn AI community FAQ
 
 > EDIT ME. This file is always given to the bot. Keep it short and accurate.
 
-## What is AI Skool?
-AI Skool is an online after-school program that teaches kids aged 11 to 17 how AI works and how to build things with it. There are also courses for adults. Everything lives in this community: video lessons, projects, live sessions, and a place to ask questions.
+## What is Learn AI?
+Learn AI is an online after-school program that teaches kids aged 11 to 17 how AI works and how to build things with it. There are also courses for adults. Everything lives in this community: video lessons, projects, live sessions, and a place to ask questions.
 
 ## How the courses are organized
 Kids Courses: AI Foundations (start here), Build Your First Chatbot, AI Art, Music and Video, and Smart and Safe with AI. Adult Courses: AI for Everyday Life and AI at Work. Each course has modules, and each module has short video lessons with a project at the end.

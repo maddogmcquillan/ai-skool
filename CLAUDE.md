@@ -34,7 +34,10 @@ read from the environment:
    paywall, the pixel snippets, Zapier, and the affiliate settings.
 
 Edit `circle/structure.yaml` to change the community: structure, settings, tags, profile
-fields, the bot member, and pinned post text all live there.
+fields, the bot member, and pinned post text all live there. Pinned posts are matched by title,
+so after changing a post's body run `npm run provision -- --update-posts` to push the new text.
+
+The community's public name is **Learn AI** (the repo name "ai-skool" is historical).
 
 ## Conventions
 
