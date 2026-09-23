@@ -6,7 +6,7 @@ DNS propagate.
 
 ## 1. Create the community
 
-1. Sign up at circle.so, pick **Business** (14-day trial, $199/mo after, 1% transaction fee).
+1. Sign up at circle.so, pick **Business** (14-day trial, $219/mo after, 1% transaction fee).
    Business adds the Admin API used by the provisioning script and by the bot to post replies.
 2. Name: your chosen name. Default URL: `<name>.circle.so` for now.
 3. Settings > General: set the community description, logo, and brand color. Theme: light.
