@@ -11,6 +11,18 @@ export interface CreateCommentInput {
   skipNotifications?: boolean;
 }
 
+/**
+ * Circle documents `Authorization: Bearer <token>` for Admin API v2, while its OpenAPI spec
+ * lists `Authorization: Token <token>`. We try Bearer first and fall back to Token on a 401,
+ * then remember whichever scheme worked for the rest of the process.
+ */
+let authScheme: "Bearer" | "Token" = "Bearer";
+
+/** Test hook: reset the remembered auth scheme. */
+export function resetAuthScheme(): void {
+  authScheme = "Bearer";
+}
+
 export async function circleRequest<T>(
   cfg: CircleClientConfig,
   method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE",
@@ -19,15 +31,24 @@ export async function circleRequest<T>(
   fetchImpl: typeof fetch = fetch,
 ): Promise<T> {
   const base = (cfg.baseUrl ?? "https://app.circle.so/api/admin/v2").replace(/\/$/, "");
-  const res = await fetchImpl(`${base}${path}`, {
-    method,
-    headers: {
-      authorization: `Bearer ${cfg.token}`,
-      "content-type": "application/json",
-      accept: "application/json",
-    },
-    body: payload === undefined ? undefined : JSON.stringify(payload),
-  });
+  const send = (scheme: "Bearer" | "Token") =>
+    fetchImpl(`${base}${path}`, {
+      method,
+      headers: {
+        authorization: `${scheme} ${cfg.token}`,
+        "content-type": "application/json",
+        accept: "application/json",
+      },
+      body: payload === undefined ? undefined : JSON.stringify(payload),
+    });
+  let res = await send(authScheme);
+  if (res.status === 401 && authScheme === "Bearer") {
+    const retry = await send("Token");
+    if (retry.status !== 401) {
+      authScheme = "Token";
+      res = retry;
+    }
+  }
   const text = await res.text();
   let json: unknown = null;
   try {
