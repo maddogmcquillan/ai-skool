@@ -25,6 +25,7 @@ import path from "node:path";
 import { parse } from "yaml";
 import { circleRequest, type CircleClientConfig } from "../src/circle.js";
 import { blobKey, contentTypeFor, md5Base64, normalizeFileName } from "../src/lib/upload.js";
+import { lessonDoc, normalizeLesson, type LessonContent } from "../src/lib/lessonBody.js";
 
 interface VideoSpec { file: string; course: string; section: string; lesson: string }
 interface Manifest { drive_folder_url?: string; videos: VideoSpec[] }
@@ -83,16 +84,32 @@ function downloadFolder(url: string) {
   if (run.status !== 0) throw new Error("gdown failed. Is the folder shared as 'Anyone with the link'? Is gdown installed (pip install gdown)?");
 }
 
-/** Lesson body that references the uploaded file. Adjust here if Circle renders it differently. */
-function lessonBody(upload: DirectUpload, fileName: string) {
+interface StructureSection { name: string; lessons?: Array<string | LessonContent> }
+interface StructureSpace { slug: string; sections?: StructureSection[] }
+interface StructureFile { space_groups: Array<{ spaces: StructureSpace[] }> }
+
+/** Find the lesson's text (description, creator, note) in circle/structure.yaml. */
+async function lessonSpec(v: VideoSpec): Promise<LessonContent> {
+  const structure = parse(await readFile("circle/structure.yaml", "utf8")) as StructureFile;
+  for (const g of structure.space_groups) {
+    for (const sp of g.spaces) {
+      if (sp.slug !== v.course) continue;
+      for (const sec of sp.sections ?? []) {
+        if (sec.name !== v.section) continue;
+        for (const l of sec.lessons ?? []) {
+          const lesson = normalizeLesson(l);
+          if (lesson.name === v.lesson) return lesson;
+        }
+      }
+    }
+  }
+  return { name: v.lesson };
+}
+
+/** Full lesson body from the yaml, with the uploaded file in place of the YouTube embed. */
+function lessonBody(upload: DirectUpload, fileName: string, lesson: LessonContent) {
   return {
-    body: {
-      type: "doc",
-      content: [
-        { type: "file", attrs: { sgid: upload.attachable_sgid, signed_id: upload.signed_id, filename: fileName } },
-        { type: "paragraph", content: [{ type: "text", text: "Watch the lesson above, then try the project." }] },
-      ],
-    },
+    body: lessonDoc(lesson, { upload: { sgid: upload.attachable_sgid, signedId: upload.signed_id, filename: fileName } }),
     attachments: [upload.attachable_sgid],
     inline_attachments: [upload.signed_id],
   };
@@ -137,7 +154,7 @@ async function main() {
 
     console.log(`upload ${path.basename(local)} (${(statSync(local).size / 1e6).toFixed(1)} MB) -> ${space.name} / ${v.section} / ${v.lesson}`);
     const du = await uploadFile(local);
-    await circleRequest(cfg, "PATCH", `/course_lessons/${lesson.id}`, { rich_text_body: lessonBody(du, path.basename(local)) });
+    await circleRequest(cfg, "PATCH", `/course_lessons/${lesson.id}`, { rich_text_body: lessonBody(du, path.basename(local), await lessonSpec(v)) });
     console.log(`done   lesson #${lesson.id} updated`);
     ok++;
   }

@@ -1,0 +1,72 @@
+# Generated from the shared Drive folder listing. Used by `npm run upload-videos`.
+# Files are matched to lessons by the YouTube id in [brackets] in each file name.
+drive_folder_url: https://drive.google.com/drive/folders/1cLDz5EXkGLTStxXVtrymr2xq9QQ-585A
+videos:
+- file: What is Artificial Intelligence？ ｜ Artificial Intelligence In 5 Minutes ｜ AI Explained ｜ Simplilearn [uMzUB89uSxU].mp4
+  course: classroom
+  section: Beginner AI
+  lesson: What is AI?
+- file: Generative AI in a Nutshell - how to survive and thrive in the age of AI [2IK3DFHRFfw].mp4
+  course: classroom
+  section: Beginner AI
+  lesson: Generative AI in a Nutshell
+- file: ChatGPT Tutorial 2025 - [Become An AI Power User in 30 Minutes] [dG3O3ePj-b8].mp4
+  course: classroom
+  section: Beginner AI
+  lesson: ChatGPT Power User in 30 Minutes
+- file: Large Language Models, Explained Briefly [WMcwoIyK4DA].mp4
+  course: classroom
+  section: Intermediate AI
+  lesson: Large Language Models, Explained Briefly
+- file: Master the Perfect ChatGPT Prompt Formula (in just 8 minutes)! [jC4v5AS4RIM].mp4
+  course: classroom
+  section: Intermediate AI
+  lesson: The Perfect ChatGPT Prompt Formula
+- file: What are AI Agents？ [F8NKVhkZZWI].mp4
+  course: classroom
+  section: Intermediate AI
+  lesson: What are AI Agents?
+- file: AI Agents Fundamentals In 21 Minutes [qU3fmidNbJE].mp4
+  course: classroom
+  section: Intermediate AI
+  lesson: AI Agents Fundamentals in 21 Minutes
+- file: Build Your First AI Game With ZERO Coding (Lovable + Grok 3 + Claude 3.7) [xWJDvub8Hws].mp4
+  course: classroom
+  section: 'Project Classes: Make X with AI'
+  lesson: Make a Game
+- file: Lovable Full Course for Beginners： Build & Deploy a Real App [pZpoACNOPAw].mp4
+  course: classroom
+  section: 'Project Classes: Make X with AI'
+  lesson: Make an App
+- file: How to Make a Website with AI  - Cursor 2025 [3FJZh6SR7IA].mp4
+  course: classroom
+  section: 'Project Classes: Make X with AI'
+  lesson: Make a Website
+- file: How to Create Custom GPT ｜ OpenAI Tutorial [0Q1AQAxpdGg].mp4
+  course: classroom
+  section: 'Project Classes: Make X with AI'
+  lesson: Make a Chatbot
+- file: n8n Tutorial for Beginners - Build Your First Free AI Agent [dpoMEcXjVH8].mp4
+  course: classroom
+  section: 'Project Classes: Make X with AI'
+  lesson: Make an AI Agent
+- file: Sora AI Tutorial — How to Create Stunning AI Videos [i8_Pz7sBp_M].mp4
+  course: classroom
+  section: 'Project Classes: Make X with AI'
+  lesson: Make a Video
+- file: How I Create AI Cartoon Movies (Complete Beginner Tutorial) [F20s6U9EPoM].mp4
+  course: classroom
+  section: 'Project Classes: Make X with AI'
+  lesson: Make a Cartoon
+- file: How To Make AI Music with Suno AI 2025 (Complete Walkthrough) [cmrRFapWeEE].mp4
+  course: classroom
+  section: 'Project Classes: Make X with AI'
+  lesson: Make Music
+- file: Midjourney - Beginner Tutorial in 16 MINS! [2025] [r2JQTh8y3yk].mp4
+  course: classroom
+  section: 'Project Classes: Make X with AI'
+  lesson: Make AI Art
+- file: How to Make a Professional Comic Book with AI (Step by Step) [LPtRRBvRTg8].mp4
+  course: classroom
+  section: 'Project Classes: Make X with AI'
+  lesson: Make a Comic

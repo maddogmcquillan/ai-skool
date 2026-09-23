@@ -33,12 +33,21 @@ function paragraph(...content: TiptapNode[]): TiptapNode {
  * Build the lesson body: description, the video (an embed node when Circle gave us one,
  * otherwise a plain link), an optional caution note, and the creator credit.
  */
-export function lessonDoc(lesson: LessonContent, embed?: { sgid: string; url: string }): TiptapDoc {
+export interface LessonMedia {
+  /** Circle embed of the YouTube video (from POST /embeds). */
+  embed?: { sgid: string; url: string };
+  /** A file uploaded to Circle (from POST /direct_uploads). Takes precedence over the embed. */
+  upload?: { sgid: string; signedId: string; filename: string };
+}
+
+export function lessonDoc(lesson: LessonContent, media: LessonMedia = {}): TiptapDoc {
   const content: TiptapNode[] = [];
   if (lesson.description) content.push(paragraph(text(lesson.description)));
-  if (lesson.youtube) {
+  if (media.upload) {
+    content.push({ type: "file", attrs: { sgid: media.upload.sgid, signed_id: media.upload.signedId, filename: media.upload.filename } });
+  } else if (lesson.youtube) {
     const url = youtubeUrl(lesson.youtube);
-    if (embed) content.push({ type: "embed", attrs: { sgid: embed.sgid, url: embed.url } });
+    if (media.embed) content.push({ type: "embed", attrs: { sgid: media.embed.sgid, url: media.embed.url } });
     else content.push(paragraph(text("Watch the lesson on YouTube", [{ type: "link", attrs: { href: url, target: "_blank" } } as unknown as { type: string }])));
   }
   if (lesson.note) content.push(paragraph(text("Heads up: ", [{ type: "bold" }]), text(lesson.note)));

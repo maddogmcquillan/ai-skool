@@ -133,7 +133,7 @@ async function lessonBody(lesson: LessonContent) {
       embedCache.set(url, null);
     }
   }
-  return lessonDoc(lesson, embedCache.get(url) ?? undefined);
+  return lessonDoc(lesson, { embed: embedCache.get(url) ?? undefined });
 }
 
 /** Delete placeholder spaces and groups listed under retired_* in the yaml. */

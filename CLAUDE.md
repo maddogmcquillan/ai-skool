@@ -47,9 +47,10 @@ The community's public name is **Learn AI** (the repo name "ai-skool" is histori
 
 ## When asked to upload course videos
 
-1. Requires `CIRCLE_ADMIN_TOKEN`, `circle/videos.yaml` (copy `circle/videos.example.yaml`), a
-   Drive folder shared as "Anyone with the link", and `pip install gdown`.
-2. Run `npm run provision` first so every lesson in the manifest exists.
+1. Requires `CIRCLE_ADMIN_TOKEN`, `circle/videos.yaml` (already generated: 17 Drive files matched
+   to the 17 Classroom lessons by the YouTube id in each file name), network access to
+   drive.google.com, and `pip install gdown`.
+2. `git pull` first, then run `npm run provision` so every lesson in the manifest exists.
 3. Run `npm run upload-videos -- --dry-run` and check the mapping, then
    `npm run upload-videos -- --test-one`. Stop and ask the owner to open that lesson in Circle
    and confirm the video plays. Only then run `npm run upload-videos` for the rest.
