@@ -160,7 +160,19 @@ async function lessonBody(lesson: LessonContent) {
   return lessonDoc(lesson, { embed: embedCache.get(url) ?? undefined });
 }
 
-/** Create a member account if missing; keep its avatar current either way. */
+/** Upload the avatar file and attach it to the member. */
+async function setAvatar(memberId: number, avatarFile: string) {
+  const up = await directUpload(cfg, avatarFile);
+  await circleRequest(cfg, "PUT", `/community_members/${memberId}`, { avatar: up.signed_id });
+}
+
+/**
+ * Create a member account if missing; keep its avatar current either way.
+ *
+ * `POST /community_members` rejects an `avatar` signed id with "Avatar Image not found",
+ * while `PUT /community_members/:id` accepts the same id, so the avatar always goes on
+ * with a second request after the account exists.
+ */
 async function ensureMember(kind: string, spec: MemberSpec | undefined, email: string | undefined, spaceBySlug: Map<string, Space>, tagByName: Map<string, MemberTag>) {
   if (!spec) return log("skip", kind, "none in structure.yaml");
   if (!email) return log("skip", kind, `${spec.name}: set the email variable to create it`);
@@ -168,28 +180,32 @@ async function ensureMember(kind: string, spec: MemberSpec | undefined, email: s
   const existing = await findMemberByEmail(email);
   if (existing) {
     log("keep", kind, `${spec.name} <${email}>`);
-    if (avatarFile && !dryRun) {
-      await step(kind, `${spec.name}: avatar refreshed`, async () => {
-        const up = await directUpload(cfg, avatarFile);
-        await circleRequest(cfg, "PUT", `/community_members/${existing.id}`, { avatar: up.signed_id });
-      });
-    }
+    if (avatarFile && !dryRun) await step(kind, `${spec.name}: avatar refreshed`, () => setAvatar(existing.id, avatarFile));
     return;
   }
   log("create", kind, `${spec.name} <${email}>${avatarFile ? " with avatar" : ""}`);
   if (dryRun) return;
   const tag = spec.tag ? tagByName.get(spec.tag) : undefined;
   const spaces = (spec.spaces ?? []).map((slug) => spaceBySlug.get(slug)?.id).filter((id): id is number => typeof id === "number");
-  const avatar = avatarFile ? (await directUpload(cfg, avatarFile)).signed_id : undefined;
-  await circleRequest(cfg, "POST", "/community_members", {
+  const created = await circleRequest(cfg, "POST", "/community_members", {
     email,
     name: spec.name,
     headline: spec.headline,
     skip_invitation: true,
     member_tag_ids: tag ? [tag.id] : [],
     space_ids: spaces,
-    ...(avatar ? { avatar } : {}),
     preferences: { messaging_enabled_by_admin: false },
+  });
+  if (!avatarFile) return;
+  await step(kind, `${spec.name}: avatar set`, async () => {
+    let id: number | undefined;
+    try {
+      id = unwrapRecord<Member>(created, "community_member").id;
+    } catch {
+      id = (await findMemberByEmail(email))?.id;
+    }
+    if (!id) throw new Error("could not find the new member's id to attach the avatar");
+    await setAvatar(id, avatarFile);
   });
 }
 
