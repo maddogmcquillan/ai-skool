@@ -54,12 +54,20 @@ profile_fields:
     show_on_signup: true
     show_on_profile: false
 
+# The account that authors the pinned posts and announcements. Email comes from TEAM_AUTHOR_EMAIL.
+team_member:
+  name: Learn AI Team
+  headline: The people behind Learn AI. Post in Ask Coach or Parent Hub to reach us.
+  spaces: [welcome, ask-coach, course-requests, parent-hub, show-and-tell, live-sessions]
+  avatar: brand/assets/avatar-team.png
+
 # The member account the answer bot posts as. Email comes from BOT_AUTHOR_EMAIL.
 bot_member:
   name: Coach
   headline: AI helper. A real person on the team reads every thread.
   tag: Coach
   spaces: [welcome, ask-coach]
+  avatar: brand/assets/avatar-coach.png
 
 # Placeholder spaces from an earlier draft. Deleted by `npm run provision` if they exist.
 retired_spaces: [ai-foundations, first-chatbot, ai-creative, ai-safety, ai-everyday, ai-at-work]

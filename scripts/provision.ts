@@ -6,6 +6,7 @@
  *   CIRCLE_ADMIN_TOKEN=... npm run provision           # create anything missing, apply settings
  *   npm run provision -- --update-posts                # also rewrite existing pinned posts from the yaml
  *   npm run provision -- --update-lessons              # also rewrite existing lesson bodies (video embeds, notes)
+ *   npm run provision -- --reauthor-posts              # delete + recreate pinned posts under TEAM_AUTHOR_EMAIL
  *   npm run provision:dry                              # print the plan, no token needed
  *
  * Idempotent: space groups and spaces match by slug; sections, lessons, tags and pinned posts
@@ -16,6 +17,8 @@ import { parse } from "yaml";
 import { circleRequest, unwrapRecord, type CircleClientConfig } from "../src/circle.js";
 import { markdownToTiptap } from "../src/lib/tiptap.js";
 import { lessonDoc, normalizeLesson, youtubeUrl, type LessonContent } from "../src/lib/lessonBody.js";
+import { directUpload } from "../src/lib/circleUpload.js";
+import { existsSync } from "node:fs";
 
 interface SectionSpec { name: string; lessons?: Array<string | LessonContent> }
 interface PinnedPostSpec { title: string; body: string }
@@ -51,12 +54,15 @@ interface Structure {
   };
   member_tags?: TagSpec[];
   profile_fields?: ProfileFieldSpec[];
-  bot_member?: { name: string; headline?: string; tag?: string; spaces?: string[] };
+  bot_member?: MemberSpec;
+  /** The account that authors the pinned posts. Email comes from TEAM_AUTHOR_EMAIL. */
+  team_member?: MemberSpec;
   retired_spaces?: string[];
   retired_space_groups?: string[];
   space_groups: GroupSpec[];
 }
 interface Embed { sgid: string; url: string }
+interface MemberSpec { name: string; headline?: string; tag?: string; spaces?: string[]; avatar?: string }
 
 interface Paged<T> { records: T[]; has_next_page: boolean }
 interface SpaceGroup { id: number; name: string; slug: string }
@@ -73,6 +79,8 @@ const dryRun = process.argv.includes("--dry-run");
 const updatePosts = process.argv.includes("--update-posts");
 /** With --update-lessons, existing lessons get their body rewritten from the yaml. */
 const updateLessons = process.argv.includes("--update-lessons");
+/** With --reauthor-posts, existing pinned posts are deleted and recreated under the team account. */
+const reauthorPosts = process.argv.includes("--reauthor-posts");
 const token = process.env.CIRCLE_ADMIN_TOKEN;
 if (!dryRun && !token) {
   console.error("CIRCLE_ADMIN_TOKEN is required (or pass --dry-run).");
@@ -150,6 +158,39 @@ async function lessonBody(lesson: LessonContent) {
     }
   }
   return lessonDoc(lesson, { embed: embedCache.get(url) ?? undefined });
+}
+
+/** Create a member account if missing; keep its avatar current either way. */
+async function ensureMember(kind: string, spec: MemberSpec | undefined, email: string | undefined, spaceBySlug: Map<string, Space>, tagByName: Map<string, MemberTag>) {
+  if (!spec) return log("skip", kind, "none in structure.yaml");
+  if (!email) return log("skip", kind, `${spec.name}: set the email variable to create it`);
+  const avatarFile = spec.avatar && existsSync(spec.avatar) ? spec.avatar : undefined;
+  const existing = await findMemberByEmail(email);
+  if (existing) {
+    log("keep", kind, `${spec.name} <${email}>`);
+    if (avatarFile && !dryRun) {
+      await step(kind, `${spec.name}: avatar refreshed`, async () => {
+        const up = await directUpload(cfg, avatarFile);
+        await circleRequest(cfg, "PUT", `/community_members/${existing.id}`, { avatar: up.signed_id });
+      });
+    }
+    return;
+  }
+  log("create", kind, `${spec.name} <${email}>${avatarFile ? " with avatar" : ""}`);
+  if (dryRun) return;
+  const tag = spec.tag ? tagByName.get(spec.tag) : undefined;
+  const spaces = (spec.spaces ?? []).map((slug) => spaceBySlug.get(slug)?.id).filter((id): id is number => typeof id === "number");
+  const avatar = avatarFile ? (await directUpload(cfg, avatarFile)).signed_id : undefined;
+  await circleRequest(cfg, "POST", "/community_members", {
+    email,
+    name: spec.name,
+    headline: spec.headline,
+    skip_invitation: true,
+    member_tag_ids: tag ? [tag.id] : [],
+    space_ids: spaces,
+    ...(avatar ? { avatar } : {}),
+    preferences: { messaging_enabled_by_admin: false },
+  });
 }
 
 /** Delete placeholder spaces and groups listed under retired_* in the yaml. */
@@ -251,39 +292,7 @@ async function main() {
     }
   }
 
-  // ---------- 2. Pinned posts ----------
-  console.log("\n## Pinned posts");
-  for (const g of spec.space_groups) {
-    for (const s of g.spaces) {
-      if (!s.pinned_posts?.length) continue;
-      const space = spaceBySlug.get(s.slug);
-      const existing = space ? await listAll<Post>("/posts", { space_id: space.id }) : [];
-      for (const post of s.pinned_posts) {
-        const found = existing.find((p) => p.name === post.title);
-        if (found && updatePosts) {
-          await step("post", `${s.name}: ${post.title} (body refreshed)`, () =>
-            circleRequest(cfg, "PUT", `/posts/${found.id}`, { name: post.title, tiptap_body: { body: markdownToTiptap(post.body) }, is_pinned: true }),
-          );
-        } else if (found) log("keep", "post", `${s.name}: ${post.title}`);
-        else {
-          log("create", "post", `${s.name}: ${post.title}`);
-          if (!dryRun && space) {
-            await circleRequest<Post>(cfg, "POST", "/posts", {
-              space_id: space.id,
-              name: post.title,
-              status: "published",
-              tiptap_body: { body: markdownToTiptap(post.body) },
-              is_pinned: true,
-              is_comments_enabled: true,
-              skip_notifications: true,
-            });
-          }
-        }
-      }
-    }
-  }
-
-  // ---------- 3. Member tags ----------
+  // ---------- 2. Member tags, then the team and Coach accounts ----------
   console.log("\n## Member tags");
   const tags = await listAll<MemberTag>("/member_tags");
   const tagByName = new Map<string, MemberTag>(tags.map((t) => [t.name, t]));
@@ -301,6 +310,53 @@ async function main() {
           is_background_enabled: true,
         }), "member_tag");
         tagByName.set(t.name, created);
+      }
+    }
+  }
+
+
+  console.log("\n## Accounts");
+  await ensureMember("team member", spec.team_member, process.env.TEAM_AUTHOR_EMAIL, spaceBySlug, tagByName);
+  await ensureMember("bot member", spec.bot_member, process.env.BOT_AUTHOR_EMAIL, spaceBySlug, tagByName);
+
+  // ---------- 3. Pinned posts ----------
+  console.log("\n## Pinned posts");
+  const author = process.env.TEAM_AUTHOR_EMAIL;
+  if (!author) log("warn", "post", "TEAM_AUTHOR_EMAIL not set: pinned posts are authored by the token's admin account");
+  for (const g of spec.space_groups) {
+    for (const s of g.spaces) {
+      if (!s.pinned_posts?.length) continue;
+      const space = spaceBySlug.get(s.slug);
+      const existing = space ? await listAll<Post>("/posts", { space_id: space.id }) : [];
+      for (const post of s.pinned_posts) {
+        let found = existing.find((p) => p.name === post.title);
+        if (found && reauthorPosts && !dryRun) {
+          await step("post", `${s.name}: ${post.title} deleted for re-authoring`, () => circleRequest(cfg, "DELETE", `/posts/${found!.id}`));
+          found = undefined;
+        } else if (found && reauthorPosts) {
+          log("apply", "post", `${s.name}: ${post.title} would be recreated under the team account`);
+          found = undefined;
+        }
+        if (found && updatePosts) {
+          await step("post", `${s.name}: ${post.title} (body refreshed)`, () =>
+            circleRequest(cfg, "PUT", `/posts/${found.id}`, { name: post.title, tiptap_body: { body: markdownToTiptap(post.body) }, is_pinned: true }),
+          );
+        } else if (found) log("keep", "post", `${s.name}: ${post.title}`);
+        else {
+          log("create", "post", `${s.name}: ${post.title}`);
+          if (!dryRun && space) {
+            await circleRequest<Post>(cfg, "POST", "/posts", {
+              space_id: space.id,
+              name: post.title,
+              status: "published",
+              tiptap_body: { body: markdownToTiptap(post.body) },
+              is_pinned: true,
+              is_comments_enabled: true,
+              skip_notifications: true,
+              ...(author ? { user_email: author } : {}),
+            });
+          }
+        }
       }
     }
   }
@@ -357,33 +413,8 @@ async function main() {
     }),
   );
 
-  // ---------- 6. Bot member ----------
-  console.log("\n## Bot member");
-  const bot = spec.bot_member;
-  const botEmail = process.env.BOT_AUTHOR_EMAIL;
-  if (!bot) log("skip", "bot member", "none in structure.yaml");
-  else if (!botEmail) log("skip", "bot member", `${bot.name}: set BOT_AUTHOR_EMAIL to create it`);
-  else {
-    if (await findMemberByEmail(botEmail)) log("keep", "bot member", `${bot.name} <${botEmail}>`);
-    else {
-      log("create", "bot member", `${bot.name} <${botEmail}>`);
-      if (!dryRun) {
-        const tag = bot.tag ? tagByName.get(bot.tag) : undefined;
-        const botSpaces = (bot.spaces ?? []).map((slug) => spaceBySlug.get(slug)?.id).filter((id): id is number => typeof id === "number");
-        await circleRequest(cfg, "POST", "/community_members", {
-          email: botEmail,
-          name: bot.name,
-          headline: bot.headline,
-          skip_invitation: true,
-          member_tag_ids: tag ? [tag.id] : [],
-          space_ids: botSpaces,
-          preferences: { messaging_enabled_by_admin: false },
-        });
-      }
-    }
-  }
-
   console.log(`\nDone. created=${summary.created} kept=${summary.kept} settings applied=${summary.applied} warnings=${summary.warned}`);
+  if (reauthorPosts) console.log("Pinned posts were recreated: run `npm run brand` to put their cover images back.");
   if (summary.warned) process.exitCode = 2;
 }
 

@@ -48,8 +48,12 @@ Circle's API has no fields for these. Files are in `brand/assets/`.
    both themes.
 7. **Sidebar order.** Drag spaces in the sidebar so Start Here reads Welcome, Ask Coach, Course
    Requests, Parent Hub; then Classroom; then Community.
-8. **Lesson thumbnails.** The Classroom shows a thumbnail per class when one is set. Each video's
-   first frame is used by default; replace any weak ones from the lesson editor.
+8. **Lesson thumbnails.** `brand/assets/lesson-01-*.png` through `lesson-17-*.png` (800x450), one
+   per class, numbered in order. In the Classroom, open each class in the editor and set its
+   thumbnail to the matching file. The API has no thumbnail field for lessons.
+9. **Post authorship.** Pinned posts are authored by the "Learn AI Team" account once
+   `TEAM_AUTHOR_EMAIL` is set and `npm run provision -- --reauthor-posts` has run. The Coach and
+   Team accounts get their avatars from `brand/assets/avatar-*.png` automatically.
 
 ## Reference points
 

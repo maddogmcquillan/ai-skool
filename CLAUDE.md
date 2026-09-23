@@ -20,6 +20,9 @@ read from the environment:
   `scripts/provision.ts` and, when set on the deployed service, lets the bot post replies directly.
 - `BOT_AUTHOR_EMAIL`: email for the "Coach" member account the bot posts as. `provision`
   creates the member when this is set.
+- `TEAM_AUTHOR_EMAIL`: email for the "Learn AI Team" account that authors the pinned posts.
+  `provision` creates it when set; `npm run provision -- --reauthor-posts` recreates existing
+  pinned posts under it (then run `npm run brand` to restore their covers).
 - `ANTHROPIC_API_KEY`, `META_PIXEL_ID`, `META_CAPI_ACCESS_TOKEN`: only for the deployed service.
 
 ## When asked to set up or update the Circle community

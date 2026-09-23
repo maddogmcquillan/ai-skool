@@ -167,4 +167,33 @@ body = f'''<div class="ground" style="width:1680px;height:600px">{nodes_svg(1680
   <div style="position:absolute;left:0;bottom:0;width:1680px;height:8px;background:linear-gradient(90deg,{SPARK},{BLUE},{MINT})"></div></div>'''
 render("welcome-banner", 1680, 600, page(1680, 600, body))
 
+# ---- Lesson thumbnails 800x450, one per class ----
+LESSONS = [
+    ("Beginner AI", BLUE, ["What is AI?", "Generative AI in a Nutshell", "ChatGPT Power User in 30 Minutes"]),
+    ("Intermediate AI", VIOLET, ["Large Language Models, Explained Briefly", "The Perfect ChatGPT Prompt Formula", "What are AI Agents?", "AI Agents Fundamentals in 21 Minutes"]),
+    ("Project Classes", MINT, ["Make a Game", "Make an App", "Make a Website", "Make a Chatbot", "Make an AI Agent", "Make a Video", "Make a Cartoon", "Make Music", "Make AI Art", "Make a Comic"]),
+]
+import re as _re
+n = 0
+for section, accent, titles in LESSONS:
+    for title in titles:
+        n += 1
+        slug = _re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")
+        size = 64 if len(title) > 26 else 76
+        body = f'''<div class="ground" style="width:800px;height:450px">{nodes_svg(800,450,accent,seed=100+n,count=9,opacity=.55)}
+  <div class="title" style="position:absolute;right:36px;top:-30px;font-size:300px;color:{accent};opacity:.10;line-height:1">{n:02d}</div>
+  <div style="position:absolute;left:48px;top:0;height:450px;display:flex;flex-direction:column;justify-content:center;gap:16px;max-width:640px">
+    <div class="chip" style="color:{accent};font-size:16px">Class {n:02d} · {section}</div>
+    <div class="title" style="font-size:{size}px">{title}</div>
+    <div class="sub" style="font-size:18px">Learn AI Classroom</div></div>
+  <div style="position:absolute;left:0;bottom:0;width:800px;height:7px;background:linear-gradient(90deg,{accent},{BLUE})"></div></div>'''
+        render(f"lesson-{n:02d}-{slug}", 800, 450, page(800, 450, body))
+
+# ---- Avatars 512x512 for the Coach bot and the Learn AI Team account ----
+body = f'''<div style="width:512px;height:512px;background:linear-gradient(160deg,{VIOLET},#5B3FC7);display:flex;align-items:center;justify-content:center;position:relative">
+  {glyph_svg("chat", SPARK, 330, sw=5)}</div>'''
+render("avatar-coach", 512, 512, page(512, 512, body))
+body = f'''<div style="width:512px;height:512px;background:{BLUE};display:flex;align-items:center;justify-content:center">{glyph_svg("spark", SPARK, 360, stroke="none")}</div>'''
+render("avatar-team", 512, 512, page(512, 512, body))
+
 print(json.dumps({"out": OUT, "files": sorted(os.listdir(OUT))}, indent=1))
