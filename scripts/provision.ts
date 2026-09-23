@@ -87,6 +87,22 @@ async function listAll<T>(path: string, query: Record<string, string | number> =
   return out;
 }
 
+/**
+ * Look a member up by email whatever their status. The plain listing defaults to active
+ * members only, which hides an invited account nobody has signed in as yet (the bot member),
+ * so matching against it would re-create the member on every run. Circle answers 404 when
+ * no member has that email.
+ */
+async function findMemberByEmail(email: string): Promise<Member | undefined> {
+  if (dryRun) return undefined;
+  try {
+    return await circleRequest<Member>(cfg, "GET", `/community_members/search?${new URLSearchParams({ email })}`);
+  } catch (err) {
+    if (/\(404\)/.test((err as Error).message)) return undefined;
+    throw err;
+  }
+}
+
 function log(action: "keep" | "create" | "apply" | "warn" | "skip", kind: string, name: string) {
   if (action === "create") summary.created++;
   if (action === "keep") summary.kept++;
@@ -293,8 +309,7 @@ async function main() {
   if (!bot) log("skip", "bot member", "none in structure.yaml");
   else if (!botEmail) log("skip", "bot member", `${bot.name}: set BOT_AUTHOR_EMAIL to create it`);
   else {
-    const members = await listAll<Member>("/community_members");
-    if (members.find((m) => m.email.toLowerCase() === botEmail.toLowerCase())) log("keep", "bot member", `${bot.name} <${botEmail}>`);
+    if (await findMemberByEmail(botEmail)) log("keep", "bot member", `${bot.name} <${botEmail}>`);
     else {
       log("create", "bot member", `${bot.name} <${botEmail}>`);
       if (!dryRun) {
