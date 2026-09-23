@@ -15,7 +15,9 @@
     "test": "vitest run",
     "provision": "tsx scripts/provision.ts",
     "provision:dry": "tsx scripts/provision.ts --dry-run",
-    "upload-videos": "tsx scripts/upload-videos.ts"
+    "upload-videos": "tsx scripts/upload-videos.ts",
+    "brand": "tsx scripts/brand.ts",
+    "brand:dry": "tsx scripts/brand.ts --dry-run"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.128.0",

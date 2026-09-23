@@ -57,6 +57,16 @@ The community's public name is **Learn AI** (the repo name "ai-skool" is histori
 4. The API cannot set a lesson's featured (top) video; the file lands in the lesson body. If
    the owner wants it as the featured video, they move it in the editor.
 
+## When asked to apply or refresh branding
+
+1. Requires `CIRCLE_ADMIN_TOKEN` and the files in `brand/assets/`.
+2. Run `npm run brand:dry`, then `npm run brand`. It re-uploads covers and re-applies colors,
+   emoji, labels and course settings; re-running is intended.
+3. Report warnings. Then point the owner to the manual list in `docs/BRANDING.md` (logo,
+   community icon, custom space icons, Home page, course banner, social image, theme).
+4. To change the look, edit `circle/brand.yaml` (colors, emoji, labels) or regenerate assets with
+   `python3 brand/generate.py brand/assets` after editing the copy or colors in that script.
+
 ## Conventions
 
 - TypeScript, ESM, Node 22. Imports use `.js` extensions.

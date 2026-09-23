@@ -19,12 +19,13 @@
  * lesson in Circle's editor before running the rest.
  */
 import { spawnSync } from "node:child_process";
-import { existsSync, mkdirSync, openAsBlob, readdirSync, statSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, statSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { parse } from "yaml";
 import { circleRequest, type CircleClientConfig } from "../src/circle.js";
-import { blobKey, contentTypeFor, md5Base64, normalizeFileName } from "../src/lib/upload.js";
+import { normalizeFileName } from "../src/lib/upload.js";
+import { directUpload, type DirectUpload } from "../src/lib/circleUpload.js";
 import { lessonDoc, normalizeLesson, type LessonContent } from "../src/lib/lessonBody.js";
 
 interface VideoSpec { file: string; course: string; section: string; lesson: string }
@@ -33,7 +34,6 @@ interface Paged<T> { records: T[]; has_next_page: boolean }
 interface Space { id: number; slug: string; name: string }
 interface Section { id: number; name: string }
 interface Lesson { id: number; name: string }
-interface DirectUpload { signed_id: string; attachable_sgid: string; direct_upload: { url: string; headers: Record<string, string> } }
 
 const args = process.argv.slice(2);
 const dryRun = args.includes("--dry-run");
@@ -119,21 +119,6 @@ function lessonBody(upload: DirectUpload, fileName: string, lesson: LessonConten
   };
 }
 
-async function uploadFile(filePath: string): Promise<DirectUpload> {
-  const byte_size = statSync(filePath).size;
-  const checksum = await md5Base64(filePath);
-  const filename = path.basename(filePath);
-  const content_type = contentTypeFor(filePath);
-  const raw = await circleRequest<DirectUpload | Record<string, DirectUpload>>(cfg, "POST", "/direct_uploads", { blob: { key: blobKey(), filename, content_type, byte_size, checksum } });
-  // Some Circle create endpoints wrap the record; accept { direct_upload: {...} } at the top level or nested one level down.
-  const du = ((raw as DirectUpload).direct_upload ? raw : Object.values(raw as Record<string, DirectUpload>).find((v) => v && typeof v === "object" && "direct_upload" in v)) as DirectUpload | undefined;
-  if (!du?.direct_upload?.url || !du.signed_id) throw new Error(`Unexpected direct upload response: ${JSON.stringify(raw).slice(0, 300)}`);
-  const headers: Record<string, string> = { ...du.direct_upload.headers };
-  if (!Object.keys(headers).some((h) => h.toLowerCase() === "content-type")) headers["Content-Type"] = content_type;
-  const res = await fetch(du.direct_upload.url, { method: "PUT", headers, body: await openAsBlob(filePath) });
-  if (!res.ok) throw new Error(`Storage PUT failed (${res.status}): ${(await res.text()).slice(0, 300)}`);
-  return du;
-}
 
 async function main() {
   const manifest = parse(await readFile("circle/videos.yaml", "utf8")) as Manifest;
@@ -160,7 +145,7 @@ async function main() {
     if (!lesson) { console.log(`skip   ${v.file}: no lesson '${v.lesson}' in ${v.section} (run provision first)`); continue; }
 
     console.log(`upload ${path.basename(local)} (${(statSync(local).size / 1e6).toFixed(1)} MB) -> ${space.name} / ${v.section} / ${v.lesson}`);
-    const du = await uploadFile(local);
+    const du = await directUpload(cfg, local);
     await circleRequest(cfg, "PATCH", `/course_lessons/${lesson.id}`, { rich_text_body: lessonBody(du, path.basename(local), await lessonSpec(v)) });
     console.log(`done   lesson #${lesson.id} updated`);
     ok++;
