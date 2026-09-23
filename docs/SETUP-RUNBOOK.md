@@ -32,10 +32,15 @@ and Meta can attribute the sale.
 4. Payments > Coupons: create a 100% coupon named `TEST100` for test purchases. Delete it before
    launch.
 
-## 4. Structure
+## 4. Structure, safety settings, pinned posts (automated)
 
-Build the space groups and spaces listed in `circle/structure.yaml` (Settings > Spaces).
-Key settings per space:
+With `CIRCLE_ADMIN_TOKEN` in the environment, `npm run provision` creates everything in
+`circle/structure.yaml`: space groups, spaces, course modules and draft lessons, the pinned
+welcome and how-to posts, member tags, the parent consent profile fields, the messaging
+lockdown from step 5, and the Coach member (when `BOT_AUTHOR_EMAIL` is set). Run
+`npm run provision:dry` first to see the plan. Re-running is safe.
+
+If you would rather click, the spaces are listed below. Key settings per space:
 
 | Space | Type | Members can post | Notes |
 |---|---|---|---|
@@ -47,11 +52,11 @@ Key settings per space:
 | Show and Tell | Post | Yes | Image-forward layout |
 | Live Sessions | Event | n/a | |
 
-Or skip the clicking: create an Admin v2 token (Developers > Tokens) and run
-`CIRCLE_ADMIN_TOKEN=... npm run provision` to create all of it from the yaml. Run
-`npm run provision:dry` first to see the plan.
+
 
 ## 5. Safety settings for a community with minors
+
+Items 1 and 3 are applied by `npm run provision`; verify them and do the rest by hand.
 
 1. Settings > Connect > Messaging: **Enable messaging ON**, **Enable member-to-member messaging
    OFF**, **Enable group messaging OFF**. Admins can still DM members.

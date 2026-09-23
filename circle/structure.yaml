@@ -13,6 +13,55 @@ community:
   name: AI Skool
   tagline: Learn AI by building things. Ages 11 to 17, and the adults who want to keep up.
 
+# Community-wide settings applied by `npm run provision`.
+settings:
+  messaging:
+    messaging_enabled: true                  # admins can still DM members
+    member_to_member_messaging_enabled: false # minors cannot DM each other
+    group_messaging_enabled: false
+    voice_messages_enabled: false
+  hide_emails_on_member_profiles: true
+  allow_profile_search_indexing: false       # keep member profiles out of search engines
+  default_spaces: [welcome, ask-coach, course-requests, parent-hub, show-and-tell, live-sessions]
+  new_member_landing_space: welcome
+
+member_tags:
+  - { name: Student, color: "#2457A6", is_public: true }
+  - { name: Parent, color: "#2A7A4B", is_public: true }
+  - { name: Adult learner, color: "#7A4B00", is_public: true }
+  - { name: Coach, color: "#6B3FA0", is_public: true }
+
+# Shown on the signup form. Wording to be confirmed with your lawyer before launch.
+profile_fields:
+  - key: member_role
+    label: I am a
+    field_type: select
+    required: true
+    choices: ["Student (11 to 17)", "Parent or guardian", "Adult learner"]
+    show_on_signup: true
+    show_on_profile: true
+  - key: parent_guardian_email
+    label: Parent or guardian email
+    field_type: text
+    required: false
+    description: Required for students under 18. Used only for safety and account notices.
+    show_on_signup: true
+    show_on_profile: false
+  - key: parent_consent
+    label: Consent
+    field_type: checkbox
+    required: true
+    choices: ["I am the parent or guardian of this student, or I am 18 or older, and I agree to the community rules."]
+    show_on_signup: true
+    show_on_profile: false
+
+# The member account the answer bot posts as. Email comes from BOT_AUTHOR_EMAIL.
+bot_member:
+  name: Coach
+  headline: AI helper. A real person on the team reads every thread.
+  tag: Coach
+  spaces: [welcome, ask-coach]
+
 space_groups:
   - name: Start Here
     slug: start-here
@@ -22,6 +71,26 @@ space_groups:
         type: basic
         members_can_post: false
         description: Team announcements, new course drops, and live event schedule.
+        pinned_posts:
+          - title: Start here
+            body: |
+              # Welcome to AI Skool
+              You're in. Here's how to get the most out of it.
+
+              ## 1. Pick your first course
+              Students aged 11 to 17: start with **AI Foundations**. Adults: start with **AI for Everyday Life**. Each lesson is a short video with a small project at the end.
+
+              ## 2. Ask when you're stuck
+              Post in **Ask Coach**. Coach, our AI helper, replies within a few minutes, and a real person on the team reads every thread.
+
+              ## 3. Show what you build
+              Share screenshots, links and demos in **Show and Tell**.
+
+              ## House rules
+              - Be kind. Assume the person on the other side is 12.
+              - Never share personal information: full name, school, address, phone, social handles, photos of yourself.
+              - No meeting up. Direct messages between members are turned off on purpose.
+              - See something wrong? Use the report button, or tell a parent.
       - name: Ask Coach
         slug: ask-coach
         type: basic
@@ -29,6 +98,18 @@ space_groups:
         description: >
           Stuck on a lesson? Ask here. Coach, our AI helper, answers within a few minutes
           and a human from the team reviews every thread. This is the space the answer bot watches.
+        pinned_posts:
+          - title: How to ask a question here
+            body: |
+              # Ask anything about the courses
+              One question per post. Say which course and lesson you're on, what you tried, and what happened.
+
+              **Coach** is an AI helper. It answers within a few minutes using the course material. A real person on the team reads every thread and jumps in when Coach can't help.
+
+              ## Coach will not handle
+              - Billing, refunds, passwords or account problems. A person will reply instead.
+              - Anything about personal information or meeting up. Please don't post it.
+              - If you're upset or in trouble, tell a trusted adult right away. The team is notified too.
       - name: Course Requests
         slug: course-requests
         type: basic
@@ -36,11 +117,33 @@ space_groups:
         description: >
           Tell us what you want to learn next. One request per post. Upvote by liking.
           We build the most-liked requests first.
+        pinned_posts:
+          - title: How course requests work
+            body: |
+              # Tell us what to build next
+              1. Post one idea per post. A title like "Make a game with AI" is perfect.
+              2. Like the posts you agree with. Likes are votes.
+              3. Every month we pick the most-liked requests and start building.
+
+              Ideas that are already in progress get a comment from the team so you know.
       - name: Parent Hub
         slug: parent-hub
         type: basic
         members_can_post: true
         description: For parents and guardians. Progress tips, safety settings, and how to help at home.
+        pinned_posts:
+          - title: For parents and guardians
+            body: |
+              # How this community is run
+              - Members cannot send each other direct messages. Only the team can message members.
+              - Every question thread is answered by Coach, an AI helper, and read by a real person on the team.
+              - Profiles hide email addresses and are not indexed by search engines.
+              - Anything reported is reviewed the same day.
+
+              ## How to help at home
+              Ask what they built this week. Every lesson ends with a small project, and explaining it out loud is the best review there is.
+
+              Questions about billing or your child's account: post here or email the support address on the website.
 
   - name: Kids Courses (Ages 11 to 17)
     slug: kids-courses

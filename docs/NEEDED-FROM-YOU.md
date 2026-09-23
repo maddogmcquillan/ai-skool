@@ -20,10 +20,12 @@ variables or into Circle/Zapier directly. Never paste them into chat.
 
 ## B. Accounts you create (30 to 60 minutes)
 
-1. **Circle account.** Sign up at circle.so and choose the **Business** plan (14-day trial). It
-   unlocks the Admin API, which lets the provisioning script build the community and lets the
-   answer bot post replies directly. Then create an **Admin v2** token under Developers > Tokens
-   and put it in the service environment as `CIRCLE_ADMIN_TOKEN`. **(secret)**
+1. **Circle account on the Business plan.** Upgrade first (Settings > Plans) so the Admin API
+   exists, then create one **Admin v2** token under Developers > Tokens and name it
+   `ai-skool`. Store it as `CIRCLE_ADMIN_TOKEN` in the Claude Code cloud environment's settings
+   (environment menu in the session title bar > Edit > API credentials or environment
+   variables), never in chat. A new session picks it up and can run `npm run provision`. The
+   same token later goes into the deployed service. **(secret)**
 2. **Stripe.** Connect your Stripe account under Circle > Payments. You may already have one from
    the e-commerce business; a separate Stripe account for this brand is cleaner for bookkeeping.
 3. **Zapier.** A paid plan (Starter or above) because the Zaps use Webhooks by Zapier and multi-step

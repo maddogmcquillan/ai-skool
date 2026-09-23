@@ -18,7 +18,7 @@ outside Circle's click-through settings.
 | `circle/paywall-thank-you-tracking.html` | Purchase event with value and a deduplication id, for the paywall Tracking tab |
 | `circle/landing-page-snippets.md` | Pixel and affiliate tracking for the pre-sale landing page |
 | `src/` | Node service: Meta Conversions API bridge and AI answer bot |
-| `scripts/provision.ts` | Creates the community structure via Circle's Admin API |
+| `scripts/provision.ts` | Builds the community via Circle's Admin API: structure, courses, pinned posts, tags, consent fields, messaging lockdown, bot member |
 | `knowledge/` | Markdown the answer bot reads: FAQ and lesson transcripts |
 
 ## The service
