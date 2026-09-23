@@ -6,7 +6,8 @@ DNS propagate.
 
 ## 1. Create the community
 
-1. Sign up at circle.so, pick **Professional** (14-day trial, $89/mo after, 2% transaction fee).
+1. Sign up at circle.so, pick **Business** (14-day trial, $199/mo after, 1% transaction fee).
+   Business adds the Admin API used by the provisioning script and by the bot to post replies.
 2. Name: your chosen name. Default URL: `<name>.circle.so` for now.
 3. Settings > General: set the community description, logo, and brand color. Theme: light.
 
@@ -46,8 +47,9 @@ Key settings per space:
 | Show and Tell | Post | Yes | Image-forward layout |
 | Live Sessions | Event | n/a | |
 
-On the Business plan you can instead run `CIRCLE_ADMIN_TOKEN=... npm run provision` to create all
-of it from the yaml. Run `npm run provision:dry` first to see the plan.
+Or skip the clicking: create an Admin v2 token (Developers > Tokens) and run
+`CIRCLE_ADMIN_TOKEN=... npm run provision` to create all of it from the yaml. Run
+`npm run provision:dry` first to see the plan.
 
 ## 5. Safety settings for a community with minors
 
@@ -115,11 +117,12 @@ the Circle app in Zapier with it.
      {"kind":"post","post_id":"<post id>","title":"<post name>","body_html":"<post body>",
       "author_name":"<author name>","author_email":"<author email>","space_name":"Ask Coach","post_url":"<post url>"}
      ```
-4. Action: **Circle > Create Comment**
-   - Community, Space = Ask Coach, Post = post id from the trigger
-   - Body = `answer` from the webhook response
-   - Member email = the bot's member account (create a member called "Coach" with a distinct
-     email and give it a bot avatar; set the same email as `BOT_AUTHOR_EMAIL` in the service)
+4. Posting the reply. With `CIRCLE_ADMIN_TOKEN` set on the service, add `"post_directly": true`
+   to the JSON above and the service posts the comment itself; no further Zap step is needed.
+   Without the token, add a **Circle > Create Comment** action: Space = Ask Coach, Post = post id
+   from the trigger, Body = `answer` from the webhook response, Member email = the bot's member
+   account. Either way, create a member called "Coach" with its own email and a bot avatar, and set
+   that email as `BOT_AUTHOR_EMAIL` in the service so it ignores its own comments.
 5. Action (optional): **Slack or Email** when the webhook response has `escalate = true`, so a
    human sees billing and safety threads immediately.
 
