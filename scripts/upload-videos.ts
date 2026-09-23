@@ -120,7 +120,10 @@ async function uploadFile(filePath: string): Promise<DirectUpload> {
   const checksum = await md5Base64(filePath);
   const filename = path.basename(filePath);
   const content_type = contentTypeFor(filePath);
-  const du = await circleRequest<DirectUpload>(cfg, "POST", "/direct_uploads", { blob: { key: blobKey(), filename, content_type, byte_size, checksum } });
+  const raw = await circleRequest<DirectUpload | Record<string, DirectUpload>>(cfg, "POST", "/direct_uploads", { blob: { key: blobKey(), filename, content_type, byte_size, checksum } });
+  // Some Circle create endpoints wrap the record; accept { direct_upload: {...} } at the top level or nested one level down.
+  const du = ((raw as DirectUpload).direct_upload ? raw : Object.values(raw as Record<string, DirectUpload>).find((v) => v && typeof v === "object" && "direct_upload" in v)) as DirectUpload | undefined;
+  if (!du?.direct_upload?.url || !du.signed_id) throw new Error(`Unexpected direct upload response: ${JSON.stringify(raw).slice(0, 300)}`);
   const headers: Record<string, string> = { ...du.direct_upload.headers };
   if (!Object.keys(headers).some((h) => h.toLowerCase() === "content-type")) headers["Content-Type"] = content_type;
   const res = await fetch(du.direct_upload.url, { method: "PUT", headers, body: await openAsBlob(filePath) });
