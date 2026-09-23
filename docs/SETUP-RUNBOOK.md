@@ -122,12 +122,13 @@ the Circle app in Zapier with it.
      {"kind":"post","post_id":"<post id>","title":"<post name>","body_html":"<post body>",
       "author_name":"<author name>","author_email":"<author email>","space_name":"Ask Coach","post_url":"<post url>"}
      ```
-4. Posting the reply. With `CIRCLE_ADMIN_TOKEN` set on the service, add `"post_directly": true`
-   to the JSON above and the service posts the comment itself; no further Zap step is needed.
-   Without the token, add a **Circle > Create Comment** action: Space = Ask Coach, Post = post id
-   from the trigger, Body = `answer` from the webhook response, Member email = the bot's member
-   account. Either way, create a member called "Coach" with its own email and a bot avatar, and set
-   that email as `BOT_AUTHOR_EMAIL` in the service so it ignores its own comments.
+4. Posting the reply. Add a **Circle > Create Comment** action: Space = Ask Coach, Post = post id
+   from the trigger, Body = `answer` from the webhook response, Member email = the Coach account
+   (`BOT_AUTHOR_EMAIL`). This is what makes the reply appear as Coach.
+   Alternative: with `CIRCLE_ADMIN_TOKEN` on the service, add `"post_directly": true` to the JSON
+   and the service posts the comment itself, but Circle's API has no author field, so the reply
+   appears as whichever admin created the token. To use that path and still post as Coach, make
+   the Coach member an admin and create the token while signed in as Coach.
 5. Action (optional): **Slack or Email** when the webhook response has `escalate = true`, so a
    human sees billing and safety threads immediately.
 

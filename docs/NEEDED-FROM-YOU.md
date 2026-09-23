@@ -46,7 +46,14 @@ variables or into Circle/Zapier directly. Never paste them into chat.
 4. Terms of service, privacy policy, and the parent/guardian consent wording. Talk to a lawyer
    about under-13 users; the platform terms require 13+ with parental consent.
 
-## D. Hand me these to finish the wiring
+## D. The Coach bot email (`BOT_AUTHOR_EMAIL`)
+
+Any address you control that is **not** the one you signed up to Circle with. A plus-address on
+your personal email works and needs no domain, e.g. `you+coach@gmail.com`. It only decides which
+member account the replies appear under and which comments the bot ignores as its own. You can
+change it later by editing the member's email in Circle and updating the variable.
+
+## E. Hand me these to finish the wiring
 
 - Circle community URL and the paywall checkout URL.
 - The paywall's **internal name** exactly as typed in Circle. It is the key both purchase
