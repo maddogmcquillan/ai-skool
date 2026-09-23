@@ -37,6 +37,12 @@ Edit `circle/structure.yaml` to change the community: structure, settings, tags,
 fields, the bot member, and pinned post text all live there. Pinned posts are matched by title,
 so after changing a post's body run `npm run provision -- --update-posts` to push the new text.
 
+Lessons in the yaml carry a `youtube` id, a `creator` credit and a `description`; `provision`
+creates them as published lessons with a YouTube embed (or a link if Circle rejects the embed
+node) and marks lessons without a video as drafts. After editing lesson text run
+`npm run provision -- --update-lessons`. `retired_spaces` / `retired_space_groups` list old
+placeholders that `provision` deletes when it finds them.
+
 The community's public name is **Learn AI** (the repo name "ai-skool" is historical).
 
 ## When asked to upload course videos

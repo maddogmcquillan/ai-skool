@@ -5,6 +5,7 @@
  *
  *   CIRCLE_ADMIN_TOKEN=... npm run provision           # create anything missing, apply settings
  *   npm run provision -- --update-posts                # also rewrite existing pinned posts from the yaml
+ *   npm run provision -- --update-lessons              # also rewrite existing lesson bodies (video embeds, notes)
  *   npm run provision:dry                              # print the plan, no token needed
  *
  * Idempotent: space groups and spaces match by slug; sections, lessons, tags and pinned posts
@@ -14,8 +15,9 @@ import { readFile } from "node:fs/promises";
 import { parse } from "yaml";
 import { circleRequest, type CircleClientConfig } from "../src/circle.js";
 import { markdownToTiptap } from "../src/lib/tiptap.js";
+import { lessonDoc, normalizeLesson, youtubeUrl, type LessonContent } from "../src/lib/lessonBody.js";
 
-interface SectionSpec { name: string; lessons?: string[] }
+interface SectionSpec { name: string; lessons?: Array<string | LessonContent> }
 interface PinnedPostSpec { title: string; body: string }
 interface SpaceSpec {
   name: string;
@@ -50,8 +52,11 @@ interface Structure {
   member_tags?: TagSpec[];
   profile_fields?: ProfileFieldSpec[];
   bot_member?: { name: string; headline?: string; tag?: string; spaces?: string[] };
+  retired_spaces?: string[];
+  retired_space_groups?: string[];
   space_groups: GroupSpec[];
 }
+interface Embed { sgid: string; url: string }
 
 interface Paged<T> { records: T[]; has_next_page: boolean }
 interface SpaceGroup { id: number; name: string; slug: string }
@@ -66,6 +71,8 @@ interface Post { id: number; name: string; space_id: number }
 const dryRun = process.argv.includes("--dry-run");
 /** With --update-posts, existing pinned posts get their body rewritten from the yaml. */
 const updatePosts = process.argv.includes("--update-posts");
+/** With --update-lessons, existing lessons get their body rewritten from the yaml. */
+const updateLessons = process.argv.includes("--update-lessons");
 const token = process.env.CIRCLE_ADMIN_TOKEN;
 if (!dryRun && !token) {
   console.error("CIRCLE_ADMIN_TOKEN is required (or pass --dry-run).");
@@ -111,6 +118,40 @@ async function step<T>(kind: string, name: string, fn: () => Promise<T>): Promis
   }
 }
 
+const embedCache = new Map<string, Embed | null>();
+
+/** Ask Circle to create an embed for the lesson's video; null when it declines. */
+async function lessonBody(lesson: LessonContent) {
+  if (!lesson.youtube) return lessonDoc(lesson);
+  const url = youtubeUrl(lesson.youtube);
+  if (!embedCache.has(url)) {
+    try {
+      const embed = await circleRequest<Embed>(cfg, "POST", "/embeds", { url });
+      embedCache.set(url, embed?.sgid ? { sgid: embed.sgid, url: embed.url ?? url } : null);
+    } catch (err) {
+      log("warn", "embed", `${url}: ${(err as Error).message.slice(0, 160)}`);
+      embedCache.set(url, null);
+    }
+  }
+  return lessonDoc(lesson, embedCache.get(url) ?? undefined);
+}
+
+/** Delete placeholder spaces and groups listed under retired_* in the yaml. */
+async function retire(spec: Structure, spaces: Space[], groups: SpaceGroup[]) {
+  for (const slug of spec.retired_spaces ?? []) {
+    const space = spaces.find((s) => s.slug === slug);
+    if (!space) continue;
+    log("apply", "retire space", `${space.name} (${slug})`);
+    if (!dryRun) await circleRequest(cfg, "DELETE", `/spaces/${space.id}`);
+  }
+  for (const slug of spec.retired_space_groups ?? []) {
+    const group = groups.find((g) => g.slug === slug);
+    if (!group) continue;
+    log("apply", "retire group", `${group.name} (${slug})`);
+    if (!dryRun) await circleRequest(cfg, "DELETE", `/space_groups/${group.id}`);
+  }
+}
+
 async function main() {
   const spec = parse(await readFile("circle/structure.yaml", "utf8")) as Structure;
   console.log(`Provisioning "${spec.community.name}" ${dryRun ? "(dry run)" : ""}\n`);
@@ -119,6 +160,7 @@ async function main() {
   console.log("## Structure");
   const groups = await listAll<SpaceGroup>("/space_groups");
   const spaces = await listAll<Space>("/spaces");
+  await retire(spec, spaces, groups);
   const spaceBySlug = new Map<string, Space>(spaces.map((s) => [s.slug, s]));
 
   for (const g of spec.space_groups) {
@@ -159,19 +201,32 @@ async function main() {
             if (!dryRun && space) section = await circleRequest<Section>(cfg, "POST", "/course_sections", { name: sec.name, space_id: space.id });
           }
           const existingLessons = section ? await listAll<Lesson>("/course_lessons", { section_id: section.id }) : [];
-          for (const lessonName of sec.lessons ?? []) {
-            if (existingLessons.find((x) => x.name === lessonName)) log("keep", "lesson", `      ${lessonName}`);
-            else {
-              log("create", "lesson", `      ${lessonName} (draft)`);
-              if (!dryRun && section) {
-                await circleRequest<Lesson>(cfg, "POST", "/course_lessons", {
-                  section_id: section.id,
-                  name: lessonName,
-                  status: "draft",
-                  body_html: `<p>Lesson video and notes coming soon.</p>`,
-                  is_comments_enabled: true,
-                });
-              }
+          for (const spec of sec.lessons ?? []) {
+            const lesson = normalizeLesson(spec);
+            const found = existingLessons.find((x) => x.name === lesson.name);
+            const label = `      ${lesson.name}${lesson.youtube ? " (video)" : " (draft)"}`;
+            if (found && !updateLessons) {
+              log("keep", "lesson", label);
+              continue;
+            }
+            log(found ? "apply" : "create", "lesson", found ? `${label} body refreshed` : label);
+            if (dryRun || !section) continue;
+            const body = await lessonBody(lesson);
+            const payload = {
+              name: lesson.name,
+              status: lesson.youtube ? "published" : "draft",
+              is_comments_enabled: true,
+              rich_text_body: { body },
+            };
+            try {
+              if (found) await circleRequest<Lesson>(cfg, "PATCH", `/course_lessons/${found.id}`, payload);
+              else await circleRequest<Lesson>(cfg, "POST", "/course_lessons", { section_id: section.id, ...payload });
+            } catch (err) {
+              // Circle may reject the embed node shape; retry with a plain link instead.
+              log("warn", "lesson", `${lesson.name}: ${(err as Error).message.slice(0, 160)}; retrying with a link`);
+              const fallback = { ...payload, rich_text_body: { body: lessonDoc(lesson) } };
+              if (found) await circleRequest<Lesson>(cfg, "PATCH", `/course_lessons/${found.id}`, fallback);
+              else await circleRequest<Lesson>(cfg, "POST", "/course_lessons", { section_id: section.id, ...fallback });
             }
           }
         }

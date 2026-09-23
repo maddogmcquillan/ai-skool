@@ -1,13 +1,11 @@
-# Community structure for the Learn AI launch on Circle.
+# Community structure for Learn AI on Circle.
 #
 # Used two ways:
-#   1. As the checklist for building the community by hand on the Professional plan
-#      (Settings > Spaces). Names, slugs and types map 1:1 to the Circle UI.
-#   2. As the input to `npm run provision`, which creates everything via the Admin API v2
-#      (Business plan and above). Re-running is safe: existing slugs are skipped.
+#   1. As the checklist for building the community by hand (Settings > Spaces).
+#   2. As the input to `npm run provision`, which creates everything via the Admin API v2.
+#      Re-running is safe: existing slugs and names are kept, missing ones are created.
 #
-# Course titles and lessons below are PLACEHOLDERS to show the shape. Replace them with
-# the real curriculum before provisioning. Lessons are created as drafts with no video.
+# Lessons are YouTube embeds of the listed creators' videos, credited in each lesson.
 
 community:
   name: Learn AI
@@ -22,6 +20,7 @@ settings:
     voice_messages_enabled: false
   hide_emails_on_member_profiles: true
   allow_profile_search_indexing: false       # keep member profiles out of search engines
+  # Spaces every new member gets. The classroom is granted by the paywall, not here.
   default_spaces: [welcome, ask-coach, course-requests, parent-hub, show-and-tell, live-sessions]
   new_member_landing_space: welcome
 
@@ -62,6 +61,10 @@ bot_member:
   tag: Coach
   spaces: [welcome, ask-coach]
 
+# Placeholder spaces from an earlier draft. Deleted by `npm run provision` if they exist.
+retired_spaces: [ai-foundations, first-chatbot, ai-creative, ai-safety, ai-everyday, ai-at-work]
+retired_space_groups: [kids-courses, adult-courses]
+
 space_groups:
   - name: Start Here
     slug: start-here
@@ -70,21 +73,21 @@ space_groups:
         slug: welcome
         type: basic
         members_can_post: false
-        description: Team announcements, new course drops, and live event schedule.
+        description: Team announcements, new lesson drops, and live event schedule.
         pinned_posts:
           - title: Start here
             body: |
               # Welcome to Learn AI
               You're in. Here's how to get the most out of it.
 
-              ## 1. Pick your first course
-              Students aged 11 to 17: start with **AI Foundations**. Adults: start with **AI for Everyday Life**. Each lesson is a short video with a small project at the end.
+              ## 1. Go to the Classroom
+              Start with **Beginner AI** and watch the three lessons in order. Then **Intermediate AI**, also in order. After that, the **Project Classes** are yours to pick from: make a game, an app, a website, a chatbot, a song, a comic, and more.
 
               ## 2. Ask when you're stuck
               Post in **Ask Coach**. Coach, our AI helper, replies within a few minutes, and a real person on the team reads every thread.
 
               ## 3. Show what you build
-              Share screenshots, links and demos in **Show and Tell**.
+              Share screenshots, links and demos in **Show and Tell**. Every project class ends with something you made.
 
               ## House rules
               - Be kind. Assume the person on the other side is 12.
@@ -101,10 +104,10 @@ space_groups:
         pinned_posts:
           - title: How to ask a question here
             body: |
-              # Ask anything about the courses
-              One question per post. Say which course and lesson you're on, what you tried, and what happened.
+              # Ask anything about the lessons
+              One question per post. Say which lesson you're on, what you tried, and what happened.
 
-              **Coach** is an AI helper. It answers within a few minutes using the course material. A real person on the team reads every thread and jumps in when Coach can't help.
+              **Coach** is an AI helper. It answers within a few minutes using the lesson material. A real person on the team reads every thread and jumps in when Coach can't help.
 
               ## Coach will not handle
               - Billing, refunds, passwords or account problems. A person will reply instead.
@@ -140,91 +143,100 @@ space_groups:
               - Profiles hide email addresses and are not indexed by search engines.
               - Anything reported is reviewed the same day.
 
+              ## What the lessons are
+              Each lesson is a hand-picked video from an expert creator, credited in the lesson, plus our notes and a project. Some project classes use tools with free tiers and one, Midjourney, is paid. Each lesson says which.
+
               ## How to help at home
-              Ask what they built this week. Every lesson ends with a small project, and explaining it out loud is the best review there is.
+              Ask what they built this week. Every project class ends with something real, and explaining it out loud is the best review there is.
 
               Questions about billing or your child's account: post here or email the support address on the website.
 
-  - name: Kids Courses (Ages 11 to 17)
-    slug: kids-courses
+  - name: Classroom
+    slug: classroom-group
     spaces:
-      - name: AI Foundations
-        slug: ai-foundations
+      - name: Classroom
+        slug: classroom
         type: course
-        description: Start here. What AI is, how it works, and how to use it well.
+        description: >
+          Three sections, in order: Beginner AI, Intermediate AI, then Project Classes where you
+          make something real with AI. Lessons are hand-picked videos from expert creators plus our
+          notes and projects.
         sections:
-          - name: "Module 1: What is AI?"
+          - name: "Beginner AI"
             lessons:
-              - What AI is and is not
-              - Where AI shows up in your day
-              - "Project: Spot the AI"
-          - name: "Module 2: Talking to AI"
+              - name: What is AI?
+                youtube: uMzUB89uSxU
+                creator: Simplilearn
+                description: A short plain-language intro to what artificial intelligence is, how it works at a high level, and where it already shows up in daily life. The starting point before any tools.
+              - name: Generative AI in a Nutshell
+                youtube: 2IK3DFHRFfw
+                creator: Henrik Kniberg
+                description: Explains how generative AI, like chatbots and image generators, works and why it's different from normal software, with simple visuals. Gives you the mental model for everything that follows.
+              - name: ChatGPT Power User in 30 Minutes
+                youtube: dG3O3ePj-b8
+                creator: Santrel Media
+                description: A hands-on walkthrough of ChatGPT. How to prompt it, use its main features, and get genuinely useful results. Your first "actually use a tool" lesson.
+          - name: "Intermediate AI"
             lessons:
-              - How to ask good questions (prompting basics)
-              - Fact-checking what AI tells you
-              - "Project: Build a study buddy prompt"
-      - name: Build Your First Chatbot
-        slug: first-chatbot
-        type: course
-        description: Make a working chatbot, step by step, with no coding experience needed.
-        sections:
-          - name: "Module 1: Plan your bot"
+              - name: Large Language Models, Explained Briefly
+                youtube: WMcwoIyK4DA
+                creator: 3Blue1Brown, via the Computer History Museum
+                description: A clear visual explanation of how large language models work under the hood. Tokens, prediction, training. So you understand the "why" behind the tools.
+              - name: The Perfect ChatGPT Prompt Formula
+                youtube: jC4v5AS4RIM
+                creator: Jeff Su
+                description: A repeatable formula for writing prompts that get better, more reliable results. Turns casual use into a real skill.
+              - name: What are AI Agents?
+                youtube: F8NKVhkZZWI
+                creator: IBM Technology
+                description: Introduces AI agents, AI that can take actions and complete multi-step tasks on its own, and how they differ from a regular chatbot.
+              - name: AI Agents Fundamentals in 21 Minutes
+                youtube: qU3fmidNbJE
+                creator: Tina Huang
+                description: A practical look at how AI agents are built and what they can do, bridging toward actually building things.
+          - name: "Project Classes: Make X with AI"
             lessons:
-              - Pick a job for your bot
-              - Write the bot's personality
-          - name: "Module 2: Build and test"
-            lessons:
-              - Build it
-              - Test it with friends and fix what breaks
-              - "Project: Demo day"
-      - name: AI Art, Music and Video
-        slug: ai-creative
-        type: course
-        description: Make things with image, music and video tools, and learn what is fair to make.
-        sections:
-          - name: "Module 1: Images"
-            lessons:
-              - Your first AI image
-              - Style, mood and remixing
-          - name: "Module 2: Music and video"
-            lessons:
-              - Make a song
-              - Make a short video
-      - name: Smart and Safe with AI
-        slug: ai-safety
-        type: course
-        description: Privacy, deepfakes, bias, and how to be the person in the room who knows what is real.
-        sections:
-          - name: "Module 1: Staying safe"
-            lessons:
-              - What not to share with an AI
-              - Spotting deepfakes and fake news
-          - name: "Module 2: Thinking clearly"
-            lessons:
-              - When AI is wrong (and why)
-              - Bias, fairness and being a good AI citizen
-
-  - name: Adult Courses
-    slug: adult-courses
-    spaces:
-      - name: AI for Everyday Life
-        slug: ai-everyday
-        type: course
-        description: Practical AI for planning, writing, learning and getting things done.
-        sections:
-          - name: "Module 1: The basics"
-            lessons:
-              - The tools worth your time
-              - Prompting that actually works
-      - name: AI at Work
-        slug: ai-at-work
-        type: course
-        description: Use AI to do your job faster without embarrassing yourself.
-        sections:
-          - name: "Module 1: Writing and research"
-            lessons:
-              - Drafting emails, docs and summaries
-              - Research without hallucinations
+              - name: Make a Game
+                youtube: xWJDvub8Hws
+                creator: Jagger Bellagarda
+                description: Build a playable game from scratch with no-code AI tools, ending in a game you can play and share.
+              - name: Make an App
+                youtube: pZpoACNOPAw
+                creator: Tech With Tim
+                description: A full beginner build of a real, working app with AI, from idea to a deployed, live product.
+              - name: Make a Website
+                youtube: 3FJZh6SR7IA
+                creator: Tyler Moore
+                description: Build and publish a live website using AI tools, ending with a real site online.
+              - name: Make a Chatbot
+                youtube: 0Q1AQAxpdGg
+                creator: Kevin Stratvert
+                description: Build a custom chatbot tailored to a specific purpose, no coding needed.
+              - name: Make an AI Agent
+                youtube: dpoMEcXjVH8
+                creator: Kevin Stratvert
+                description: A beginner build of a working AI agent that automates a task, using free tools.
+              - name: Make a Video
+                youtube: i8_Pz7sBp_M
+                creator: Kevin Stratvert
+                description: Generate original videos from text prompts with Sora, from prompt to finished clips.
+              - name: Make a Cartoon
+                youtube: F20s6U9EPoM
+                creator: Level up with Blessing
+                description: The full workflow for making an animated cartoon with AI. Script, characters, scenes, and editing into a finished short.
+              - name: Make Music
+                youtube: cmrRFapWeEE
+                creator: Stellar Media
+                description: Create original songs with AI, from prompt to a finished, playable track.
+              - name: Make AI Art
+                youtube: r2JQTh8y3yk
+                creator: Technically Trent
+                description: Generate high-quality AI images with Midjourney, including the key settings.
+                note: Midjourney is a paid tool with no free tier. Ask a parent before signing up.
+              - name: Make a Comic
+                youtube: LPtRRBvRTg8
+                creator: Tao Prompts
+                description: Create a full comic with consistent characters using AI image tools plus layout, ending with a finished comic.
 
   - name: Community
     slug: community
