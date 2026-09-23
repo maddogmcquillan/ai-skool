@@ -12,7 +12,7 @@
     "start": "node dist/src/index.js",
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "vitest run test",
+    "test": "vitest run",
     "provision": "tsx scripts/provision.ts",
     "provision:dry": "tsx scripts/provision.ts --dry-run"
   },
