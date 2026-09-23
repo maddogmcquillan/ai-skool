@@ -12,7 +12,7 @@
  */
 import { readFile } from "node:fs/promises";
 import { parse } from "yaml";
-import { circleRequest, type CircleClientConfig } from "../src/circle.js";
+import { circleRequest, unwrapRecord, type CircleClientConfig } from "../src/circle.js";
 import { markdownToTiptap } from "../src/lib/tiptap.js";
 
 interface SectionSpec { name: string; lessons?: string[] }
@@ -126,7 +126,7 @@ async function main() {
     if (group) log("keep", "space group", g.name);
     else {
       log("create", "space group", g.name);
-      if (!dryRun) group = await circleRequest<SpaceGroup>(cfg, "POST", "/space_groups", { name: g.name, slug: g.slug, hide_non_member_spaces_from_sidebar: true });
+      if (!dryRun) group = unwrapRecord<SpaceGroup>(await circleRequest(cfg, "POST", "/space_groups", { name: g.name, slug: g.slug, hide_non_member_spaces_from_sidebar: true }), "space_group");
     }
 
     for (const s of g.spaces) {
@@ -135,7 +135,8 @@ async function main() {
       else {
         log("create", "space", `  ${s.name} (${s.type})`);
         if (!dryRun && group) {
-          space = await circleRequest<Space>(cfg, "POST", "/spaces", {
+          // Unlike most create endpoints, POST /spaces wraps the record: { success, message, space }.
+          space = unwrapRecord<Space>(await circleRequest(cfg, "POST", "/spaces", {
             space_group_id: group.id,
             name: s.name,
             slug: s.slug,
@@ -144,8 +145,8 @@ async function main() {
             is_post_disabled: s.members_can_post === false,
             default_comment_sort: "oldest",
             ...(s.description ? { locked_page_description: s.description } : {}),
-          });
-          if (space) spaceBySlug.set(s.slug, space);
+          }), "space");
+          spaceBySlug.set(s.slug, space);
         }
       }
 
@@ -156,7 +157,7 @@ async function main() {
           if (section) log("keep", "section", `    ${sec.name}`);
           else {
             log("create", "section", `    ${sec.name}`);
-            if (!dryRun && space) section = await circleRequest<Section>(cfg, "POST", "/course_sections", { name: sec.name, space_id: space.id });
+            if (!dryRun && space) section = unwrapRecord<Section>(await circleRequest(cfg, "POST", "/course_sections", { name: sec.name, space_id: space.id }), "course_section");
           }
           const existingLessons = section ? await listAll<Lesson>("/course_lessons", { section_id: section.id }) : [];
           for (const lessonName of sec.lessons ?? []) {
@@ -220,14 +221,14 @@ async function main() {
     else {
       log("create", "tag", t.name);
       if (!dryRun) {
-        const created = await circleRequest<MemberTag>(cfg, "POST", "/member_tags", {
+        const created = unwrapRecord<MemberTag>(await circleRequest(cfg, "POST", "/member_tags", {
           name: t.name,
           color: t.color,
           emoji: t.emoji,
           is_public: t.is_public ?? true,
           display_format: "label",
           is_background_enabled: true,
-        });
+        }), "member_tag");
         tagByName.set(t.name, created);
       }
     }
