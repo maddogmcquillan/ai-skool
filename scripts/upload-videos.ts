@@ -80,7 +80,11 @@ function findLocal(fileName: string): string | undefined {
 function downloadFolder(url: string) {
   mkdirSync(STAGING, { recursive: true });
   console.log(`Downloading Drive folder into ${STAGING} (gdown)...`);
-  const run = spawnSync("gdown", ["--folder", "--continue", "--remaining-ok", "-O", STAGING, url], { stdio: "inherit" });
+  // gdown 4 and 5 need --remaining-ok to download a folder with more than 50 files; gdown 6
+  // dropped the flag and rejects it, so only pass it when this gdown's help text lists it.
+  const help = spawnSync("gdown", ["--help"], { encoding: "utf8" });
+  const flags = ["--folder", "--continue", ...(help.stdout?.includes("--remaining-ok") ? ["--remaining-ok"] : [])];
+  const run = spawnSync("gdown", [...flags, "-O", STAGING, url], { stdio: "inherit" });
   if (run.status !== 0) throw new Error("gdown failed. Is the folder shared as 'Anyone with the link'? Is gdown installed (pip install gdown)?");
 }
 
