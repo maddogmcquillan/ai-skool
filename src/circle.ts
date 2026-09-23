@@ -62,6 +62,21 @@ export async function circleRequest<T>(
   return json as T;
 }
 
+/**
+ * Most Admin API v2 create endpoints return the new record directly, but a few wrap it:
+ * `POST /spaces` answers `{ success, message, space: {...} }`. Return the record in either
+ * shape, and fail with the raw body when neither carries a numeric id, so a surprising shape
+ * surfaces here instead of as a confusing "Missing record" on the next request.
+ */
+export function unwrapRecord<T extends { id: number }>(res: unknown, key: string): T {
+  const top = res as Record<string, unknown> | null;
+  const candidate = top && typeof top.id === "number" ? top : (top?.[key] as Record<string, unknown> | undefined);
+  if (!candidate || typeof candidate.id !== "number") {
+    throw new Error(`Circle API response has no "${key}" record with an id: ${JSON.stringify(res).slice(0, 300)}`);
+  }
+  return candidate as unknown as T;
+}
+
 export function createCircleComment(cfg: CircleClientConfig, input: CreateCommentInput, fetchImpl?: typeof fetch) {
   return circleRequest<{ id?: number }>(
     cfg,

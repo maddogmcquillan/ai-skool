@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { circleRequest, resetAuthScheme } from "../src/circle.js";
+import { circleRequest, resetAuthScheme, unwrapRecord } from "../src/circle.js";
 
 const cfg = { token: "abc123" };
 
@@ -32,5 +32,21 @@ describe("circleRequest auth", () => {
     const fetchImpl = vi.fn(async () => new Response(JSON.stringify({ success: false, message: "The API token is invalid." }), { status: 401 }));
     await expect(circleRequest(cfg, "GET", "/spaces", undefined, fetchImpl as unknown as typeof fetch)).rejects.toThrow(/401.*invalid/);
     expect(fetchImpl).toHaveBeenCalledTimes(2);
+  });
+});
+
+describe("unwrapRecord", () => {
+  it("returns a record that comes back at the top level", () => {
+    expect(unwrapRecord({ id: 7, name: "Kids", slug: "kids" }, "space_group")).toEqual({ id: 7, name: "Kids", slug: "kids" });
+  });
+
+  it("unwraps the { success, message, space } shape that POST /spaces returns", () => {
+    const res = { success: true, message: "Space created.", space: { id: 2873048, name: "AI Foundations", slug: "ai-foundations" } };
+    expect(unwrapRecord(res, "space").id).toBe(2873048);
+  });
+
+  it("throws with the raw body when neither shape carries an id", () => {
+    expect(() => unwrapRecord({ success: true, message: "Space created." }, "space")).toThrow(/no "space" record.*Space created/);
+    expect(() => unwrapRecord(null, "space")).toThrow(/no "space" record/);
   });
 });
