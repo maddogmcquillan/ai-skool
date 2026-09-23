@@ -14,7 +14,8 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run",
     "provision": "tsx scripts/provision.ts",
-    "provision:dry": "tsx scripts/provision.ts --dry-run"
+    "provision:dry": "tsx scripts/provision.ts --dry-run",
+    "upload-videos": "tsx scripts/upload-videos.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.128.0",

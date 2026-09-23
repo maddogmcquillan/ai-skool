@@ -1,0 +1,13 @@
+# Copy to circle/videos.yaml and fill in. Used by `npm run upload-videos`.
+# `course` is the course space slug from circle/structure.yaml; section and lesson must match
+# the names there exactly (run `npm run provision` first so the lessons exist).
+drive_folder_url: https://drive.google.com/drive/folders/REPLACE_WITH_FOLDER_ID
+videos:
+  - file: "01 - What AI is and is not.mp4"
+    course: ai-foundations
+    section: "Module 1: What is AI?"
+    lesson: What AI is and is not
+  - file: "02 - Where AI shows up in your day.mp4"
+    course: ai-foundations
+    section: "Module 1: What is AI?"
+    lesson: Where AI shows up in your day
