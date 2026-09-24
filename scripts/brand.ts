@@ -5,8 +5,10 @@
  *
  *   npm run brand -- --dry-run
  *   npm run brand
+ *   npm run brand -- --emoji   (also sets sidebar emoji; skipped by default so it does not
+ *                               replace the custom icons uploaded by hand)
  *
- * Re-running re-uploads and re-applies everything; that is intended (covers replace covers).
+ * Re-running re-uploads and re-applies everything else; that is intended (covers replace covers).
  * What the API cannot set is listed in docs/BRANDING.md (logo, community icon, custom space icons,
  * home page layout, theme).
  */
@@ -37,6 +39,9 @@ interface Space { id: number; slug: string; name: string }
 interface Post { id: number; name: string }
 
 const dryRun = process.argv.includes("--dry-run");
+// Custom space icons are uploaded by hand and an emoji PUT would replace them, so emoji are
+// only applied when asked for.
+const applyEmoji = process.argv.includes("--emoji");
 const token = process.env.CIRCLE_ADMIN_TOKEN;
 if (!dryRun && !token) {
   console.error("CIRCLE_ADMIN_TOKEN is required (or pass --dry-run).");
@@ -103,7 +108,7 @@ async function main() {
       continue;
     }
     const payload: Record<string, unknown> = {};
-    if (b.emoji) payload.emoji = b.emoji;
+    if (b.emoji && applyEmoji) payload.emoji = b.emoji;
     if (b.cover) {
       const id = await upload(b.cover);
       if (id) Object.assign(payload, { cover_image: id, cover_image_visible: true, cover_image_display_style: b.cover_style ?? "wide" });

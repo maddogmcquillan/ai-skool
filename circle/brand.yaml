@@ -6,7 +6,8 @@ community:
   brand_color: { light: "#3B7BFF", dark: "#7FA8FF" }
   brand_text_color: { light: "#FFFFFF", dark: "#0B1220" }
 
-# Per space: sidebar emoji (custom icon files are uploaded by hand, see docs/BRANDING.md),
+# Per space: sidebar emoji (only applied with `npm run brand -- --emoji`; the custom icon files
+# uploaded by hand replace them, see docs/BRANDING.md),
 # cover image, mobile thumbnail, and display tweaks.
 spaces:
   welcome:

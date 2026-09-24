@@ -64,7 +64,8 @@ The community's public name is **Learn AI** (the repo name "ai-skool" is histori
 
 1. Requires `CIRCLE_ADMIN_TOKEN` and the files in `brand/assets/`.
 2. Run `npm run brand:dry`, then `npm run brand`. It re-uploads covers and re-applies colors,
-   emoji, labels and course settings; re-running is intended.
+   labels and course settings; re-running is intended. Sidebar emoji are skipped unless you pass
+   `--emoji`, because the custom space icons were uploaded by hand and an emoji would replace them.
 3. Report warnings. Then point the owner to the manual list in `docs/BRANDING.md` (logo,
    community icon, custom space icons, Home page, course banner, social image, theme).
 4. To change the look, edit `circle/brand.yaml` (colors, emoji, labels) or regenerate assets with
