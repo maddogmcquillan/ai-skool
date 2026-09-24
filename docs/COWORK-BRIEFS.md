@@ -62,7 +62,11 @@ tell me the exact file name to pick from ~/Downloads/learn-ai-manual-uploads or
    Make a Comic → lesson-17-make-a-comic.png
 4. Open Home and its customize panel. Welcome banner: welcome-banner.png. Pin the post titled
    "Start here". Feature the Classroom, Ask Coach and Show and Tell spaces, in that order. Save.
-5. Courses → directory settings. Banner: course-directory-banner.png. Save.
+5. Courses → three dots (top right) → Banner. On the Logged in tab: toggle the banner on. Title:
+   Learn AI by building things. Description: Beginner AI. Intermediate AI. Then ten project classes:
+   make a game, an app, a website, a chatbot, a song, a comic, and more. Button text: Start with
+   class 1. Button URL: the Classroom course page. Image: course-directory-banner.png, dragged so
+   the blue badge is centered. Save. Repeat on the Logged out tab.
 6. Settings → SEO (or Social sharing). Preview image: og-image.png. Save.
 7. In the left sidebar, drag spaces so the order reads: Welcome and Announcements, Ask Coach,
    Course Requests, Parent Hub, Classroom, Show and Tell, Live Sessions.

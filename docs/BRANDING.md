@@ -41,7 +41,13 @@ Circle's API has no fields for these. Files are in `brand/assets/`.
    Home item in the left nav → Customize). Set the welcome banner to `welcome-banner.png`
    (1680x600), pin the "Start here" post, and feature the Classroom, Ask Coach, and Show and
    Tell spaces in that order.
-4. **Course directory banner.** Courses → directory settings → banner: `course-directory-banner.png`
+4. **Course directory banner.** Courses → three dots → Banner. Circle lays this out as a white text
+   column on the left and an image on the right, so the image carries no headline. Turn the banner on
+   for both the Logged in and Logged out tabs and fill in:
+   Title: `Learn AI by building things.`
+   Description: `Beginner AI. Intermediate AI. Then ten project classes: make a game, an app, a website, a chatbot, a song, a comic, and more.`
+   Button text: `Start with class 1`, custom URL: the Classroom (`/c/classroom/`).
+   Image: `course-directory-banner.png`; drag it so the blue badge sits in the middle
    (1279x680).
 5. **Social preview.** Settings → SEO / Social sharing: `og-image.png` (1200x630).
 6. **Theme.** Settings → Theme: default to light, allow members to switch. Check the brand blue on

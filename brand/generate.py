@@ -143,11 +143,22 @@ body = f'<div style="width:128px;height:128px;border-radius:34px;background:{BLU
 render("community-icon", 128, 128, page(128, 128, body), transparent=True)
 
 # ---- Course directory banner 1279x680 and OG image 1200x630 ----
+# Circle shows this image on the RIGHT half of the directory banner, next to a white text
+# column (title, description, button typed into Circle), and crops it to fit. So: no headline in
+# the image, and everything important inside the middle 80% of the width.
+def chip(label, accent, x, y, rot):
+    return (f'<div style="position:absolute;left:{x}px;top:{y}px;transform:rotate({rot}deg);padding:12px 22px;border-radius:999px;'
+            f'background:{NAVY2};border:2px solid {accent};color:{INK};font-family:Outfit;font-weight:700;'
+            f'font-size:22px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap">{label}</div>')
+chips = "".join([
+    chip("Make a game", MINT, 300, 150, -6), chip("Make an app", BLUE, 760, 130, 5),
+    chip("Make a website", SPARK, 250, 480, 4), chip("Make a chatbot", VIOLET, 790, 470, -5),
+    chip("Make music", CORAL, 180, 315, -3), chip("Make AI art", MINT, 870, 300, 3),
+])
 body = f'''<div class="ground" style="width:1279px;height:680px">{nodes_svg(1279,680,BLUE,seed=42,count=16)}
-  <div style="position:absolute;left:80px;top:0;height:680px;display:flex;flex-direction:column;justify-content:center;gap:26px;max-width:820px">
-    {wordmark(44)}
-    <div class="title" style="font-size:96px;margin-top:14px">Learn AI by<br>building things.</div>
-    <div class="sub" style="font-size:30px;max-width:760px">Beginner AI. Intermediate AI. Then ten project classes: make a game, an app, a website, a chatbot, a song, a comic, and more.</div></div>
+  <div style="position:absolute;left:0;top:0;width:1279px;height:680px;display:flex;align-items:center;justify-content:center">
+    <div style="width:230px;height:230px;border-radius:64px;background:{BLUE};box-shadow:0 30px 80px rgba(59,123,255,.45);display:flex;align-items:center;justify-content:center">{glyph_svg("spark", SPARK, 170, stroke="none")}</div></div>
+  {chips}
   <div style="position:absolute;left:0;bottom:0;width:1279px;height:8px;background:linear-gradient(90deg,{SPARK},{BLUE},{MINT})"></div></div>'''
 render("course-directory-banner", 1279, 680, page(1279, 680, body))
 body = f'''<div class="ground" style="width:1200px;height:630px">{nodes_svg(1200,630,BLUE,seed=42,count=14)}
