@@ -7,7 +7,7 @@ variables or into Circle/Zapier directly. Never paste them into chat.
 ## A. Decisions (5 minutes, reply in chat)
 
 1. **Community name and URL.** Working name is "AI Skool". Confirm or change. Pick the subdomain
-   for Circle, for example `learn.yourdomain.com`, and tell me which root domain the landing page
+   for Circle, for example `www.joinlearnai.com`, and tell me which root domain the landing page
    will live on.
 2. **Affiliate bounty amount.** A fixed dollar amount paid once on the first successful payment.
    Suggested: $25 to $40 on a $50 first month. Tell me the number.

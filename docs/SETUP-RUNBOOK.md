@@ -14,7 +14,7 @@ DNS propagate.
 ## 2. Custom domain (do this early, DNS takes time)
 
 Settings > Site > Domain. Use a **subdomain of the landing page's root domain**, e.g.
-`learn.yourdomain.com`. Add the CNAME Circle shows you. Why it matters: Meta's pixel cookies are
+`www.joinlearnai.com`. Add the CNAME Circle shows you. Why it matters: Meta's pixel cookies are
 set on the root domain, so a click on your landing page and a purchase on Circle share cookies
 and Meta can attribute the sale.
 

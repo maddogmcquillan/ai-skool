@@ -72,6 +72,38 @@ tell me the exact file name to pick from ~/Downloads/learn-ai-manual-uploads or
    Course Requests, Parent Hub, Classroom, Show and Tell, Live Sessions.
 8. Take a screenshot of Home and of the Classroom and show me.
 
+## Brief 1b: Connect joinlearnai.com to Circle (Circle settings + Cloudflare DNS)
+
+Circle requires the www form for a root domain, so the community URL becomes
+www.joinlearnai.com and the bare joinlearnai.com redirects to it. Setting a custom domain also
+turns off Google and Facebook sign-in for the community; members sign in with email and password.
+
+You are connecting my domain joinlearnai.com to my Circle community at learn-ai-46fe2f.circle.so.
+I am signed in to Circle as the owner and to Cloudflare (dash.cloudflare.com) as the account that
+owns the domain. Work in my signed-in Chrome. Never delete DNS records except where I say so, and
+never change nameservers. Tell me when each block is done.
+
+1. In Circle: click the community name at the top left → Settings → Custom domain. In the domain
+   field type exactly www.joinlearnai.com (with the www). Circle shows a CNAME record with a
+   Host/Name and a Target/Value. Copy both and show them to me. Do not click Setup domain yet.
+2. In Cloudflare: open the joinlearnai.com domain → DNS → Records. If any record for www or for
+   the root (@) already exists, tell me what it is and wait for my answer before touching it.
+   Otherwise click Add record: Type CNAME, Name www, Target the value Circle showed, Proxy status
+   OFF (it must say DNS only), TTL Auto. Save.
+3. Still in Cloudflare DNS, add the redirect for the bare domain: Add record, Type A, Name @,
+   IPv4 address 192.0.2.1, Proxy status ON. Save. Then go to Rules → Redirect Rules → Create
+   rule. Name: root to www. Custom filter expression: Field Hostname, Operator equals, Value
+   joinlearnai.com. Then: Type Dynamic, Expression
+   concat("https://www.joinlearnai.com", http.request.uri.path), Status code 301, Preserve query
+   string checked. Deploy.
+4. Back in Circle: click Setup domain. If Circle asks for a CAA record, go back to Cloudflare DNS
+   and add: Type CAA, Name @, Tag "Only allow specific hostnames" (issue), CA domain name
+   pki.goog. Save, then click Setup domain again. The status will show pending; that is normal.
+5. Wait five minutes, reload the Custom domain page, and tell me the status. When it says active,
+   open a new tab and visit https://www.joinlearnai.com, then https://joinlearnai.com, then
+   https://learn-ai-46fe2f.circle.so. All three should land on the community at
+   www.joinlearnai.com. Screenshot the result of each and show me.
+
 ## Brief 2: Stripe and the paywall (runbook section 3)
 
 You are setting up payments in my Circle community at learn-ai-46fe2f.circle.so. I am signed in.
