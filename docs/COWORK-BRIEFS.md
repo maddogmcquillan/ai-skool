@@ -65,7 +65,7 @@ tell me the exact file name to pick from ~/Downloads/learn-ai-manual-uploads or
 5. Courses → three dots (top right) → Banner. On the Logged in tab: toggle the banner on. Title:
    Learn AI by building things. Description: Beginner AI. Intermediate AI. Then ten project classes:
    make a game, an app, a website, a chatbot, a song, a comic, and more. Button text: Start with
-   class 1. Button URL: the Classroom course page. Image: course-directory-banner.png, dragged so
+   class 1. Button URL: https://www.joinlearnai.com/c/classroom/ Image: course-directory-banner.png, dragged so
    the blue badge is centered. Save. Repeat on the Logged out tab.
 6. Settings → SEO (or Social sharing). Preview image: og-image.png. Save.
 7. In the left sidebar, drag spaces so the order reads: Welcome and Announcements, Ask Coach,
@@ -106,7 +106,7 @@ never change nameservers. Tell me when each block is done.
 
 ## Brief 2: Stripe and the paywall (runbook section 3)
 
-You are setting up payments in my Circle community at learn-ai-46fe2f.circle.so. I am signed in.
+You are setting up payments in my Circle community at www.joinlearnai.com. I am signed in.
 1. Payments → Settings → connect Stripe. When Stripe opens, stop and hand control to me for the
    login and identity steps, then continue once I say so.
 2. Payments → Paywalls → New paywall. Internal name exactly: founding-member. Display name:
