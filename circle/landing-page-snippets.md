@@ -16,9 +16,11 @@ Circle. Fire `ViewContent` on load and `InitiateCheckout` when someone clicks th
 </script>
 ```
 
-Host the landing page on your root domain (`yourdomain.com`) and Circle on a subdomain
-(`learn.yourdomain.com`). The pixel's `_fbp` and `_fbc` cookies are set on the root domain, so
-they carry over to the Circle checkout and Meta can stitch the click to the purchase.
+The community lives at `www.joinlearnai.com` (Circle needs the www form for a root domain; the
+bare `joinlearnai.com` redirects to it). Put the landing page either in Circle's own page builder
+on the same domain, or on a subdomain such as `go.joinlearnai.com`. The pixel's `_fbp` and `_fbc`
+cookies are set on `.joinlearnai.com`, so they are shared by every subdomain and carry over to the
+Circle checkout, and Meta can stitch the click to the purchase.
 
 ## 2. Circle affiliate "promotional link" tracking script
 
@@ -29,7 +31,7 @@ carries it through to the Circle checkout, so the affiliate is credited even tho
 passed through your page first.
 
 Also make the buy button link straight to the paywall checkout URL Circle gives you, for
-example `https://learn.yourdomain.com/checkout/founding-member`.
+example `https://www.joinlearnai.com/checkout/founding-member`.
 
 ## 3. Landing page checklist
 
