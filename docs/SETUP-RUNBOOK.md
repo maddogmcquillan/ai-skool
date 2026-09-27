@@ -24,12 +24,12 @@ and Meta can attribute the sale.
 2. Payments > Paywalls > New paywall:
    - Internal name: `founding-member` (write this down exactly; the tracking snippets use it)
    - Display name: `Founding Member`
-   - Price: $50 / month, recurring. No trial (see NEEDED-FROM-YOU decision A4).
+   - Price: $49 / month, recurring. No trial (see NEEDED-FROM-YOU decision A4).
    - Access: grant access to every space group except admin-only ones.
    - Checkout page: enabled. Copy the checkout URL; it goes on the landing page buy button.
 3. Paywall > **Tracking** tab: paste `circle/paywall-thank-you-tracking.html` with your Pixel ID
    filled in. Keep the `<script>` tags.
-4. No test coupon. The end-to-end test is one real $50 purchase on your own card, refunded in Stripe
+4. No test coupon. The end-to-end test is one real $49 purchase on your own card, refunded in Stripe
    afterwards (Stripe keeps its fee, about two dollars). A $0 checkout would not exercise the
    charge, the Purchase value or the Zapier paid-charge trigger. Delete nothing before
    launch.
@@ -77,7 +77,7 @@ Items 1 and 3 are applied by `npm run provision`; verify them and do the rest by
 2. Paywall Tracking tab: done in step 3.
 3. Landing page: follow `circle/landing-page-snippets.md`.
 4. Verify: Meta Events Manager > Test events. Load a community page (PageView), then run a
-   real test checkout (refund it afterwards) and confirm a Purchase event with value 50 arrives
+   real test checkout (refund it afterwards) and confirm a Purchase event with value 49 arrives
    with a value and an event_id.
 
 ## 7. Deploy the service

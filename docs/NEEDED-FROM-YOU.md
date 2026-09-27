@@ -10,8 +10,8 @@ variables or into Circle/Zapier directly. Never paste them into chat.
    for Circle, for example `www.joinlearnai.com`, and tell me which root domain the landing page
    will live on.
 2. **Affiliate bounty amount.** A fixed dollar amount paid once on the first successful payment.
-   Suggested: $25 to $40 on a $50 first month. Tell me the number.
-3. **Pre-sale mechanics.** Either (a) one paywall at $50/month labeled "Founding Member" that you
+   Suggested: $25 to $40 on a $49 first month. Tell me the number.
+3. **Pre-sale mechanics.** Either (a) one paywall at $49/month labeled "Founding Member" that you
    later raise, or (b) a full-price paywall plus a coupon. (a) is simpler and keeps the affiliate
    math clean. Confirm (a) unless you have a reason not to.
 4. **Free trial or no trial.** No trial is my recommendation for launch: cleaner Purchase events,

@@ -110,7 +110,7 @@ You are setting up payments in my Circle community at www.joinlearnai.com. I am 
 1. Payments → Settings → connect Stripe. When Stripe opens, stop and hand control to me for the
    login and identity steps, then continue once I say so.
 2. Payments → Paywalls → New paywall. Internal name exactly: founding-member. Display name:
-   Founding Member. Price: $50 per month, recurring, no trial. Access: the Classroom space group
+   Founding Member. Price: $49 per month, recurring, no trial. Access: the Classroom space group
    plus Start Here and Community. Checkout page: on. Save, then copy the checkout URL and show me.
 3. Do not touch the paywall's Tracking tab yet; I will give you the snippet separately.
 

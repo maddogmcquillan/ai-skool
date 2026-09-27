@@ -11,7 +11,7 @@ Circle. Fire `ViewContent` on load and `InitiateCheckout` when someone clicks th
 <script>
   fbq("track", "ViewContent", { content_name: "founding-member-presale" });
   document.querySelector("#buy-button").addEventListener("click", function () {
-    fbq("track", "InitiateCheckout", { content_name: "founding-member", value: 50, currency: "USD" });
+    fbq("track", "InitiateCheckout", { content_name: "founding-member", value: 49, currency: "USD" });
   });
 </script>
 ```
