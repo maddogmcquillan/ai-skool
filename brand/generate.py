@@ -169,6 +169,16 @@ body = f'''<div class="ground" style="width:1200px;height:630px">{nodes_svg(1200
   <div style="position:absolute;left:0;bottom:0;width:1200px;height:8px;background:linear-gradient(90deg,{SPARK},{BLUE},{MINT})"></div></div>'''
 render("og-image", 1200, 630, page(1200, 630, body))
 
+# ---- Paywall checkout cover, Circle recommends 540x303; rendered at 2x for sharp text ----
+body = f'''<div class="ground" style="width:1080px;height:606px"><div style="position:absolute;left:520px;top:0;width:560px;height:606px">{nodes_svg(560,606,BLUE,seed=42,count=12)}</div>
+  <div style="position:absolute;left:64px;top:0;height:606px;display:flex;flex-direction:column;justify-content:center;gap:22px;max-width:760px">
+    {wordmark(36)}
+    <div class="chip" style="font-size:20px;color:{SPARK};margin-top:6px">Founding Member</div>
+    <div class="title" style="font-size:72px">AI classes for<br>ages 11 to 17.</div>
+    <div class="sub" style="font-size:26px;max-width:700px">17 video classes, real projects, a coach that answers in minutes, and a community parents can trust.</div></div>
+  <div style="position:absolute;left:0;bottom:0;width:1080px;height:8px;background:linear-gradient(90deg,{SPARK},{BLUE},{MINT})"></div></div>'''
+render("checkout-cover", 1080, 606, page(1080, 606, body))
+
 # ---- Feed / event welcome banner 1680x600 ----
 body = f'''<div class="ground" style="width:1680px;height:600px">{nodes_svg(1680,600,SPARK,seed=9,count=16)}
   <div style="position:absolute;left:84px;top:0;height:600px;display:flex;flex-direction:column;justify-content:center;gap:24px;max-width:1000px">
