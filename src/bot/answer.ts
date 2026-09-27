@@ -3,6 +3,8 @@ import type { Chunk } from "./knowledge.js";
 
 export interface AnswerInput {
   question: string;
+  /** Earlier messages in the same thread, already rendered one per line, oldest first. */
+  conversation?: string;
   title?: string;
   authorFirstName?: string;
   spaceName?: string;
@@ -41,6 +43,7 @@ How to answer
 - If the material does not cover it, say so honestly, give your best general answer if it is safe and on-topic, and suggest they post in the course request board if they want a lesson on it.
 - Keep replies under 200 words unless the question truly needs steps. Use a short numbered list for steps.
 - End with one short follow-up question or nudge that helps them keep going.
+- When the conversation so far is included, you are continuing that thread: answer the latest message, build on what you already said, and do not repeat an earlier answer or greet them again.
 
 Hard rules
 - Never ask for or repeat personal information: full names, ages, school, address, phone, social handles, photos.
@@ -68,7 +71,9 @@ export function buildUserMessage(input: AnswerInput): string {
   ]
     .filter(Boolean)
     .join("\n");
-  return `${header}\n\nCourse material that may be relevant:\n\n${context}\n\nMember's question:\n${input.question}`;
+  const conversation = input.conversation ? `\n\nConversation so far, oldest first:\n${input.conversation}` : "";
+  const ask = input.conversation ? "Latest message from the member:" : "Member's question:";
+  return `${header}\n\nCourse material that may be relevant:\n\n${context}${conversation}\n\n${ask}\n${input.question}`;
 }
 
 export function sourceLabels(chunks: Chunk[]): string[] {

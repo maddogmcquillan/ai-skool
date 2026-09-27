@@ -23,13 +23,20 @@ export function evaluateQuestion(text: string): PolicyDecision {
   return { escalate: false };
 }
 
+/** Every hand-off reply contains this phrase, so a thread that has one is recognisably a human's. */
+export const ESCALATION_MARK = "real person on our team";
+
 export function escalationReply(firstName: string | undefined, reason: string): string {
   const name = firstName ? `Hi ${firstName}! ` : "Hi! ";
   const detail =
     reason === "safety"
-      ? "This sounds important, so I have flagged it for a real person on our team. If you are in danger right now, please tell a trusted adult or call your local emergency number."
-      : "This is one for a real person on our team rather than me. I have flagged it and someone will reply here soon.";
+      ? `This sounds important, so I have flagged it for a ${ESCALATION_MARK}. If you are in danger right now, please tell a trusted adult or call your local emergency number.`
+      : `This is one for a ${ESCALATION_MARK} rather than me. I have flagged it and someone will reply here soon.`;
   return `${name}Thanks for posting. ${detail}`;
+}
+
+export function isEscalationReply(text: string | undefined): boolean {
+  return !!text && text.toLowerCase().includes(ESCALATION_MARK);
 }
 
 export function isBotAuthor(authorEmail: string | undefined, botEmail: string | undefined): boolean {

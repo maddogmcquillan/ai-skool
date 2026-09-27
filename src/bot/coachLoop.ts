@@ -1,27 +1,36 @@
 import { circleRequest, createCircleComment, type CircleClientConfig } from "../circle.js";
 import type { KnowledgeBase } from "./knowledge.js";
-import { isBotAuthor } from "./policy.js";
-import { composeReply, type ReplyOptions } from "./respond.js";
+import { isBotAuthor, isEscalationReply } from "./policy.js";
+import { composeReply, type ReplyOptions, type ThreadMessage } from "./respond.js";
 
 /**
- * Coach without Zapier: every `intervalMs` the loop lists the newest published posts in the
- * Ask Coach space through the Admin API, skips the ones Coach (or the team) already handled,
- * and posts a reply as a comment. The reply is authored by whoever created the API token, so
- * the token must be created while signed in as the Coach account.
+ * Coach without Zapier. Every `intervalMs` the loop lists the newest published posts in the
+ * Ask Coach space through the Admin API and, for each thread where the last word belongs to a
+ * member, posts Coach's reply as a comment. That covers the first question on a new post and
+ * every follow-up comment after it, so a thread reads as a conversation.
  *
- * State is in memory. After a restart the loop re-reads the comments on each recent post, so a
- * post that already has a Coach comment is never answered twice.
+ * Rules of the road:
+ * - Coach stays quiet when the last message is Coach's own, or a team member's (a human took
+ *   over), or after Coach has handed the thread to a human (the escalation reply).
+ * - A post older than the lookback window is not answered retroactively; the loop records how
+ *   many comments it has and only reacts when that number grows.
+ * - Comments are fetched only when a post's comment count changed, so a quiet community costs
+ *   one request a minute.
+ * - State is in memory. After a restart the thread itself says whether Coach owes a reply, so
+ *   nothing is answered twice.
+ *
+ * The reply is authored by whoever created the API token, so create the token as Coach.
  */
 export interface CoachLoopConfig {
   circle: CircleClientConfig;
   /** Slug of the space to watch, e.g. "ask-coach". */
   spaceSlug: string;
-  /** Email of the Coach member; its own posts and comments are ignored. */
+  /** Email of the Coach member; its own posts and comments are recognised by it. */
   botAuthorEmail?: string;
-  /** Other authors to leave alone: the team account, the owner. */
+  /** Team authors: their posts are not questions and their comments mean a human is handling it. */
   ignoreAuthorEmails?: string[];
   intervalMs: number;
-  /** Posts older than this are left alone (a fresh deploy must not answer ancient threads). */
+  /** Posts older than this are baselined instead of answered on first sight. */
   lookbackDays: number;
   reply: ReplyOptions;
 }
@@ -65,20 +74,31 @@ export interface PostRecord {
   url?: string;
   created_at?: string;
   published_at?: string;
+  comments_count?: number;
   is_comments_enabled?: boolean;
   is_comments_closed?: boolean;
 }
-interface CommentRecord {
+export interface CommentRecord {
   id: number;
+  parent_comment_id?: number | null;
+  created_at?: string;
+  body?: { body?: string | null } | null;
   user?: { email?: string; name?: string };
   author_type?: string;
+  replies?: CommentRecord[];
 }
 
-const MAX_FAILURES_PER_POST = 3;
+type Role = "member" | "coach" | "team";
+type Outcome = "answered" | "skipped" | "failed";
+
+const MAX_FAILURES = 3;
 
 export class CoachLoop {
-  private handled = new Set<number>();
-  private failures = new Map<number, number>();
+  /** Per post: the comment count we last acted on, so unchanged threads cost no requests. */
+  private seen = new Map<number, number>();
+  /** Per post: the member message (post id or comment id) Coach last replied to. */
+  private repliedTo = new Map<number, number>();
+  private failures = new Map<string, number>();
   private spaceId?: number;
   private timer?: ReturnType<typeof setInterval>;
   private busy = false;
@@ -126,8 +146,7 @@ export class CoachLoop {
       this.stats.ticks++;
       this.lastTickAt = this.now().toISOString();
       const spaceId = await this.resolveSpace();
-      const posts = await this.listPosts(spaceId);
-      for (const post of posts) {
+      for (const post of await this.listPosts(spaceId)) {
         const outcome = await this.handlePost(post);
         if (outcome) result[outcome]++;
       }
@@ -139,6 +158,12 @@ export class CoachLoop {
       this.busy = false;
     }
     return result;
+  }
+
+  private roleOf(email: string | undefined, authorType?: string): Role {
+    if (authorType === "CommunityAiAgent" || isBotAuthor(email, this.cfg.botAuthorEmail)) return "coach";
+    if (email && this.ignore.has(email.trim().toLowerCase())) return "team";
+    return "member";
   }
 
   private async resolveSpace(): Promise<number> {
@@ -168,61 +193,93 @@ export class CoachLoop {
     return Array.isArray(res) ? res : (res.records ?? []);
   }
 
-  private async handlePost(post: PostRecord): Promise<"answered" | "skipped" | "failed" | null> {
-    if (this.handled.has(post.id)) return null;
-    if ((this.failures.get(post.id) ?? 0) >= MAX_FAILURES_PER_POST) return null;
+  /** All comments on a post, replies included, oldest first. */
+  private async listComments(postId: number): Promise<CommentRecord[]> {
+    const byId = new Map<number, CommentRecord>();
+    const add = (c: CommentRecord) => {
+      if (!byId.has(c.id)) byId.set(c.id, c);
+      for (const r of c.replies ?? []) add(r);
+    };
+    for (let page = 1; page <= 3; page++) {
+      const res = await circleRequest<Paged<CommentRecord> | CommentRecord[]>(
+        this.cfg.circle,
+        "GET",
+        `/comments?post_id=${postId}&page=${page}&per_page=100`,
+        undefined,
+        this.fetchImpl,
+      );
+      const records = Array.isArray(res) ? res : (res.records ?? []);
+      records.forEach(add);
+      if (Array.isArray(res) || !res.has_next_page) break;
+    }
+    return [...byId.values()].sort((a, b) => Date.parse(a.created_at ?? "") - Date.parse(b.created_at ?? "") || a.id - b.id);
+  }
 
-    const author = (post.user_email ?? "").trim().toLowerCase();
-    const skip = (why: string) => {
-      this.handled.add(post.id);
+  private async handlePost(post: PostRecord): Promise<Outcome | null> {
+    const count = post.comments_count ?? 0;
+    const firstSight = !this.seen.has(post.id);
+    if (!firstSight && this.seen.get(post.id) === count) return null;
+
+    const skip = (why: string, remember = true): Outcome => {
+      if (remember) this.seen.set(post.id, count);
       this.stats.skipped++;
       this.log(`skip post ${post.id}: ${why}`);
-      return "skipped" as const;
+      return "skipped";
     };
 
-    if (isBotAuthor(author, this.cfg.botAuthorEmail)) return skip("written by Coach");
-    if (author && this.ignore.has(author)) return skip(`written by ${author}`);
     if (post.is_comments_enabled === false || post.is_comments_closed) return skip("comments are closed");
-    const stamp = post.published_at ?? post.created_at;
-    if (stamp) {
-      const ageMs = this.now().getTime() - new Date(stamp).getTime();
-      if (ageMs > this.cfg.lookbackDays * 86_400_000) return skip("older than the lookback window");
+    if (firstSight) {
+      const stamp = post.published_at ?? post.created_at;
+      const ageMs = stamp ? this.now().getTime() - new Date(stamp).getTime() : 0;
+      if (ageMs > this.cfg.lookbackDays * 86_400_000) return skip("older than the lookback window; watching for new comments only");
     }
 
-    const comments = await circleRequest<Paged<CommentRecord> | CommentRecord[]>(
-      this.cfg.circle,
-      "GET",
-      `/comments?post_id=${post.id}&per_page=100`,
-      undefined,
-      this.fetchImpl,
-    );
-    const records = Array.isArray(comments) ? comments : (comments.records ?? []);
-    if (records.some((c) => isBotAuthor(c.user?.email, this.cfg.botAuthorEmail) || c.author_type === "CommunityAiAgent")) {
-      return skip("Coach already replied");
+    const postRole = this.roleOf(post.user_email);
+    const comments = await this.listComments(post.id);
+    if (!comments.length && postRole !== "member") return skip(`post written by ${postRole}`);
+    if (comments.some((c) => this.roleOf(c.user?.email, c.author_type) === "coach" && isEscalationReply(c.body?.body ?? undefined))) {
+      return skip("handed to a human earlier in this thread");
     }
+
+    const last = comments[comments.length - 1];
+    if (last && this.roleOf(last.user?.email, last.author_type) !== "member") {
+      return skip(last ? `last message is from ${this.roleOf(last.user?.email, last.author_type)}` : "nothing to answer");
+    }
+
+    const latestId = last ? last.id : post.id;
+    if (this.repliedTo.get(post.id) === latestId) return skip("already replied to this message", false);
+    const failKey = `${post.id}:${latestId}`;
+    if ((this.failures.get(failKey) ?? 0) >= MAX_FAILURES) return null;
+
+    const thread: ThreadMessage[] = [
+      { role: postRole, name: post.user_name, text: post.body?.body ?? "" },
+      ...comments.slice(0, -1).map((c) => ({ role: this.roleOf(c.user?.email, c.author_type), name: c.user?.name, text: c.body?.body ?? "" })),
+    ];
+    const latest = last
+      ? { title: post.name, bodyHtml: last.body?.body ?? "", authorName: last.user?.name, spaceName: post.space_name, thread }
+      : { title: post.name, bodyHtml: post.body?.body ?? "", authorName: post.user_name, spaceName: post.space_name };
 
     try {
-      const reply = await this.compose(
-        { title: post.name, bodyHtml: post.body?.body ?? undefined, authorName: post.user_name, spaceName: post.space_name },
-        this.deps.kb(),
-        this.cfg.reply,
-      );
+      const reply = await this.compose(latest, this.deps.kb(), this.cfg.reply);
       if (this.cfg.reply.dryRun) {
-        this.handled.add(post.id);
-        this.stats.skipped++;
-        this.log(`dry run, not posting on post ${post.id}: ${reply.answer.slice(0, 120)}`);
-        return "skipped";
+        this.repliedTo.set(post.id, latestId);
+        return skip(`dry run, would reply: ${reply.answer.slice(0, 120)}`);
       }
-      await createCircleComment(this.cfg.circle, { postId: post.id, body: reply.answer }, this.fetchImpl);
-      this.handled.add(post.id);
+      await createCircleComment(
+        this.cfg.circle,
+        { postId: post.id, body: reply.answer, parentCommentId: last ? (last.parent_comment_id ?? last.id) : undefined },
+        this.fetchImpl,
+      );
+      this.repliedTo.set(post.id, latestId);
+      this.seen.set(post.id, count + 1);
       this.stats.answered++;
       if (reply.escalate) this.stats.escalated++;
-      this.log(`replied on post ${post.id} "${post.name ?? ""}"${reply.escalate ? ` (escalated: ${reply.reason})` : ""}`);
+      this.log(`replied on post ${post.id} "${post.name ?? ""}"${last ? ` (follow-up to comment ${last.id})` : ""}${reply.escalate ? ` (escalated: ${reply.reason})` : ""}`);
       return "answered";
     } catch (err) {
-      const n = (this.failures.get(post.id) ?? 0) + 1;
-      this.failures.set(post.id, n);
-      this.log(`post ${post.id} failed (${n}/${MAX_FAILURES_PER_POST}): ${(err as Error).message}`);
+      const n = (this.failures.get(failKey) ?? 0) + 1;
+      this.failures.set(failKey, n);
+      this.log(`post ${post.id} failed (${n}/${MAX_FAILURES}): ${(err as Error).message}`);
       return "failed";
     }
   }

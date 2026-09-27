@@ -1,7 +1,8 @@
 # Put Coach live on Railway
 
 Coach is the poller inside the service in `src/`. Once deployed it watches the Ask Coach space
-through Circle's API and replies as a comment within about a minute. No Zapier is involved.
+through Circle's API and replies within about a minute, to new questions and to every follow-up
+comment, keeping the thread going until a team member steps in. No Zapier is involved.
 Railway's Hobby plan (a few dollars a month) is plenty.
 
 ## 1. A Circle token that posts as Coach (10 minutes)
@@ -60,7 +61,11 @@ name.
    wrong; `coach:null` means the Circle token is missing.
 2. In a private window, as the test member, post a question in Ask Coach, for example
    "How do I make my chatbot remember my name?". Within about a minute Coach replies.
-3. Post "Can I get a refund?" the same way. Coach answers with the hand-off reply and the
+3. Reply to Coach's comment with a follow-up such as "What is a variable?". Coach answers again
+   inside the same thread, building on its first answer.
+4. Reply to that thread as yourself, the owner. Post another follow-up as the test member.
+   Coach stays quiet, because a human has the thread now.
+5. Post "Can I get a refund?" as the test member. Coach answers with the hand-off reply and the
    `escalated` counter on `/healthz` goes up. That thread is yours to answer.
 
 ## Day to day

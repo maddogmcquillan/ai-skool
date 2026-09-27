@@ -64,9 +64,11 @@ The community's public name is **Learn AI** (the repo name "ai-skool" is histori
 
 - Coach is the poller in `src/bot/coachLoop.ts`, started by `src/index.ts` whenever
   `CIRCLE_ADMIN_TOKEN` is set. It watches the space with slug `COACH_SPACE_SLUG` (default
-  `ask-coach`), replies through `POST /comments`, and skips posts by `BOT_AUTHOR_EMAIL`,
-  `TEAM_AUTHOR_EMAIL`, `COACH_IGNORE_EMAILS`, posts older than `COACH_LOOKBACK_DAYS`, and posts
-  that already carry a Coach comment. The reply logic shared with the webhook is in
+  `ask-coach`) and replies through `POST /comments` whenever the last message in a thread is a
+  member's: the first question on a post and every follow-up comment, with the thread passed to
+  the model. It stays quiet after a team member (`TEAM_AUTHOR_EMAIL`, `COACH_IGNORE_EMAILS`)
+  replies or after its own hand-off reply. Posts older than `COACH_LOOKBACK_DAYS` are baselined,
+  not answered, but new comments on them are. The reply logic shared with the webhook is in
   `src/bot/respond.ts`; the escalation rules are in `src/bot/policy.ts`.
 - Deployment is on Railway from this repo's default branch; the click path is in
   `docs/DEPLOY-RAILWAY.md`. `GET /healthz` shows the poller counters.
