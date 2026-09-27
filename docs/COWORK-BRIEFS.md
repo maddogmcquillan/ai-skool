@@ -122,6 +122,52 @@ Payout method: [PayPal or Wise]. Promotional link: on, URL [LANDING PAGE URL]; c
 script it shows and paste it back to me. Paywalls: enable only founding-member. Save.
 Then Payments → Affiliates → Invite affiliate, and invite these emails one by one: [LIST].
 
+## Brief 3b: Put Coach live (Circle token, Anthropic key, Railway)
+
+Most of this can run in Claude in Chrome. The owner still does four things: click the
+password-reset email for the Coach account, sign in to console.anthropic.com and add the card,
+authorize Railway with GitHub, and post the test questions. Secrets are copied from one tab to
+the Railway Variables page and never typed into chat.
+
+You are putting my Circle community's answer bot, Coach, live. Work in my signed-in Chrome. I am
+signed in to Circle at www.joinlearnai.com as the owner. Tell me when each block is done. When a
+step says STOP, stop and wait until I say "done". Never write a token or API key into your
+replies; copy it straight into the Railway Variables page and tell me only that it is in place.
+
+Block 1, Circle. Community name at the top left → Members. Find the member named Coach and open
+it. Change its role to Admin (look for a role setting or a "Make admin" option in the member's
+menu). Save. Note the email shown on Coach's profile; call it COACH_EMAIL. Then open Settings →
+Members (or Team) and note the email of the account named Learn AI Team; call it TEAM_EMAIL. Tell
+me both emails.
+
+Block 2, Coach's password. STOP. I will open a private window, use Forgot password with
+COACH_EMAIL, set a password from the email, and say "done". Then, in a new tab, sign in to
+www.joinlearnai.com as Coach with the password I give you. Go to Settings → Developers → Tokens →
+Create token, type Admin API v2, name coach-service. Leave the page with the token visible.
+
+Block 3, Anthropic key. STOP. I will sign in at console.anthropic.com and add a card and credits,
+then say "done". Then go to API keys → Create key, name learn-ai-coach, and leave the key visible
+in its tab.
+
+Block 4, Railway. Open railway.com. STOP if it asks me to log in or authorize GitHub; say "done"
+when I have. Then: New project → Deploy from GitHub repo → choose maddogmcquillan/ai-skool (if it
+is missing, use the link to configure GitHub app access, then STOP for me). Let the first build
+start. Click the service card → Variables → add these, copying the two secrets from their tabs:
+  HOOK_SECRET = a random string of 48 letters and digits that you generate yourself
+  ANTHROPIC_API_KEY = the key from Block 3
+  CIRCLE_ADMIN_TOKEN = the token from Block 2
+  BOT_AUTHOR_EMAIL = COACH_EMAIL
+  TEAM_AUTHOR_EMAIL = TEAM_EMAIL
+  COACH_IGNORE_EMAILS = the owner's email (the account I am signed in to Circle with)
+  PORT = 8787
+Save. Then Settings → Networking → Generate domain, port 8787. Tell me the domain. Then
+Deployments → latest → Logs, wait for the build, and confirm you see a line containing
+"coach=polling" and one containing "watching". Then open https://<domain>/healthz and show me the
+JSON. Close the tabs that show the token and the key.
+
+Block 5, check. STOP. I will post test questions in Ask Coach as a test member and watch Coach
+reply. Reload /healthz when I say so and read me the coach counters.
+
 ## Brief 4: Meta assets
 
 You are working inside my existing Meta Business Portfolio. Create a new Facebook Page named
