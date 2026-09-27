@@ -23,17 +23,22 @@ outside Circle's click-through settings.
 
 ## The service
 
-Two webhook routes, called by Zapier:
+**Coach** runs inside the service with no Zapier in the loop: every minute it lists the newest
+posts in the Ask Coach space through Circle's Admin API, skips anything Coach or the team already
+handled, composes a reply grounded in `knowledge/`, and posts it as a comment. Billing, account,
+safety and personal-info questions get a hand-off reply and are counted as escalations. The
+comment is authored by whoever created the API token, so create the service's token while
+signed in as the Coach account (see `docs/DEPLOY-RAILWAY.md`).
+
+Two webhook routes remain for Zapier:
 
 - `POST /hooks/circle/charge`: Circle "New Member Paid Charge" in, Meta Conversions API
   Purchase event out. Email and names are hashed. The `event_id` is derived the same way as
   in the browser snippet, so Meta counts each sale once.
-- `POST /hooks/circle/question`: a new post or comment in the Ask Coach space in, a Claude
-  answer out, grounded in `knowledge/`. Billing, account, safety and personal-info questions
-  are escalated to a human instead of answered. With a Circle Admin API token it can post the
-  reply itself; otherwise Zapier's Create Comment step posts it.
+- `POST /hooks/circle/question`: the same Coach reply as a webhook, for anyone who would rather
+  drive it from Zapier (`COACH_POLL=0` turns the poller off).
 
-Both routes require the `X-Hook-Secret` header.
+Both routes require the `X-Hook-Secret` header. `GET /healthz` reports the poller's counters.
 
 ```bash
 cp .env.example .env      # fill in
@@ -47,5 +52,5 @@ knowledge and builds Meta events, but calls neither Claude nor Meta. Useful whil
 
 ## Deploy
 
-`Dockerfile` builds a production image. Set the variables from `.env.example` on the host and
-expose port 8787. Any Node 22 host works.
+`docs/DEPLOY-RAILWAY.md` is the click-by-click guide. `Dockerfile` builds a production image;
+set the variables from `.env.example` on the host and expose the port. Any Node 22 host works.

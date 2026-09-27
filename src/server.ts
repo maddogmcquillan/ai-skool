@@ -1,10 +1,10 @@
 import { Hono } from "hono";
 import { buildMetaEvent, sendToMeta, type CapiConfig, type ChargeHook } from "./capi.js";
-import { answerQuestion } from "./bot/answer.js";
+import type { CoachLoopStatus } from "./bot/coachLoop.js";
 import { KnowledgeBase } from "./bot/knowledge.js";
-import { escalationReply, evaluateQuestion, isBotAuthor } from "./bot/policy.js";
+import { isBotAuthor } from "./bot/policy.js";
+import { composeReply } from "./bot/respond.js";
 import { createCircleComment } from "./circle.js";
-import { stripHtml, truncate } from "./lib/text.js";
 
 export interface ServerConfig {
   hookSecret: string;
@@ -57,12 +57,21 @@ export function configFromEnv(env: NodeJS.ProcessEnv = process.env): ServerConfi
   };
 }
 
-export async function createApp(cfg: ServerConfig, deps: { fetchImpl?: typeof fetch; kb?: KnowledgeBase } = {}) {
+export interface AppDeps {
+  fetchImpl?: typeof fetch;
+  kb?: KnowledgeBase;
+  /** Called after /admin/reload-knowledge, so the Coach loop can pick up the new knowledge. */
+  onKnowledgeReload?: (kb: KnowledgeBase) => void;
+  /** Reported on /healthz when the Coach poller is running. */
+  coachStatus?: () => CoachLoopStatus | undefined;
+}
+
+export async function createApp(cfg: ServerConfig, deps: AppDeps = {}) {
   const fetchImpl = deps.fetchImpl ?? fetch;
   let kb = deps.kb ?? (await KnowledgeBase.fromDir(cfg.knowledgeDir));
   const app = new Hono();
 
-  app.get("/healthz", (c) => c.json({ ok: true, dryRun: cfg.dryRun, knowledgeChunks: kb.chunks.length }));
+  app.get("/healthz", (c) => c.json({ ok: true, dryRun: cfg.dryRun, knowledgeChunks: kb.chunks.length, coach: deps.coachStatus?.() ?? null }));
 
   app.use("/hooks/*", async (c, next) => {
     if (!cfg.hookSecret || c.req.header("x-hook-secret") !== cfg.hookSecret) {
@@ -79,6 +88,7 @@ export async function createApp(cfg: ServerConfig, deps: { fetchImpl?: typeof fe
 
   app.post("/admin/reload-knowledge", async (c) => {
     kb = await KnowledgeBase.fromDir(cfg.knowledgeDir);
+    deps.onKnowledgeReload?.(kb);
     return c.json({ ok: true, knowledgeChunks: kb.chunks.length });
   });
 
@@ -106,33 +116,12 @@ export async function createApp(cfg: ServerConfig, deps: { fetchImpl?: typeof fe
       return c.json({ skipped: true, reason: "author is the bot or an admin" });
     }
 
-    const question = truncate(stripHtml(hook.body_html || hook.body), 6000);
-    const firstName = hook.author_name?.trim().split(/\s+/)[0];
-    const decision = evaluateQuestion(`${hook.title ?? ""}\n${question}`);
-
-    let answer: string;
-    let sources: string[] = [];
-    let refused = false;
-    if (decision.escalate) {
-      answer = escalationReply(firstName, decision.reason ?? "other");
-    } else {
-      const query = [hook.title, question, hook.parent_post_body ? stripHtml(hook.parent_post_body) : ""].filter(Boolean).join("\n");
-      const context = kb.search(query, 6);
-      const result = await answerQuestion(
-        {
-          question: hook.parent_post_body ? `${question}\n\n(Context, the original post:)\n${truncate(stripHtml(hook.parent_post_body), 2000)}` : question,
-          title: hook.title,
-          authorFirstName: firstName,
-          spaceName: hook.space_name,
-          context,
-          pinned: kb.pinned(),
-        },
-        { model: cfg.answer.model, effort: cfg.answer.effort, dryRun: cfg.dryRun },
-      );
-      answer = result.answer;
-      sources = result.sources;
-      refused = result.refused;
-    }
+    const reply = await composeReply(
+      { title: hook.title, body: hook.body, bodyHtml: hook.body_html, authorName: hook.author_name, spaceName: hook.space_name, parentPostBody: hook.parent_post_body },
+      kb,
+      { model: cfg.answer.model, effort: cfg.answer.effort, dryRun: cfg.dryRun },
+    );
+    const answer = reply.answer;
 
     let posted: { id?: number } | null = null;
     if (hook.post_directly && cfg.circle && !cfg.dryRun) {
@@ -149,9 +138,9 @@ export async function createApp(cfg: ServerConfig, deps: { fetchImpl?: typeof fe
 
     return c.json({
       answer,
-      escalate: decision.escalate || refused,
-      escalation_reason: decision.reason ?? (refused ? "model-refusal" : undefined),
-      sources,
+      escalate: reply.escalate,
+      escalation_reason: reply.reason,
+      sources: reply.sources,
       posted,
       dryRun: cfg.dryRun,
     });

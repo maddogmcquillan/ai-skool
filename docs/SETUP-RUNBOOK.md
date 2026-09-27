@@ -81,14 +81,15 @@ Items 1 and 3 are applied by `npm run provision`; verify them and do the rest by
    real test checkout (refund it afterwards) and confirm a Purchase event with value 49 arrives
    with a value and an event_id.
 
-## 7. Deploy the service
+## 7. Deploy the service (Coach goes live here)
 
-1. Copy `.env.example` to `.env` and fill it in. Generate `HOOK_SECRET` with
-   `openssl rand -hex 32`.
-2. Deploy with the Dockerfile (Railway, Render, Fly) or `npm run build && npm start` on any Node 22
-   host. Note the public URL.
-3. Check `GET https://<service>/healthz` returns `{"ok":true,"dryRun":false,...}`. If `dryRun`
-   is true, the Anthropic key is missing.
+Follow `docs/DEPLOY-RAILWAY.md`. In short: create a Circle Admin API token while signed in as
+the Coach account, deploy the repo on Railway with the variables from `.env.example`, and check
+`GET https://<service>/healthz` returns `{"ok":true,"dryRun":false,"coach":{...}}`. If `dryRun`
+is true the Anthropic key is missing; if `coach` is null the Circle token is missing.
+
+Coach polls the Ask Coach space itself, so Zap 2 and Zap 3 below are only needed if you turn the
+poller off (`COACH_POLL=0`).
 
 ## 8. Zapier
 
@@ -113,7 +114,7 @@ the Circle app in Zapier with it.
 3. Test with the real test purchase. The response echoes `event_id`; find the same id in
    Meta Test events with two sources (Browser and Server) deduplicated into one.
 
-### Zap 2: questions to the answer bot
+### Zap 2: questions to the answer bot (only with `COACH_POLL=0`)
 
 1. Trigger: **Circle > New Post**, Space = Ask Coach.
 2. Filter (optional): author email is not the bot's account.
@@ -135,7 +136,7 @@ the Circle app in Zapier with it.
 5. Action (optional): **Slack or Email** when the webhook response has `escalate = true`, so a
    human sees billing and safety threads immediately.
 
-### Zap 3: follow-up comments (optional)
+### Zap 3: follow-up comments (only with `COACH_POLL=0`)
 
 Same as Zap 2 with trigger **New Comment Posted** in Ask Coach, `kind = "comment"`, and
 `parent_post_body` mapped to the original post body. The service already ignores comments

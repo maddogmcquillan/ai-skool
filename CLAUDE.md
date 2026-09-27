@@ -60,6 +60,19 @@ The community's public name is **Learn AI** (the repo name "ai-skool" is histori
 4. The API cannot set a lesson's featured (top) video; the file lands in the lesson body. If
    the owner wants it as the featured video, they move it in the editor.
 
+## When asked to put Coach live or change how it answers
+
+- Coach is the poller in `src/bot/coachLoop.ts`, started by `src/index.ts` whenever
+  `CIRCLE_ADMIN_TOKEN` is set. It watches the space with slug `COACH_SPACE_SLUG` (default
+  `ask-coach`), replies through `POST /comments`, and skips posts by `BOT_AUTHOR_EMAIL`,
+  `TEAM_AUTHOR_EMAIL`, `COACH_IGNORE_EMAILS`, posts older than `COACH_LOOKBACK_DAYS`, and posts
+  that already carry a Coach comment. The reply logic shared with the webhook is in
+  `src/bot/respond.ts`; the escalation rules are in `src/bot/policy.ts`.
+- Deployment is on Railway from this repo's default branch; the click path is in
+  `docs/DEPLOY-RAILWAY.md`. `GET /healthz` shows the poller counters.
+- Coach's knowledge is the `knowledge/` folder, baked into the image. After editing it, push
+  and let Railway redeploy (or call `POST /admin/reload-knowledge` with the hook secret).
+
 ## When asked to apply or refresh branding
 
 1. Requires `CIRCLE_ADMIN_TOKEN` and the files in `brand/assets/`.
