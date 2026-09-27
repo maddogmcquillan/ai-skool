@@ -29,7 +29,9 @@ and Meta can attribute the sale.
    - Checkout page: enabled. Copy the checkout URL; it goes on the landing page buy button.
 3. Paywall > **Tracking** tab: paste `circle/paywall-thank-you-tracking.html` with your Pixel ID
    filled in. Keep the `<script>` tags.
-4. Payments > Coupons: create a 100% coupon named `TEST100` for test purchases. Delete it before
+4. No test coupon. The end-to-end test is one real $50 purchase on your own card, refunded in Stripe
+   afterwards (Stripe keeps its fee, about two dollars). A $0 checkout would not exercise the
+   charge, the Purchase value or the Zapier paid-charge trigger. Delete nothing before
    launch.
 
 ## 4. Structure, safety settings, pinned posts (automated)
@@ -75,7 +77,7 @@ Items 1 and 3 are applied by `npm run provision`; verify them and do the rest by
 2. Paywall Tracking tab: done in step 3.
 3. Landing page: follow `circle/landing-page-snippets.md`.
 4. Verify: Meta Events Manager > Test events. Load a community page (PageView), then run a
-   test checkout with the `TEST100` coupon and confirm a Purchase (or StartTrial) event arrives
+   real test checkout (refund it afterwards) and confirm a Purchase event with value 50 arrives
    with a value and an event_id.
 
 ## 7. Deploy the service
@@ -107,7 +109,7 @@ the Circle app in Zapier with it.
      - `paywall_key` = paywall **internal name** (must equal what the thank-you snippet sees)
      - `charge_id` = charge id
      - `paid_at` = charge created time
-3. Test with the `TEST100` coupon purchase. The response echoes `event_id`; find the same id in
+3. Test with the real test purchase. The response echoes `event_id`; find the same id in
    Meta Test events with two sources (Browser and Server) deduplicated into one.
 
 ### Zap 2: questions to the answer bot
@@ -166,9 +168,9 @@ Settings > Payments > Affiliates settings:
 ## 11. Launch checks
 
 - [ ] Test purchase shows in Stripe, Circle, and Meta (one deduplicated Purchase with value).
-- [ ] Affiliate test: open an affiliate's link in a private window, buy with `TEST100`, confirm the
+- [ ] Affiliate test: open an affiliate's link in a private window, make the real test purchase, confirm the
       sale appears under that affiliate in Payments > Affiliates.
 - [ ] Post a question in Ask Coach from a test member; the bot replies within a few minutes.
 - [ ] Post "can I get a refund" from a test member; the bot escalates and a human is notified.
 - [ ] A test member cannot DM another test member.
-- [ ] Delete `TEST100`, remove test members, clear test events in Meta.
+- [ ] Refund the test purchase in Stripe, remove test members, clear test events in Meta.

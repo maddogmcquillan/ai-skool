@@ -112,8 +112,7 @@ You are setting up payments in my Circle community at www.joinlearnai.com. I am 
 2. Payments → Paywalls → New paywall. Internal name exactly: founding-member. Display name:
    Founding Member. Price: $50 per month, recurring, no trial. Access: the Classroom space group
    plus Start Here and Community. Checkout page: on. Save, then copy the checkout URL and show me.
-3. Payments → Coupons → New coupon. Code TEST100, 100% off, applies to founding-member. Save.
-4. Do not touch the paywall's Tracking tab yet; I will give you the snippet separately.
+3. Do not touch the paywall's Tracking tab yet; I will give you the snippet separately.
 
 ## Brief 3: Affiliates (runbook section 9)
 
