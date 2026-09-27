@@ -30,8 +30,8 @@ It reads the `?affiliate_code=` parameter from an affiliate's link to your landi
 carries it through to the Circle checkout, so the affiliate is credited even though the buyer
 passed through your page first.
 
-Also make the buy button link straight to the paywall checkout URL Circle gives you, for
-example `https://www.joinlearnai.com/checkout/founding-member`.
+Make the buy button link straight to the live checkout URL:
+`https://www.joinlearnai.com/checkout/founding-member`
 
 ## 3. Landing page checklist
 

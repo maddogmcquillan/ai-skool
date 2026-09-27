@@ -26,7 +26,8 @@ and Meta can attribute the sale.
    - Display name: `Founding Member`
    - Price: $49 / month, recurring. No trial (see NEEDED-FROM-YOU decision A4).
    - Access: grant access to every space group except admin-only ones.
-   - Checkout page: enabled. Copy the checkout URL; it goes on the landing page buy button.
+   - Checkout page: enabled. Live checkout URL: `https://www.joinlearnai.com/checkout/founding-member`
+     (goes on the landing page buy button). Paywall is Active at $49/month since Sep 27, 2026.
 3. Paywall > **Tracking** tab: paste `circle/paywall-thank-you-tracking.html` with your Pixel ID
    filled in. Keep the `<script>` tags.
 4. No test coupon. The end-to-end test is one real $49 purchase on your own card, refunded in Stripe
