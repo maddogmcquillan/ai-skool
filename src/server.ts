@@ -1,6 +1,7 @@
 import { Hono } from "hono";
 import { buildMetaEvent, sendToMeta, type CapiConfig, type ChargeHook } from "./capi.js";
 import type { CoachLoopStatus } from "./bot/coachLoop.js";
+import type { ChargeLoopStatus } from "./chargeLoop.js";
 import { KnowledgeBase } from "./bot/knowledge.js";
 import { isBotAuthor } from "./bot/policy.js";
 import { composeReply } from "./bot/respond.js";
@@ -64,6 +65,8 @@ export interface AppDeps {
   onKnowledgeReload?: (kb: KnowledgeBase) => void;
   /** Reported on /healthz when the Coach poller is running. */
   coachStatus?: () => CoachLoopStatus | undefined;
+  /** Reported on /healthz when the purchase-to-Meta poller is running. */
+  metaStatus?: () => ChargeLoopStatus | undefined;
 }
 
 export async function createApp(cfg: ServerConfig, deps: AppDeps = {}) {
@@ -71,7 +74,9 @@ export async function createApp(cfg: ServerConfig, deps: AppDeps = {}) {
   let kb = deps.kb ?? (await KnowledgeBase.fromDir(cfg.knowledgeDir));
   const app = new Hono();
 
-  app.get("/healthz", (c) => c.json({ ok: true, dryRun: cfg.dryRun, knowledgeChunks: kb.chunks.length, coach: deps.coachStatus?.() ?? null }));
+  app.get("/healthz", (c) =>
+    c.json({ ok: true, dryRun: cfg.dryRun, knowledgeChunks: kb.chunks.length, coach: deps.coachStatus?.() ?? null, meta: deps.metaStatus?.() ?? null }),
+  );
 
   app.use("/hooks/*", async (c, next) => {
     if (!cfg.hookSecret || c.req.header("x-hook-secret") !== cfg.hookSecret) {

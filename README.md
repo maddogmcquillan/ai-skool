@@ -33,15 +33,15 @@ fetched when a post's comment count changes, so a quiet community costs one requ
 The comment is authored by whoever created the API token, so create the service's token while
 signed in as the Coach account (see `docs/DEPLOY-RAILWAY.md`).
 
-Two webhook routes remain for Zapier:
+**Purchases to Meta** work the same way: with `META_PIXEL_ID` and `META_CAPI_ACCESS_TOKEN` set,
+the service polls Circle's paid charges every minute and sends each new one to the Meta
+Conversions API as a Purchase. Email and names are hashed, and the `event_id` is derived the same
+way as in the paywall thank-you snippet, so Meta counts each sale once even though it hears about
+it twice.
 
-- `POST /hooks/circle/charge`: Circle "New Member Paid Charge" in, Meta Conversions API
-  Purchase event out. Email and names are hashed. The `event_id` is derived the same way as
-  in the browser snippet, so Meta counts each sale once.
-- `POST /hooks/circle/question`: the same Coach reply as a webhook, for anyone who would rather
-  drive it from Zapier (`COACH_POLL=0` turns the poller off).
-
-Both routes require the `X-Hook-Secret` header. `GET /healthz` reports the poller's counters.
+Two webhook routes remain for anyone who prefers Zapier (`COACH_POLL=0` / `META_POLL=0`):
+`POST /hooks/circle/charge` and `POST /hooks/circle/question`, both behind the `X-Hook-Secret`
+header. `GET /healthz` reports both pollers' counters.
 
 ```bash
 cp .env.example .env      # fill in

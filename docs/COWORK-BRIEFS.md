@@ -168,15 +168,44 @@ JSON. Close the tabs that show the token and the key.
 Block 5, check. STOP. I will post test questions in Ask Coach as a test member and watch Coach
 reply. Reload /healthz when I say so and read me the coach counters.
 
-## Brief 4: Meta assets
+## Brief 4: Meta tracking end to end (Business Portfolio, Cloudflare, Railway, Circle)
 
-You are working inside my existing Meta Business Portfolio. Create a new Facebook Page named
-Learn AI (category Education). Create a new Dataset in Events Manager named Learn AI Web; open its
-Settings and generate a Conversions API access token; do not paste the token into chat, instead
-tell me it is on screen and I will copy it. Under Business settings → Brand safety → Domains, add
-[ROOT DOMAIN] and show me the DNS TXT verification record. Stop before creating any ad campaigns.
+You are setting up Meta ad tracking for my membership at www.joinlearnai.com. Work in my
+signed-in Chrome. Tabs I have signed in: business.facebook.com (my Business Portfolio),
+dash.cloudflare.com (owns joinlearnai.com), railway.com (project ai-skool) and Circle as the
+owner. Tell me when each block is done. STOP means stop and wait for me to say "done". Never
+write the Conversions API token into your replies; copy it straight into Railway.
 
-## Brief 5: Zapier zaps (runbook section 8)
+Block 1, Page. In the Business Portfolio, check Pages. If a page named Learn AI exists, use it.
+Otherwise STOP and ask me whether to reuse my old business page (rename it Learn AI, category
+Education) or create a new Page named Learn AI, category Education. Do what I say.
+
+Block 2, Dataset and token. Events Manager → Connect data sources → Web → name it Learn AI Web →
+create. Copy the dataset id (also called Pixel ID) and tell it to me. Open the dataset's Settings
+→ Conversions API → Generate access token. Leave the token on screen.
+
+Block 3, Railway. Open the ai-skool service → Variables. Add META_PIXEL_ID = the dataset id,
+META_CAPI_ACCESS_TOKEN = the token (copied from the Meta tab), META_PAYWALL_KEYS = Founding
+Member=founding-member. Save; Railway redeploys. Close the Meta tab that shows the token. Then
+open https://ai-skool-production.up.railway.app/healthz and confirm it now has a "meta" block.
+
+Block 4, domain. Business settings → Brand safety and suitability → Domains → Add →
+joinlearnai.com → choose DNS verification. Copy the TXT record value it shows. In Cloudflare →
+joinlearnai.com → DNS → Records → Add record: Type TXT, Name @, Content the value, TTL Auto.
+Save. Back in Meta, click Verify domain (retry after two minutes if it says not found). Then
+Events Manager → the dataset → Aggregated Event Measurement → Configure web events → add
+Purchase as the top-priority event for joinlearnai.com. Save.
+
+Block 5, Circle snippets. The two files are in my repo; I will paste their contents to you when
+you ask. Circle → Settings → Site → Code snippets → JavaScript code snippets: paste the first
+file with REPLACE_WITH_PIXEL_ID replaced by the dataset id, no <script> tags. Save. Then
+Payments → Paywalls → Founding Member → Tracking tab: paste the second file with the id filled in,
+keeping its <script> tags. Save.
+
+Block 6, check. Events Manager → the dataset → Test events. Open www.joinlearnai.com in a new tab
+and confirm a PageView appears. Tell me what you see and STOP.
+
+## Brief 5: Zapier zaps (only if the pollers are turned off; runbook section 8)
 
 Two zaps, exact field mappings are in docs/SETUP-RUNBOOK.md section 8. Connect the Circle app with
 the Zapier token I created in Circle (Developers → Tokens, type Zapier). Build Zap 1 (New Member

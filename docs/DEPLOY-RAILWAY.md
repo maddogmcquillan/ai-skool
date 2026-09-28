@@ -75,4 +75,6 @@ name.
 - Coach's knowledge is the `knowledge/` folder. Edit it, push, and Railway redeploys.
 - Railway → Deployments → Logs shows every reply and every skip with the reason.
 - To pause Coach, set `COACH_POLL` to `0` in Variables. To stop it entirely, remove the service.
-- Meta purchase tracking still uses one Zapier zap; that is set up in the Meta step, not here.
+- Meta purchase tracking is the same service: add `META_PIXEL_ID`, `META_CAPI_ACCESS_TOKEN` and
+  `META_PAYWALL_KEYS=Founding Member=founding-member` to Variables when the Meta step is done, and
+  `/healthz` gains a `meta` block. No Zapier.

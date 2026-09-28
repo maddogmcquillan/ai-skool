@@ -70,8 +70,13 @@ The community's public name is **Learn AI** (the repo name "ai-skool" is histori
   replies or after its own hand-off reply. Posts older than `COACH_LOOKBACK_DAYS` are baselined,
   not answered, but new comments on them are. The reply logic shared with the webhook is in
   `src/bot/respond.ts`; the escalation rules are in `src/bot/policy.ts`.
+- Purchases reach Meta through the second poller in `src/chargeLoop.ts`, on whenever
+  `META_PIXEL_ID` and `META_CAPI_ACCESS_TOKEN` are set: it lists paid charges from the Admin
+  API and sends Purchase events with the same `event_id` formula as
+  `circle/paywall-thank-you-tracking.html`. `META_PAYWALL_KEYS` maps display names to internal
+  names when they differ.
 - Deployment is on Railway from this repo's default branch; the click path is in
-  `docs/DEPLOY-RAILWAY.md`. `GET /healthz` shows the poller counters.
+  `docs/DEPLOY-RAILWAY.md`. `GET /healthz` shows both pollers' counters.
 - Coach's knowledge is the `knowledge/` folder, baked into the image. After editing it, push
   and let Railway redeploy (or call `POST /admin/reload-knowledge` with the hook secret).
 

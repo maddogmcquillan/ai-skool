@@ -1,6 +1,7 @@
 import { serve } from "@hono/node-server";
 import { CoachLoop } from "./bot/coachLoop.js";
 import { KnowledgeBase } from "./bot/knowledge.js";
+import { ChargeLoop, parsePaywallKeys } from "./chargeLoop.js";
 import { configFromEnv, createApp } from "./server.js";
 
 const cfg = configFromEnv();
@@ -30,16 +31,32 @@ const coach =
       )
     : undefined;
 
+// Purchases go to Meta the same way, once the pixel id and Conversions API token are set.
+// Set META_POLL=0 to turn it off and use the /hooks/circle/charge webhook from Zapier instead.
+const meta =
+  cfg.circle && cfg.capi.pixelId && cfg.capi.accessToken && env.META_POLL !== "0"
+    ? new ChargeLoop({
+        circle: cfg.circle,
+        capi: cfg.capi,
+        intervalMs: Math.max(15, Number(env.META_POLL_SECONDS ?? 60)) * 1000,
+        lookbackMs: Number(env.META_LOOKBACK_HOURS ?? 24) * 3_600_000,
+        paywallKeys: parsePaywallKeys(env.META_PAYWALL_KEYS),
+        dryRun: env.DRY_RUN === "1",
+      })
+    : undefined;
+
 const app = await createApp(cfg, {
   kb,
   onKnowledgeReload: (next) => {
     kb = next;
   },
   coachStatus: () => coach?.status(),
+  metaStatus: () => meta?.status(),
 });
 
 const port = Number(env.PORT ?? 8787);
 serve({ fetch: app.fetch, port }, () => {
-  console.log(`learn-ai service listening on :${port} (dryRun=${cfg.dryRun}, coach=${coach ? "polling" : "off"})`);
+  console.log(`learn-ai service listening on :${port} (dryRun=${cfg.dryRun}, coach=${coach ? "polling" : "off"}, meta=${meta ? "polling" : "off"})`);
   coach?.start();
+  meta?.start();
 });

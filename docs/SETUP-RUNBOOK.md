@@ -71,15 +71,27 @@ Items 1 and 3 are applied by `npm run provision`; verify them and do the rest by
 4. Settings > Onboarding: default space access = Start Here group + the courses in the paywall.
 5. Member profiles: hide location and social link fields (Settings > Members > Profile fields).
 
-## 6. Meta pixel
+## 6. Meta pixel and Conversions API
 
-1. Site > Code snippets > **JavaScript code snippets**: paste `circle/meta-pixel-javascript-snippet.js`
-   with your Pixel ID. Do not add `<script>` tags in this field.
-2. Paywall Tracking tab: done in step 3.
-3. Landing page: follow `circle/landing-page-snippets.md`.
-4. Verify: Meta Events Manager > Test events. Load a community page (PageView), then run a
-   real test checkout (refund it afterwards) and confirm a Purchase event with value 49 arrives
-   with a value and an event_id.
+Brief 4 in `docs/COWORK-BRIEFS.md` runs this through Claude in Chrome.
+
+1. Meta Business Portfolio: a Facebook Page for Learn AI, Events Manager > Connect data sources
+   > Web > a dataset named "Learn AI Web" (its id is the Pixel ID), and under the dataset's
+   Settings > Conversions API, generate an access token.
+2. Business settings > Brand safety and suitability > Domains > add `joinlearnai.com`, pick DNS
+   verification, add the TXT record in Cloudflare DNS, verify. Then Events Manager > Aggregated
+   Event Measurement > configure web events for the domain with Purchase as the top event.
+3. Railway > Variables: `META_PIXEL_ID` = the dataset id, `META_CAPI_ACCESS_TOKEN` = the token,
+   `META_PAYWALL_KEYS` = `Founding Member=founding-member`. The service redeploys and `/healthz`
+   gains a `meta` block.
+4. Circle > Site > Code snippets > **JavaScript code snippets**: paste
+   `circle/meta-pixel-javascript-snippet.js` with the Pixel ID in place of `REPLACE_WITH_PIXEL_ID`.
+   Do not add `<script>` tags in this field.
+5. Circle > Paywalls > Founding Member > Tracking tab: paste
+   `circle/paywall-thank-you-tracking.html` with the Pixel ID filled in. Keep the `<script>` tags.
+6. Verify: Meta Events Manager > Test events. Load a community page (PageView), then run a real
+   test checkout (refund it afterwards) and confirm one Purchase with value 49 arrives from two
+   sources, Browser and Server, deduplicated by event_id.
 
 ## 7. Deploy the service (Coach goes live here)
 
@@ -94,12 +106,13 @@ is true the Anthropic key is missing; if `coach` is null the Circle token is mis
 Coach polls the Ask Coach space itself, so Zap 2 and Zap 3 below are only needed if you turn the
 poller off (`COACH_POLL=0`).
 
-## 8. Zapier
+## 8. Zapier (not needed: both pollers replace it)
 
-Create a Zapier token in Circle (Developers > Tokens > Create token > Type: Zapier) and connect
-the Circle app in Zapier with it.
+The service polls Circle itself for new questions (Coach) and for paid charges (Meta), so no
+Zapier account is required. The zaps below are kept only for a setup that turns the pollers off
+with `COACH_POLL=0` / `META_POLL=0`.
 
-### Zap 1: purchases to Meta Conversions API
+### Zap 1: purchases to Meta Conversions API (only with `META_POLL=0`)
 
 1. Trigger: **Circle > New Member Paid Charge**.
 2. Action: **Webhooks by Zapier > POST**
