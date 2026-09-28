@@ -241,7 +241,7 @@ show the Learn AI landing page with the blue "Join as a Founding Member" button.
 https://www.joinlearnai.com: it must still show the Circle community. Click the join button on
 the landing page and confirm it opens the Founding Member checkout. Screenshot all three.
 
-Block 4, email at the domain. Cloudflare → joinlearnai.com → Email → Email Routing → Get
+Block 4 (superseded by Brief 7; skip). Cloudflare → joinlearnai.com → Email → Email Routing → Get
 started (or Settings if already enabled). Destination addresses → add my Gmail address (ask me
 for it) → STOP while I click the verification email. Then Routing rules → Create address: custom
 address hello, action Send to, destination my Gmail. If Cloudflare asks to add the MX and TXT
@@ -256,10 +256,9 @@ Paywalls: enable only Founding Member. Save. Then open Paywalls → Founding Mem
 price settings and confirm "Allow members to self-cancel subscriptions" is ON; turn it on if not.
 Save.
 
-Block 6, invites. STOP. I will paste a list of affiliate emails later; when I do, go to
-Affiliates → Invite affiliate and invite each one. Skip this block until then.
+Block 6 (cut; the owner invites the first affiliates by hand).
 
-## Brief 6b: Reply from hello@joinlearnai.com inside Gmail
+## Brief 6b (superseded by Brief 7): Reply from hello@joinlearnai.com inside Gmail
 
 Run this after Brief 6 Block 4 (Cloudflare forwards hello@ to the owner's Gmail). Gmail must be
 open and signed in in the same Chrome profile.
@@ -282,3 +281,40 @@ password; if Google asks for it or for a code, STOP.
    same address the message was sent to". Close the app-password tab.
 5. Compose a test email from hello@joinlearnai.com to my Gmail address with the subject "test
    from the domain" and send it. Tell me when it arrives and what the From line shows.
+
+## Brief 7: A real mailbox, hello@joinlearnai.com on Google Workspace
+
+The owner chose a proper mailbox over forwarding. Google Workspace Business Starter, one user,
+about eight dollars a month. Cloudflare Email Routing must stay off (it would fight the MX
+records). The Meta and Railway TXT records at the root stay as they are.
+
+You are creating a Google Workspace mailbox hello@joinlearnai.com for my business Learn AI.
+Work in my signed-in Chrome; dash.cloudflare.com is signed in and owns joinlearnai.com. STOP
+means stop and wait for me to say "done". Never type a password or card number; STOP when a
+form asks for one.
+
+Block 1, sign-up. Open workspace.google.com and start the Business Starter plan (free trial is
+fine). Business name Learn AI, just me, United States. Use my name and my current Gmail as the
+contact. When it asks whether I have a domain, say yes and enter joinlearnai.com. First user:
+username hello. STOP at the password screen; I will set the password and say "done".
+
+Block 2, verify the domain. Google shows a verification TXT record (a value starting with
+google-site-verification=). In Cloudflare → joinlearnai.com → DNS → Records → Add record: Type
+TXT, Name @, Content that value, TTL Auto. Save. Back in Google, click Verify (retry after two
+minutes if it fails). Do not delete any existing TXT records.
+
+Block 3, activate Gmail. Google shows the MX record to add. In Cloudflare DNS, check there are no
+existing MX records for joinlearnai.com (if Cloudflare Email Routing left any, tell me and STOP).
+Add record: Type MX, Name @, Mail server smtp.google.com, Priority 1, TTL Auto. Save. Back in
+Google, click Activate (or Verify) Gmail; retry after a few minutes if it says the record is
+not found yet. STOP if Google asks for billing details; I will enter the card.
+
+Block 4, make the mail trustworthy. In Cloudflare DNS add: Type TXT, Name @, Content
+v=spf1 include:_spf.google.com ~all. Then in admin.google.com → Apps → Google Workspace →
+Gmail → Authenticate email → Generate new record (2048-bit): copy the DKIM host name and value
+and add them in Cloudflare as a TXT record; wait five minutes, then click Start authentication.
+Then add one more TXT: Name _dmarc, Content v=DMARC1; p=none; rua=mailto:hello@joinlearnai.com.
+
+Block 5, check. Open mail.google.com in a new tab (STOP for me to sign in as
+hello@joinlearnai.com). Send a test message from hello@ to my personal Gmail with the subject
+"mailbox test". Tell me when it lands, and screenshot the Cloudflare DNS records list.
