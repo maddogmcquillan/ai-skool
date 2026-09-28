@@ -83,6 +83,9 @@ Items 1 and 3 are applied by `npm run provision`; verify them and do the rest by
 
 ## 7. Deploy the service (Coach goes live here)
 
+Done: the service runs at `https://ai-skool-production.up.railway.app`. Use that as `<service>`
+in the Zapier section below.
+
 Follow `docs/DEPLOY-RAILWAY.md`. In short: create a Circle Admin API token while signed in as
 the Coach account, deploy the repo on Railway with the variables from `.env.example`, and check
 `GET https://<service>/healthz` returns `{"ok":true,"dryRun":false,"coach":{...}}`. If `dryRun`

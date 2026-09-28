@@ -1,5 +1,7 @@
 # Put Coach live on Railway
 
+Live since 2026-09-28 at `https://ai-skool-production.up.railway.app` (health: `/healthz`).
+
 Coach is the poller inside the service in `src/`. Once deployed it watches the Ask Coach space
 through Circle's API and replies within about a minute, to new questions and to every follow-up
 comment, keeping the thread going until a team member steps in. No Zapier is involved.
