@@ -182,14 +182,15 @@ the Page: profile picture fb-profile.png and cover fb-cover.png from ~/Downloads
 file chooser if you cannot pick the file), website https://www.joinlearnai.com, bio "AI classes
 and a safe community for ages 11 to 17. Learn AI by building things." In the Page's settings turn
 on the profanity filter, set "Who can post on the Page" to only the Page, and leave everything
-else at its default. Then Business settings → Accounts → Ad accounts → Add → Create a new ad
-account: name Learn AI, time zone America/New_York, currency USD, for my business. Give me
-(Rory) full control. STOP: I will add the payment method myself, then say "done". Do not run
-Learn AI ads from the petsvet ad account.
+else at its default. Ad account, one of two (the owner decides before pasting this brief):
+(a) new: Business settings → Accounts → Ad accounts → Add → Create a new ad account, name
+Learn AI, time zone America/New_York, currency USD, for my business, full control to me; STOP
+while I add the payment method; or (b) existing: use the petsvet ad account as it is and do
+nothing here.
 
 Block 2, Dataset and token. Events Manager (for the PetsVet Supply portfolio) → Connect data
 sources → Web → name it Learn AI Web → create. Copy the dataset id (also called Pixel ID) and
-tell it to me. In the dataset's Settings, under connected assets, add the Learn AI ad account.
+tell it to me. In the dataset's Settings, under connected assets, add the ad account chosen in Block 1.
 Then Conversions API → Generate access token. Leave the token on screen.
 
 Block 3, Railway. Open the ai-skool service → Variables. Add META_PIXEL_ID = the dataset id,
