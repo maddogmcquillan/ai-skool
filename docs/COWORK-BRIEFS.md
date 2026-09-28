@@ -197,9 +197,7 @@ open https://ai-skool-production.up.railway.app/healthz and confirm it now has a
 Block 4, domain. Business settings → Brand safety and suitability → Domains → Add →
 joinlearnai.com → choose DNS verification. Copy the TXT record value it shows. In Cloudflare →
 joinlearnai.com → DNS → Records → Add record: Type TXT, Name @, Content the value, TTL Auto.
-Save. Back in Meta, click Verify domain (retry after two minutes if it says not found). Then
-Events Manager → the dataset → Aggregated Event Measurement → Configure web events → add
-Purchase as the top-priority event for joinlearnai.com. Save.
+Save. Back in Meta, click Verify domain (retry after two minutes if it says not found).
 
 Block 5, Circle snippets. The two files are in my repo; I will paste their contents to you when
 you ask. Circle → Settings → Site → Code snippets → JavaScript code snippets: paste the first
