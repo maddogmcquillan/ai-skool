@@ -176,21 +176,17 @@ dash.cloudflare.com (owns joinlearnai.com), railway.com (project ai-skool) and C
 owner. Tell me when each block is done. STOP means stop and wait for me to say "done". Never
 write the Conversions API token into your replies; copy it straight into Railway.
 
-Block 1, Page and ad account, all inside the PetsVet Supply business portfolio. Business
-settings → Accounts → Pages → Add → Create a new Page: name Learn AI, category Education. Open
-the Page: profile picture fb-profile.png and cover fb-cover.png from ~/Downloads (STOP at each
-file chooser if you cannot pick the file), website https://www.joinlearnai.com, bio "AI classes
-and a safe community for ages 11 to 17. Learn AI by building things." In the Page's settings turn
-on the profanity filter, set "Who can post on the Page" to only the Page, and leave everything
-else at its default. Ad account, one of two (the owner decides before pasting this brief):
-(a) new: Business settings → Accounts → Ad accounts → Add → Create a new ad account, name
-Learn AI, time zone America/New_York, currency USD, for my business, full control to me; STOP
-while I add the payment method; or (b) existing: use the petsvet ad account as it is and do
-nothing here.
+Block 1, Page, inside the PetsVet Supply business portfolio. Business settings → Accounts →
+Pages → Add → Create a new Page: name Learn AI, category Education. Open the Page: profile
+picture fb-profile.png and cover fb-cover.png from ~/Downloads (STOP at each file chooser if you
+cannot pick the file), website https://www.joinlearnai.com, bio "AI classes and a safe community
+for ages 11 to 17. Learn AI by building things." In the Page's settings turn on the profanity
+filter, set "Who can post on the Page" to only the Page, and leave everything else at its
+default. Ads will run from the existing petsvet ad account; do not create an ad account.
 
 Block 2, Dataset and token. Events Manager (for the PetsVet Supply portfolio) → Connect data
 sources → Web → name it Learn AI Web → create. Copy the dataset id (also called Pixel ID) and
-tell it to me. In the dataset's Settings, under connected assets, add the ad account chosen in Block 1.
+tell it to me. In the dataset's Settings, under connected assets, add the petsvet ad account.
 Then Conversions API → Generate access token. Leave the token on screen.
 
 Block 3, Railway. Open the ai-skool service → Variables. Add META_PIXEL_ID = the dataset id,
