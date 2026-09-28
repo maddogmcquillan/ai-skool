@@ -73,6 +73,9 @@ Items 1 and 3 are applied by `npm run provision`; verify them and do the rest by
 
 ## 6. Meta pixel and Conversions API
 
+Dataset "Learn AI Web", Pixel ID `2050628052248432`, in the PetsVet Supply portfolio. Both
+snippets below already carry it.
+
 Brief 4 in `docs/COWORK-BRIEFS.md` runs this through Claude in Chrome.
 
 1. Meta Business Portfolio: a Facebook Page for Learn AI, Events Manager > Connect data sources

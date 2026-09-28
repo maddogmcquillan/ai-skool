@@ -6,7 +6,7 @@
 // Purchase events are NOT fired here; they come from the paywall thank-you snippet.
 
 (function () {
-  var PIXEL_ID = "REPLACE_WITH_PIXEL_ID";
+  var PIXEL_ID = "2050628052248432";
 
   if (!window.fbq) {
     !(function (f, b, e, v, n, t, s) {
