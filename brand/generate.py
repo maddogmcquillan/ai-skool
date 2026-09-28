@@ -191,6 +191,59 @@ body = f'''<div class="ground" style="width:1640px;height:624px"><div style="pos
   <div style="position:absolute;left:0;bottom:0;width:1640px;height:8px;background:linear-gradient(90deg,{SPARK},{BLUE},{MINT})"></div></div>'''
 render("fb-cover", 1640, 624, page(1640, 624, body))
 
+# ---- Meta ad statics: three angles x three sizes (1:1, 4:5, 9:16). Text stays inside the
+# middle 80% so feed crops and story UI never cover it. ----
+AD_SIZES = {"1x1": (1080, 1080), "4x5": (1080, 1350), "9x16": (1080, 1920)}
+PROJECTS = [("Make a game", MINT), ("Make an app", BLUE), ("Make a website", SPARK), ("Make a chatbot", VIOLET), ("Make an AI agent", CORAL),
+            ("Make a video", BLUE), ("Make a cartoon", MINT), ("Make music", SPARK), ("Make AI art", VIOLET), ("Make a comic", CORAL)]
+
+def ad_frame(w, h, inner, footer_price=True):
+    pad = 88
+    price = (f'<div style="display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:2px solid rgba(255,255,255,.14);padding-top:34px">'
+             f'<div><div class="chip" style="font-size:20px;color:{SPARK}">Founding Member</div>'
+             f'<div class="title" style="font-size:56px;margin-top:6px">$49<span style="font-size:26px;color:{MUTED};font-weight:600"> /month · cancel anytime</span></div></div>'
+             f'<div style="background:{BLUE};color:#fff;font-family:Outfit;font-weight:800;font-size:28px;padding:22px 34px;border-radius:18px;white-space:nowrap">joinlearnai.com</div></div>') if footer_price else ""
+    return f'''<div class="ground" style="width:{w}px;height:{h}px">
+  <div style="position:absolute;left:{w-420}px;top:0;width:420px;height:{h}px;opacity:.55">{nodes_svg(420,h,BLUE,seed=7,count=10)}</div>
+  <div style="position:absolute;inset:0;padding:{pad}px;display:flex;flex-direction:column;justify-content:space-between">
+    <div>{wordmark(40)}</div>
+    <div style="display:flex;flex-direction:column;gap:34px">{inner}</div>
+    {price}
+  </div>
+  <div style="position:absolute;left:0;bottom:0;width:{w}px;height:10px;background:linear-gradient(90deg,{SPARK},{BLUE},{MINT})"></div></div>'''
+
+def ad_list(w, h):
+    chips = "".join(f'<span style="padding:16px 26px;border-radius:999px;border:3px solid {c};color:{INK};font-family:Outfit;font-weight:700;font-size:30px;letter-spacing:.06em;text-transform:uppercase;background:{NAVY2}">{t}</span>' for t, c in PROJECTS)
+    inner = (f'<div class="title" style="font-size:{86 if h>1200 else 76}px">Your kid builds all ten.</div>'
+             f'<div style="display:flex;flex-wrap:wrap;gap:16px;max-width:900px">{chips}</div>'
+             f'<div class="sub" style="font-size:32px;max-width:860px">Online AI classes for ages 11 to 17. No coding needed. A coach answers in minutes.</div>')
+    return ad_frame(w, h, inner)
+
+def ad_path(w, h):
+    col = lambda label, title, items, c: (f'<div style="flex:1;background:{NAVY2};border:2px solid rgba(255,255,255,.1);border-radius:24px;padding:28px">'
+        f'<div class="chip" style="font-size:18px;color:{c}">{label}</div><div class="title" style="font-size:34px;margin-top:10px">{title}</div>'
+        f'<div style="margin-top:14px;display:grid;gap:8px;color:{MUTED};font-size:22px;line-height:1.3">{"".join(f"<div>{i}</div>" for i in items)}</div></div>')
+    cols = (col("Level 1", "How AI works", ["What is AI?", "Generative AI in a nutshell", "ChatGPT power user"], SPARK) +
+            col("Level 2", "Prompts &amp; agents", ["LLMs explained", "The perfect prompt", "What are AI agents?", "Agent fundamentals"], MINT) +
+            col("Level 3", "Make it", ["Game · App · Website", "Chatbot · AI agent", "Video · Cartoon · Music", "AI art · Comic"], VIOLET))
+    direction = "column" if w == h else "column"
+    inner = (f'<div class="title" style="font-size:{80 if h>1200 else 70}px">Seventeen classes, in the right order.</div>'
+             f'<div style="display:flex;flex-direction:{"column" if h>1500 else "row"};gap:18px">{cols}</div>')
+    return ad_frame(w, h, inner)
+
+def ad_trust(w, h):
+    facts = ["No private messaging between members", "An adult reads every question thread", "Parent consent at signup", "No personal details, ever"]
+    rows = "".join(f'<div style="display:flex;gap:18px;align-items:flex-start;font-size:34px;line-height:1.25"><span style="flex:0 0 auto;width:44px;height:44px;border-radius:12px;background:{MINT};display:inline-grid;place-items:center;margin-top:2px"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{NAVY}" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span>{f}</span></div>' for f in facts)
+    inner = (f'<div class="chip" style="font-size:22px;color:{MINT}">Built for parents to trust</div>'
+             f'<div class="title" style="font-size:{82 if h>1200 else 72}px;margin-top:-10px">An AI program built around kids, not adapted to them.</div>'
+             f'<div style="display:grid;gap:22px;max-width:880px">{rows}</div>')
+    return ad_frame(w, h, inner)
+
+for key, (w, h) in AD_SIZES.items():
+    render(f"ad-list-{key}", w, h, page(w, h, ad_list(w, h)))
+    render(f"ad-path-{key}", w, h, page(w, h, ad_path(w, h)))
+    render(f"ad-trust-{key}", w, h, page(w, h, ad_trust(w, h)))
+
 # ---- Feed / event welcome banner 1680x600 ----
 body = f'''<div class="ground" style="width:1680px;height:600px">{nodes_svg(1680,600,SPARK,seed=9,count=16)}
   <div style="position:absolute;left:84px;top:0;height:600px;display:flex;flex-direction:column;justify-content:center;gap:24px;max-width:1000px">

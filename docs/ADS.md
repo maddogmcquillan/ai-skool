@@ -49,6 +49,13 @@ winner by 20% every two days. Add a StartTrial or lead objective only if a free 
 - Cancel anytime. No member messaging. An adult reads every thread.
 - 17 classes, 10 projects, weekly live build-along.
 
+## Ready-made statics
+
+`brand/generate.py` renders three static ads in 1:1, 4:5 and 9:16 (`brand/assets/ad-list-*`,
+`ad-path-*`, `ad-trust-*`): the project list, the three-level path, and the parent-trust angle.
+Upload all three sizes of each so Meta picks the right one per placement. Regenerate after any
+price or copy change.
+
 ## Creative briefs (produce three formats per angle: 1:1, 4:5, 9:16)
 
 1. **Project reel, 15 seconds, vertical.** Screen recordings of the ten projects being made, one

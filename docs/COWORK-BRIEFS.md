@@ -259,3 +259,26 @@ Save.
 Block 6, invites. STOP. I will paste a list of affiliate emails later; when I do, go to
 Affiliates → Invite affiliate and invite each one. Skip this block until then.
 
+## Brief 6b: Reply from hello@joinlearnai.com inside Gmail
+
+Run this after Brief 6 Block 4 (Cloudflare forwards hello@ to the owner's Gmail). Gmail must be
+open and signed in in the same Chrome profile.
+
+You are setting up Gmail so I can send email as hello@joinlearnai.com. Work in my signed-in
+Chrome with Gmail open. STOP means stop and wait for me to say "done". Never type my Google
+password; if Google asks for it or for a code, STOP.
+
+1. Open myaccount.google.com → Security. If 2-Step Verification is off, STOP and tell me; I will
+   turn it on myself. If it is on, open App passwords (search the page for it), create one named
+   Gmail send-as, and leave the 16-character password on screen.
+2. In Gmail: Settings (gear) → See all settings → Accounts and Import → "Send mail as" → Add
+   another email address. Name: Learn AI. Email: hello@joinlearnai.com. Keep "Treat as an alias"
+   checked. Next. SMTP server smtp.gmail.com, port 587, username my full Gmail address, password
+   the app password from step 1, TLS. Add account.
+3. Gmail sends a confirmation code to hello@joinlearnai.com, which Cloudflare forwards into this
+   same inbox. Open the inbox, find the message from Gmail Team, copy the code, paste it into the
+   confirmation box, verify.
+4. Back in "Send mail as", set hello@joinlearnai.com as the default, and set "Reply from the
+   same address the message was sent to". Close the app-password tab.
+5. Compose a test email from hello@joinlearnai.com to my Gmail address with the subject "test
+   from the domain" and send it. Tell me when it arrives and what the From line shows.
