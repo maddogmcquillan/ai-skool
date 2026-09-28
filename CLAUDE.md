@@ -80,6 +80,13 @@ The community's public name is **Learn AI** (the repo name "ai-skool" is histori
 - Coach's knowledge is the `knowledge/` folder, baked into the image. After editing it, push
   and let Railway redeploy (or call `POST /admin/reload-knowledge` with the hook secret).
 
+## When asked to change the website or the ads
+
+- The landing page is `site/index.html`; `site/parents.html`, `site/terms.html` and
+  `site/privacy.html` are drafts pending a lawyer. `src/site.ts` serves them and `brand/assets/`
+  from the same Railway service. Edit, run `npm test`, push; Railway redeploys.
+- Ad copy, campaign structure and creative briefs are in `docs/ADS.md`.
+
 ## When asked to apply or refresh branding
 
 1. Requires `CIRCLE_ADMIN_TOKEN` and the files in `brand/assets/`.

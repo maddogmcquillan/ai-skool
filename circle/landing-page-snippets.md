@@ -16,11 +16,14 @@ Circle. Fire `ViewContent` on load and `InitiateCheckout` when someone clicks th
 </script>
 ```
 
-The community lives at `www.joinlearnai.com` (Circle needs the www form for a root domain; the
-bare `joinlearnai.com` redirects to it). Put the landing page either in Circle's own page builder
-on the same domain, or on a subdomain such as `go.joinlearnai.com`. The pixel's `_fbp` and `_fbc`
-cookies are set on `.joinlearnai.com`, so they are shared by every subdomain and carry over to the
-Circle checkout, and Meta can stitch the click to the purchase.
+The community lives at `www.joinlearnai.com`. The landing page is `site/index.html`, served by
+the same service as Coach at `/` (plus `/parents`, `/terms`, `/privacy` and `/assets/*`), and is
+meant to sit on the bare domain `joinlearnai.com`: in Cloudflare, replace the root's redirect
+record with a CNAME to the Railway domain (proxied) and add `joinlearnai.com` as a custom domain
+on the Railway service. The pixel's `_fbp` and `_fbc` cookies are set on `.joinlearnai.com`, so
+they carry over to the Circle checkout on `www`, and Meta can stitch the click to the purchase.
+The pixel and the InitiateCheckout event are already in the page; the affiliate script has a
+marked slot in its `<head>`.
 
 ## 2. Circle affiliate "promotional link" tracking script
 

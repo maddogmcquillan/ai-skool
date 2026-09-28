@@ -6,6 +6,7 @@ import { KnowledgeBase } from "./bot/knowledge.js";
 import { isBotAuthor } from "./bot/policy.js";
 import { composeReply } from "./bot/respond.js";
 import { createCircleComment } from "./circle.js";
+import { mountSite } from "./site.js";
 
 export interface ServerConfig {
   hookSecret: string;
@@ -67,12 +68,17 @@ export interface AppDeps {
   coachStatus?: () => CoachLoopStatus | undefined;
   /** Reported on /healthz when the purchase-to-Meta poller is running. */
   metaStatus?: () => ChargeLoopStatus | undefined;
+  /** Where the landing page and brand images live; defaults suit the repo layout. */
+  siteDir?: string;
+  assetsDir?: string;
 }
 
 export async function createApp(cfg: ServerConfig, deps: AppDeps = {}) {
   const fetchImpl = deps.fetchImpl ?? fetch;
   let kb = deps.kb ?? (await KnowledgeBase.fromDir(cfg.knowledgeDir));
   const app = new Hono();
+
+  mountSite(app, { siteDir: deps.siteDir, assetsDir: deps.assetsDir });
 
   app.get("/healthz", (c) =>
     c.json({ ok: true, dryRun: cfg.dryRun, knowledgeChunks: kb.chunks.length, coach: deps.coachStatus?.() ?? null, meta: deps.metaStatus?.() ?? null }),

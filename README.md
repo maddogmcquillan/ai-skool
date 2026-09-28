@@ -53,6 +53,12 @@ npm run dev               # http://localhost:8787/healthz
 Without `ANTHROPIC_API_KEY` the service runs in dry-run mode: it validates payloads, retrieves
 knowledge and builds Meta events, but calls neither Claude nor Meta. Useful while building Zaps.
 
+## The website
+
+`site/` holds the parent-facing landing page and its parents, terms and privacy pages; the
+service serves them at `/`, `/parents`, `/terms` and `/privacy`, with brand images under
+`/assets/`. `docs/ADS.md` holds the Meta campaign structure, ad copy and creative briefs.
+
 ## Deploy
 
 `docs/DEPLOY-RAILWAY.md` is the click-by-click guide. `Dockerfile` builds a production image;

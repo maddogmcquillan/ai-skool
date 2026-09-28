@@ -12,5 +12,7 @@ COPY package*.json ./
 RUN npm install --omit=dev --no-audit --no-fund
 COPY --from=build /app/dist ./dist
 COPY knowledge ./knowledge
+COPY site ./site
+COPY brand/assets ./brand/assets
 EXPOSE 8787
 CMD ["node", "dist/src/index.js"]

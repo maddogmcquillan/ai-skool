@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Learn AI</title>
+<meta name="description" content="An online after-school program where kids aged 11 to 17 learn how AI works and build real things with it. Seventeen video classes, ten projects, a coach that answers in minutes, and a community parents can trust.">
+<meta property="og:title" content="Learn AI: AI classes for ages 11 to 17">
+<meta property="og:description" content="Seventeen video classes, ten real projects, a coach that answers in minutes, and a community parents can trust. $49 a month, cancel anytime.">
+<meta property="og:image" content="https://joinlearnai.com/assets/og-image.png">
+<meta property="og:url" content="https://joinlearnai.com/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/community-icon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --navy:#0B1220; --navy2:#111C33; --blue:#3B7BFF; --spark:#FFC245; --mint:#4FD1B3; --coral:#FF7A59; --violet:#9B7BFF;
+    --ground:#F5F7FB; --surface:#FFFFFF; --ink:#141A2A; --muted:#5B6578; --line:#DDE3EE; --ink-on-dark:#F4F7FF; --muted-on-dark:#9FB0D0;
+    --display:"Outfit",system-ui,sans-serif; --body:"Manrope",system-ui,sans-serif;
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { color-scheme:dark; --ground:#0B1220; --surface:#121A2E; --ink:#EEF2FA; --muted:#A3AFC6; --line:#25304A; } }
+  :root[data-theme="dark"] { color-scheme:dark; --ground:#0B1220; --surface:#121A2E; --ink:#EEF2FA; --muted:#A3AFC6; --line:#25304A; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--ground); color:var(--ink); font-family:var(--body); font-size:17px; line-height:1.6; }
+  a { color:inherit; }
+  img { max-width:100%; }
+  .wrap { max-width:1080px; margin:0 auto; padding-inline:20px; }
+  h1,h2,h3 { font-family:var(--display); line-height:1.08; letter-spacing:-0.02em; text-wrap:balance; margin:0; }
+  h2 { font-size:clamp(28px,4vw,40px); font-weight:800; }
+  h3 { font-size:20px; font-weight:700; }
+  p { margin:0; }
+  .eyebrow { font-family:var(--display); font-weight:700; font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--blue); }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:16px 28px; border-radius:14px; background:var(--blue); color:#fff; font-family:var(--display); font-weight:700; font-size:18px; text-decoration:none; border:0; cursor:pointer; }
+  .btn:hover { filter:brightness(1.08); }
+  .btn:focus-visible { outline:3px solid var(--spark); outline-offset:3px; }
+  .btn.ghost { background:transparent; border:2px solid var(--line); color:var(--ink); }
+  section { padding-block:72px; }
+  .lede { font-size:19px; color:var(--muted); max-width:62ch; }
+
+  /* Hero */
+  header.hero { background:radial-gradient(1200px 600px at 20% 0%,var(--navy2),var(--navy) 70%); color:var(--ink-on-dark); padding-block:28px 80px; position:relative; overflow:hidden; }
+  .nav { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:64px; }
+  .nav a.login { color:var(--muted-on-dark); text-decoration:none; font-weight:600; font-size:15px; }
+  .hero-grid { display:grid; grid-template-columns:1.25fr 1fr; gap:48px; align-items:center; }
+  .hero h1 { font-size:clamp(40px,6.4vw,74px); font-weight:800; }
+  .hero h1 em { font-style:normal; color:var(--spark); }
+  .hero .lede { color:var(--muted-on-dark); margin-top:20px; }
+  .hero-cta { display:flex; flex-wrap:wrap; gap:14px; align-items:center; margin-top:32px; }
+  .hero-note { color:var(--muted-on-dark); font-size:15px; margin-top:16px; }
+  .chipcloud { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
+  .chip { padding:10px 16px; border-radius:999px; border:2px solid var(--c,var(--blue)); color:var(--ink-on-dark); font-family:var(--display); font-weight:700; font-size:14px; letter-spacing:.06em; text-transform:uppercase; background:rgba(255,255,255,.04); }
+  .hero svg.nodes { position:absolute; right:-40px; top:0; height:100%; opacity:.5; pointer-events:none; }
+
+  /* Sections */
+  .cols3 { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .cols2 { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .card { background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:26px; }
+  .card .num { font-family:var(--display); font-weight:800; font-size:14px; letter-spacing:.1em; color:var(--muted); }
+  .lessons { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:8px; color:var(--muted); font-size:15px; }
+  .lessons li strong { color:var(--ink); font-weight:600; }
+  .steps { display:grid; grid-template-columns:repeat(5,1fr); gap:16px; counter-reset:step; }
+  .step { position:relative; padding-top:14px; }
+  .step::before { counter-increment:step; content:counter(step); font-family:var(--display); font-weight:800; font-size:32px; color:var(--blue); display:block; line-height:1; margin-bottom:8px; }
+  .step p { color:var(--muted); font-size:15px; }
+  .trust { background:var(--navy); color:var(--ink-on-dark); }
+  .trust h2 { color:#fff; }
+  .trust .lede { color:var(--muted-on-dark); }
+  .trust ul { list-style:none; padding:0; margin:28px 0 0; display:grid; grid-template-columns:1fr 1fr; gap:14px 28px; }
+  .trust li { display:grid; grid-template-columns:28px 1fr; gap:12px; align-items:start; font-size:16px; }
+  .trust li svg { margin-top:3px; }
+  .creators { display:flex; flex-wrap:wrap; gap:10px 18px; color:var(--muted); font-size:15px; margin-top:16px; }
+  .creators span { white-space:nowrap; }
+  .price { background:var(--surface); border:2px solid var(--blue); border-radius:22px; padding:34px; display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:center; }
+  .price .amount { font-family:var(--display); font-weight:800; font-size:64px; line-height:1; }
+  .price .amount small { font-size:20px; color:var(--muted); font-weight:600; }
+  .price ul { padding:0; margin:0; list-style:none; display:grid; gap:10px; font-size:15px; }
+  .price li { display:grid; grid-template-columns:22px 1fr; gap:10px; align-items:start; }
+  .founding { display:inline-block; background:var(--spark); color:var(--navy); font-family:var(--display); font-weight:800; font-size:12px; letter-spacing:.12em; text-transform:uppercase; padding:6px 12px; border-radius:999px; }
+  details { border-top:1px solid var(--line); padding:18px 0; }
+  details:last-of-type { border-bottom:1px solid var(--line); }
+  summary { cursor:pointer; font-family:var(--display); font-weight:700; font-size:18px; list-style:none; display:flex; justify-content:space-between; gap:16px; }
+  summary::-webkit-details-marker { display:none; }
+  summary::after { content:"+"; color:var(--blue); font-weight:800; }
+  details[open] summary::after { content:"–"; }
+  details p { color:var(--muted); margin-top:10px; max-width:70ch; }
+  footer { padding-block:40px 60px; color:var(--muted); font-size:14px; border-top:1px solid var(--line); }
+  footer .row { display:flex; flex-wrap:wrap; gap:12px 24px; justify-content:space-between; align-items:center; }
+  footer nav { display:flex; flex-wrap:wrap; gap:18px; }
+  footer a { text-decoration:none; }
+  footer a:hover { text-decoration:underline; }
+  .logo { display:inline-flex; align-items:center; gap:10px; font-family:var(--display); font-weight:800; font-size:24px; color:inherit; text-decoration:none; }
+  .logo .badge { width:34px; height:34px; border-radius:10px; background:var(--blue); display:inline-grid; place-items:center; }
+  .logo .ai { color:var(--blue); }
+  @media (max-width:820px) {
+    section { padding-block:52px; }
+    .hero-grid, .cols2, .price, .trust ul { grid-template-columns:1fr; }
+    .cols3 { grid-template-columns:1fr; }
+    .steps { grid-template-columns:1fr 1fr; }
+    .nav { margin-bottom:40px; }
+    .hero svg.nodes { display:none; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .btn { transition:filter .15s ease, transform .15s ease; }
+    .btn:hover { transform:translateY(-1px); }
+  }
+</style>
+<!-- Meta pixel: PageView on this page, with InitiateCheckout on the buy buttons. -->
+<script>
+(function () {
+  var PIXEL_ID = "2050628052248432";
+  !(function (f, b, e, v, n, t, s) {
+    if (f.fbq) return;
+    n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+    if (!f._fbq) f._fbq = n;
+    n.push = n; n.loaded = !0; n.version = "2.0"; n.queue = [];
+    t = b.createElement(e); t.async = !0; t.src = v;
+    s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+  })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+  window.fbq("init", PIXEL_ID);
+  window.fbq("track", "PageView");
+  document.addEventListener("click", function (ev) {
+    var a = ev.target.closest && ev.target.closest("a[data-checkout]");
+    if (a && window.fbq) window.fbq("track", "InitiateCheckout", { content_name: "founding-member", value: 49, currency: "USD" });
+  });
+})();
+</script>
+<!-- Circle affiliate promotional-link script goes here once affiliates are switched on (Settings > Payments > Affiliates settings). -->
+</head>
+<body>
+<header class="hero">
+  <svg class="nodes" width="640" height="720" viewBox="0 0 640 720" fill="none" aria-hidden="true">
+    <g stroke="#3B7BFF" stroke-opacity=".45" stroke-width="2"><path d="M80 640 L180 520 L260 560 L330 420 L420 380 L470 260 L560 200 L610 90"/></g>
+    <g><circle cx="80" cy="640" r="7" fill="#3B7BFF"/><circle cx="180" cy="520" r="4" fill="#F4F7FF"/><circle cx="260" cy="560" r="4" fill="#F4F7FF"/><circle cx="330" cy="420" r="7" fill="#3B7BFF"/><circle cx="420" cy="380" r="4" fill="#F4F7FF"/><circle cx="470" cy="260" r="4" fill="#F4F7FF"/><circle cx="560" cy="200" r="7" fill="#3B7BFF"/><circle cx="610" cy="90" r="4" fill="#F4F7FF"/></g>
+  </svg>
+  <div class="wrap">
+    <div class="nav">
+      <a class="logo" href="/" style="color:#fff"><span class="badge"><svg width="20" height="20" viewBox="0 0 100 100"><path d="M50 14l8 22 22 8-22 8-8 22-8-22-22-8 22-8z" fill="#FFC245"/></svg></span>Learn <span class="ai">AI</span></a>
+      <a class="login" href="https://www.joinlearnai.com/">Member sign in</a>
+    </div>
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow" style="color:var(--spark)">Ages 11 to 17 · Online · Founding Member $49/month</p>
+        <h1 style="margin-top:14px">Your kid can build real things with AI. <em>Starting this week.</em></h1>
+        <p class="lede">Learn AI is an online after-school program. Seventeen video classes, ten real projects, a coach that answers questions in minutes, and a community you can trust.</p>
+        <div class="hero-cta">
+          <a class="btn" data-checkout href="https://www.joinlearnai.com/checkout/founding-member">Join as a Founding Member</a>
+          <a class="btn ghost" href="#inside" style="color:#fff;border-color:rgba(255,255,255,.35)">See what's inside</a>
+        </div>
+        <p class="hero-note">Cancel anytime. No messaging between members. An adult on our team reads every question thread.</p>
+      </div>
+      <div class="chipcloud" aria-label="Projects students make">
+        <span class="chip" style="--c:var(--mint)">Make a game</span><span class="chip">Make an app</span><span class="chip" style="--c:var(--spark)">Make a website</span><span class="chip" style="--c:var(--violet)">Make a chatbot</span><span class="chip" style="--c:var(--coral)">Make an AI agent</span><span class="chip">Make a video</span><span class="chip" style="--c:var(--mint)">Make a cartoon</span><span class="chip" style="--c:var(--spark)">Make music</span><span class="chip" style="--c:var(--violet)">Make AI art</span><span class="chip" style="--c:var(--coral)">Make a comic</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="inside">
+  <div class="wrap">
+    <p class="eyebrow">The classroom</p>
+    <h2 style="margin-top:10px">Three levels. Seventeen classes. Ten things they actually make.</h2>
+    <p class="lede" style="margin-top:14px">Every class is a hand-picked video from an expert creator, with our notes and a project. Beginner and Intermediate go in order. Project classes go in any order.</p>
+    <div class="cols3" style="margin-top:36px">
+      <div class="card">
+        <div class="num">LEVEL 1 · BEGINNER AI</div>
+        <h3 style="margin-top:8px">How AI actually works</h3>
+        <ul class="lessons">
+          <li><strong>What is AI?</strong> · Simplilearn</li>
+          <li><strong>Generative AI in a Nutshell</strong> · Henrik Kniberg</li>
+          <li><strong>ChatGPT Power User in 30 Minutes</strong> · Santrel Media</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="num">LEVEL 2 · INTERMEDIATE AI</div>
+        <h3 style="margin-top:8px">Prompts, models and agents</h3>
+        <ul class="lessons">
+          <li><strong>Large Language Models, Explained Briefly</strong> · 3Blue1Brown</li>
+          <li><strong>The Perfect ChatGPT Prompt Formula</strong> · Jeff Su</li>
+          <li><strong>What are AI Agents?</strong> · IBM Technology</li>
+          <li><strong>AI Agents Fundamentals in 21 Minutes</strong> · Tina Huang</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="num">LEVEL 3 · PROJECT CLASSES</div>
+        <h3 style="margin-top:8px">Make it with AI</h3>
+        <ul class="lessons">
+          <li><strong>A game, an app, a website</strong> · no code needed</li>
+          <li><strong>A chatbot and an AI agent</strong> · that do real tasks</li>
+          <li><strong>A video, a cartoon, a song</strong> · from a prompt</li>
+          <li><strong>AI art and a full comic</strong> · with consistent characters</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <p class="eyebrow">A week at Learn AI</p>
+    <h2 style="margin-top:10px">About two hours a week, on their own schedule.</h2>
+    <div class="steps" style="margin-top:32px">
+      <div class="step"><h3>Watch a class</h3><p>Twenty to thirty minutes. Pause, rewind, rewatch.</p></div>
+      <div class="step"><h3>Build the project</h3><p>Every class ends with something to make, using free tools.</p></div>
+      <div class="step"><h3>Ask when stuck</h3><p>Post in Ask Coach. Answers come in minutes, any day.</p></div>
+      <div class="step"><h3>Show it off</h3><p>Share it in Show and Tell and see what other kids made.</p></div>
+      <div class="step"><h3>Join the live build</h3><p>A weekly live build-along and Q&amp;A with the team.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap">
+    <p class="eyebrow" style="color:var(--mint)">Built for parents to trust</p>
+    <h2 style="margin-top:10px">A community designed around kids, not adapted to them.</h2>
+    <p class="lede" style="margin-top:14px">We run this the way we would want a program for our own kids run. Here is exactly how.</p>
+    <ul>
+      <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4FD1B3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><strong>No private messaging.</strong> Members cannot message each other. Everything happens in public spaces the team can see.</span></li>
+      <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4FD1B3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><strong>A person reads every thread.</strong> Coach, our AI helper, answers first. An adult on the team reviews every conversation and steps in when needed.</span></li>
+      <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4FD1B3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Parent consent at signup.</strong> We ask for a parent or guardian email and consent before a student can join.</span></li>
+      <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4FD1B3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><strong>No personal details, ever.</strong> Rules and the AI helper both refuse full names, schools, addresses, phone numbers and social handles.</span></li>
+      <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4FD1B3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><strong>A Parent Hub.</strong> How the community runs, what the classes cover, and how to help at home.</span></li>
+      <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4FD1B3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Humans handle money.</strong> Billing, refunds and account questions always go to a person, never to the AI.</span></li>
+    </ul>
+    <p style="margin-top:28px"><a href="/parents" style="color:var(--mint);font-weight:700">Read the full page for parents</a></p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Who teaches</p>
+    <h2 style="margin-top:10px">The best explainers on the internet, in the right order.</h2>
+    <p class="lede" style="margin-top:14px">We licensed the clearest classes from creators who teach AI for a living, arranged them into a path, and added the projects, the notes and the coach. Each class credits its creator.</p>
+    <div class="creators">
+      <span>Simplilearn</span><span>Henrik Kniberg</span><span>Santrel Media</span><span>3Blue1Brown</span><span>Jeff Su</span><span>IBM Technology</span><span>Tina Huang</span><span>Jagger Bellagarda</span><span>Tech With Tim</span><span>Tyler Moore</span><span>Kevin Stratvert</span><span>Level up with Blessing</span><span>Stellar Media</span><span>Technically Trent</span><span>Tao Prompts</span>
+    </div>
+  </div>
+</section>
+
+<section id="join" style="padding-top:0">
+  <div class="wrap">
+    <div class="price">
+      <div>
+        <span class="founding">Founding Member</span>
+        <div class="amount" style="margin-top:14px">$49 <small>/ month</small></div>
+        <p class="lede" style="margin-top:10px;font-size:16px">One student. Every class, every project, Ask Coach, live sessions and the community. Founding rate locked in for as long as you stay a member. Cancel anytime.</p>
+        <p style="margin-top:22px"><a class="btn" data-checkout href="https://www.joinlearnai.com/checkout/founding-member">Join now</a></p>
+      </div>
+      <ul>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>17 video classes across three levels</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>10 project classes: game, app, website, chatbot, agent, video, cartoon, music, art, comic</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Ask Coach: answers in minutes, a human reads every thread</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Weekly live build-along and Q&amp;A</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Show and Tell, Course Requests, Parent Hub</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>New classes added by member vote</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Adult courses included for the grown-ups</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <p class="eyebrow">Questions parents ask</p>
+    <h2 style="margin-top:10px;margin-bottom:24px">The short answers.</h2>
+    <details><summary>What ages is this for?</summary><p>Built for 11 to 17. Younger kids can do it with a parent alongside. Adults get their own courses in the same membership.</p></details>
+    <details><summary>Does my kid need to know how to code?</summary><p>No. Every project uses tools that let you build by describing what you want. Kids who like code can go deeper, but nothing requires it.</p></details>
+    <details><summary>What do they need?</summary><p>A laptop or Chromebook and an internet connection. Most tools have a free tier. One art class uses Midjourney, which is paid, and the video class may need a paid ChatGPT plan. We say so in the class before anyone signs up for anything.</p></details>
+    <details><summary>Is it live or self-paced?</summary><p>Self-paced classes, plus a weekly live build-along and Q&amp;A. Questions get answered any day in Ask Coach.</p></details>
+    <details><summary>How much time does it take?</summary><p>About two hours a week is a good pace: one class and its project. Faster or slower is fine.</p></details>
+    <details><summary>Who is Coach?</summary><p>Coach is an AI helper that answers questions inside the community, grounded in the class material. It never asks for personal details and it hands anything about billing, accounts or safety to a person on our team. A human reviews every thread.</p></details>
+    <details><summary>How do I cancel?</summary><p>From your account settings, in two clicks, any time. You keep access until the end of the billing period. Billing questions go to a person; email us and we will sort it out.</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap row">
+    <a class="logo" href="/" style="font-size:20px"><span class="badge" style="width:28px;height:28px;border-radius:8px"><svg width="16" height="16" viewBox="0 0 100 100"><path d="M50 14l8 22 22 8-22 8-8 22-8-22-22-8 22-8z" fill="#FFC245"/></svg></span>Learn <span class="ai">AI</span></a>
+    <nav><a href="/parents">For parents</a><a href="/terms">Terms</a><a href="/privacy">Privacy</a><a href="https://www.joinlearnai.com/">Member sign in</a></nav>
+    <span>hello@joinlearnai.com · © 2026 Learn AI</span>
+  </div>
+</footer>
+</body>
+</html>
