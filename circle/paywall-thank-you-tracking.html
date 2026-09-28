@@ -16,7 +16,10 @@
   var CURRENCY = "USD";
 
   var email = "{member_email}";
-  var paywallKey = "{paywall_internal_name}";
+  // The paywall key is fixed per paywall (this snippet lives on one paywall), so it cannot go
+  // blank when the Internal name field is empty. It must equal the server's key for this
+  // paywall: META_PAYWALL_KEYS maps the display name "Founding Member" to "founding-member".
+  var paywallKey = "founding-member";
   var amountPaid = parseFloat(String("{amount_paid}").replace(/[^0-9.]/g, "")) || 0;
   var priceAmount = parseFloat(String("{paywall_price_amount}").replace(/[^0-9.]/g, "")) || 0;
   var trialDays = parseInt(String("{paywall_trial_days}").replace(/[^0-9]/g, ""), 10) || 0;
