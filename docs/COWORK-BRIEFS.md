@@ -216,3 +216,46 @@ Paid Charge → Webhooks by Zapier POST to [SERVICE URL]/hooks/circle/charge wit
 X-Hook-Secret) and Zap 2 (New Post in Ask Coach → Webhooks Custom Request to
 [SERVICE URL]/hooks/circle/question → Circle Create Comment as [COACH EMAIL]). Turn both on and
 run a test of each, showing me the results.
+
+## Brief 6: Website on the bare domain, email at the domain, affiliate settings
+
+You are finishing three things for my membership Learn AI. Work in my signed-in Chrome. Tabs I
+have signed in: railway.com (project ai-skool), dash.cloudflare.com (owns joinlearnai.com) and
+Circle at www.joinlearnai.com as the owner. Tell me when each block is done. STOP means stop and
+wait for me to say "done".
+
+Block 1, Railway. Open the ai-skool service → Settings → Networking → Custom Domain → add
+joinlearnai.com. Railway shows a CNAME target (a hostname ending in railway.app). Copy it and
+tell it to me.
+
+Block 2, Cloudflare DNS. Open joinlearnai.com → DNS → Records. Delete the A record named @ that
+points to 192.0.2.1 (this one deletion is allowed; touch nothing else). Add record: Type CNAME,
+Name @, Target the Railway hostname from Block 1, Proxy status ON. Save. Then SSL/TLS → Overview:
+make sure the mode is Full (not Flexible). Then Rules → Redirect Rules: find the rule named
+"root to www" and delete it (or disable it), otherwise the bare domain keeps redirecting to
+Circle. Do not touch the www CNAME.
+
+Block 3, check. Back in Railway, wait until the custom domain shows as ready with a certificate
+(reload every minute, up to ten minutes). Then open https://joinlearnai.com in a new tab: it must
+show the Learn AI landing page with the blue "Join as a Founding Member" button. Open
+https://www.joinlearnai.com: it must still show the Circle community. Click the join button on
+the landing page and confirm it opens the Founding Member checkout. Screenshot all three.
+
+Block 4, email at the domain. Cloudflare → joinlearnai.com → Email → Email Routing → Get
+started (or Settings if already enabled). Destination addresses → add my Gmail address (ask me
+for it) → STOP while I click the verification email. Then Routing rules → Create address: custom
+address hello, action Send to, destination my Gmail. If Cloudflare asks to add the MX and TXT
+records for routing, accept. Confirm the rule shows Active.
+
+Block 5, Circle affiliates. Community name → Settings → Paywalls (or Payments) → Affiliates →
+Settings. Turn affiliates on. Reward type: Fixed amount. Commission: 49 (dollars). Turn on
+"Limit number of recurring commissions" and set it to 1. Pending commission period: 30 days.
+Payout method: PayPal. Promotional link: ON, URL https://joinlearnai.com. Copy the tracking
+script Circle shows for the promotional link and paste it to me in full (it is not a secret).
+Paywalls: enable only Founding Member. Save. Then open Paywalls → Founding Member → the monthly
+price settings and confirm "Allow members to self-cancel subscriptions" is ON; turn it on if not.
+Save.
+
+Block 6, invites. STOP. I will paste a list of affiliate emails later; when I do, go to
+Affiliates → Invite affiliate and invite each one. Skip this block until then.
+

@@ -165,13 +165,13 @@ written by the bot account and by admins.
 
 Settings > Payments > Affiliates settings:
 
-1. Reward type: **Fixed amount**. Commission: your bounty (decision A2).
+1. Reward type: **Fixed amount**. Commission: **$49**, the whole first month (decided 2026-09-28).
 2. **Limit number of recurring commissions: ON, value 1.** This is what makes it a first-sale
    bounty instead of a recurring split.
 3. Pending commission length: 30 days (covers refunds).
-4. Payout method: PayPal or Wise.
-5. Promotional link: ON. URL = your landing page. Copy the tracking script into the landing page
-   `<head>` (see `circle/landing-page-snippets.md`).
+4. Payout method: **PayPal** (decided). Pay affiliates monthly from a PayPal Business account.
+5. Promotional link: ON. URL = https://joinlearnai.com. Copy the tracking script into the marked
+   slot in `site/index.html` `<head>` and push (see `circle/landing-page-snippets.md`).
 6. Paywalls: enable only `founding-member`.
 7. Payments > Affiliates > Invite affiliate: enter each marketer's email. They get a member
    account (default space access only) plus an Affiliate dashboard with their links.

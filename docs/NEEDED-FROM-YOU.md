@@ -4,7 +4,14 @@ Everything in this repo is built and tested. These are the pieces only you can d
 they unblock the next step. Items marked **(secret)** go into the deployed service's environment
 variables or into Circle/Zapier directly. Never paste them into chat.
 
-## A. Decisions (5 minutes, reply in chat)
+## A. Decisions (resolved 2026-09-28)
+
+Name Learn AI at joinlearnai.com; affiliate bounty $49 (the whole first month), paid by PayPal;
+one Founding Member paywall at $49/month, no trial; bot named Coach; terms governed by Wyoming
+law; charges are for the current month and not refunded (stated in the terms only, never in
+marketing); no fixed data-retention period stated.
+
+Original questions, kept for the record:
 
 1. **Community name and URL.** Working name is "AI Skool". Confirm or change. Pick the subdomain
    for Circle, for example `www.joinlearnai.com`, and tell me which root domain the landing page
