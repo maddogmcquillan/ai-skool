@@ -176,13 +176,21 @@ dash.cloudflare.com (owns joinlearnai.com), railway.com (project ai-skool) and C
 owner. Tell me when each block is done. STOP means stop and wait for me to say "done". Never
 write the Conversions API token into your replies; copy it straight into Railway.
 
-Block 1, Page. In the Business Portfolio, check Pages. If a page named Learn AI exists, use it.
-Otherwise STOP and ask me whether to reuse my old business page (rename it Learn AI, category
-Education) or create a new Page named Learn AI, category Education. Do what I say.
+Block 1, Page and ad account, all inside the PetsVet Supply business portfolio. Business
+settings → Accounts → Pages → Add → Create a new Page: name Learn AI, category Education. Open
+the Page: profile picture fb-profile.png and cover fb-cover.png from ~/Downloads (STOP at each
+file chooser if you cannot pick the file), website https://www.joinlearnai.com, bio "AI classes
+and a safe community for ages 11 to 17. Learn AI by building things." In the Page's settings turn
+on the profanity filter, set "Who can post on the Page" to only the Page, and leave everything
+else at its default. Then Business settings → Accounts → Ad accounts → Add → Create a new ad
+account: name Learn AI, time zone America/New_York, currency USD, for my business. Give me
+(Rory) full control. STOP: I will add the payment method myself, then say "done". Do not run
+Learn AI ads from the petsvet ad account.
 
-Block 2, Dataset and token. Events Manager → Connect data sources → Web → name it Learn AI Web →
-create. Copy the dataset id (also called Pixel ID) and tell it to me. Open the dataset's Settings
-→ Conversions API → Generate access token. Leave the token on screen.
+Block 2, Dataset and token. Events Manager (for the PetsVet Supply portfolio) → Connect data
+sources → Web → name it Learn AI Web → create. Copy the dataset id (also called Pixel ID) and
+tell it to me. In the dataset's Settings, under connected assets, add the Learn AI ad account.
+Then Conversions API → Generate access token. Leave the token on screen.
 
 Block 3, Railway. Open the ai-skool service → Variables. Add META_PIXEL_ID = the dataset id,
 META_CAPI_ACCESS_TOKEN = the token (copied from the Meta tab), META_PAYWALL_KEYS = Founding

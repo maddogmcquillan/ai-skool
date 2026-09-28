@@ -179,6 +179,18 @@ body = f'''<div class="ground" style="width:1080px;height:606px"><div style="pos
   <div style="position:absolute;left:0;bottom:0;width:1080px;height:8px;background:linear-gradient(90deg,{SPARK},{BLUE},{MINT})"></div></div>'''
 render("checkout-cover", 1080, 606, page(1080, 606, body))
 
+# ---- Facebook Page profile (1024x1024, shown as a circle) and cover (1640x624, centre-safe) ----
+body = f'''<div style="width:1024px;height:1024px;background:{BLUE};display:flex;align-items:center;justify-content:center">{glyph_svg("spark", SPARK, 640, stroke="none")}</div>'''
+render("fb-profile", 1024, 1024, page(1024, 1024, body))
+body = f'''<div class="ground" style="width:1640px;height:624px"><div style="position:absolute;left:1100px;top:0;width:540px;height:624px">{nodes_svg(540,624,BLUE,seed=42,count=10)}</div>
+  <div style="position:absolute;left:0;top:0;width:1640px;height:624px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;text-align:center">
+    {wordmark(40)}
+    <div class="title" style="font-size:78px;margin-top:8px">AI classes for ages 11 to 17.</div>
+    <div class="sub" style="font-size:28px;max-width:900px">17 video classes, real projects, a coach that answers in minutes, and a community parents can trust.</div>
+    <div class="chip" style="font-size:20px;color:{SPARK};margin-top:6px">joinlearnai.com</div></div>
+  <div style="position:absolute;left:0;bottom:0;width:1640px;height:8px;background:linear-gradient(90deg,{SPARK},{BLUE},{MINT})"></div></div>'''
+render("fb-cover", 1640, 624, page(1640, 624, body))
+
 # ---- Feed / event welcome banner 1680x600 ----
 body = f'''<div class="ground" style="width:1680px;height:600px">{nodes_svg(1680,600,SPARK,seed=9,count=16)}
   <div style="position:absolute;left:84px;top:0;height:600px;display:flex;flex-direction:column;justify-content:center;gap:24px;max-width:1000px">
