@@ -12,6 +12,9 @@
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/community-icon.png">
+<!-- In-page anchors (#enroll, #syllabus) are only ever set by this page's own buttons. If a shared
+     or reopened link carries one, drop it before the body parses so the page loads at the top. -->
+<script>(function(){if(/^#(enroll|syllabus)$/.test(location.hash)){history.replaceState(null,"",location.pathname+location.search);}})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="image" href="/assets/class-game.jpg">
@@ -512,6 +515,19 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onScroll);
   update();
+})();
+(function () {
+  // In-page buttons scroll to their section without putting a #hash in the address bar, so a
+  // copied or reopened link never lands mid-page. A details target is opened first.
+  document.addEventListener("click", function (ev) {
+    var a = ev.target.closest && ev.target.closest('a[href^="#"]');
+    if (!a) return;
+    var target = document.getElementById(a.getAttribute("href").slice(1));
+    if (!target) return;
+    ev.preventDefault();
+    if (target.tagName === "DETAILS") target.open = true;
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
 })();
 (function () {
   var box = document.getElementById("fill");

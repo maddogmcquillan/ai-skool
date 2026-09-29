@@ -45,6 +45,9 @@ describe("the site", () => {
     expect(html).toContain("Kids don't learn this in school");
     // No price above the fold: the first price mention must come after the hero.
     expect(html.indexOf("$49")).toBeGreaterThan(html.indexOf("</header>"));
+    // A shared link ending in #enroll must load at the top: the hash is dropped before the body parses.
+    expect(html.indexOf("history.replaceState")).toBeGreaterThan(-1);
+    expect(html.indexOf("history.replaceState")).toBeLessThan(html.indexOf("<body>"));
     expect(html).toContain("Ages 11");
     expect(html).not.toMatch(/no refunds/i);
     const img = await app.request("/assets/class-game.jpg");
