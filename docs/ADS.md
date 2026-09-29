@@ -79,3 +79,48 @@ price or copy change.
 - No guarantees of outcomes. "Builds a game" is a class description; "will get into MIT" is not.
 - The landing page must link to terms, privacy and the parents page (it does).
 - Keep the Meta dataset for Learn AI separate from any other business's pixel.
+
+## Primary text for the "head start" ad set (modeled on a BrightChamps ad the owner liked)
+
+The 92 million figure is the World Economic Forum Future of Jobs Report 2025 (jobs displaced by 2030; the same report counts 170 million created). The 85 million in the BrightChamps ad is the 2020 edition. Bold lines use Unicode math-bold characters because Meta primary text has no formatting.
+
+### Version A (full, mirrors the reference structure)
+
+```
+𝟗𝟐 𝐦𝐢𝐥𝐥𝐢𝐨𝐧 𝐣𝐨𝐛𝐬 𝐰𝐢𝐥𝐥 𝐛𝐞 𝐫𝐞𝐩𝐥𝐚𝐜𝐞𝐝 𝐛𝐲 𝐀𝐈, 𝐚𝐧𝐝 𝐨𝐮𝐫 𝐤𝐢𝐝𝐬 𝐚𝐫𝐞 𝐧𝐨𝐭 𝐫𝐞𝐚𝐝𝐲. 📉🤖
+
+The workforce is shifting fast, and school isn't keeping up. Kids don't learn this in school. AI isn't a toy or a cheat code. It's the tool every job they'll ever have will be built on. Learn AI takes your kid from passive user to active builder: they learn how AI actually works, then use it to make a game, an app, a website, a chatbot and more. 🚀✨
+
+Give them the head start before the future leaves them behind.
+
+𝗪𝗵𝘆 𝗽𝗮𝗿𝗲𝗻𝘁𝘀 𝗰𝗵𝗼𝗼𝘀𝗲 𝗟𝗲𝗮𝗿𝗻 𝗔𝗜:
+
+✅ Real Instructors: College-level material, taught so a 12-year-old gets it.
+
+✅ Build, Don't Just Scroll: Projects they actually finish. No coding needed.
+
+✅ Help in Minutes: A coach that answers any day, with a real person reading every thread.
+
+✅ New Classes Every Week: The program grows as fast as the tools do.
+
+🔑 𝐅𝐨𝐮𝐧𝐝𝐢𝐧𝐠 𝐫𝐚𝐭𝐞 𝐟𝐨𝐫 𝐭𝐡𝐞 𝐟𝐢𝐫𝐬𝐭 𝟐𝟎𝟎 𝐟𝐚𝐦𝐢𝐥𝐢𝐞𝐬. 𝐄𝐧𝐫𝐨𝐥𝐥 𝐧𝐨𝐰! 👇
+```
+
+### Version B (short)
+
+```
+𝐊𝐢𝐝𝐬 𝐝𝐨𝐧'𝐭 𝐥𝐞𝐚𝐫𝐧 𝐭𝐡𝐢𝐬 𝐢𝐧 𝐬𝐜𝐡𝐨𝐨𝐥. 𝐀𝐧𝐝 𝟗𝟐 𝐦𝐢𝐥𝐥𝐢𝐨𝐧 𝐣𝐨𝐛𝐬 𝐚𝐫𝐞 𝐚𝐛𝐨𝐮𝐭 𝐭𝐨 𝐜𝐡𝐚𝐧𝐠𝐞. 📉🤖
+
+Most kids use AI. Almost none understand it. Learn AI teaches ages 11 to 17 how it actually works, from real instructors, then has them build with it: a game, an app, a website, a chatbot and more. 🚀
+
+Give them the head start before the future leaves them behind.
+
+✅ College-level material, taught so a 12-year-old gets it
+✅ Projects they finish, no coding needed
+✅ A coach that answers in minutes, a person reads every thread
+✅ New classes every week
+
+🔑 𝐅𝐨𝐮𝐧𝐝𝐢𝐧𝐠 𝐫𝐚𝐭𝐞 𝐟𝐨𝐫 𝐭𝐡𝐞 𝐟𝐢𝐫𝐬𝐭 𝟐𝟎𝟎 𝐟𝐚𝐦𝐢𝐥𝐢𝐞𝐬. 𝐄𝐧𝐫𝐨𝐥𝐥 𝐧𝐨𝐰! 👇
+```
+
+Headline options (40 chars): "AI For Kids: Build Real Things with AI" / "Give them the head start with AI" / "Kids don't learn this in school". Description: "Real instructors. New classes every week." Landing page: https://joinlearnai.com/ai-for-kids
