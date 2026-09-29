@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>AI For Kids: Build, Create &amp; Make Real Things with AI | Learn AI</title>
-<meta name="description" content="Most kids won't learn this in school. Learn AI is the online program where kids 11 to 17 learn how AI works from real instructors, then build a game, an app, a website, a chatbot and more. $49 a month, cancel anytime.">
+<meta name="description" content="Kids don't learn this in school. Learn AI is the online program where kids 11 to 17 learn how AI works from real instructors, then make a game, an app, a website, a chatbot and more. New classes every week.">
 <meta property="og:title" content="AI For Kids: Build, Create & Make Real Things with AI">
-<meta property="og:description" content="Most kids won't learn this in school. 17 classes from real instructors, 10 real projects, a coach that answers in minutes. Ages 11 to 17.">
+<meta property="og:description" content="Kids don't learn this in school. Real instructors, real projects, help in minutes. Ages 11 to 17. New classes every week.">
 <meta property="og:image" content="https://joinlearnai.com/assets/og-image.png">
 <meta property="og:url" content="https://joinlearnai.com/ai-for-kids">
 <meta property="og:type" content="website">
@@ -33,7 +33,6 @@
   h2 { font-size:27px; font-weight:800; }
   h3 { font-size:17px; font-weight:700; }
   .wrap { max-width:1040px; margin:0 auto; padding-inline:16px; }
-  .narrow { max-width:760px; margin:0 auto; }
   section { padding-block:40px; }
   .eyebrow { font-family:var(--display); font-weight:700; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--indigo); }
   .lede { color:var(--muted); font-size:16.5px; }
@@ -60,19 +59,17 @@
   .ck svg { width:12px; height:12px; }
 
   /* 1. Hero */
-  .bar { background:var(--navy); color:#fff; font-size:13.5px; font-weight:600; text-align:center; padding:9px 16px; }
-  .bar b { color:var(--spark); }
   .nav { display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
   .logo { display:inline-flex; align-items:center; gap:9px; font-family:var(--display); font-weight:800; font-size:22px; color:#fff; text-decoration:none; }
   .logo .badge { width:30px; height:30px; border-radius:9px; background:#3B7BFF; display:inline-grid; place-items:center; }
   .logo .ai { color:var(--spark); }
   .nav a.login { color:rgba(255,255,255,.8); text-decoration:none; font-weight:600; font-size:14px; }
   header.hero { background:radial-gradient(900px 500px at 10% -10%,#6A5EF0,var(--indigo) 45%,var(--indigo2) 100%); color:#fff; padding-bottom:36px; }
-  .hero-grid { display:grid; gap:26px; margin-top:6px; }
+  .hero-grid { display:grid; gap:22px; margin-top:6px; }
   .hero .pre { font-family:var(--display); font-weight:700; font-size:17px; color:var(--spark); }
   .hero h1 { font-size:clamp(30px,8vw,44px); font-weight:800; margin-top:8px; }
   .hero .lede { color:rgba(255,255,255,.88); margin-top:12px; font-size:16.5px; }
-  .hero .checks { margin-top:16px; gap:9px; }
+  .hero .checks { margin-top:0; gap:10px; }
   .hero .checks li { color:#fff; font-size:15.5px; }
   .hero .checks li b { font-weight:800; }
   .hero-cta { margin-top:22px; }
@@ -87,15 +84,19 @@
   .player .top .live i { width:8px; height:8px; border-radius:50%; background:#2FD07F; display:inline-block; }
   .player .screen { position:relative; aspect-ratio:16/9; background:#000; }
   .player .screen img { width:100%; height:100%; object-fit:cover; }
+  .player .shade { position:absolute; left:0; right:0; bottom:0; height:40%; background:linear-gradient(180deg,rgba(15,21,48,0),rgba(15,21,48,.55) 45%,rgba(15,21,48,.97)); }
+  .player .plate { position:absolute; left:0; bottom:0; width:70%; height:56%; background:linear-gradient(180deg,rgba(15,21,48,.25),rgba(15,21,48,.97) 38%); -webkit-backdrop-filter:blur(26px); backdrop-filter:blur(26px); display:flex; align-items:flex-end; padding:0 0 16px 14px; -webkit-mask-image:linear-gradient(90deg,#000 82%,transparent); mask-image:linear-gradient(90deg,#000 82%,transparent); }
+  .player .plate span { display:inline-block; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.22); color:#fff; font-family:var(--display); font-weight:700; font-size:12px; letter-spacing:.04em; padding:6px 9px; border-radius:8px; line-height:1.2; }
   .player .play { position:absolute; inset:0; margin:auto; width:64px; height:64px; border-radius:50%; background:rgba(255,255,255,.92); display:grid; place-items:center; box-shadow:0 8px 24px rgba(0,0,0,.35); }
   .player .play svg { margin-left:4px; }
   .player .prog { position:absolute; left:0; right:0; bottom:0; height:5px; background:rgba(255,255,255,.25); }
   .player .prog i { display:block; width:38%; height:100%; background:var(--spark); }
   .player .meta { padding:12px 14px 6px; }
   .player .meta b { font-family:var(--display); font-size:17px; display:block; }
-  .player .meta span { color:#B7BEDC; font-size:13.5px; }
+  .player .meta span { color:#B7BEDC; font-size:13.5px; display:block; margin-top:3px; line-height:1.4; }
+  .player .meta span em { color:#fff; font-style:normal; font-weight:700; }
   .player .strip { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; padding:10px 14px 14px; }
-  .player .strip figure { margin:0; }
+  .player .strip figure { margin:0; min-width:0; }
   .player .strip img { border-radius:8px; aspect-ratio:16/9; object-fit:cover; border:1px solid rgba(255,255,255,.12); }
   .player .strip figcaption { font-size:10.5px; color:#B7BEDC; margin-top:5px; line-height:1.25; }
   .player .strip figcaption b { color:#fff; display:block; font-size:11px; }
@@ -118,10 +119,14 @@
   .review .verified svg { width:14px; height:14px; }
   .swipe { text-align:center; color:var(--muted); font-size:12.5px; margin-top:6px; }
 
-  /* Inline quote */
-  .quote { background:var(--indigo-soft); border-radius:16px; padding:16px 18px; display:grid; gap:8px; margin-top:22px; }
-  .quote p { font-size:15.5px; }
-  .quote .by { color:var(--muted); font-size:13.5px; font-weight:600; }
+  /* Featured quote (bold card) */
+  .quote { position:relative; background:linear-gradient(135deg,#5A4FE6,var(--indigo2)); color:#fff; border-radius:18px; padding:22px 20px 20px; margin-top:22px; box-shadow:0 14px 34px rgba(46,38,153,.25); overflow:hidden; }
+  .quote::before { content:"\201C"; position:absolute; right:14px; top:-26px; font-family:var(--display); font-weight:800; font-size:120px; line-height:1; color:rgba(255,255,255,.14); }
+  .quote .stars svg { fill:var(--spark); width:15px; height:15px; }
+  .quote p { font-size:16.5px; line-height:1.5; margin-top:10px; font-weight:600; }
+  .quote .by { display:flex; align-items:center; gap:10px; margin-top:14px; font-size:13.5px; color:rgba(255,255,255,.85); }
+  .quote .by .av { width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,.18); color:#fff; font-family:var(--display); font-weight:800; display:grid; place-items:center; font-size:13px; }
+  .quote .by b { color:#fff; display:block; }
 
   /* 3. Projects */
   .projects { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:20px; }
@@ -130,7 +135,7 @@
   .proj > div { padding:9px 10px 11px; }
   .proj b { display:block; font-family:var(--display); font-size:15px; line-height:1.2; }
   .proj span { color:var(--muted); font-size:12.5px; display:block; margin-top:3px; }
-  details.syl { margin-top:14px; }
+  details.syl { margin-top:18px; }
   details.syl > summary { list-style:none; cursor:pointer; display:flex; justify-content:center; align-items:center; min-height:52px; border:2px solid var(--line); border-radius:14px; font-family:var(--display); font-weight:700; font-size:16px; background:var(--surface); }
   details.syl > summary::-webkit-details-marker { display:none; }
   details.syl[open] > summary { border-color:var(--indigo); }
@@ -150,22 +155,47 @@
   .teacher b { display:block; font-family:var(--display); font-size:16px; }
   .teacher .cred { color:var(--ink); font-size:13.5px; font-weight:600; margin-top:2px; }
   .teacher .cls { color:var(--muted); font-size:13px; margin-top:6px; }
-  .more-teachers { color:var(--muted); font-size:14px; margin-top:6px; }
-  .coach { margin-top:18px; background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:16px; display:grid; grid-template-columns:48px 1fr; gap:12px; align-items:start; }
-  .coach img { width:48px; height:48px; border-radius:12px; }
-  .coach b { font-family:var(--display); font-size:16px; display:block; }
-  .coach p { color:var(--muted); font-size:14.5px; margin-top:4px; }
-  .vetted { margin-top:12px; background:var(--green-bg); border:1px solid #BFE8D2; color:#0F5A3A; border-radius:12px; padding:11px 13px; font-size:14px; font-weight:600; display:grid; grid-template-columns:20px 1fr; gap:9px; align-items:start; }
 
-  /* 5. Enroll */
-  .enroll { background:linear-gradient(180deg,#F1EFFF,#E7E4FF); border:1px solid #D6D2FF; border-radius:22px; padding:24px 18px; }
-  .enroll h2 { font-size:26px; }
-  .enroll .price { display:flex; align-items:baseline; gap:8px; margin-top:12px; }
-  .enroll .price .amt { font-family:var(--display); font-weight:800; font-size:50px; line-height:1; }
-  .enroll .price small { color:var(--muted); font-weight:700; font-size:15px; }
-  .enroll .btn { margin-top:16px; }
-  .perks { list-style:none; margin:18px 0 0; padding:0; display:grid; gap:10px; }
-  .perks li { display:grid; grid-template-columns:22px 1fr; gap:10px; align-items:start; font-weight:600; font-size:15px; }
+  /* Ask Coach thread */
+  .coach { margin-top:20px; background:var(--surface); border:1px solid var(--line); border-radius:18px; overflow:hidden; }
+  .coach .head { display:flex; align-items:center; gap:10px; padding:14px 16px; border-bottom:1px solid var(--line); }
+  .coach .head .ic { width:34px; height:34px; border-radius:10px; background:var(--indigo); display:grid; place-items:center; flex:none; }
+  .coach .head b { font-family:var(--display); font-size:16px; display:block; }
+  .coach .head span { color:var(--muted); font-size:13px; display:block; }
+  .thread { padding:14px 16px 16px; display:grid; gap:10px; }
+  .msg { display:grid; grid-template-columns:32px 1fr; gap:10px; align-items:start; }
+  .msg .av { width:32px; height:32px; border-radius:50%; display:grid; place-items:center; font-family:var(--display); font-weight:800; font-size:12px; background:var(--indigo-soft); color:var(--indigo); }
+  .msg.coachmsg .av { background:var(--indigo); color:#fff; }
+  .msg .b { background:var(--ground); border:1px solid var(--line); border-radius:14px; border-top-left-radius:4px; padding:10px 12px; font-size:14.5px; line-height:1.45; min-width:0; }
+  .msg.coachmsg .b { background:var(--indigo-soft); border-color:#D9D5FF; }
+  .msg .n { display:flex; justify-content:space-between; gap:8px; font-size:12px; color:var(--muted); margin-bottom:3px; }
+  .msg .n b { color:var(--ink); }
+  .msg .n .t { white-space:nowrap; }
+  .coach .foot { display:grid; grid-template-columns:20px 1fr; gap:9px; align-items:start; margin:0 16px 16px; background:var(--green-bg); border:1px solid #BFE8D2; color:#0F5A3A; border-radius:12px; padding:11px 13px; font-size:14px; font-weight:600; }
+  .coach .foot svg { width:20px; height:20px; }
+
+  /* 5. Offer */
+  .offer { background:linear-gradient(180deg,#F1EFFF,#E7E4FF); border:1px solid #D6D2FF; border-radius:22px; padding:24px 18px; }
+  .offer h2 { font-size:27px; }
+  .stack { list-style:none; margin:18px 0 0; padding:0; background:var(--surface); border:1px solid #D9D5FF; border-radius:16px; overflow:hidden; }
+  .stack li { display:grid; grid-template-columns:24px 1fr auto; gap:10px; align-items:start; padding:12px 14px; border-top:1px solid var(--line); font-size:15px; }
+  .stack li:first-child { border-top:0; }
+  .stack li b { font-weight:700; }
+  .stack li .v { font-family:var(--display); font-weight:700; color:var(--muted); white-space:nowrap; font-size:14px; padding-top:1px; }
+  .stack li.total { background:var(--indigo-soft); grid-template-columns:1fr auto; font-family:var(--display); font-weight:800; font-size:15px; }
+  .stack li.total s { color:var(--muted); font-weight:700; }
+  .pricebox { margin-top:18px; display:grid; gap:4px; }
+  .pricebox .was { font-family:var(--display); font-weight:700; color:var(--muted); font-size:15px; letter-spacing:.02em; }
+  .pricebox .was s { font-size:18px; color:var(--ink); text-decoration-thickness:2px; text-decoration-color:#E0483E; }
+  .pricebox .now { font-family:var(--display); font-weight:800; font-size:54px; line-height:1; }
+  .pricebox .now small { font-size:16px; color:var(--muted); font-weight:700; }
+  .pricebox .tag { display:inline-block; justify-self:start; background:var(--spark); color:var(--navy); font-family:var(--display); font-weight:800; font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; padding:5px 10px; border-radius:999px; margin-top:6px; }
+  .scarce { display:grid; gap:8px; margin-top:14px; }
+  .scarce div { display:grid; grid-template-columns:22px 1fr; gap:9px; align-items:start; font-size:14.5px; }
+  .scarce div b { font-weight:800; }
+  .scarce .dot { width:20px; height:20px; border-radius:50%; background:var(--spark); display:grid; place-items:center; margin-top:2px; }
+  .scarce .dot svg { width:12px; height:12px; }
+  .offer .btn { margin-top:18px; }
   .safe { margin-top:28px; }
   .safe h3 { font-size:19px; }
   .safe .checks { margin-top:12px; }
@@ -187,25 +217,28 @@
   .sticky.on { transform:none; }
   .sticky .in { max-width:1040px; margin:0 auto; display:flex; align-items:center; gap:12px; }
   .sticky .p { line-height:1.15; }
-  .sticky .p b { font-family:var(--display); font-size:19px; display:block; }
+  .sticky .p b { font-family:var(--display); font-size:17px; display:block; }
   .sticky .p span { font-size:12.5px; color:var(--muted); }
-  .sticky .btn { width:auto; flex:1; min-height:50px; font-size:16px; padding:10px 16px; box-shadow:none; }
+  .sticky .btn { width:auto; flex:1; min-height:50px; font-size:16px; padding:10px 16px; box-shadow:none; white-space:nowrap; }
 
   @media (min-width:760px) {
     section { padding-block:60px; }
     h2 { font-size:34px; }
     .hero-grid { grid-template-columns:1.05fr 1fr; align-items:center; gap:44px; margin-top:22px; }
+    .hero-grid .player { grid-column:2; grid-row:1 / span 2; }
+    .hero-grid .copy { grid-column:1; }
     .hero h1 { font-size:clamp(40px,4.6vw,52px); }
+    .hero .checks { margin-top:18px; }
     .btn { width:auto; min-width:280px; }
-    .hero .btn, .enroll .btn { display:inline-flex; }
+    .hero .btn, .offer .btn { display:inline-flex; }
     .cta-note, .hero .rating { text-align:left; justify-content:flex-start; }
     .reviews-head { flex-direction:row; justify-content:space-between; align-items:flex-end; }
     .rail, .teachers { overflow:visible; margin:0; padding:22px 0 0; display:grid; grid-template-columns:repeat(3,1fr); }
     .review, .teacher { flex:none; }
     .swipe { display:none; }
     .projects { grid-template-columns:repeat(5,1fr); }
-    .enroll { padding:34px; display:grid; grid-template-columns:1.15fr 1fr; gap:32px; align-items:center; }
-    .perks { margin-top:0; }
+    .offer { padding:34px; display:grid; grid-template-columns:1.1fr 1fr; gap:32px; align-items:start; }
+    .offer .stack { margin-top:0; }
     .safe .checks { grid-template-columns:1fr 1fr; gap:12px 24px; }
     footer .row { display:flex; justify-content:space-between; align-items:center; }
     .sticky .btn { flex:none; min-width:240px; }
@@ -238,7 +271,6 @@
 <body>
 
 <!-- ============ 1. HERO (Outschool class header + BrightCHAMPS hero) ============ -->
-<div class="bar">Founding rate: <b>$49/month, locked in.</b> Cancel anytime.</div>
 <header class="hero">
   <div class="wrap">
     <div class="nav">
@@ -246,36 +278,40 @@
       <a class="login" href="https://www.joinlearnai.com/">Member sign in</a>
     </div>
     <div class="hero-grid">
-      <div>
-        <p class="pre">Most kids won't learn this in school.</p>
+      <div class="copy">
+        <p class="pre">Kids don't learn this in school.</p>
         <h1>AI For Kids: Build, Create &amp; Make Real Things with AI</h1>
         <p class="lede">Kids 11 to 17 learn how AI actually works from real instructors, college-level material taught so a 12-year-old gets it, then build things they're proud of.</p>
-        <ul class="checks">
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>17 video classes</b> from 15 real instructors</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>10 projects they finish:</b> a game, an app, a website, a chatbot, a comic...</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Help in minutes, any day,</b> with a person reading every thread</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>No messaging between members.</b> Parent consent at signup.</span></li>
-        </ul>
-        <div class="hero-cta">
-          <a class="btn" id="hero-cta" data-checkout href="https://www.joinlearnai.com/checkout/founding-member">Enroll now · $49/month <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <p class="cta-note">Start tonight. Cancel anytime, in two clicks.</p>
-          <!-- Rating summary: placeholder numbers until real reviews are collected. Matches the ad card. -->
-          <div class="rating"><span class="stars" aria-label="4.9 out of 5 stars"><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .8-5.2 4.8 1.4 7L12 17.7 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .8-5.2 4.8 1.4 7L12 17.7 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .8-5.2 4.8 1.4 7L12 17.7 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .8-5.2 4.8 1.4 7L12 17.7 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .8-5.2 4.8 1.4 7L12 17.7 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg></span><span>4.9</span><span class="muted">· 128 reviews from parents</span></div>
-        </div>
       </div>
       <div class="player" aria-label="What a class looks like">
-        <div class="top"><span class="live"><i></i>Classroom · Level 3</span><span>Lesson 8 of 17</span></div>
+        <div class="top"><span class="live"><i></i>Classroom · Level 3</span><span>Lesson 8</span></div>
         <div class="screen">
-          <img src="/assets/class-game.jpg" width="960" height="540" alt="Instructor Jagger Bellagarda on screen next to the game being built" fetchpriority="high">
+          <img src="/assets/class-game.jpg" width="960" height="540" alt="The instructor on screen next to the game being built" fetchpriority="high">
+          <div class="shade" aria-hidden="true"></div>
+          <div class="plate" aria-hidden="true"><span>Lesson 8 · Make a Game</span></div>
           <span class="play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="#141A2A"><path d="M8 5v14l11-7z"/></svg></span>
           <div class="prog"><i></i></div>
         </div>
-        <div class="meta"><b>Make a Game with AI</b><span>Taught by Jagger Bellagarda · then post it in Show and Tell</span></div>
+        <div class="meta"><b>Make a Game with AI</b><span>Taught by <em>Jagger B.</em>, who builds apps and games with AI for a living. Your kid ends the class with a game they can play and send to friends.</span></div>
         <div class="strip" aria-label="Up next">
-          <figure><img src="/assets/class-app.jpg" alt=""><figcaption><b>Make an App</b>Tech With Tim</figcaption></figure>
-          <figure><img src="/assets/class-chatbot.jpg" alt=""><figcaption><b>Make a Chatbot</b>Kevin Stratvert</figcaption></figure>
-          <figure><img src="/assets/class-prompt.jpg" alt=""><figcaption><b>Prompt Formula</b>Jeff Su</figcaption></figure>
-          <figure><img src="/assets/class-cartoon.jpg" alt=""><figcaption><b>Make a Cartoon</b>Level up with Blessing</figcaption></figure>
+          <figure><img src="/assets/class-app.jpg" alt=""><figcaption><b>Make an App</b>Tim R. · Developer</figcaption></figure>
+          <figure><img src="/assets/class-chatbot.jpg" alt=""><figcaption><b>Make a Chatbot</b>Kevin S. · ex-Microsoft</figcaption></figure>
+          <figure><img src="/assets/class-prompt.jpg" alt=""><figcaption><b>Prompt Formula</b>Jeff S. · Google</figcaption></figure>
+          <figure><img src="/assets/class-agents-tina.jpg" alt=""><figcaption><b>AI Agents</b>Tina H. · ex-Meta</figcaption></figure>
+        </div>
+      </div>
+      <div class="copy">
+        <ul class="checks">
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>New classes every week</b> from instructors with real credentials</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Projects they finish:</b> a game, an app, a website, a chatbot and more</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Help in minutes, any day,</b> with a person reading every thread</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Screen time that builds something.</b> Not another hour of YouTube and games.</span></li>
+        </ul>
+        <div class="hero-cta">
+          <a class="btn" id="hero-cta" href="#enroll">Enroll now <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <p class="cta-note">Start tonight. Cancel anytime.</p>
+          <!-- Rating summary: placeholder numbers until real reviews are collected. Matches the ad card. -->
+          <div class="rating"><span class="stars" aria-label="4.9 out of 5 stars"><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .8-5.2 4.8 1.4 7L12 17.7 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .8-5.2 4.8 1.4 7L12 17.7 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .8-5.2 4.8 1.4 7L12 17.7 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .8-5.2 4.8 1.4 7L12 17.7 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .8-5.2 4.8 1.4 7L12 17.7 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg></span><span>4.9</span><span class="muted">· 128 reviews from parents</span></div>
         </div>
       </div>
     </div>
@@ -314,90 +350,101 @@
   </div>
 </section>
 
-<!-- ============ 3. WHAT THEY MAKE (Outschool "your learner will" + Syllabus, Prodigy product cards) ============ -->
+<!-- ============ 3. WHAT THEY MAKE (Outschool "your learner will" + Syllabus, Outschool class cards) ============ -->
 <section style="padding-top:12px">
   <div class="wrap">
     <p class="eyebrow">What they'll make</p>
-    <h2 class="sub">17 classes. 10 things they'll actually build.</h2>
+    <h2 class="sub">A few of the things your kid will make.</h2>
     <p class="lede sub">First they learn how AI works. Then every class ends with something real they made, using free tools, by describing what they want. No code required.</p>
     <div class="projects">
-      <a class="proj" href="#syllabus"><img src="/assets/class-game.jpg" alt=""><div><b>A game</b><span>Jagger Bellagarda</span></div></a>
-      <a class="proj" href="#syllabus"><img src="/assets/class-app.jpg" alt=""><div><b>An app</b><span>Tech With Tim</span></div></a>
-      <a class="proj" href="#syllabus"><img src="/assets/class-website.jpg" alt=""><div><b>A website</b><span>Tyler Moore</span></div></a>
-      <a class="proj" href="#syllabus"><img src="/assets/class-chatbot.jpg" alt=""><div><b>A chatbot</b><span>Kevin Stratvert</span></div></a>
-      <a class="proj" href="#syllabus"><img src="/assets/class-agent.jpg" alt=""><div><b>An AI agent</b><span>Kevin Stratvert</span></div></a>
-      <a class="proj" href="#syllabus"><img src="/assets/class-video.jpg" alt=""><div><b>A video</b><span>Kevin Stratvert</span></div></a>
-      <a class="proj" href="#syllabus"><img src="/assets/class-cartoon.jpg" alt=""><div><b>A cartoon</b><span>Level up with Blessing</span></div></a>
-      <a class="proj" href="#syllabus"><img src="/assets/class-music.jpg" alt=""><div><b>A song</b><span>Stellar Media</span></div></a>
-      <a class="proj" href="#syllabus"><img src="/assets/class-art.jpg" alt=""><div><b>AI art</b><span>Technically Trent</span></div></a>
-      <a class="proj" href="#syllabus"><img src="/assets/class-comic.jpg" alt=""><div><b>A comic</b><span>Tao Prompts</span></div></a>
+      <a class="proj" href="#syllabus"><img src="/assets/class-game.jpg" alt=""><div><b>Make a game</b><span>Jagger B.</span></div></a>
+      <a class="proj" href="#syllabus"><img src="/assets/class-app.jpg" alt=""><div><b>Make an app</b><span>Tim R.</span></div></a>
+      <a class="proj" href="#syllabus"><img src="/assets/class-website.jpg" alt=""><div><b>Make a website</b><span>Tyler M.</span></div></a>
+      <a class="proj" href="#syllabus"><img src="/assets/class-chatbot.jpg" alt=""><div><b>Make a chatbot</b><span>Kevin S.</span></div></a>
+      <a class="proj" href="#syllabus"><img src="/assets/class-agent.jpg" alt=""><div><b>Make an AI agent</b><span>Kevin S.</span></div></a>
+      <a class="proj" href="#syllabus"><img src="/assets/class-video.jpg" alt=""><div><b>Make a video</b><span>Kevin S.</span></div></a>
+      <a class="proj" href="#syllabus"><img src="/assets/class-cartoon.jpg" alt=""><div><b>Make a cartoon</b><span>Blessing</span></div></a>
+      <a class="proj" href="#syllabus"><img src="/assets/class-music.jpg" alt=""><div><b>Make a song</b><span>Stellar Media</span></div></a>
+      <a class="proj" href="#syllabus"><img src="/assets/class-art.jpg" alt=""><div><b>Make AI art</b><span>Trent</span></div></a>
+      <a class="proj" href="#syllabus"><img src="/assets/class-comic.jpg" alt=""><div><b>Make a comic</b><span>Tao Prompts</span></div></a>
     </div>
-    <div class="quote">
+    <blockquote class="quote">
+      <span class="stars" aria-label="5 stars"><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .8-5.2 4.8 1.4 7L12 17.7 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .8-5.2 4.8 1.4 7L12 17.7 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .8-5.2 4.8 1.4 7L12 17.7 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .8-5.2 4.8 1.4 7L12 17.7 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .8-5.2 4.8 1.4 7L12 17.7 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg></span>
       <p>"My son is the kid who 'hates school.' He did three project classes in one week. That has never happened."</p>
-      <span class="by">Marcus T. · Dad of a 14-year-old · Georgia</span>
-    </div>
+      <div class="by"><span class="av">MT</span><div><b>Marcus T.</b>Dad of a 14-year-old · Georgia</div></div>
+    </blockquote>
     <details class="syl" id="syllabus">
-      <summary>See the full 17-lesson syllabus</summary>
+      <summary>See the full syllabus</summary>
       <div class="lvl"><h3><span class="tag">Level 1</span> Beginner AI · how it works</h3>
-        <ol><li>What is AI?<span>Simplilearn</span></li><li>Generative AI in a Nutshell<span>Henrik Kniberg</span></li><li>ChatGPT Power User in 30 Minutes<span>Santrel Media</span></li></ol></div>
+        <ol><li>What is AI?<span>Simplilearn</span></li><li>Generative AI in a Nutshell<span>Henrik K.</span></li><li>ChatGPT Power User in 30 Minutes<span>Santrel Media</span></li></ol></div>
       <div class="lvl"><h3><span class="tag">Level 2</span> Intermediate AI · prompts, models, agents</h3>
-        <ol><li>Large Language Models, Explained Briefly<span>3Blue1Brown</span></li><li>The Perfect ChatGPT Prompt Formula<span>Jeff Su</span></li><li>What are AI Agents?<span>IBM Technology</span></li><li>AI Agents Fundamentals in 21 Minutes<span>Tina Huang</span></li></ol></div>
+        <ol><li>Large Language Models, Explained Briefly<span>3Blue1Brown</span></li><li>The Perfect ChatGPT Prompt Formula<span>Jeff S.</span></li><li>What are AI Agents?<span>IBM Technology</span></li><li>AI Agents Fundamentals in 21 Minutes<span>Tina H.</span></li></ol></div>
       <div class="lvl"><h3><span class="tag">Level 3</span> Project classes · make it with AI</h3>
-        <ol><li>Make a Game<span>Jagger Bellagarda</span></li><li>Make an App<span>Tech With Tim</span></li><li>Make a Website<span>Tyler Moore</span></li><li>Make a Chatbot<span>Kevin Stratvert</span></li><li>Make an AI Agent<span>Kevin Stratvert</span></li><li>Make a Video<span>Kevin Stratvert</span></li><li>Make a Cartoon<span>Level up with Blessing</span></li><li>Make Music<span>Stellar Media</span></li><li>Make AI Art<span>Technically Trent</span></li><li>Make a Comic<span>Tao Prompts</span></li></ol></div>
-      <p class="lede" style="margin-top:14px;font-size:14.5px">Beginner and Intermediate go in order. Project classes go in any order. New classes are added by member vote.</p>
+        <ol><li>Make a Game<span>Jagger B.</span></li><li>Make an App<span>Tim R.</span></li><li>Make a Website<span>Tyler M.</span></li><li>Make a Chatbot<span>Kevin S.</span></li><li>Make an AI Agent<span>Kevin S.</span></li><li>Make a Video<span>Kevin S.</span></li><li>Make a Cartoon<span>Blessing</span></li><li>Make Music<span>Stellar Media</span></li><li>Make AI Art<span>Trent</span></li><li>Make a Comic<span>Tao Prompts</span></li></ol></div>
+      <p class="lede" style="margin-top:14px;font-size:14.5px">Beginner and Intermediate go in order. Project classes go in any order. New classes are added every week, chosen by member vote.</p>
     </details>
   </div>
 </section>
 
-<!-- ============ 4. REAL INSTRUCTORS (Outschool teacher card + "other classes by" cards, BrightCHAMPS "Meet Our Stars") ============ -->
+<!-- ============ 4. REAL INSTRUCTORS (Outschool teacher card, BrightCHAMPS "Meet Our Stars") ============ -->
 <section style="padding-top:12px">
   <div class="wrap">
     <p class="eyebrow">Who teaches</p>
     <h2 class="sub">Real instructors. The clearest AI teachers on the internet.</h2>
-    <p class="lede sub">15 instructors across 17 classes: a former Microsoft product manager, a Google product marketer, an ex-Meta data scientist, IBM's own engineers, the mathematician behind 3Blue1Brown. We picked the clearest lesson on each topic and put them in the right order.</p>
+    <p class="lede sub">Every class is taught by a real person with real credentials: a former Microsoft product manager, a Google product marketer, an ex-Meta data scientist, IBM's own engineers, the mathematician behind 3Blue1Brown. We picked the clearest lesson on each topic and put them in the right order.</p>
     <div class="teachers">
-      <article class="teacher"><img src="/assets/class-chatbot.jpg" alt=""><div><b>Kevin Stratvert</b><div class="cred">Former Microsoft product manager</div><div class="cls">Teaches: Make a Chatbot, Make an AI Agent, Make a Video</div></div></article>
-      <article class="teacher"><img src="/assets/class-prompt.jpg" alt=""><div><b>Jeff Su</b><div class="cred">Product marketing manager at Google</div><div class="cls">Teaches: The Perfect ChatGPT Prompt Formula</div></div></article>
-      <article class="teacher"><img src="/assets/class-agents-tina.jpg" alt=""><div><b>Tina Huang</b><div class="cred">Former data scientist at Meta</div><div class="cls">Teaches: AI Agents Fundamentals</div></div></article>
+      <article class="teacher"><img src="/assets/class-chatbot.jpg" alt=""><div><b>Kevin S.</b><div class="cred">Former Microsoft product manager</div><div class="cls">Teaches: Make a Chatbot, Make an AI Agent, Make a Video</div></div></article>
+      <article class="teacher"><img src="/assets/class-prompt.jpg" alt=""><div><b>Jeff S.</b><div class="cred">Product marketing manager at Google</div><div class="cls">Teaches: The Perfect ChatGPT Prompt Formula</div></div></article>
+      <article class="teacher"><img src="/assets/class-agents-tina.jpg" alt=""><div><b>Tina H.</b><div class="cred">Former data scientist at Meta</div><div class="cls">Teaches: AI Agents Fundamentals</div></div></article>
       <article class="teacher"><img src="/assets/class-ibm.jpg" alt=""><div><b>IBM Technology</b><div class="cred">IBM's engineers and researchers</div><div class="cls">Teaches: What are AI Agents?</div></div></article>
-      <article class="teacher"><img src="/assets/class-app.jpg" alt=""><div><b>Tech With Tim</b><div class="cred">Software developer, teaches millions to code</div><div class="cls">Teaches: Make an App</div></div></article>
-      <article class="teacher"><img src="/assets/class-game.jpg" alt=""><div><b>Jagger Bellagarda</b><div class="cred">Builds apps and games with AI tools</div><div class="cls">Teaches: Make a Game</div></div></article>
+      <article class="teacher"><img src="/assets/class-app.jpg" alt=""><div><b>Tim R.</b><div class="cred">Software developer, teaches millions to code</div><div class="cls">Teaches: Make an App</div></div></article>
+      <article class="teacher"><img src="/assets/class-game.jpg" alt=""><div><b>Jagger B.</b><div class="cred">Builds apps and games with AI for a living</div><div class="cls">Teaches: Make a Game</div></div></article>
     </div>
-    <p class="more-teachers">Also teaching: 3Blue1Brown, Henrik Kniberg, Simplilearn, Santrel Media, Tyler Moore, Level up with Blessing, Stellar Media, Technically Trent, Tao Prompts. Every class credits its instructor.</p>
+
     <div class="coach">
-      <img src="/assets/avatar-coach.png" alt="">
-      <div>
-        <b>Between classes: Ask Coach</b>
-        <p>When your kid gets stuck, they post in Ask Coach and get an answer in minutes, any day, grounded in the class material. An adult on our team reads every thread and steps in when needed.</p>
-        <div class="vetted"><svg viewBox="0 0 24 24" fill="none" stroke="#0F5A3A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg><span>Every thread is read by a person. No member-to-member messaging, ever.</span></div>
+      <div class="head">
+        <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg></span>
+        <div><b>Between classes: Ask Coach</b><span>Stuck at 9pm? Post the question. An answer comes in minutes.</span></div>
       </div>
+      <div class="thread" aria-label="Example question and answer">
+        <div class="msg"><span class="av">S</span><div class="b"><div class="n"><b>Student, 13</b><span class="t">8:52 PM</span></div>My game character falls through the platforms when I jump. What do I change?</div></div>
+        <div class="msg coachmsg"><span class="av">C</span><div class="b"><div class="n"><b>Coach</b><span class="t">8:54 PM</span></div>Your platforms need collision. Tell the builder: "make the player land on platforms instead of falling through them." Paste what it says back if it still happens and I'll look with you.</div></div>
+      </div>
+      <div class="foot"><svg viewBox="0 0 24 24" fill="none" stroke="#0F5A3A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg><span>A person on our team reads every thread. No member-to-member messaging, ever.</span></div>
     </div>
-    <div class="quote">
+
+    <blockquote class="quote">
+      <span class="stars" aria-label="5 stars"><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .8-5.2 4.8 1.4 7L12 17.7 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .8-5.2 4.8 1.4 7L12 17.7 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .8-5.2 4.8 1.4 7L12 17.7 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .8-5.2 4.8 1.4 7L12 17.7 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .8-5.2 4.8 1.4 7L12 17.7 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg></span>
       <p>"The classes are genuinely good. I watched the 3Blue1Brown one myself. It's the explanation I wish I'd had in college, and my 12-year-old followed it fine."</p>
-      <span class="by">Priya S. · Mom of a 12-year-old · New Jersey</span>
-    </div>
+      <div class="by"><span class="av">PS</span><div><b>Priya S.</b>Mom of a 12-year-old · New Jersey</div></div>
+    </blockquote>
   </div>
 </section>
 
-<!-- ============ 5. ENROLL (Outschool "Enroll Now" card + Prodigy checklist and FAQ) ============ -->
+<!-- ============ 5. OFFER (Outschool "Enroll Now" card as a value stack, Prodigy checklist and FAQ) ============ -->
 <section id="enroll" style="padding-top:12px">
   <div class="wrap">
-    <div class="enroll">
+    <div class="offer">
       <div>
-        <p class="eyebrow">Founding Member</p>
+        <p class="eyebrow">Founding Member offer</p>
         <h2 class="sub">Give them the head start.</h2>
-        <p class="lede sub" style="font-size:15.5px">One membership. Every class, every project, Ask Coach, the weekly live build-along and the community. The founding rate stays locked for as long as you stay.</p>
-        <div class="price"><span class="amt">$49</span><small>/ month · cancel anytime</small></div>
+        <p class="lede sub">Schools aren't teaching this. The kids who learn it now are the ones who'll be ahead at 18. Your child can start tonight.</p>
+        <div class="pricebox"><span class="was">Total value <s>$1,332</s></span><span class="now">$49<small>/month</small></span><span class="tag">Founding rate</span></div>
+        <div class="scarce">
+          <!-- FOUNDING CAP: set the real number of founding spots before ads run. -->
+          <div><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="#141A2A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg></span><span><b>Founding rate for the first 100 families.</b> After that, the price goes up.</span></div>
+          <div><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="#141A2A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></span><span><b>Locked in for life.</b> Join at $49 and it stays $49 every month, for as long as you're a member. Your rate never increases.</span></div>
+        </div>
         <a class="btn indigo" data-checkout href="https://www.joinlearnai.com/checkout/founding-member">Enroll now <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <p class="cta-note">Secure checkout by Stripe. Your kid can start tonight.</p>
+        <p class="cta-note">Secure checkout by Stripe. Your child can start tonight. Cancel anytime.</p>
       </div>
-      <ul class="perks">
-        <li><span class="ck indigo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span>17 video classes, 3 levels, self-paced</span></li>
-        <li><span class="ck indigo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span>10 project classes: game, app, website, chatbot, agent, video, cartoon, music, art, comic</span></li>
-        <li><span class="ck indigo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span>Ask Coach: answers in minutes, a person reads every thread</span></li>
-        <li><span class="ck indigo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span>Weekly live build-along and Q&amp;A</span></li>
-        <li><span class="ck indigo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span>Show and Tell, Parent Hub, new classes by member vote</span></li>
-        <li><span class="ck indigo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span>Adult courses included for the grown-ups</span></li>
+      <ul class="stack" aria-label="What's included">
+        <li><span class="ck indigo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Beginner-friendly AI classes.</b> College-level material, taught so a 12-year-old gets it.</span><span class="v">$297</span></li>
+        <li><span class="ck indigo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Project classes.</b> Make a game, an app, a website, a chatbot and more.</span><span class="v">$497</span></li>
+        <li><span class="ck indigo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>New classes every week.</b> Chosen by member vote, from real instructors.</span><span class="v">$199</span></li>
+        <li><span class="ck indigo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Ask Coach.</b> Help in minutes, any day, with a person reading every thread.</span><span class="v">$240</span></li>
+        <li><span class="ck indigo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>A safe, moderated space.</b> No messaging between members. Parent consent at signup.</span><span class="v">$99</span></li>
+        <li class="total"><span>Total value</span><span><s>$1,332</s> &nbsp;→&nbsp; $49/month</span></li>
       </ul>
     </div>
 
@@ -417,7 +464,7 @@
       <details class="faq"><summary>Does my kid need to know how to code?</summary><p>No. Every project uses tools that build from a description of what you want. Kids who like code can go deeper, but nothing requires it.</p></details>
       <details class="faq"><summary>What do they need?</summary><p>A laptop or Chromebook and an internet connection. Most tools have a free tier. One art class uses Midjourney, which is paid, and the video class may need a paid ChatGPT plan. We say so in the class before anyone signs up for anything.</p></details>
       <details class="faq"><summary>How much time does it take?</summary><p>About two hours a week is a good pace: one class and its project. Self-paced, plus a weekly live build-along and Q&amp;A.</p></details>
-      <details class="faq"><summary>How do I cancel?</summary><p>From your account settings, in two clicks, any time. You keep access until the end of the billing period. Billing questions go to a person; email us and we will sort it out.</p></details>
+      <details class="faq"><summary>How do I cancel?</summary><p>From your account settings, any time. You keep access until the end of the billing period. Billing questions go to a person; email us and we will sort it out.</p></details>
     </div>
   </div>
 </section>
@@ -431,18 +478,28 @@
 
 <div class="sticky" id="sticky" aria-hidden="true">
   <div class="in">
-    <div class="p"><b>$49<span style="font-size:14px;color:var(--muted);font-family:var(--body)">/month</span></b><span>Founding rate · cancel anytime</span></div>
-    <a class="btn indigo" data-checkout href="https://www.joinlearnai.com/checkout/founding-member" tabindex="-1">Enroll now</a>
+    <div class="p"><b>Founding offer</b><span>Limited spots · rate locked in</span></div>
+    <a class="btn indigo" href="#enroll" tabindex="-1">Enroll now</a>
   </div>
 </div>
 <script>
 (function () {
   var bar = document.getElementById("sticky"), hero = document.getElementById("hero-cta"), enroll = document.getElementById("enroll");
-  if (!bar || !hero || !("IntersectionObserver" in window)) return;
-  var heroSeen = true, enrollSeen = false;
-  function update() { var on = !heroSeen && !enrollSeen; bar.classList.toggle("on", on); bar.setAttribute("aria-hidden", on ? "false" : "true"); bar.querySelector("a").tabIndex = on ? 0 : -1; }
-  new IntersectionObserver(function (es) { heroSeen = es[0].isIntersecting; update(); }, { threshold: 0 }).observe(hero);
-  if (enroll) new IntersectionObserver(function (es) { enrollSeen = es[0].isIntersecting; update(); }, { threshold: 0.15 }).observe(enroll);
+  if (!bar || !hero || !enroll) return;
+  // Show the bar once the hero button has scrolled up out of view; hide it while the offer is on screen.
+  var ticking = false;
+  function update() {
+    ticking = false;
+    var h = hero.getBoundingClientRect(), o = enroll.getBoundingClientRect(), vh = window.innerHeight;
+    var heroPassed = h.bottom < 0;
+    var offerOnScreen = o.top < vh * 0.85 && o.bottom > 0;
+    var on = heroPassed && !offerOnScreen;
+    bar.classList.toggle("on", on); bar.setAttribute("aria-hidden", on ? "false" : "true"); bar.querySelector("a").tabIndex = on ? 0 : -1;
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  update();
 })();
 </script>
 </body>

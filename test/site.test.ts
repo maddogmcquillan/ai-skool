@@ -42,7 +42,9 @@ describe("the site", () => {
     const html = await res.text();
     expect(html).toContain("https://www.joinlearnai.com/checkout/founding-member");
     expect(html).toContain('"2050628052248432"');
-    expect(html).toContain("Most kids won't learn this in school");
+    expect(html).toContain("Kids don't learn this in school");
+    // No price above the fold: the first price mention must come after the hero.
+    expect(html.indexOf("$49")).toBeGreaterThan(html.indexOf("</header>"));
     expect(html).toContain("Ages 11");
     expect(html).not.toMatch(/no refunds/i);
     const img = await app.request("/assets/class-game.jpg");
