@@ -124,3 +124,31 @@ Give them the head start before the future leaves them behind.
 ```
 
 Headline options (40 chars): "AI For Kids: Build Real Things with AI" / "Give them the head start with AI" / "Kids don't learn this in school". Description: "Real instructors. New classes every week." Landing page: https://joinlearnai.com/ai-for-kids
+
+### Variation 2, "congratulations / start tonight" (modeled on a BrightChamps setup-reminder ad)
+
+The "top 3%" line is a flattery device from the reference, not a measured figure; Version B says the same thing without a number. Class 1 ("What is AI?") is a five-minute concept video, so the copy says "under ten minutes" and points builders at the project classes, which go in any order.
+
+#### Version A
+
+```
+𝐂𝐨𝐧𝐠𝐫𝐚𝐭𝐮𝐥𝐚𝐭𝐢𝐨𝐧𝐬! 𝐘𝐨𝐮'𝐫𝐞 𝐢𝐧 𝐭𝐡𝐞 𝐭𝐨𝐩 𝟑% 𝐨𝐟 𝐩𝐚𝐫𝐞𝐧𝐭𝐬 𝐢𝐧𝐯𝐞𝐬𝐭𝐢𝐧𝐠 𝐢𝐧 𝐭𝐡𝐞𝐢𝐫 𝐤𝐢𝐝'𝐬 𝐟𝐮𝐭𝐮𝐫𝐞 𝐰𝐢𝐭𝐡 𝐀𝐈. 🎉🤖
+
+Here's the thing most parents get wrong: they sign their kid up, the laptop stays closed for a week, and the momentum is gone. The first ten minutes decide whether this sticks, so don't let a slow start hold back skills they'll use for the rest of their life. ⚠️📉
+
+Good news: there is nothing to install. Every class runs in the browser, so your kid can start the night you enroll. Here's the 3-step setup so they dive straight in without a hitch. Grab any laptop or Chromebook, sit with them for Class 1 (it's under ten minutes, from a real instructor), and have them post their first question in Ask Coach, where an answer comes back in minutes and a real person reads every thread. 🚀💡
+
+⚡ 𝐆𝐞𝐭 𝐓𝐡𝐞𝐢𝐫 𝐒𝐞𝐭𝐮𝐩 𝐑𝐞𝐚𝐝𝐲 𝐀𝐧𝐝 𝐒𝐭𝐚𝐫𝐭 𝐓𝐡𝐞 𝐅𝐢𝐫𝐬𝐭 𝐂𝐥𝐚𝐬𝐬 𝐓𝐨𝐧𝐢𝐠𝐡𝐭! 👇
+```
+
+#### Version B
+
+```
+𝐂𝐨𝐧𝐠𝐫𝐚𝐭𝐮𝐥𝐚𝐭𝐢𝐨𝐧𝐬! 𝐘𝐨𝐮'𝐫𝐞 𝐨𝐧𝐞 𝐨𝐟 𝐭𝐡𝐞 𝐟𝐞𝐰 𝐩𝐚𝐫𝐞𝐧𝐭𝐬 𝐠𝐞𝐭𝐭𝐢𝐧𝐠 𝐭𝐡𝐞𝐢𝐫 𝐤𝐢𝐝 𝐚𝐡𝐞𝐚𝐝 𝐰𝐢𝐭𝐡 𝐀𝐈, 𝐧𝐨𝐭 𝐣𝐮𝐬𝐭 𝐥𝐞𝐭𝐭𝐢𝐧𝐠 𝐭𝐡𝐞𝐦 𝐬𝐜𝐫𝐨𝐥𝐥. 🎉🤖
+
+Most kids who quit a program quit in week one, because starting felt like homework. ⚠️ With Learn AI there's nothing to install and nothing to schedule. Any laptop or Chromebook works, Class 1 is under ten minutes with a real instructor, and the project classes go in any order, so they can start building a game on night one. Stuck at 9pm? Ask Coach answers in minutes, and a person reads every thread. 🚀
+
+Founding rate for the first 200 families, locked in for as long as you stay.
+
+⚡ 𝐒𝐭𝐚𝐫𝐭 𝐓𝐡𝐞𝐢𝐫 𝐅𝐢𝐫𝐬𝐭 𝐂𝐥𝐚𝐬𝐬 𝐓𝐨𝐧𝐢𝐠𝐡𝐭! 👇
+```
