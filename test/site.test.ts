@@ -35,6 +35,21 @@ describe("the site", () => {
     expect(img.headers.get("content-type")).toBe("image/png");
   });
 
+  it("serves the AI For Kids ad landing page with the checkout link, the pixel and the hero image", async () => {
+    const app = await createApp(cfg, { kb });
+    const res = await app.request("/ai-for-kids");
+    expect(res.status).toBe(200);
+    const html = await res.text();
+    expect(html).toContain("https://www.joinlearnai.com/checkout/founding-member");
+    expect(html).toContain('"2050628052248432"');
+    expect(html).toContain("Most kids won't learn this in school");
+    expect(html).toContain("Ages 11");
+    expect(html).not.toMatch(/no refunds/i);
+    const img = await app.request("/assets/lp-ai-for-kids-hero.jpg");
+    expect(img.status).toBe(200);
+    expect(img.headers.get("content-type")).toBe("image/jpeg");
+  });
+
   it("serves any extra page in site/ by its slug and 404s the rest", async () => {
     const app = await createApp(cfg, { kb });
     expect((await app.request("/parents")).status).toBe(200);
