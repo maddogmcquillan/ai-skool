@@ -152,3 +152,11 @@ Founding rate for the first 200 families, locked in for as long as you stay.
 
 ⚡ 𝐒𝐭𝐚𝐫𝐭 𝐓𝐡𝐞𝐢𝐫 𝐅𝐢𝐫𝐬𝐭 𝐂𝐥𝐚𝐬𝐬 𝐓𝐨𝐧𝐢𝐠𝐡𝐭! 👇
 ```
+
+### Headlines and description for the head-start ad set
+
+Headline A (scarcity + offer): ⏳ 200 Founding Spots · Rate Locked In
+Headline B (the funnel's closing line): 🚀 Give Them the Head Start 👉
+Description (one, category line like the reference ads): Online AI Classes for Kids 11–17
+Display link shows JOINLEARNAI.COM automatically. Both headlines are under 40 characters, the
+description under 35, so nothing truncates in mobile feed.
