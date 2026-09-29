@@ -2,6 +2,8 @@
 
 Audience: parents of 11 to 17 year olds in the United States, 25 and up. Never target under 18.
 Landing page: https://joinlearnai.com (served by the service from `site/index.html`).
+Per-ad-group pages: https://joinlearnai.com/ai-for-kids (`site/ai-for-kids.html`) for the
+"most kids won't learn this in school / head start" ad set; add `site/<slug>.html` for the next.
 Checkout: https://www.joinlearnai.com/checkout/founding-member. Price: $49 a month.
 Prefix every campaign with `LAI -` so spend splits cleanly from the other business.
 

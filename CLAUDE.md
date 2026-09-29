@@ -85,6 +85,10 @@ The community's public name is **Learn AI** (the repo name "ai-skool" is histori
 - The landing page is `site/index.html`; `site/parents.html`, `site/terms.html` and
   `site/privacy.html` are drafts pending a lawyer. `src/site.ts` serves them and `brand/assets/`
   from the same Railway service. Edit, run `npm test`, push; Railway redeploys.
+- One landing page per ad group: `site/<slug>.html` is served at `/<slug>` with no code change
+  (`site/ai-for-kids.html` is the "head start" ad set's page). Copy its pixel block and checkout
+  links, match the page's headline and image to the ads that point at it, and keep it honest:
+  ages 11 to 17, no invented ratings or reviews, and never "no refunds" in marketing copy.
 - Ad copy, campaign structure and creative briefs are in `docs/ADS.md`.
 
 ## When asked to apply or refresh branding

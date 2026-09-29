@@ -57,7 +57,8 @@ knowledge and builds Meta events, but calls neither Claude nor Meta. Useful whil
 
 `site/` holds the parent-facing landing page and its parents, terms and privacy pages; the
 service serves them at `/`, `/parents`, `/terms` and `/privacy`, with brand images under
-`/assets/`. `docs/ADS.md` holds the Meta campaign structure, ad copy and creative briefs.
+`/assets/`. Any other `site/<slug>.html` is served at `/<slug>`, one page per ad group
+(`site/ai-for-kids.html` at `/ai-for-kids`). `docs/ADS.md` holds the Meta campaign structure, ad copy and creative briefs.
 
 ## Deploy
 
