@@ -318,3 +318,43 @@ Then add one more TXT: Name _dmarc, Content v=DMARC1; p=none; rua=mailto:hello@j
 Block 5, check. Open mail.google.com in a new tab (STOP for me to sign in as
 hello@joinlearnai.com). Send a test message from hello@ to my personal Gmail with the subject
 "mailbox test". Tell me when it lands, and screenshot the Cloudflare DNS records list.
+
+## Brief 8: Build the first Meta campaign as drafts
+
+Prerequisites: a card on the Learn AI ad account, the nine statics from `brand/assets/ad-*.png`
+unzipped into ~/Downloads/learn-ai-ad-statics, Ads Manager open on the Learn AI account.
+
+You are building my first Meta campaign in Ads Manager for the Learn AI ad account. The nine
+image files are in ~/Downloads/learn-ai-ad-statics. Build everything, leave the campaign OFF,
+and STOP for my review before publishing anything live.
+
+Campaign: name "LAI - Founding Members", objective Sales, manual setup, no campaign budget
+(budgets sit on the ad sets). Conversion location Website, dataset Learn AI Web, conversion
+event Purchase, attribution 7-day click and 1-day view.
+
+Ad set 1 "LAI - Broad": United States, ages 25 to 55, Advantage+ audience on, all placements,
+daily budget $50.
+Ad set 2 "LAI - Interests": United States, ages 25 to 55, detailed targeting interests
+parenting, homeschooling, STEM education, coding for kids, Khan Academy, Outschool; daily
+budget $30.
+Ad set 3 "LAI - Retargeting": create a custom audience of website visitors from the Learn AI
+Web dataset, last 30 days; exclude a custom audience of Purchase events, last 180 days; daily
+budget $10.
+
+In every ad set create three ads named List, Path and Trust. For each, upload the three sizes
+(ad-list-1x1, ad-list-4x5, ad-list-9x16, and the same for path and trust) and assign 1:1 to
+feeds, 4:5 to Instagram feed, 9:16 to stories and reels. Identity: the Learn AI Page. Website
+URL https://joinlearnai.com. Call to action "Learn more". URL parameters:
+utm_source=meta&utm_campaign=lai-founding&utm_content={{ad.name}}.
+List ad: primary text "Your kid can build real things with AI this month: a game, an app, a
+website, a chatbot. No coding needed. Ages 11 to 17. $49/month, cancel anytime." Headline
+"Build a game, an app, a chatbot". Description "Cancel anytime. An adult reads every thread."
+Path ad: primary text "Seventeen short classes, ten real projects, a coach that answers in
+minutes, and a community with no private messaging. Built for parents to trust." Headline
+"AI classes for ages 11 to 17". Description "17 classes, 10 projects, weekly live build-along."
+Trust ad: primary text "Most kids use AI. Few understand it. Learn AI teaches how it works, then
+has them build with it. From $49 a month. Founding rate locked in." Headline "A kids' AI
+program parents can trust". Description "No member messaging. Parent consent at signup."
+
+Save everything as drafts with the campaign switched off, show me a screenshot of the campaign
+tree, and STOP.
