@@ -39,6 +39,7 @@ describe("the site", () => {
     const app = await createApp(cfg, { kb });
     expect((await app.request("/parents")).status).toBe(200);
     expect((await app.request("/no-such-page")).status).toBe(404);
+    expect((await app.request("/healthz")).status).toBe(200);
     expect((await app.request("/../package.json")).status).toBe(404);
   });
 

@@ -78,8 +78,6 @@ export async function createApp(cfg: ServerConfig, deps: AppDeps = {}) {
   let kb = deps.kb ?? (await KnowledgeBase.fromDir(cfg.knowledgeDir));
   const app = new Hono();
 
-  mountSite(app, { siteDir: deps.siteDir, assetsDir: deps.assetsDir });
-
   app.get("/healthz", (c) =>
     c.json({ ok: true, dryRun: cfg.dryRun, knowledgeChunks: kb.chunks.length, coach: deps.coachStatus?.() ?? null, meta: deps.metaStatus?.() ?? null }),
   );
@@ -156,6 +154,9 @@ export async function createApp(cfg: ServerConfig, deps: AppDeps = {}) {
       dryRun: cfg.dryRun,
     });
   });
+
+  // Last, so the site's slug route can never shadow /healthz or the API routes above.
+  mountSite(app, { siteDir: deps.siteDir, assetsDir: deps.assetsDir });
 
   return app;
 }
