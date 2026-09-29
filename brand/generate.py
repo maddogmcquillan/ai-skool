@@ -170,12 +170,14 @@ body = f'''<div class="ground" style="width:1200px;height:630px">{nodes_svg(1200
 render("og-image", 1200, 630, page(1200, 630, body))
 
 # ---- Paywall checkout cover, Circle recommends 540x303; rendered at 2x for sharp text ----
-body = f'''<div class="ground" style="width:1080px;height:606px"><div style="position:absolute;left:520px;top:0;width:560px;height:606px">{nodes_svg(560,606,BLUE,seed=42,count=12)}</div>
-  <div style="position:absolute;left:64px;top:0;height:606px;display:flex;flex-direction:column;justify-content:center;gap:22px;max-width:760px">
-    {wordmark(36)}
-    <div class="chip" style="font-size:20px;color:{SPARK};margin-top:6px">Founding Member</div>
-    <div class="title" style="font-size:72px">AI classes for<br>ages 11 to 17.</div>
-    <div class="sub" style="font-size:26px;max-width:700px">17 video classes, real projects, a coach that answers in minutes, and a community parents can trust.</div></div>
+# Copy mirrors the ad landing pages: the headline parents tapped on, the three heavy hitters, the
+# founding cap. Text fills the frame; the constellation is pushed to a narrow strip on the right.
+body = f'''<div class="ground" style="width:1080px;height:606px"><div style="position:absolute;left:800px;top:0;width:280px;height:606px;opacity:.5">{nodes_svg(280,606,BLUE,seed=42,count=8)}</div>
+  <div style="position:absolute;left:56px;top:0;height:606px;display:flex;flex-direction:column;justify-content:center;gap:22px;max-width:960px">
+    <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap">{wordmark(34)}<div class="chip" style="font-size:17px;color:{NAVY};background:{SPARK};padding:9px 16px;border-radius:999px;letter-spacing:.1em">Founding rate · first 200 families</div></div>
+    <div class="title" style="font-size:88px;line-height:1.02;margin-top:4px">Kids don't learn this<br>in school.</div>
+    <div class="sub" style="font-size:30px;line-height:1.35;max-width:900px;color:{INK}">Real instructors. New classes every week. A coach that answers in minutes. Ages 11 to 17.</div>
+    <div class="sub" style="font-size:24px;color:{SPARK};font-weight:700">$49/month, locked in for life. Cancel anytime.</div></div>
   <div style="position:absolute;left:0;bottom:0;width:1080px;height:8px;background:linear-gradient(90deg,{SPARK},{BLUE},{MINT})"></div></div>'''
 render("checkout-cover", 1080, 606, page(1080, 606, body))
 

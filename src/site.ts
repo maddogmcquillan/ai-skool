@@ -40,7 +40,7 @@ export function mountSite(app: Hono, opts: { siteDir?: string; assetsDir?: strin
   for (const [route, file] of Object.entries(PAGES)) app.get(route, (c) => servePage(c, file));
 
   // Any other lowercase slug maps to site/<slug>.html, so a new landing page is one file and a push.
-  const reserved = new Set(["healthz", "hooks", "admin", "assets"]);
+  const reserved = new Set(["healthz", "hooks", "admin", "assets", "api"]);
   app.get("/:slug{[a-z0-9-]+}", (c) => {
     const slug = c.req.param("slug");
     return reserved.has(slug) ? c.text("not found", 404) : servePage(c, `${slug}.html`);

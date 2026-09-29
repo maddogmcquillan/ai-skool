@@ -174,28 +174,38 @@
   .coach .foot { display:grid; grid-template-columns:20px 1fr; gap:9px; align-items:start; margin:0 16px 16px; background:var(--green-bg); border:1px solid #BFE8D2; color:#0F5A3A; border-radius:12px; padding:11px 13px; font-size:14px; font-weight:600; }
   .coach .foot svg { width:20px; height:20px; }
 
-  /* 5. Offer */
-  .offer { background:linear-gradient(180deg,#F1EFFF,#E7E4FF); border:1px solid #D6D2FF; border-radius:22px; padding:24px 18px; }
-  .offer h2 { font-size:27px; }
-  .stack { list-style:none; margin:18px 0 0; padding:0; background:var(--surface); border:1px solid #D9D5FF; border-radius:16px; overflow:hidden; }
-  .stack li { display:grid; grid-template-columns:24px 1fr auto; gap:10px; align-items:start; padding:12px 14px; border-top:1px solid var(--line); font-size:15px; }
+  /* 5. Offer: the hero's indigo, with the hero's yellow button */
+  .offer { background:radial-gradient(700px 420px at 12% 0%,#6A5EF0,var(--indigo) 48%,var(--indigo2) 100%); color:#fff; border-radius:22px; padding:26px 18px 24px; box-shadow:0 24px 60px rgba(46,38,153,.35); }
+  .offer .eyebrow { color:var(--spark); }
+  .offer h2 { font-size:27px; color:#fff; }
+  .offer .lede { color:rgba(255,255,255,.86); }
+  .stack { list-style:none; margin:18px 0 0; padding:0; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.18); border-radius:16px; overflow:hidden; }
+  .stack li { display:grid; grid-template-columns:24px 1fr auto; gap:10px; align-items:start; padding:12px 14px; border-top:1px solid rgba(255,255,255,.12); font-size:15px; }
   .stack li:first-child { border-top:0; }
   .stack li b { font-weight:700; }
-  .stack li .v { font-family:var(--display); font-weight:700; color:var(--muted); white-space:nowrap; font-size:14px; padding-top:1px; }
-  .stack li.total { background:var(--indigo-soft); grid-template-columns:1fr auto; font-family:var(--display); font-weight:800; font-size:15px; }
-  .stack li.total s { color:var(--muted); font-weight:700; }
+  .stack .ck { background:var(--spark); }
+  .stack .ck svg { stroke:#141A2A; }
+  .stack li .v { font-family:var(--display); font-weight:700; color:rgba(255,255,255,.72); white-space:nowrap; font-size:14px; padding-top:1px; }
+  .stack li.total { background:rgba(255,255,255,.12); grid-template-columns:1fr auto; font-family:var(--display); font-weight:800; font-size:15px; }
+  .stack li.total s { color:rgba(255,255,255,.6); font-weight:700; }
   .pricebox { margin-top:18px; display:grid; gap:4px; }
-  .pricebox .was { font-family:var(--display); font-weight:700; color:var(--muted); font-size:15px; letter-spacing:.02em; }
-  .pricebox .was s { font-size:18px; color:var(--ink); text-decoration-thickness:2px; text-decoration-color:#E0483E; }
-  .pricebox .now { font-family:var(--display); font-weight:800; font-size:54px; line-height:1; }
-  .pricebox .now small { font-size:16px; color:var(--muted); font-weight:700; }
+  .pricebox .was { font-family:var(--display); font-weight:700; color:rgba(255,255,255,.75); font-size:15px; letter-spacing:.02em; }
+  .pricebox .was s { font-size:18px; color:#fff; text-decoration-thickness:2px; text-decoration-color:#FF7A59; }
+  .pricebox .now { font-family:var(--display); font-weight:800; font-size:54px; line-height:1; color:#fff; }
+  .pricebox .now small { font-size:16px; color:rgba(255,255,255,.75); font-weight:700; }
   .pricebox .tag { display:inline-block; justify-self:start; background:var(--spark); color:var(--navy); font-family:var(--display); font-weight:800; font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; padding:5px 10px; border-radius:999px; margin-top:6px; }
   .scarce { display:grid; gap:8px; margin-top:14px; }
   .scarce div { display:grid; grid-template-columns:22px 1fr; gap:9px; align-items:start; font-size:14.5px; }
   .scarce div b { font-weight:800; }
   .scarce .dot { width:20px; height:20px; border-radius:50%; background:var(--spark); display:grid; place-items:center; margin-top:2px; }
   .scarce .dot svg { width:12px; height:12px; }
+  .fill { margin-top:14px; }
+  .fill-row { display:flex; justify-content:space-between; gap:10px; font-size:13.5px; font-weight:700; margin-bottom:6px; }
+  .fill-row span:last-child { color:var(--spark); }
+  .fill-bar { height:10px; border-radius:999px; background:rgba(255,255,255,.2); overflow:hidden; }
+  .fill-bar i { display:block; height:100%; width:0; background:var(--spark); border-radius:999px; transition:width .6s ease; }
   .offer .btn { margin-top:18px; }
+  .offer .cta-note { color:rgba(255,255,255,.78); }
   .safe { margin-top:28px; }
   .safe h3 { font-size:19px; }
   .safe .checks { margin-top:12px; }
@@ -281,7 +291,7 @@
       <div class="copy">
         <p class="pre">Kids don't learn this in school.</p>
         <h1>AI For Kids: Build, Create &amp; Make Real Things with AI</h1>
-        <p class="lede">Kids 11 to 17 learn how AI actually works from real instructors, college-level material taught so a 12-year-old gets it, then build things they're proud of.</p>
+        <p class="lede">Kids 11 to 17 learn how AI actually works from real instructors, college-level material taught so a 12-year-old gets it.</p>
       </div>
       <div class="player" aria-label="What a class looks like">
         <div class="top"><span class="live"><i></i>Classroom · Level 3</span><span>Lesson 8</span></div>
@@ -431,11 +441,13 @@
         <p class="lede sub">Schools aren't teaching this. The kids who learn it now are the ones who'll be ahead at 18. Your child can start tonight.</p>
         <div class="pricebox"><span class="was">Total value <s>$1,332</s></span><span class="now">$49<small>/month</small></span><span class="tag">Founding rate</span></div>
         <div class="scarce">
-          <!-- FOUNDING CAP: set the real number of founding spots before ads run. -->
-          <div><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="#141A2A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg></span><span><b>Founding rate for the first 100 families.</b> After that, the price goes up.</span></div>
+          <!-- The cap is also FOUNDING_CAP on the service, which feeds the live "spots taken" bar below. -->
+          <div><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="#141A2A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg></span><span><b>Founding rate for the first 200 families.</b> After that, the price goes up.</span></div>
           <div><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="#141A2A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></span><span><b>Locked in for life.</b> Join at $49 and it stays $49 every month, for as long as you're a member. Your rate never increases.</span></div>
         </div>
-        <a class="btn indigo" data-checkout href="https://www.joinlearnai.com/checkout/founding-member">Enroll now <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <!-- Live count from /api/founding-spots. Stays hidden until at least a tenth of the spots are taken. -->
+        <div class="fill" id="fill" hidden><div class="fill-row"><span id="fill-label"></span><span id="fill-left"></span></div><div class="fill-bar"><i id="fill-i"></i></div></div>
+        <a class="btn" data-checkout href="https://www.joinlearnai.com/checkout/founding-member">Enroll now <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <p class="cta-note">Secure checkout by Stripe. Your child can start tonight. Cancel anytime.</p>
       </div>
       <ul class="stack" aria-label="What's included">
@@ -500,6 +512,19 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onScroll);
   update();
+})();
+(function () {
+  var box = document.getElementById("fill");
+  if (!box || !window.fetch) return;
+  fetch("/api/founding-spots", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (s) {
+    if (!s || !s.cap || typeof s.taken !== "number") return;
+    var pct = Math.round(100 * s.taken / s.cap);
+    if (pct < 10) return;
+    document.getElementById("fill-label").textContent = s.taken + " of " + s.cap + " founding spots taken";
+    document.getElementById("fill-left").textContent = Math.max(0, s.cap - s.taken) + " left";
+    box.hidden = false;
+    requestAnimationFrame(function () { document.getElementById("fill-i").style.width = Math.min(100, pct) + "%"; });
+  }).catch(function () {});
 })();
 </script>
 </body>

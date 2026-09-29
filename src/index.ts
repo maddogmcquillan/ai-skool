@@ -2,6 +2,7 @@ import { serve } from "@hono/node-server";
 import { CoachLoop } from "./bot/coachLoop.js";
 import { KnowledgeBase } from "./bot/knowledge.js";
 import { ChargeLoop, parsePaywallKeys } from "./chargeLoop.js";
+import { FoundingCounter } from "./founding.js";
 import { configFromEnv, createApp } from "./server.js";
 
 const cfg = configFromEnv();
@@ -45,6 +46,11 @@ const meta =
       })
     : undefined;
 
+// The "spots taken" bar on the landing pages: distinct paying families, capped at FOUNDING_CAP.
+const founding = cfg.circle
+  ? new FoundingCounter({ circle: cfg.circle, cap: Number(env.FOUNDING_CAP ?? 200), ttlMs: 5 * 60_000, paywallName: env.FOUNDING_PAYWALL_NAME ?? "Founding Member" })
+  : undefined;
+
 const app = await createApp(cfg, {
   kb,
   onKnowledgeReload: (next) => {
@@ -52,6 +58,7 @@ const app = await createApp(cfg, {
   },
   coachStatus: () => coach?.status(),
   metaStatus: () => meta?.status(),
+  foundingSpots: founding ? () => founding.spots() : undefined,
 });
 
 const port = Number(env.PORT ?? 8787);

@@ -2,6 +2,7 @@ import { Hono } from "hono";
 import { buildMetaEvent, sendToMeta, type CapiConfig, type ChargeHook } from "./capi.js";
 import type { CoachLoopStatus } from "./bot/coachLoop.js";
 import type { ChargeLoopStatus } from "./chargeLoop.js";
+import type { FoundingSpots } from "./founding.js";
 import { KnowledgeBase } from "./bot/knowledge.js";
 import { isBotAuthor } from "./bot/policy.js";
 import { composeReply } from "./bot/respond.js";
@@ -68,6 +69,8 @@ export interface AppDeps {
   coachStatus?: () => CoachLoopStatus | undefined;
   /** Reported on /healthz when the purchase-to-Meta poller is running. */
   metaStatus?: () => ChargeLoopStatus | undefined;
+  /** Serves /api/founding-spots for the landing pages' "spots taken" bar. Absent means 404. */
+  foundingSpots?: () => Promise<FoundingSpots>;
   /** Where the landing page and brand images live; defaults suit the repo layout. */
   siteDir?: string;
   assetsDir?: string;
@@ -153,6 +156,17 @@ export async function createApp(cfg: ServerConfig, deps: AppDeps = {}) {
       posted,
       dryRun: cfg.dryRun,
     });
+  });
+
+  // Public, read-only: how many founding spots are taken, for the landing pages' fill bar.
+  app.get("/api/founding-spots", async (c) => {
+    if (!deps.foundingSpots) return c.json({ error: "not configured" }, 404);
+    try {
+      const spots = await deps.foundingSpots();
+      return c.json(spots, 200, { "cache-control": "public, max-age=300" });
+    } catch (err) {
+      return c.json({ error: (err as Error).message }, 502);
+    }
   });
 
   // Last, so the site's slug route can never shadow /healthz or the API routes above.
