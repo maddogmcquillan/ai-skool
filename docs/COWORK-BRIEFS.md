@@ -358,3 +358,66 @@ program parents can trust". Description "No member messaging. Parent consent at 
 
 Save everything as drafts with the campaign switched off, show me a screenshot of the campaign
 tree, and STOP.
+
+## Brief 9: Checkout page copy and cover (Circle paywall "Founding Member")
+
+Prerequisite: save the new cover image from the chat to `~/Downloads/checkout-cover.png`
+(it is `brand/assets/checkout-cover.png` in the repo, 1080 x 606). Have Chrome signed in to
+www.joinlearnai.com as the admin. Copy is also in `docs/CHECKOUT-COPY.md`.
+
+You are updating the checkout page of my Circle community at www.joinlearnai.com, working in my
+signed-in Chrome. Open the admin area (click the community name top-left, or Settings), go to
+Paywalls, open the paywall named "Founding Member", open its Checkout tab and click Customize.
+The customize editor has a sidebar with sections named Paywall cover image, Product details,
+Badges, Benefits, Testimonials and Price details. Work through the blocks in order, click Save
+Changes after every block, and tell me when each block is done. Never delete the paywall, never
+change its price, access or Tracking tab, and never turn on "Reduced price" or "Countdown price
+lock". If a "choose file" window opens that you cannot operate, stop, tell me to pick
+~/Downloads/checkout-cover.png, and wait until I say "done".
+
+Block 1, cover image. In the sidebar click Paywall cover image. Use the option under the current
+thumbnail to replace the image with checkout-cover.png. Save Changes.
+
+Block 2, product details. Click Product details. Keep the title exactly "Founding Member".
+Replace the description with exactly:
+Give your kid the head start. Real instructors, new classes every week, and a coach that answers
+in minutes. Founding rate for the first 200 families: $49/month, locked in for as long as you stay.
+Save Changes.
+
+Block 3, badges. Click Badges. Show badges: on. Edit the existing badges in place so that exactly
+five remain, in this order, with this exact text (if each badge takes an icon or emoji, use the
+one in brackets):
+1. Founding rate · first 200 families  [⏳]
+2. New classes every week  [🆕]
+3. Coach answers in minutes  [💬]
+4. Ages 11 to 17  [👦]
+5. Cancel anytime  [🔓]
+Delete "Built for parents and kids", "17 classes, 3 levels" and "Moderated, no member DMs".
+Save Changes.
+
+Block 4, benefits. Click Benefits. Show benefits: on. Replace the current nine benefits so that
+exactly these six remain, in this order. Each has a title and a description:
+1. Beginner-friendly AI classes — College-level material, taught so a 12-year-old gets it.
+2. Project classes — Make a game, an app, a website, a chatbot and more. No code required.
+3. New classes every week — Chosen by member vote, from real instructors.
+4. Ask Coach — Help in minutes, any day, with a person reading every thread.
+5. A safe, moderated space — No messaging between members. Parent consent at signup.
+6. Your rate never goes up — Join at $49 and it stays $49 every month, for as long as you're a member.
+Delete "Show and Tell", "Weekly live build-along and Q&A sessions", "A Parent Hub", "New classes
+added by member vote", "Build real projects", "17 video classes" and anything else left over.
+Keep icons if the editor has them; pick the closest match for each. Save Changes.
+
+Block 5, price callout. Click Price details. Next to the $49 monthly price, set Callout text to
+exactly: Founding rate · first 200 families. Callout colour: the yellow/amber option (closest to
+#FFC245). Leave Reduced price off and Countdown price lock off. Save Changes.
+Then open the paywall's Pricing tab. If the $49 monthly price has a description field (it
+currently shows "Founding rate, locked in."), change it to: Founding rate, locked in for life.
+If there is no such field, skip this and tell me.
+
+Block 6, testimonials. Click Testimonials and make sure Show testimonials is OFF. Do not add any.
+
+Block 7, check. Click View (top right) and preview on mobile, then on desktop; screenshot both.
+Then open https://www.joinlearnai.com/checkout/founding-member in a new tab and screenshot the
+top of the page. Confirm: the cover reads "Kids don't learn this in school.", the five badges
+read as in Block 3, the yellow callout shows on the $49 price, and the benefits list has exactly
+the six items from Block 4. Show me the screenshots and STOP.
