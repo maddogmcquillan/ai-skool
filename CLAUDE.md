@@ -89,7 +89,12 @@ The community's public name is **Learn AI** (the repo name "ai-skool" is histori
   (`site/ai-for-kids.html` is the "head start" ad set's page). Copy its pixel block and checkout
   links, match the page's headline and image to the ads that point at it, and keep it honest:
   ages 11 to 17, no invented ratings or reviews, and never "no refunds" in marketing copy.
-- Ad copy, campaign structure and creative briefs are in `docs/ADS.md`.
+- The offer block's "spots taken" bar reads `GET /api/founding-spots` (`src/founding.ts`): distinct
+  paying members from Circle's paid charges, capped at `FOUNDING_CAP` (default 200). The page
+  hides the bar until a tenth of the spots are taken. Change the cap in the page copy, the
+  checkout copy (`docs/CHECKOUT-COPY.md`) and `FOUNDING_CAP` together.
+- Ad copy, campaign structure and creative briefs are in `docs/ADS.md`. The checkout page text
+  and cover are in `docs/CHECKOUT-COPY.md` and `brand/assets/checkout-cover.png`.
 
 ## When asked to apply or refresh branding
 
