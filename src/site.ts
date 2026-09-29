@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { extname, join, normalize } from "node:path";
-import type { Hono } from "hono";
+import type { Context, Hono } from "hono";
 
 /**
  * The parent-facing site: the landing page and its legal pages from `site/`, plus the brand
@@ -29,16 +29,18 @@ export function mountSite(app: Hono, opts: { siteDir?: string; assetsDir?: strin
     return buf;
   };
 
-  for (const [route, file] of Object.entries(PAGES)) {
-    app.get(route, async (c) => {
-      try {
-        const body = await load(join(siteDir, file));
-        return c.body(body, 200, { "content-type": TYPES[".html"], "cache-control": "public, max-age=300" });
-      } catch {
-        return c.text("not found", 404);
-      }
-    });
-  }
+  const servePage = async (c: Context, file: string) => {
+    try {
+      const body = await load(join(siteDir, file));
+      return c.body(body, 200, { "content-type": TYPES[".html"], "cache-control": "public, max-age=300" });
+    } catch {
+      return c.text("not found", 404);
+    }
+  };
+  for (const [route, file] of Object.entries(PAGES)) app.get(route, (c) => servePage(c, file));
+
+  // Any other lowercase slug maps to site/<slug>.html, so a new landing page is one file and a push.
+  app.get("/:slug{[a-z0-9-]+}", (c) => servePage(c, `${c.req.param("slug")}.html`));
 
   app.get("/assets/:file", async (c) => {
     const name = normalize(c.req.param("file")).replace(/^(\.\.[/\\])+/, "");

@@ -35,6 +35,13 @@ describe("the site", () => {
     expect(img.headers.get("content-type")).toBe("image/png");
   });
 
+  it("serves any extra page in site/ by its slug and 404s the rest", async () => {
+    const app = await createApp(cfg, { kb });
+    expect((await app.request("/parents")).status).toBe(200);
+    expect((await app.request("/no-such-page")).status).toBe(404);
+    expect((await app.request("/../package.json")).status).toBe(404);
+  });
+
   it("refuses paths outside the assets folder and unknown files", async () => {
     const app = await createApp(cfg, { kb });
     expect((await app.request("/assets/..%2F..%2Fpackage.json")).status).toBe(404);
