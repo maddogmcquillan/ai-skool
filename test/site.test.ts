@@ -45,7 +45,7 @@ describe("the site", () => {
     expect(html).toContain("Most kids won't learn this in school");
     expect(html).toContain("Ages 11");
     expect(html).not.toMatch(/no refunds/i);
-    const img = await app.request("/assets/lp-ai-for-kids-hero.jpg");
+    const img = await app.request("/assets/class-game.jpg");
     expect(img.status).toBe(200);
     expect(img.headers.get("content-type")).toBe("image/jpeg");
   });
