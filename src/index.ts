@@ -4,6 +4,7 @@ import { KnowledgeBase } from "./bot/knowledge.js";
 import { ChargeLoop, parsePaywallKeys } from "./chargeLoop.js";
 import { FoundingCounter } from "./founding.js";
 import { configFromEnv, createApp } from "./server.js";
+import { StatsCounter } from "./stats.js";
 
 const cfg = configFromEnv();
 if (!cfg.hookSecret) {
@@ -59,6 +60,8 @@ const app = await createApp(cfg, {
   coachStatus: () => coach?.status(),
   metaStatus: () => meta?.status(),
   foundingSpots: founding ? () => founding.spots() : undefined,
+  // Landing page funnel counters (GET /api/stats). In memory: they restart with each deploy.
+  stats: new StatsCounter(),
 });
 
 const port = Number(env.PORT ?? 8787);

@@ -3,6 +3,7 @@ import { buildMetaEvent, sendToMeta, type CapiConfig, type ChargeHook } from "./
 import type { CoachLoopStatus } from "./bot/coachLoop.js";
 import type { ChargeLoopStatus } from "./chargeLoop.js";
 import type { FoundingSpots } from "./founding.js";
+import type { StatsCounter } from "./stats.js";
 import { KnowledgeBase } from "./bot/knowledge.js";
 import { isBotAuthor } from "./bot/policy.js";
 import { composeReply } from "./bot/respond.js";
@@ -71,6 +72,8 @@ export interface AppDeps {
   metaStatus?: () => ChargeLoopStatus | undefined;
   /** Serves /api/founding-spots for the landing pages' "spots taken" bar. Absent means 404. */
   foundingSpots?: () => Promise<FoundingSpots>;
+  /** First-party funnel counters behind POST /api/track and GET /api/stats. Absent means 404. */
+  stats?: StatsCounter;
   /** Where the landing page and brand images live; defaults suit the repo layout. */
   siteDir?: string;
   assetsDir?: string;
@@ -167,6 +170,24 @@ export async function createApp(cfg: ServerConfig, deps: AppDeps = {}) {
     } catch (err) {
       return c.json({ error: (err as Error).message }, 502);
     }
+  });
+
+  // Landing page beacons: {e: event, p: page slug}. Aggregate counts only, nothing personal.
+  app.post("/api/track", async (c) => {
+    if (!deps.stats) return c.body(null, 404);
+    const raw = await c.req.text().catch(() => "");
+    if (raw.length > 200) return c.body(null, 413);
+    let body: { e?: unknown; p?: unknown } = {};
+    try {
+      body = JSON.parse(raw) as { e?: unknown; p?: unknown };
+    } catch {
+      return c.body(null, 400);
+    }
+    return c.body(null, deps.stats.record(body.e, body.p) ? 204 : 400);
+  });
+  app.get("/api/stats", (c) => {
+    if (!deps.stats) return c.json({ error: "not configured" }, 404);
+    return c.json(deps.stats.snapshot(), 200, { "cache-control": "no-store" });
   });
 
   // Last, so the site's slug route can never shadow /healthz or the API routes above.

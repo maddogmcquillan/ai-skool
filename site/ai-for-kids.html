@@ -529,6 +529,33 @@
     target.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 })();
+// First-party funnel beacons (aggregate counts only, read at GET /api/stats): the view, how far
+// people scroll, which Enroll button they tap, the hand-off to checkout, and the syllabus opening.
+window.track = function (e) {
+  try {
+    var body = JSON.stringify({ e: e, p: "ai-for-kids" });
+    if (navigator.sendBeacon) navigator.sendBeacon("/api/track", new Blob([body], { type: "text/plain" }));
+    else if (window.fetch) fetch("/api/track", { method: "POST", body: body, keepalive: true }).catch(function () {});
+  } catch (err) {}
+};
+(function () {
+  track("view");
+  var marks = [25, 50, 75, 100], seen = {};
+  function onScroll() {
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.round(100 * window.scrollY / max) : 100;
+    for (var i = 0; i < marks.length; i++) if (pct >= marks[i] && !seen[marks[i]]) { seen[marks[i]] = true; track("scroll_" + marks[i]); }
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  document.addEventListener("click", function (ev) {
+    var t = ev.target.closest && ev.target.closest("a, summary");
+    if (!t) return;
+    if (t.id === "hero-cta") track("cta_hero");
+    else if (t.closest("#sticky")) track("cta_sticky");
+    else if (t.hasAttribute("data-checkout")) track("cta_offer_checkout");
+    else if (t.closest("#syllabus") && t.tagName === "SUMMARY") track("syllabus_open");
+  });
+})();
 (function () {
   var box = document.getElementById("fill");
   if (!box || !window.fetch) return;
@@ -539,6 +566,7 @@
     document.getElementById("fill-label").textContent = s.taken + " of " + s.cap + " founding spots taken";
     document.getElementById("fill-left").textContent = Math.max(0, s.cap - s.taken) + " left";
     box.hidden = false;
+    track("spots_shown");
     requestAnimationFrame(function () { document.getElementById("fill-i").style.width = Math.min(100, pct) + "%"; });
   }).catch(function () {});
 })();

@@ -96,6 +96,19 @@ The community's public name is **Learn AI** (the repo name "ai-skool" is histori
 - Ad copy, campaign structure and creative briefs are in `docs/ADS.md`. The checkout page text
   and cover are in `docs/CHECKOUT-COPY.md` and `brand/assets/checkout-cover.png`.
 
+## When asked for funnel statistics
+
+- `GET https://joinlearnai.com/api/stats` (`src/stats.ts`) has the landing page's own counts per
+  page and per day: `view`, `scroll_25/50/75/100`, `cta_hero`, `cta_sticky`, `cta_offer_checkout`
+  (the hand-off to Circle), `syllabus_open`, `spots_shown`. Counters are in memory and restart on
+  every deploy; `since` says when. Each hit is also logged to stdout as `[track] day page event`.
+- Purchases: `GET /healthz` shows the Meta poller's `sent` count, and `/api/founding-spots` shows
+  distinct paying families.
+- Everything on the Circle checkout page (arrivals, payment step, abandons) and the ad side
+  (impressions, clicks, landing page views, cost) is only in Meta Events Manager, Ads Manager,
+  Stripe and Circle, none of which this environment can log into. Brief 10 in
+  `docs/COWORK-BRIEFS.md` pulls that report through Claude in Chrome.
+
 ## When asked to apply or refresh branding
 
 1. Requires `CIRCLE_ADMIN_TOKEN` and the files in `brand/assets/`.

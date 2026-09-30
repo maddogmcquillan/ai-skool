@@ -421,3 +421,44 @@ Then open https://www.joinlearnai.com/checkout/founding-member in a new tab and 
 top of the page. Confirm: the cover reads "Kids don't learn this in school.", the five badges
 read as in Block 3, the yellow callout shows on the $49 price, and the benefits list has exactly
 the six items from Block 4. Show me the screenshots and STOP.
+
+## Brief 10: Pull the funnel report (Meta Events Manager, Ads Manager, Stripe, Circle)
+
+Have Chrome signed in to business.facebook.com (Learn AI portfolio), dashboard.stripe.com and
+www.joinlearnai.com as admin. Read-only: this brief changes nothing anywhere.
+
+You are pulling a read-only funnel report for my Learn AI ads, working in my signed-in Chrome.
+Do not change any setting, budget, ad, or page. Collect the numbers below for the range "since
+the campaign started" (use the campaign's start date; if unsure use the last 7 days) and give
+them back to me as one table, with a screenshot of each screen you read from.
+
+Block 1, Meta Events Manager. Go to business.facebook.com/events_manager2, select the Learn AI
+business portfolio, open the dataset "Learn AI Web" (pixel id 2050628052248432), Overview tab.
+Set the date range. Record the count for each event: PageView, ViewContent, InitiateCheckout,
+Purchase, and any others listed. Then click PageView, then "View details", and look for the URL
+breakdown: record how many PageViews were on joinlearnai.com/ai-for-kids, how many on
+joinlearnai.com/ (the home page), and how many on www.joinlearnai.com/checkout/founding-member
+(that number is how many people reached the checkout). Do the same URL breakdown for
+InitiateCheckout. Screenshot each view.
+
+Block 2, Ads Manager. Go to adsmanager.facebook.com for the Learn AI ad account, campaigns
+list, same date range. Click Columns and choose "Performance and clicks", then Customize columns
+and make sure these are on: Amount spent, Impressions, Reach, Link clicks, CTR (link
+click-through rate), CPC (cost per link click), Landing page views, Checkouts initiated,
+Purchases, Cost per purchase, Purchase ROAS. Record the campaign row, then open the ad sets and
+each ad and record the same columns per ad. Screenshot each level. If the campaign's start
+date is visible, record it.
+
+Block 3, Stripe. Go to dashboard.stripe.com, Payments. Filter status Succeeded for the range and
+record the count and total. Then filter status Incomplete (and Failed, if any) and record the
+count: these are people who reached the payment step and did not finish. Open Customers and
+record how many were created in the range. Screenshot each.
+
+Block 4, Circle. On www.joinlearnai.com go to the admin area, Paywalls, Founding Member, and
+record what its Transactions and Subscriptions tabs show for the range. Then Audience: record how
+many members joined in the range. Screenshot both.
+
+Report format: a table with rows Impressions, Link clicks, Landing page views, Landing page
+PageViews (pixel), ViewContent, InitiateCheckout, Checkout PageViews (pixel), Stripe incomplete
+payments, Stripe succeeded payments, Circle subscriptions, Amount spent, Cost per purchase.
+Add one line per ad with its link clicks, landing page views and checkouts initiated. STOP.
