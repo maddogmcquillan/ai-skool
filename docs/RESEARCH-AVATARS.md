@@ -110,6 +110,31 @@ screen time they already lose the argument about into something they can be prou
 Recurring words for the outcome parents want: **head start**, **prepared**, **not left behind**,
 **think for themselves**, **use it alongside** real skills, **not a shortcut**, **create not consume**.
 
+### 1.6 The ten numbers safe to put in an ad (verified against the primary source)
+
+| Line you may use | Source and date | Note |
+|---|---|---|
+| "57% of parents think AI will make it harder for their kids to find jobs." | Common Sense Media / Lake Research, 1,244 parents, Nov 2025 | Parents of under-18s nationally |
+| "Over 80% of students say no teacher has explicitly taught them how to use AI." | RAND, spring 2025 | Pair with "only 35% of districts give students any AI training" |
+| "71% of leaders would rather hire a less experienced candidate with AI skills than a more experienced one without." | Microsoft and LinkedIn Work Trend Index, 31,000 workers, May 2024 | |
+| "Jobs that require AI skills pay a 28% premium, about $18,000 a year." | Lightcast, 1.3 billion US postings, Jul 2025 | Use this, not PwC's 56-62% (global, and PwC quotes it inconsistently) |
+| "86% of kids aged 9 to 17 already use AI. One in four uses it every day." | Common Sense Media / SSRS, 1,204 kids, Mar 2026 | |
+| "Only 1 in 10 students say their teachers have helped prepare them to use AI in future jobs or education." | Gallup / Walton Family Foundation / Heartland Forward, 1,474 Gen Z in 20 states, Mar 2025 | Heartland sample; pair with "about half would enroll in an AI class if their school offered one" |
+| "Entry-level employment in the most AI-exposed jobs is down 16% relative to peers." | Stanford Digital Economy Lab, ADP data, Nov 2025 version (Aug 2026 revision: 19% below trend) | Say "entry-level jobs", never "your kid's job"; cite the version |
+| "77% of parents want schools to teach kids to use AI tools effectively. 85% say AI skills matter for their child's career." | National Parents Union / Echelon Insights, 1,528 public-school parents, Sept 2026 | |
+| "Nearly 40% of workers' skills will be transformed or outdated by 2030." | World Economic Forum, Future of Jobs Report 2025 | Also safe: 170 million created, 92 million displaced |
+| "Just 13% of teachers say their district has an AI policy that is clear to students and teachers." | EdWeek Research Center, Oct 2025 | |
+
+Two more that matter for targeting: chatbot use among kids jumps from 7% at ages 8-10 to **15% at
+11-12** (Pew, parents of under-13s, May 2025), which is exactly our entry age; and 57% of teens say AI
+has negatively impacted their career outlook (Junior Achievement / Wakefield, Aug 2025), so the kids
+share the parents' worry.
+
+Do not use without re-checking: the Stanford "13%" (superseded), PwC wage premiums, Deloitte's "half
+of parents worry their child relies on AI too much" and "1 in 8 will pay for AI tutoring or camps"
+(press-only), "40 states have AI guidance" (35 plus Puerto Rico is the verified count), the Codeyoung
+vendor survey (364 parents, six countries), any AI-for-kids market-size figure.
+
 ## Part 2. Schools and teen behavior: the sharper version of "they don't learn this in school"
 
 ### 2.1 Schools teach the rules, not the skill
