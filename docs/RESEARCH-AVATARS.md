@@ -289,3 +289,95 @@ Juni Learning has exited kids' coding (now an SAT prep brand). Mindjoy and imagi
 - **Show the kid's output, not the curriculum.** Quest leads with named kids' projects; AI Camp with "310+ Unique AI products built by students"; iD Tech with the hardware you take home. Our project grid is the same move; real kid-made artifacts would finish it.
 - **Specific odd-number proof.** "Less than 5% of teacher candidates are selected"; "251 students enrolled in last 7 days"; "11,000+ parents joined in the last week". Our spots-taken bar is the start of this.
 - **UGC parent-voice ads, no hard CTA, 8 new creatives a week** (Synthesis, Outschool). Volume of creative over one hero ad.
+
+## Part 4. What parents say after they pay (review mining, Oct 2026)
+
+Method: Trustpilot pages for Synthesis (318 reviews), iD Tech (3,851), BrightCHAMPS (4,259),
+Codingal (996), CodeWizardsHQ (1,405), Outschool (3,583), Juni (363), Tynker (18), Prodigy (17);
+App Store review mirrors for Tynker and Kodable; Berkeley Parents Network, DC Urban Moms, Davidson
+Gifted, Mumsnet, Hacker News, ComplaintsBoard; parent blogs on Khanmigo and Synthesis. Reddit was
+unreachable from this environment for this track. The 5-star pages of the India-based live schools
+are one-line student posts; the 1- to 3-star pages are where parents speak, and they skew UK, AU,
+Gulf and Canada. Quotes are verbatim; spot-check against the live URL before any goes in an ad.
+
+### 4.1 Why they bought: the trigger is never the ad
+
+Nobody in 136 excerpts says "I saw an ad". The trigger is one of five moments:
+
+1. **The kid is already obsessed and stuck.** "My 8-year-old is obsessed (obsessed!) with
+   Minecraft"; an 11-year-old making games in Roblox Studio who "gets stuck and needs help";
+   "fascinated by all things tech/science"; "My 11 year old son expressed interest in learning
+   coding." (Berkeley Parents Network; Trustpilot Juni, kids4coding)
+2. **The kid is frustrated or bored at school.** "He was getting so frustrated with math and had a
+   horrible attitude"; "his math class was too easy and boring"; "hungry for alternative exciting
+   math options to compliment the sucky math education in the US." (Synthesis)
+3. **Nothing else has worked.** "We have spent years and a lot of money on various workbooks,
+   programs, tools, and websites. None of it has ever worked for him or helped build his
+   confidence." (Synthesis, 5 stars, Jul 2026)
+4. **The parent cannot teach it.** "As a homeschooling parent who lacks confidence in teaching
+   math"; and from Part 1, "I don't understand the technology behind AI."
+5. **The previous thing ran out or got too expensive.** A 15-year-old who has "outgrown most of
+   the local summer coding camps"; "Our tutor was charging £36 per lesson"; "are the techy teens
+   getting their money's worth?"
+
+A trusted referral closes it: "My sons allergist has a son who is a computer programmer and
+recommended Code academy." Many kids start reluctant and convert: "My son did not want to
+start... He loves it... waiting for coding class every week!"; "Initially our son was not keen to
+attend a class but now he attends twice a week."
+
+### 4.2 The proud moment: the kid shows the thing to the family
+
+The praise language is almost never about the curriculum. It is the artifact, shown to a parent,
+and the kid asking to do more without being told:
+
+- "seeing how proud he was of his robot at the end of the week was the most heartwarming thing"
+- "My children were beyond happy to finally show us their robots"
+- "came home excited to share what he had built and discovered"
+- "After every session Brayden was proud to show me what he had learned."
+- "my child is able to build a game and solve problems all by himself"
+- "Hours afterward at dinner I asked him to explain binary to my wife. 'Mom, imagine you have the
+  number 101 in binary...'"
+- "'I never understood ______ until today.'"
+- "For the first time, I never had to remind them to log in"; "He asks daily (on his own) to do
+  his lessons with this program. This has NEVER happened."
+- "feel proud of themselves instead of stressed"
+- "removes a ton of household stress" (Khanmigo, parent of a 10th grader)
+- Teen outcome, rare but potent: "2 job opportunities, working on people's web sites"
+  (CodeWizardsHQ); "advanced well beyond his high school's" (Juni)
+
+For ads: the hero image is the kid turning the laptop around to show a parent. The testimonial we
+want from founding families is one sentence in this exact shape: "She showed us the [game/app] at
+dinner and explained how it worked."
+
+### 4.3 The ten complaints that recur across every company
+
+| # | Complaint | Where it bites | Verbatim |
+|---|---|---|---|
+| 1 | **"They played Roblox / watched videos / followed a packet, they didn't build anything."** The loudest 2026 complaint, at $1,000 to $1,600 a week | iD Tech (dozens, Aug 2026), Codingal, CodeWizardsHQ | "There was no obvious progression in the curriculum and I don't feel like anything was learned."; "90-120 minutes/day of online gaming. This was not disclosed in the marketing"; "not being really able to 'design your own from the ground up' as it seems there were just some templates"; "the boiler plate style just doesn't induce thought" |
+| 2 | **No human when the kid is stuck** | CodeWizardsHQ, iD Tech, Synthesis | "once my son fell behind it became very difficult for him to catch up. He was very stressed and sad that he was not getting the help."; "homework help session... scheduled during your child's school hours (2:00 PM Pacific Time)"; "When she ask for help she was just met with 'read the instructions again'"; "this app is on autopilot" |
+| 3 | **Scheduling pain, instructor churn, cancelled classes** | Codingal, Juni, BrightCHAMPS, CodeWizardsHQ, Outschool | "the teacher keeps changing... Classes are also frequently cancelled or rescheduled"; "the teachers can wake up and change our time"; "we keep getting pushed back bc there aren't enough students in the class"; even a 5-star parent: "we cannot fit it into our schedule year-round" |
+| 4 | **Sales calls after the free trial** | BrightCHAMPS, Codingal (both India-based) | "calling me several times a day, each and EVERY SINGLE DAY for the last full two years... I have blocked about 100 unique numbers"; "The chat bot is designed to force the parents... to receive a forced unwanted call with sales team"; "spam calls from codingal to buy new classes halfway before they actually ended" |
+| 5 | **Cost per hour and lump-sum regret** | iD Tech, CodeWizardsHQ, Juni, Synthesis annual | "I didn't need to pay 1600 for him to sit in a room all day"; "Charging $500 per course for Scratch block coding is, frankly, excessive"; "$1000.00 in four months without any significant knowledge"; "Bought a 1yr subscription... She went through the content in 3 months" |
+| 6 | **Auto-renew and hard cancellation** (hits the cheapest products hardest) | Tynker (2.1 stars, almost all billing), Kodable, Outschool | "aggressively renewed the subscription despite me very clearly stating i did not want to renew. I had to put a stop payment at the bank."; "they continue to charge for classes AFTER canceling". The flip side is the most-loved feature in the corpus: "how easy it is to drop a class and stop paying for it if it isn't working for your child" (Outschool) and an honest refund that produced Synthesis's best review of the year |
+| 7 | **Bored by week two, content ran out, cannot skip ahead** | Synthesis, iD Tech, CodeWizardsHQ | "After a few weeks my child doesn't want to play with it."; "Any above average student can complete the available math content within a few weeks, yet the app is sold as a full year subscription"; "too slow paced and do not allow students to skip to higher level"; "he had essentially completed his project by Thursday" (5-day AI/ML camp) |
+| 8 | **Parents cannot see what the kid learned** | iD Tech, Synthesis | "I do not know what my kids is doing or not doing? if it is a game, let me know what they learn. I have no clue apart from 180 USD that you charge."; "No communication of any kind as to what the kids were doing each day"; "would have liked a daily progress report of some type". Praise counterpart: "the weekly feedback provided to parents is extremely valuable" |
+| 9 | **Instructor age and credentials versus the marketing** | iD Tech, Outschool | "teachers are 19 yr old Cal undergrads - not experts"; "9/10 of the instructors here are freshman/sophomore undergrads"; "you can't provide your staff's given names"; "The teachers are also not vetted by real humans. Applications are instantly accepted or rejected by an algorithm" |
+| 10 | **Peers wreck the kid's confidence** | CodeWizardsHQ, Synthesis Teams, iD Tech | "kids in this class were bulling our student because he was not typing at the same speed... It rob our son the confidence and joy"; "children yelling, speaking over all others, swearing, someone yelling out Racist"; "Roommate slept 4 hours a night while on discord" |
+
+Boredom is framed as a pace mismatch (too easy, too slow, cannot skip) far more often than as a
+motivation problem. "Learned something" means *the kid designed it*; assembling a kit or following
+a template counts as not learning even when something was produced.
+
+### 4.4 How Learn AI maps onto the complaints, and where it is exposed
+
+| Learn AI | Answers | Exposed to |
+|---|---|---|
+| Self-paced classes, no fixed slot | #3 scheduling, churn, cancellations, time zones | #1 and #9: self-paced video is exactly what parents attack when it replaces instruction ("Kids mostly followed step-by-step instructions on the computer at their own pace"). Defence: name the instructors, show the weekly release cadence, and make "real person helps when stuck" visible. |
+| A project at the end of every class | #1 "didn't build anything" | Templates. The proud moment needs "design your own", so the kid must change something, not just follow along. Make each project shareable with a link a grandparent can open. |
+| Coach answers in minutes | #2 no human when stuck, help at fixed hours | The praised style is "help me just enough so I can learn to repair my code", not answers handed over. AI-tutor parents flag "it occasionally made mistakes"; a visible human escalation path matters. |
+| An adult reads every thread, no DMs | #10 peers, #9 vetting | Spell out who the adults are and that staff use real names. |
+| $49/month, cancel anytime | #5 lump-sum regret, #6 auto-renew, Outschool's credit confusion | $49 sits above Tynker ($10 to $25) and Khanmigo ($4) in parents' price memory, so the monthly value must be visible. Cancellation must be one click with an email confirmation, or we join Tynker. |
+| New classes every week | #7 content ran out, cannot skip | Show a roadmap and let kids skip ahead. |
+| Checkout on the page, no sales call | #4 | Not a listed feature but a real differentiator against every live school. Worth one line on the page: no sales calls, no phone number required, the kid never sees an upsell. |
+| Ages 11 to 17 only | Mixed-age groups ("My 11 year old is enjoying it but my 8 year old is feeling overwhelmed"); teens who outgrew camps | Lean into "built for teens", not "for kids". |
+| **Gap: parent visibility** | #8, the most common wish in the corpus | Not a current feature. A weekly parent email (class watched, project built, coach questions asked) would answer it. |
