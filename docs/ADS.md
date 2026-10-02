@@ -153,6 +153,50 @@ Founding rate for the first 200 families, locked in for as long as you stay.
 ⚡ 𝐒𝐭𝐚𝐫𝐭 𝐓𝐡𝐞𝐢𝐫 𝐅𝐢𝐫𝐬𝐭 𝐂𝐥𝐚𝐬𝐬 𝐓𝐨𝐧𝐢𝐠𝐡𝐭! 👇
 ```
 
+### Variation 3, "8 in 10" (story ad for the classroom statics)
+
+Primary text for the statics whose headline is "More than 8 in 10 students say no teacher has taught
+them how to use AI". The story: kids already use it, nobody taught them, teachers were never taught
+either, a parent names the gap, Learn AI is the in-between, learn the basics together, then build.
+Every number is in `docs/RESEARCH-AVATARS.md` 1.6 or 2.1: 86% / one in four (Common Sense Media,
+2026); more than 8 in 10 (RAND, 2025); 42% of teachers no training (EdWeek Research Center, winter
+2026); 1 in 4 trained on what AI is (EdWeek, Oct 2025); 1 in 5 kids know a lot (Common Sense, 2026).
+The parent quote is a Reddit post (r/homeschool, Sept 2026), so it is attributed to "one parent",
+never presented as a Learn AI member. Says "some of the best AI instructors online", not
+"partnered with", because the classes embed their published courses. Coach is described as it is:
+answers in minutes, a real person reads every thread.
+
+For a single-age ad set, swap the turning line: "It's where your high schooler learns how AI
+actually works..." or "It's where your middle schooler learns how AI actually works...".
+
+```
+86% of kids aged 9 to 17 already use AI. One in four uses it every day.
+
+But more than 8 in 10 students say no teacher has ever taught them how to use it.
+
+Why? It's not the teachers' fault. 42% of teachers have had no training on AI themselves. Of the ones who did get training, only 1 in 4 were taught what AI actually is and how it works. You can't teach what nobody taught you.
+
+So kids figure it out alone. They paste the homework into a chatbot, take whatever comes back, and never learn what's happening underneath. Only 1 in 5 kids say they know a lot about how AI works.
+
+One parent put it this way: "Everything I find online is either 'ban it completely' or 'let them use ChatGPT for homework.' Nothing in between that actually teaches kids how AI works."
+
+That "nothing in between" is the gap. AI is changing faster than any curriculum can keep up with. Schools are writing rules, not teaching the skill. And most of us parents never learned it either.
+
+Learn AI is the in-between.
+
+It's where your middle schooler or high schooler learns how AI actually works, from some of the best AI instructors online, and then uses it to build real things.
+
+The intro classes are short, so watch them together. What AI is, where it gets things wrong, how to use it well. Learn it side by side with your kid instead of hoping they figure it out.
+
+Then they build, start to finish: a video made with AI, a custom game, their own cartoon, an AI agent that handles real tasks. Not prompts typed into a box. Finished projects they can turn the laptop around and show you.
+
+New classes every week, and members can ask for the class they want next. When they get stuck at 9pm, Ask Coach answers in minutes, and a real person reads every thread.
+
+Schools will catch up eventually. Your kid doesn't have to wait.
+
+Ages 11 to 17. Start tonight.
+```
+
 ### Headlines and description for the head-start ad set
 
 Headline A (scarcity + offer): ⏳ 200 Founding Spots · Rate Locked In
