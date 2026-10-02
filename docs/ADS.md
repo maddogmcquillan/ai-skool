@@ -170,6 +170,11 @@ up" is not something a self-paced membership can say.
 For a single-age ad set, swap the turning line: "It's where your high schooler learns how AI
 actually works..." or "It's where your middle schooler learns how AI actually works...".
 
+Landing page: https://joinlearnai.com/the-gap (`site/the-gap.html`). It repeats the ad's stat in
+the hero, then the gap, the parent quote, where to start, the projects, the teachers, screen time
+and safety, the cost comparison and the founding offer. Tracking page id `the-gap`; pixel
+`content_category` `lp-the-gap`.
+
 ```
 86% of kids aged 9 to 17 already use AI. One in four uses it every day.
 

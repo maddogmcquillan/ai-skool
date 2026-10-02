@@ -55,6 +55,27 @@ describe("the site", () => {
     expect(img.headers.get("content-type")).toBe("image/jpeg");
   });
 
+  it("serves the 8-in-10 ad landing page, congruent with the ad and honest about the offer", async () => {
+    const app = await createApp(cfg, { kb });
+    const res = await app.request("/the-gap");
+    expect(res.status).toBe(200);
+    const html = await res.text();
+    expect(html).toContain("https://www.joinlearnai.com/checkout/founding-member");
+    expect(html).toContain('"2050628052248432"');
+    expect(html).toContain("lp-the-gap");
+    // The hero repeats the ad's headline stat so the page matches what the visitor just read.
+    expect(html).toContain("8 in 10 students");
+    // No price above the fold.
+    expect(html.indexOf("$49")).toBeGreaterThan(html.indexOf("</header>"));
+    expect(html.indexOf("history.replaceState")).toBeLessThan(html.indexOf("<body>"));
+    expect(html).toContain("11 to 17");
+    expect(html).not.toMatch(/no refunds/i);
+    expect(html).not.toMatch(/classes are filling up/i);
+    const img = await app.request("/assets/lp-gap-hero.jpg");
+    expect(img.status).toBe(200);
+    expect(img.headers.get("content-type")).toBe("image/jpeg");
+  });
+
   it("serves any extra page in site/ by its slug and 404s the rest", async () => {
     const app = await createApp(cfg, { kb });
     expect((await app.request("/parents")).status).toBe(200);
