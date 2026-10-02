@@ -148,7 +148,7 @@ vendor survey (364 parents, six countries), any AI-for-kids market-size figure.
 |---|---|---|
 | Students who say **no teacher has explicitly taught them how to use AI for schoolwork** | more than 80% | RAND, *AI Use in Schools Is Quickly Increasing but Guidance Lags Behind*, Sept 2025 |
 | District leaders who say they provide students with **any** AI training | 35% | same |
-| Teachers whose own AI training covered "what AI is and how it works" | 25% | EdWeek Research Center, Oct 2025 |
+| Teachers whose own AI training covered "what AI is and how it works" | 25% | EdWeek Research Center, Oct 2025. **Unverified:** the EdWeek articles found (Oct 2025, Nov 2025, May 2026) report training frequency only, not content. Do not use in ads. |
 | Teachers who receive any formal guidance from administrators on AI | 18% | Gallup, May 2026 (n=2,069 teachers) |
 | Kids 9-17 who say they know "a lot" about how AI works / "a little" / nothing | 21% / 68% / 12% | Common Sense census, June 2026 |
 | K-12 students whose school has AI rules, 2025 vs 2026 | 51% to 74% | Gallup and Walton Family Foundation, *The AI Paradox*, Apr 2026 |

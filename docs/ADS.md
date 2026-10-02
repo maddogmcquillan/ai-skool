@@ -156,15 +156,16 @@ Founding rate for the first 200 families, locked in for as long as you stay.
 ### Variation 3, "8 in 10" (story ad for the classroom statics)
 
 Primary text for the statics whose headline is "More than 8 in 10 students say no teacher has taught
-them how to use AI". The story: kids already use it, nobody taught them, teachers were never taught
+them how to use AI". The story: kids already use it, nobody taught them, teachers were never shown
 either, a parent names the gap, Learn AI is the in-between, learn the basics together, then build.
-Every number is in `docs/RESEARCH-AVATARS.md` 1.6 or 2.1: 86% / one in four (Common Sense Media,
-2026); more than 8 in 10 (RAND, 2025); 42% of teachers no training (EdWeek Research Center, winter
-2026); 1 in 4 trained on what AI is (EdWeek, Oct 2025); 1 in 5 kids know a lot (Common Sense, 2026).
-The parent quote is a Reddit post (r/homeschool, Sept 2026), so it is attributed to "one parent",
-never presented as a Learn AI member. Says "some of the best AI instructors online", not
-"partnered with", because the classes embed their published courses. Coach is described as it is:
-answers in minutes, a real person reads every thread.
+Sources: 86% / one in four (Common Sense Media, 2026); more than 8 in 10 (RAND, 2025); fewer than
+1 in 5 teachers given formal guidance (Gallup and Walton Family Foundation, 2,069 teachers, Feb to
+Mar 2026: 18%). An earlier draft used "only 1 in 4 teachers were taught what AI is"; that figure
+could not be verified against EdWeek and was dropped. The parent quote is a Reddit post
+(r/homeschool, Sept 2026), attributed to "one parent", never presented as a Learn AI member. Says
+"some of the best AI instructors online", not "partnered with", because the classes embed their
+published courses. The closing scarcity is the founding rate, which is true; "classes are filling
+up" is not something a self-paced membership can say.
 
 For a single-age ad set, swap the turning line: "It's where your high schooler learns how AI
 actually works..." or "It's where your middle schooler learns how AI actually works...".
@@ -174,9 +175,9 @@ actually works..." or "It's where your middle schooler learns how AI actually wo
 
 But more than 8 in 10 students say no teacher has ever taught them how to use it.
 
-Why? It's not the teachers' fault. 42% of teachers have had no training on AI themselves. Of the ones who did get training, only 1 in 4 were taught what AI actually is and how it works. You can't teach what nobody taught you.
+Why? It's not the teachers' fault. Fewer than 1 in 5 have been given any formal guidance on how AI should be used in class. It's hard to teach something you're still figuring out yourself.
 
-So kids figure it out alone. They paste the homework into a chatbot, take whatever comes back, and never learn what's happening underneath. Only 1 in 5 kids say they know a lot about how AI works.
+So kids figure it out alone. They paste the homework into a chatbot, take whatever comes back, and never learn what's happening underneath.
 
 One parent put it this way: "Everything I find online is either 'ban it completely' or 'let them use ChatGPT for homework.' Nothing in between that actually teaches kids how AI works."
 
@@ -188,13 +189,11 @@ It's where your middle schooler or high schooler learns how AI actually works, f
 
 The intro classes are short, so watch them together. What AI is, where it gets things wrong, how to use it well. Learn it side by side with your kid instead of hoping they figure it out.
 
-Then they build, start to finish: a video made with AI, a custom game, their own cartoon, an AI agent that handles real tasks. Not prompts typed into a box. Finished projects they can turn the laptop around and show you.
+Then they build, start to finish: a custom game, their own cartoon, a video made with AI, an AI agent that handles real tasks. Finished projects they can turn the laptop around and show you.
 
-New classes every week, and members can ask for the class they want next. When they get stuck at 9pm, Ask Coach answers in minutes, and a real person reads every thread.
+New classes every week, and members can ask for the class they want next. When they get stuck, a coach answers in minutes, and a real person reads every thread.
 
-Schools will catch up eventually. Your kid doesn't have to wait.
-
-Ages 11 to 17. Start tonight.
+Start tonight. The founding rate is only for the first 200 families.
 ```
 
 ### Headlines and description for the head-start ad set
