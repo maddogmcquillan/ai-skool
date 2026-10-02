@@ -109,3 +109,61 @@ screen time they already lose the argument about into something they can be prou
 
 Recurring words for the outcome parents want: **head start**, **prepared**, **not left behind**,
 **think for themselves**, **use it alongside** real skills, **not a shortcut**, **create not consume**.
+
+## Part 3. How the competition sells (live pages and ad libraries, Oct 2026)
+
+Method: each company's live landing and pricing pages, plus Motion's public mirror of the Meta Ad
+Library for Synthesis (227 active ads) and Outschool (55 active ads). Quotes are verbatim.
+
+### 3.1 The field, by price tier
+
+| Tier | Who | Price | Headline | Lead angle |
+|---|---|---|---|---|
+| Self-paced apps | Synthesis Tutor (ages 5-11) | $10-$29/mo, 7-day free trial, "No credit card necessary" | "Your child's personal math tutor." | Confidence; price-first ("less than $1/day") |
+| | Khanmigo for parents | $4/mo | "Meet your new parenting hack" | Safety: "view your child's chats, get alerts" |
+| | Tynker (5-18) | $15-$18/mo, 30-day money back | "Coding For Kids and Teens Made Easy"; "AI Can Code, But Only Your Child Can Innovate" | Head start, creative edge |
+| | Kodable (4-10) | $9.99-$24.99/mo, 7-day trial | "Turn screen time into coding & typing skills" | Screen time to skill time |
+| | CodaKid (8+) | $29/mo self-paced, 14 days free | "AI Classes for Kids and Teens: Build with AI" | Fun projects |
+| | Kubrio (6-13) | $99/mo, 7-day refund | "Ingenious AI Projects for Kids 6-13"; "The screen is for making, not scrolling." | Making membership (closest product shape to Learn AI, two years younger) |
+| Live small-group schools | Create & Learn (K-12) | $94.50 per 4 sessions; AI Creators $485 for 12 | "Coding Classes for Kids"; "from passive consumers of technology into active creators" | Head start; "Designed by experts from Google, Apple, Stanford, MIT"; free intro class |
+| | BrightCHAMPS (6-18) | $1,699-$3,019 per 1:1 course | "Ivy League-level exposure and real-world skills your child won't get in school" | Fear of the school gap; elite exposure; free trial class |
+| | Codingal (5-17) | 48 1:1 sessions, price hidden | "...to become the innovators of tomorrow" | "1 Million Students", free lesson, money-back |
+| | CodeWizardsHQ (7-18) | $219-$299/mo | "From First Line of Code to Confident Creator" | Attacks self-paced: "left to figure it out through one-off courses, self-paced lessons, and endless tutorial videos" |
+| | CodeWithUs (10-18 for AI) | live, max 4 | "Master the AI Tools Shaping the Future"; "A real instructor, Not a Chatbot" | Anti-video, anti-AI-tutor |
+| | Outschool (3-18) | $15-$30 per session | "Where Kids Learn What They Love" | Child-led ("Let them pick. Watch them grow."); UGC mom-on-camera ads; "First Month Free" |
+| Premium cohorts and camps | iD Tech (13-17) | $1,199-$5,299 | "Experience summer camp at the world's leading universities" | Prestige; "boost your college and internship applications" |
+| | Inspirit AI (9-12th grade) | $1,400 | "AI Scholars 2026", "Taught by Stanford and MIT Alumni" | Admissions ("300+ alumni accepted to Ivy Leagues") |
+| | AI Camp (13+) | $2,349 | "Learn AI or Be Left Behind." | Fear plus admissions portfolio |
+| | Quest (10-15, new 2026) | $945 | "A live online, teacher-led program where kids build real projects with AI." | Named kid projects (Jace, 13; Ellie, 10); "Students start building on day 1" |
+
+Juni Learning has exited kids' coding (now an SAT prep brand). Mindjoy and imagi sell to schools.
+
+### 3.2 Angles in use, and how crowded each is
+
+| Angle | Who uses it | Crowding for ages 11-17 |
+|---|---|---|
+| Future-proofing, left behind, jobs | AI Camp, AIClub, BrightCHAMPS, JetLearn, Create & Learn, Coco Coders, Tynker | **Most crowded.** Our current "92 million jobs" ad sits here and will be judged on price and proof against brands with 7,400 ratings. |
+| Head start, passive to creator | Create & Learn, Code.org, imagi, Tynker | Crowded |
+| Prestige and college admissions | iD Tech, Inspirit, Veritas, AI Camp, AIClub | Crowded at $1,000+, empty under $100 |
+| Live human instructor as the product | CodeWithUs, CodeWizardsHQ, Modern Age Coders, Codeyoung | Semi-crowded, and aimed directly at self-paced video (us) |
+| Confidence, fun | Synthesis, Prodigy, Kodable, Codingal | Crowded under age 12 |
+| Screen time to skill time | Kodable (4-10), Kubrio (6-13), Synthesis ads ("I replaced my kids' iPad addiction") | Owned under 13, **open above 13** |
+| Safety | Khanmigo (chat monitoring), imagi, Prodigy, Outschool ("live-monitored") | Chat guardrails only; community design is unclaimed |
+| Price-first | Synthesis (strikethroughs, "$1/day"), Khanmigo, Codeyoung | Open at our tier |
+
+### 3.3 What nobody is saying (open lanes for Learn AI)
+
+1. **Named, Google-able instructors.** Every competitor hides behind "Stanford alumni" or "top 1% globally". Nobody names a teacher a parent can look up in ten seconds. Our roster (Kevin Stratvert, Jeff Su, Tina Huang, 3Blue1Brown, IBM Technology, Tech With Tim) is proof no one else can claim, and it answers the "not a pre-recorded course" attack: the recordings are the point, because they are the best ones.
+2. **Help between classes.** Self-paced apps leave the kid alone; live schools help for the booked hour; cohorts cost $945+. "A coach that answers in minutes, any night" is uncontested.
+3. **"Already using it, now understand it."** The surveys show the worry; only school-facing products touch it, and only as anti-cheating.
+4. **A finished-things portfolio for teens under $100/month.** Kubrio does it at 6-13 for $99. Nobody at 11-17.
+5. **Community design as the safety promise.** No member messaging, an adult reads every thread. Competitors' safety is chat monitoring or "live-monitored" classes.
+6. **The teen screen-time reframe.** "Same laptop, a different kind of hour." Open above 13.
+
+### 3.4 What the strongest funnels do that we do not
+
+- **Every paid competitor removes first-purchase risk** with a named mechanism: 7-day free trial (Synthesis, Kodable), 14 days free (CodaKid), 30-day money back (Tynker), four-session money back (CodeWizardsHQ), free trial class (every live school), 7-day refund (Kubrio). Learn AI is the only paid product in the set with neither a trial nor a guarantee. The 7-day trial decision matters more than any headline.
+- **Price-first creative with anchors.** Synthesis's top formats are "Offer-First Banner" and strikethrough pricing. $49 reframed is "about $1.60 a day" or "less than two Outschool sessions".
+- **Show the kid's output, not the curriculum.** Quest leads with named kids' projects; AI Camp with "310+ Unique AI products built by students"; iD Tech with the hardware you take home. Our project grid is the same move; real kid-made artifacts would finish it.
+- **Specific odd-number proof.** "Less than 5% of teacher candidates are selected"; "251 students enrolled in last 7 days"; "11,000+ parents joined in the last week". Our spots-taken bar is the start of this.
+- **UGC parent-voice ads, no hard CTA, 8 new creatives a week** (Synthesis, Outschool). Volume of creative over one hero ad.
