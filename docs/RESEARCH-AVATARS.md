@@ -110,6 +110,103 @@ screen time they already lose the argument about into something they can be prou
 Recurring words for the outcome parents want: **head start**, **prepared**, **not left behind**,
 **think for themselves**, **use it alongside** real skills, **not a shortcut**, **create not consume**.
 
+## Part 2. Schools and teen behavior: the sharper version of "they don't learn this in school"
+
+### 2.1 Schools teach the rules, not the skill
+
+| Fact | Figure | Source |
+|---|---|---|
+| Students who say **no teacher has explicitly taught them how to use AI for schoolwork** | more than 80% | RAND, *AI Use in Schools Is Quickly Increasing but Guidance Lags Behind*, Sept 2025 |
+| District leaders who say they provide students with **any** AI training | 35% | same |
+| Teachers whose own AI training covered "what AI is and how it works" | 25% | EdWeek Research Center, Oct 2025 |
+| Teachers who receive any formal guidance from administrators on AI | 18% | Gallup, May 2026 (n=2,069 teachers) |
+| Kids 9-17 who say they know "a lot" about how AI works / "a little" / nothing | 21% / 68% / 12% | Common Sense census, June 2026 |
+| K-12 students whose school has AI rules, 2025 vs 2026 | 51% to 74% | Gallup and Walton Family Foundation, *The AI Paradox*, Apr 2026 |
+| Students whose school **provides** them AI tools for schoolwork | 28% | same |
+| Students who say all or most classmates use AI when they are not supposed to | 41% | same |
+| Gen Z who say AI tools will likely make it more difficult for them to learn | 8 in 10 | same |
+| Middle schoolers using AI for homework, May to Dec 2025 | 30% to 46% (high school 49% to 60%) | RAND student panel via EdWeek, Mar 2026 |
+| Middle schoolers worried AI erodes their critical thinking, over the same ten months | 48% to 68% | same |
+| High schoolers who worry about being **falsely accused** of AI cheating | 64% | same |
+| Private schools vs public: likelihood of both permitting AI and having a policy | more than twice as likely | College Board, 2024-25 data |
+| Parents of middle/high schoolers who say teachers encourage students' AI use | about 1 in 10 | CRPE, Nov 2025 |
+| Elementary / secondary families who know of no school-communicated AI policy | 96% / 83% | same |
+| Public-school parents who want AI safety taught at school / every teacher trained in AI literacy | 85% / 79% | National Parents Union with Echelon Insights, Sept 2026 (n=1,528) |
+| Parents' net rating of AI's impact on their child vs social media's | +4 vs -24 | same |
+
+Two things changed in September 2026 and will be in parents' feeds: New York City paused generative
+AI for about 600,000 students in 3-K through 8th grade for 2026-27 (high schools get limited pilots
+and "twice-yearly AI literacy lessons"), and Los Angeles Unified imposed a district-wide moratorium
+on AI on school devices. Both grew out of parent and teacher groups. The teachers' union president:
+"Parents are getting very, very upset with A.I. because all they hear are horror stories."
+
+Teacher voice, for the "shortcut" fear: Casey Cuny, 2024 California Teacher of the Year: "The
+cheating is off the charts. It's the worst I've seen in my entire career." "Anything you send home,
+you have to assume is being AI'ed." An 8th-grade history teacher, Oak Park IL: "The war is over,
+we've lost." Counter-evidence to keep copy honest: Stanford's Challenge Success found cheating rates
+unchanged since ChatGPT (about a third of students, before and after).
+
+### 2.2 Who actually builds with AI today
+
+Three in four kids have made *something* with AI (images, videos, stories, music, apps), so "kids
+don't create" is false. What no survey measures, and what the press stories reveal, is **making
+tools**: every teen builder found (a 13-year-old and his 18-year-old sister at a Cursor hackathon; a
+17-year-old who launched a job-fit app; TIME's Kid of the Year; an 8-year-old building chatbots in
+Cursor) is the child of a Google, Cloudflare or IT-professional parent, or at a selective STEM
+magnet. Wealthy families pay up to $75,000 a year for AI-forward private schooling; one such parent:
+"I definitely think using AI well is a skill in the future, if not the skill, so it's kind of a
+disservice not to have that in school." Erin Mote (InnovateEDU, Forbes, Sept 2026): "Banning AI in
+our schools will not stop students from using it; it will merely dictate which students get to learn
+how to use it safely."
+
+Reading: the opportunity is not "introduce your kid to AI". It is "give your kid what tech-family
+kids get at the kitchen table."
+
+### 2.3 Age
+
+- Realistic onset is 9 to 12 (58% of 9- to 12-year-olds have used a chatbot), before any platform's
+  terms allow it. The institutional floor for *using* generative AI tools is 13 (UNESCO guidance;
+  ChatGPT requires 13+ with parental permission and routes teens to ChatGPT for Teens, Aug 2026).
+  Learning *how AI works* is recommended from upper elementary.
+- Use roughly doubles from 7th-8th grade to 11th-12th (Pew 20% vs 31% for schoolwork; RAND 49% vs
+  61% chatbot use; daily schoolwork use 12% / 24% / 30% by age band).
+- Middle schoolers hear less from school (61% told the rules vs 86% of high schoolers; 42% vs 58%
+  told how to check accuracy) and their worry about their own thinking jumped most in 2025.
+- No survey splits parents of 11- to 13-year-olds from parents of 14- to 17-year-olds on AI. The
+  indirect evidence (NYC protecting K-8 and preparing 9-12; Penn Foster's parents of 14- to
+  18-year-olds: 55% anxious about job preparation, 54% say AI changed how they think about the
+  post-high-school path, 49% encouraging technical skill-building, 37% rethinking the four-year
+  degree) supports: **middle school parents buy safety and screen-time redemption; high school parents
+  buy preparation and the path after school.**
+
+### 2.4 Wording the evidence licenses, and wording it does not
+
+Licensed:
+- "9 in 10 teens use AI." "Two-thirds of teens use AI chatbots."
+- "More than 8 in 10 students say no teacher has taught them how to use AI for schoolwork."
+- "Most schools now have AI rules. Only half teach kids how to tell when AI is wrong."
+- "Only 1 in 5 kids say they know a lot about how AI works."
+- "1 in 10 teens does all or most of their schoolwork with a chatbot."
+- "Parents underestimate it: 64% of teens use chatbots, 51% of parents think theirs does."
+- "Kids don't learn *this* in school," where *this* is how AI works and how to build with it.
+- Product facts: real instructors; no DMs; a person reads every thread; a project at the end of
+  each class.
+
+Not licensed:
+- "Schools ban AI" or "schools ignore AI" as blanket claims (74% of students now report rules; 73%
+  of districts do not prohibit it). NYC and LA are the exceptions, and can be named as such.
+- "Kids only use AI to cheat." "Kids don't create anything with AI."
+- "Colleges want AI projects." No admissions office, Common App or NACAC statement supports it; the
+  admissions posture is restrictive (Kaplan: 30% of colleges ban AI in essays, 2% allow). The only
+  defensible admissions line is Caltech's new oral exam on submitted research: colleges increasingly
+  want students who can **explain and defend something they actually built**.
+- Any reference to the AI-companion suicide cases, "protect your child from AI," or any implication
+  that the program makes AI safe. State what the community structurally is (no private chats, no
+  companion bots, every post visible to an adult, AI used to make things with a human in the loop)
+  and let parents supply the fear. Our own product includes a chatbot.
+- "Experts say 11 is the right age to start using AI tools." The floor is 13 for tools; frame the
+  11-12 cohort around how AI works and supervised building.
+
 ## Part 3. How the competition sells (live pages and ad libraries, Oct 2026)
 
 Method: each company's live landing and pricing pages, plus Motion's public mirror of the Meta Ad
