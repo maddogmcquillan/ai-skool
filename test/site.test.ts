@@ -71,11 +71,10 @@ describe("the site", () => {
     expect(html).toContain("11 to 17");
     expect(html).not.toMatch(/no refunds/i);
     expect(html).not.toMatch(/classes are filling up/i);
-    const img = await app.request("/assets/lesson-05-the-perfect-chatgpt-prompt-formula.png");
-    expect(img.status).toBe(200);
-    expect(img.headers.get("content-type")).toBe("image/png");
-    const face = await app.request("/assets/avatar-kevin.jpg");
+    expect(html).toContain("figuring out AI alone");
+    const face = await app.request("/assets/avatar-kevin-2.jpg");
     expect(face.status).toBe(200);
+    expect(face.headers.get("content-type")).toBe("image/jpeg");
   });
 
   it("serves any extra page in site/ by its slug and 404s the rest", async () => {
