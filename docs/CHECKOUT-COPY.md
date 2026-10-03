@@ -18,48 +18,61 @@ price is left off, because the cover renders small on phones and the price sits 
 
 ## Product details: title
 
-The AI class their school doesn't have.
+Learn AI Founding Membership
 
-(Not "Founding Member": the paywall's internal name is not a headline. Alternatives if Circle
-truncates: "Real AI teachers for kids 11 to 17" or "Give them a real AI teacher tonight.")
+(Circle's "display name" is this title, and it also prints on the member's billing page and
+receipts, so it has to read as a product name. The emotional headline lives on the cover image
+directly above it. Not "Founding Member" alone: it is the paywall's internal label, not a name.)
 
 ## Product details: description (short enough that no "See more" appears)
 
 Real instructors, a finished project every class, and a coach that answers in minutes. Founding
 rate for the first 200 families, locked in for life. Your kid can start tonight.
 
-## Badges (Show badges on, exactly three)
+## Badges (Show badges on, exactly three, custom icons)
 
-1. 📅 New classes every week
-2. 💬 Coach answers in minutes
-3. 🔓 Cancel anytime
+Circle lets each badge and benefit use an uploaded 280 x 280 image instead of an emoji. The
+on-brand set is in `brand/assets/checkout-icons/` (blue tile, white line icon).
+
+1. `icon-calendar.png` New classes every week
+2. `icon-chat.png` Coach answers in minutes
+3. `icon-unlock.png` Cancel anytime
+
+Badge text colour: dark (#141A2A); background: the light option, so the blue tiles carry the colour.
 
 ## Price details: callout on the $49 monthly price
 
-Callout text: Founding rate · first 200 families (yellow). Leave "Reduced price" and "Countdown
-price lock" off: we never charged a higher price, and a per-visitor countdown is fake urgency.
-Price description (Pricing tab, if the field exists): Locked in for life. Less than a family
-dinner out.
+Callout text (30-character limit): Founding rate · cancel anytime
+Callout colour: #FFC245. Then use the price option's three-dot menu and choose **Highlight**:
+Circle renders a highlighted callout as a filled badge in the callout colour with auto-contrast
+text, which fixes the unreadable yellow-on-grey text of the plain callout. The 200-family cap
+already appears on the cover and in the description, so the callout spends its 30 characters on
+the two reassurances parents look for at the price: the rate, and that they can leave.
+Leave "Reduced price" off (we never charged more) and "Countdown price lock" off unless a real
+price rise is scheduled for a fixed date, in which case use the Date & time mode only.
 
-## Benefits (Show benefits on, in this order, with these icons)
+## Benefits (Show benefits on, section title "Everything your kid gets for $49 a month", in
+this order, each with its custom icon from `brand/assets/checkout-icons/`)
 
-1. 🎓 **Real instructors, real credentials** — A former Microsoft product manager, a Google
+1. `icon-cap.png` **Real instructors, real credentials** — A former Microsoft product manager, a Google
    product marketer, a former Meta data scientist, IBM's own engineers. College-level material,
    taught so a 12-year-old gets it.
-2. 🧠 **How AI actually works** — Short classes on what it is, where it gets things wrong, and
+2. `icon-brain.png` **How AI actually works** — Short classes on what it is, where it gets things wrong, and
    how to use it well. Watch the first one together tonight.
-3. 🛠️ **A finished project every class** — A game, an app, a website, a chatbot, an AI agent
+3. `icon-tools.png` **A finished project every class** — A game, an app, a website, a chatbot, an AI agent
    and more. Things they can turn the laptop around and show you.
-4. 📅 **New classes every week** — Members ask for the class they want next and vote on it.
-5. 💬 **Ask Coach** — Stuck at 9pm? An answer in minutes, and a real person on our team reads
+4. `icon-calendar.png` **New classes every week** — Members ask for the class they want next and vote on it.
+5. `icon-chat.png` **Ask Coach** — Stuck at 9pm? An answer in minutes, and a real person on our team reads
    every thread.
-6. 🛡️ **Safe by design** — No messaging between members. Parent consent at signup. Built for
+6. `icon-shield.png` **Safe by design** — No messaging between members. Parent consent at signup. Built for
    ages 11 to 17.
-7. 🔒 **Locked in for life** — Join at $49 and it stays $49 every month, for as long as you're
+7. `icon-lock.png` **Locked in for life** — Join at $49 and it stays $49 every month, for as long as you're
    a member. Cancel anytime.
 
 Icon rules: the chat bubble belongs to Ask Coach only. New classes gets the calendar, safety the
-shield, the price lock the padlock. No film or clapperboard icons anywhere.
+shield, the price lock the closed padlock, cancel anytime the open padlock. No emoji, no film or
+clapperboard icons anywhere. Regenerate the set with `node` from the snippet in
+`docs/COWORK-BRIEFS.md` Brief 9 notes if a new icon is needed.
 
 ## Testimonials
 
