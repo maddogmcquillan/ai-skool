@@ -201,6 +201,26 @@ New classes every week, and members can ask for the class they want next. When t
 Start tonight. The founding rate is only for the first 200 families.
 ```
 
+### Statics for the "8 in 10" ad set (same primary text, same landing page /the-gap)
+
+All run with Variation 3 primary text and point at /the-gap. Every number is from
+`docs/RESEARCH-AVATARS.md` 1.6 or 2.1. Parent quotes are real public posts: attribute them to
+"a parent on Reddit" (or the forum), never to a username, never with invented upvote counts, and do
+not reproduce Reddit's logo or exact interface. Kids in photos must read as 11 to 17.
+
+| # | Headline on the image | Format |
+|---|---|---|
+| 1 | More than 8 in 10 students say no teacher has taught them how to use AI. | News-style over a classroom photo (the one already uploaded) |
+| 2 | 86% of kids already use AI. Only 1 in 5 know how it works. | Two-number stat card, dark, source line small |
+| 3 | Fewer than 1 in 5 teachers have been given any guidance on AI in class. | News-style over an empty-classroom or teacher's-desk photo |
+| 4 | Your kids use AI. Nobody has taught them how. | Plain text on brand navy, yellow second sentence (matches the page hero) |
+| 5 | "Everything I find online is either 'ban it completely' or 'let them use ChatGPT for homework.' Nothing in between." | Parent-post card, "a parent on Reddit, Sept 2026" |
+| 6 | "No literacy, no warnings, no prep. Just 'work hard and climb the ladder.'" | Parent-post card, "a parent on Reddit, Sept 2025" |
+| 7 | "I realized I had no idea how to actually explain it to him." | Parent-post card, kitchen-table photo behind, "a dad on Reddit, Mar 2026" |
+| 8 | 64% of teens use AI chatbots. 51% of parents think theirs does. | Split stat card, teen on one side, parent on the other |
+| 9 | They've been figuring out AI alone. | Phone-screen photo, kid alone at a laptop at night, text in the dark area |
+| 10 | The AI class their school doesn't have. | Chalkboard or school-hallway photo, headline in chalk style |
+
 ### Headlines and description for the head-start ad set
 
 Headline A (scarcity + offer): ⏳ 200 Founding Spots · Rate Locked In
