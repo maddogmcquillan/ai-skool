@@ -174,18 +174,17 @@ render("og-image", 1200, 630, page(1200, 630, body))
 # three heavy hitters, the instructors' faces for legitimacy, and the founding rate. Text fills
 # the frame; the constellation is pushed to a narrow strip on the right.
 ASSETS = os.path.join(HERE, "assets")
-def face(name, size=46):
+def face(name, size=56):
     return f'<img src="file://{os.path.join(ASSETS, name)}" style="width:{size}px;height:{size}px;border-radius:50%;object-fit:cover;border:3px solid {NAVY};margin-left:-12px;box-shadow:0 4px 12px rgba(0,0,0,.4)">'
 faces = "".join(face(n) for n in ("avatar-jeff.jpg", "avatar-kevin-3.jpg", "avatar-tina-2.jpg", "avatar-tim-3.jpg", "avatar-jagger-3.jpg"))
-body = f'''<div class="ground" style="width:1080px;height:606px"><div style="position:absolute;left:820px;top:0;width:260px;height:606px;opacity:.45">{nodes_svg(260,606,BLUE,seed=42,count=8)}</div>
-  <div style="position:absolute;left:56px;top:0;height:606px;display:flex;flex-direction:column;justify-content:center;gap:22px;max-width:1000px">
-    <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap">{wordmark(34)}<div class="chip" style="font-size:17px;color:{NAVY};background:{SPARK};padding:9px 16px;border-radius:999px;letter-spacing:.1em">Founding rate · first 200 families</div></div>
-    <div class="title" style="font-size:68px;line-height:1.04;margin-top:2px">Your kids use AI.<br><span style="color:{SPARK}">Nobody has taught them how.</span></div>
-    <div class="sub" style="font-size:29px;line-height:1.35;max-width:900px;color:{INK}">Real instructors. A finished project every class. A coach that answers in minutes. Ages 11 to 17.</div>
-    <div style="display:flex;align-items:center;gap:22px;margin-top:2px">
+body = f'''<div class="ground" style="width:1080px;height:606px"><div style="position:absolute;left:860px;top:0;width:220px;height:606px;opacity:.35">{nodes_svg(220,606,BLUE,seed=42,count=8)}</div>
+  <div style="position:absolute;left:48px;top:0;height:606px;display:flex;flex-direction:column;justify-content:center;gap:30px;max-width:1010px">
+    <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">{wordmark(44)}<div class="chip" style="font-size:22px;color:{NAVY};background:{SPARK};padding:12px 20px;border-radius:999px;letter-spacing:.08em">Founding rate · first 200 families</div></div>
+    <div class="title" style="font-size:74px;line-height:1.04">Your kids use AI.<br><span style="color:{SPARK}">Nobody has taught them how.</span></div>
+    <div class="sub" style="font-size:40px;line-height:1.2;color:{INK};white-space:nowrap">Real instructors. Real projects. Help in minutes.</div>
+    <div style="display:flex;align-items:center;gap:24px">
       <div style="display:flex;padding-left:12px">{faces}</div>
-      <div class="sub" style="font-size:21px;color:{MUTED};font-weight:600">Taught by instructors from Microsoft, Google, Meta and IBM</div></div>
-    <div class="sub" style="font-size:24px;color:{SPARK};font-weight:700">$49/month, locked in for life. Cancel anytime.</div></div>
+      <div class="sub" style="font-size:28px;color:{MUTED};font-weight:600;white-space:nowrap">Instructors from Microsoft, Google, Meta and IBM</div></div></div>
   <div style="position:absolute;left:0;bottom:0;width:1080px;height:8px;background:linear-gradient(90deg,{SPARK},{BLUE},{MINT})"></div></div>'''
 render("checkout-cover", 1080, 606, page(1080, 606, body))
 

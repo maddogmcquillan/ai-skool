@@ -11,9 +11,10 @@ words, the ones parents used in the research (`docs/RESEARCH-AVATARS.md`, Part 5
 ## Cover image
 
 Upload `brand/assets/checkout-cover.png` (1080 x 606, renders at 540 x 303). It carries the
-landing page headline ("Your kids use AI. Nobody has taught them how."), the three heavy hitters,
-five instructor faces with "Taught by instructors from Microsoft, Google, Meta and IBM", the
-founding cap and the locked-in price, so the text fields below can stay short.
+landing page headline ("Your kids use AI. Nobody has taught them how."), one line of proof
+("Real instructors. Real projects. Help in minutes."), five instructor faces with "Instructors
+from Microsoft, Google, Meta and IBM", and the founding-rate chip. Type is kept large and the
+price is left off, because the cover renders small on phones and the price sits right below it.
 
 ## Product details: title
 
