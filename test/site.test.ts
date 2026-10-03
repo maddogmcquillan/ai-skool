@@ -71,7 +71,7 @@ describe("the site", () => {
     expect(html).toContain("11 to 17");
     expect(html).not.toMatch(/no refunds/i);
     expect(html).not.toMatch(/classes are filling up/i);
-    const img = await app.request("/assets/lesson-01-what-is-ai.png");
+    const img = await app.request("/assets/lesson-05-the-perfect-chatgpt-prompt-formula.png");
     expect(img.status).toBe(200);
     expect(img.headers.get("content-type")).toBe("image/png");
     const face = await app.request("/assets/avatar-kevin.jpg");

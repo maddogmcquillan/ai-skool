@@ -17,7 +17,7 @@
 <script>(function(){if(/^#(enroll|start)$/.test(location.hash)){history.replaceState(null,"",location.pathname+location.search);}})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="/assets/lesson-01-what-is-ai.png">
+<link rel="preload" as="image" href="/assets/lesson-05-the-perfect-chatgpt-prompt-formula.png">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap">
 <style>
   :root {
@@ -73,17 +73,23 @@
   .tonight { margin-top:26px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:20px; padding:10px; box-shadow:0 24px 60px rgba(0,0,0,.45); }
   .tonight .screen { position:relative; border-radius:14px; overflow:hidden; }
   .tonight .screen img { width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; display:block; }
-  .tonight .play { position:absolute; left:12px; bottom:12px; width:50px; height:50px; border-radius:50%; background:var(--spark); display:grid; place-items:center; box-shadow:0 10px 30px rgba(0,0,0,.45); }
-  .tonight .play svg { margin-left:3px; width:22px; height:22px; }
-  .tonight .dur { position:absolute; right:10px; bottom:10px; background:rgba(11,18,32,.85); color:#fff; font-size:12.5px; font-weight:700; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.14); }
+  .tonight .play { position:absolute; left:10px; bottom:10px; width:40px; height:40px; border-radius:50%; background:var(--spark); display:grid; place-items:center; box-shadow:0 10px 30px rgba(0,0,0,.45); }
+  .tonight .play svg { margin-left:3px; width:18px; height:18px; }
+  .tonight .dur { position:absolute; right:10px; top:10px; background:rgba(11,18,32,.85); color:#fff; font-size:12.5px; font-weight:700; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.14); }
+  .tonight .who { position:absolute; right:10px; bottom:10px; display:flex; align-items:center; gap:8px; background:rgba(11,18,32,.85); backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,.14); border-radius:999px; padding:4px 12px 4px 4px; max-width:calc(100% - 80px); }
+  .tonight .who img { width:34px; height:34px; border-radius:50%; object-fit:cover; flex:none; border:2px solid var(--spark); }
+  .tonight .who span { color:#fff; font-size:12.5px; font-weight:700; line-height:1.2; }
   .tonight .meta { padding:12px 6px 6px; }
   .tonight .meta b { display:block; font-family:var(--display); font-size:17px; }
   .tonight .meta span { display:block; color:#C9CDE0; font-size:14px; margin-top:2px; }
-  .tonight .next { display:grid; grid-template-columns:auto 1fr 1fr 1fr; gap:8px; align-items:center; padding:10px 6px 4px; border-top:1px solid rgba(255,255,255,.1); margin-top:8px; }
+  .tonight .next { display:grid; grid-template-columns:auto repeat(3, minmax(0,1fr)); gap:8px; align-items:start; padding:10px 6px 4px; border-top:1px solid rgba(255,255,255,.1); margin-top:8px; }
   .tonight .next .lab { font-family:var(--display); font-weight:700; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#AEB4C8; padding-right:4px; }
-  .tonight .next figure { margin:0; }
+  .tonight .next figure { margin:0; min-width:0; }
   .tonight .next img { width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:8px; border:1px solid rgba(255,255,255,.12); }
-  .tonight .next figcaption { font-size:11.5px; color:#C9CDE0; margin-top:4px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .tonight .next figcaption { display:flex; align-items:center; gap:6px; margin-top:6px; min-width:0; }
+  .tonight .next figcaption .face { width:26px; height:26px; border-radius:50%; object-fit:cover; border:2px solid rgba(255,255,255,.35); flex:none; aspect-ratio:1; }
+  .tonight .next figcaption span { display:block; min-width:0; font-size:10.5px; color:#AEB4C8; line-height:1.2; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .tonight .next figcaption span b { display:block; color:#fff; font-size:11.5px; font-family:var(--display); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   .hero-cta { margin-top:22px; }
   .hero .cta-note { color:#AEB4C8; }
 
@@ -142,6 +148,9 @@
   .tile .k { font-family:var(--display); font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:#5EEAD4; }
   .tile b { font-family:var(--display); font-size:17px; line-height:1.15; margin-top:4px; }
   .tile small { font-size:12.5px; color:#AEB4C8; margin-top:4px; line-height:1.35; }
+  .tile.weekly { background:linear-gradient(160deg, var(--indigo) 0%, var(--indigo2) 100%); border-color:transparent; }
+  .tile.weekly .k { color:var(--spark); }
+  .tile.weekly i { color:rgba(255,255,255,.12); }
   .grid-note { margin-top:14px; text-align:center; }
 
   /* 6. Teachers */
@@ -304,7 +313,7 @@
           <p>More than <b>8 in 10 students</b> say no teacher has taught them how to use AI.<span class="src">RAND, national student survey, 2025</span></p>
         </div>
         <h1>Nobody has taught your kid how AI works. <span class="u">Tonight, real instructors will.</span></h1>
-        <p class="lede">They already use it for homework. You can't quite explain it, and school isn't going to. Watch Class 1 together tonight, it's under ten minutes, and by the weekend they've built something they can show you.</p>
+        <p class="lede">They already use it for homework. You can't quite explain it, and neither can school. Watch the first class together tonight, it's eight minutes, and by the weekend they've built something they can show you.</p>
         <div class="hero-cta">
           <a class="btn" id="hero-cta" href="#enroll">Enroll now <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           <p class="cta-note">Start tonight. Cancel anytime.</p>
@@ -312,16 +321,17 @@
       </div>
       <div class="tonight" aria-label="Tonight's first class">
         <div class="screen">
-          <img src="/assets/lesson-01-what-is-ai.png" width="800" height="450" alt="Class 1: What is AI?" fetchpriority="high">
+          <img src="/assets/lesson-05-the-perfect-chatgpt-prompt-formula.png" width="800" height="450" alt="The Perfect ChatGPT Prompt Formula" fetchpriority="high">
           <span class="play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="#141A2A"><path d="M8 5v14l11-7z"/></svg></span>
-          <span class="dur">Under 10 min</span>
+          <span class="dur">8 min</span>
+          <div class="who"><img src="/assets/avatar-jeff.jpg" alt=""><span>Product marketing manager at Google</span></div>
         </div>
-        <div class="meta"><b>Class 1 · What is AI?</b><span>Watch it together tonight. Then they pick a project.</span></div>
-        <div class="next" aria-label="Up next">
+        <div class="meta"><b>Tonight · The Perfect ChatGPT Prompt Formula</b><span>Watch it together. Eight minutes, and you'll both prompt better than most adults. Then they pick a project.</span></div>
+        <div class="next" aria-label="Then they build">
           <span class="lab">Then</span>
-          <figure><img src="/assets/lesson-08-make-a-game.png" alt=""><figcaption>Make a Game</figcaption></figure>
-          <figure><img src="/assets/lesson-14-make-a-cartoon.png" alt=""><figcaption>Make a Cartoon</figcaption></figure>
-          <figure><img src="/assets/lesson-12-make-an-ai-agent.png" alt=""><figcaption>Make an AI Agent</figcaption></figure>
+          <figure><img src="/assets/lesson-08-make-a-game.png" alt=""><figcaption><img class="face" src="/assets/avatar-jagger.jpg" alt=""><span><b>Make a Game</b>Builds games with AI</span></figcaption></figure>
+          <figure><img src="/assets/lesson-09-make-an-app.png" alt=""><figcaption><img class="face" src="/assets/avatar-tim.jpg" alt=""><span><b>Make an App</b>Teaches millions to code</span></figcaption></figure>
+          <figure><img src="/assets/lesson-12-make-an-ai-agent.png" alt=""><figcaption><img class="face" src="/assets/avatar-kevin.jpg" alt=""><span><b>Make an AI Agent</b>Ex-Microsoft PM</span></figcaption></figure>
         </div>
       </div>
     </div>
@@ -331,7 +341,7 @@
 <!-- ============ 2. THE GAP: the three facts, then what it means ============ -->
 <section>
   <div class="wrap">
-    <p class="eyebrow">The gap</p>
+    <p class="eyebrow">The problem</p>
     <h2 class="sub">Your kids use AI. Nobody has taught them how.</h2>
     <div class="nums">
       <div class="num"><div class="big">86%</div><p>of kids aged 9 to 17 already use AI. One in four uses it every day.</p><span class="src">Common Sense Media, 2026</span></div>
@@ -340,7 +350,7 @@
     </div>
     <div class="gapline">
       <p><b class="y">It's not the teachers' fault.</b> It's hard to teach something you're still figuring out yourself. AI is changing faster than any curriculum can keep up with, so schools are writing rules, not teaching the skill.</p>
-      <p><b class="y">So kids figure it out alone.</b> They paste the homework into a chatbot, take whatever comes back, and never learn what's happening underneath. That's the gap. Learn AI fills it.</p>
+      <p><b class="y">So kids figure it out alone.</b> More than half of teens already use AI for schoolwork, and 1 in 10 does most of it that way. They take whatever comes back without knowing what's happening underneath, "a substitute for thinking," as one dad put it. Only 1 in 5 kids say they know a lot about how AI works. That's what we built Learn AI to fix.</p>
     </div>
   </div>
 </section>
@@ -372,7 +382,7 @@
     <h2 class="sub">Start tonight. Learn it together.</h2>
     <p class="lede sub">You don't need to understand AI to help your kid learn it. Watch the first classes with them and you both will.</p>
     <div class="steps">
-        <div class="step"><span class="n">1</span><div><span class="when">Tonight</span><h3>Watch Class 1 together</h3><p>"What is AI?" is under ten minutes. Then how it works, where it gets things wrong, and how to use it well. You'll both get it.</p></div></div>
+        <div class="step"><span class="n">1</span><div><span class="when">Tonight</span><h3>Watch the first class together</h3><p>Eight minutes on how to actually talk to AI. Then what it is, how it works, and where it gets things wrong. You'll both get it.</p></div></div>
         <div class="step"><span class="n">2</span><div><span class="when">This week</span><h3>Pick a project and build it</h3><p>A custom game, their own cartoon, a video, an AI agent that handles real tasks. Every project class ends with something finished.</p></div></div>
         <div class="step"><span class="n">3</span><div><span class="when">Every week</span><h3>A new class drops</h3><p>Members ask for the class they want next and vote on it, so the program follows what your kid wants to make.</p></div></div>
         <div class="step"><span class="n">4</span><div><span class="when">Whenever they're stuck</span><h3>Ask Coach</h3><p>An answer in minutes, and a real person on our team reads every thread.</p></div></div>
@@ -393,9 +403,9 @@
       <div class="tile"><i>09</i><span class="k">Class 09</span><b>Make an App</b><small>An idea to a working app</small></div>
       <div class="tile"><i>10</i><span class="k">Class 10</span><b>Make a Website</b><small>Live, with their name on it</small></div>
       <div class="tile"><i>11</i><span class="k">Class 11</span><b>Make a Chatbot</b><small>A custom GPT that knows their stuff</small></div>
-      <div class="tile"><i>15</i><span class="k">Class 15</span><b>Make Music</b><small>A track they wrote</small></div>
+      <div class="tile weekly"><i>+</i><span class="k">Every week</span><b>A new class drops</b><small>Members vote on what's next</small></div>
     </div>
-    <p class="lede grid-note">Plus AI art and a comic, and a new project class every week. Things they made, not prompts typed into a box.</p>
+    <p class="lede grid-note">Plus music, AI art and a comic. Things they made, not prompts typed into a box.</p>
   </div>
 </section>
 
@@ -407,7 +417,7 @@
     <div class="faces" aria-label="Some of the instructors">
       <img src="/assets/avatar-kevin.jpg" alt="Kevin S."><img src="/assets/avatar-jeff.jpg" alt="Jeff S."><img src="/assets/avatar-tina.jpg" alt="Tina H."><img src="/assets/avatar-tim.jpg" alt="Tim R."><img src="/assets/avatar-jagger.jpg" alt="Jagger B."><img src="/assets/avatar-ibm.jpg" alt="IBM Technology">
     </div>
-    <p class="lede sub">Every class is taught by a real person with real credentials: a former Microsoft product manager, a Google product marketer, an ex-Meta data scientist, IBM's own engineers, the mathematician behind 3Blue1Brown. We picked the clearest lesson on each topic and put them in the right order, so college-level material lands with a 12-year-old.</p>
+    <p class="lede sub">Every class is taught by a real person with real credentials: a former Microsoft product manager, a Google product marketer, an ex-Meta data scientist, IBM's own engineers. We picked the clearest lesson on each topic and put them in the right order, so college-level material lands with a 12-year-old.</p>
   </div>
 </section>
 
