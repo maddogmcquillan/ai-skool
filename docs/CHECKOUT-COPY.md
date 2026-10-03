@@ -24,10 +24,12 @@ Learn AI Founding Membership
 receipts, so it has to read as a product name. The emotional headline lives on the cover image
 directly above it. Not "Founding Member" alone: it is the paywall's internal label, not a name.)
 
-## Product details: description (short enough that no "See more" appears)
+## Product details: description (under 110 characters, or Circle hides the end behind "See more")
 
-Real instructors, a finished project every class, and a coach that answers in minutes. Founding
-rate for the first 200 families, locked in for life. Your kid can start tonight.
+Real instructors, a finished project every class, help in minutes. Locked in at $49 for life. Start tonight.
+
+(108 characters. The live page truncates at about 120 on a phone. The 200-family cap is on the
+cover and in the price callout, so the description spends its space on proof, price and urgency.)
 
 ## Badges (Show badges on, exactly three, custom icons)
 
@@ -42,7 +44,8 @@ Badge text colour: dark (#141A2A); background: the light option, so the blue til
 
 ## Price details: callout on the $49 monthly price
 
-Callout text (30-character limit): Founding rate · cancel anytime
+Callout text (Circle enforces 30 characters, this is exactly 30): Founding rate · cancel anytime
+Fallback if the editor still refuses it: Locked in · cancel anytime (26).
 Callout colour: #FFC245. Then use the price option's three-dot menu and choose **Highlight**:
 Circle renders a highlighted callout as a filled badge in the callout colour with auto-contrast
 text, which fixes the unreadable yellow-on-grey text of the plain callout. The 200-family cap

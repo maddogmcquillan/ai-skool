@@ -429,32 +429,35 @@ badges show (calendar, speech bubble, open padlock), the yellow callout shows on
 and the benefits list has exactly the seven items from Block 4 with the speech bubble only on
 Ask Coach. Show me the screenshots and STOP.
 
-### Brief 9 addendum (send after Brief 9, or fold in before running it)
+### Brief 9 follow-up (what is still open after the first run)
 
-Prerequisite: save the nine icon files from the chat into `~/Downloads/checkout-icons/` (they are
+Status after the first run, verified from a logged-out phone on Oct 3: cover, title "Learn AI
+Founding Membership", three badges, seven benefits and the callout are live, and
+/checkout/founding-member renders the checkout again. Still open: custom icons (badges and
+benefits still show emoji), the benefits section title, the callout text and highlight, and the
+description, which is still cut off behind "See more" on phones.
+
+Prerequisite: save the eight icon files from the chat into `~/Downloads/checkout-icons/` (they are
 `brand/assets/checkout-icons/icon-*.png` in the repo, 280 x 280 PNG).
 
-Three corrections and two upgrades to the checkout, same place as before (Paywalls > Founding
-Member > Checkout > Customize). Save Changes after each block and tell me when each is done.
+Same place as before: Paywalls > Learn AI Founding Membership > Checkout > Customize. Save
+Changes after each block and tell me when each is done. If a file picker opens that you cannot
+operate, stop, tell me which file to pick, and wait for "done". Do not touch the title or the
+Checkout URL slug; both are correct now.
 
-Block A, title and URL. In Product details, set the title to exactly: Learn AI Founding Membership
-(This is Circle's display name and it also prints on receipts, so it must read as a product name.
-Replace "The AI class their school doesn't have." if that was already entered.) Then check the
-Checkout URL field: the slug must be exactly founding-member. Changing the title earlier made
-Circle regenerate it, which broke every Enroll button on the website. Type founding-member back
-in if it shows anything else, Save Changes, and confirm in a private window that
-https://www.joinlearnai.com/checkout/founding-member shows the checkout, not a sign-in page.
+Block 1, description. In Product details, replace the description with exactly:
+Real instructors, a finished project every class, help in minutes. Locked in at $49 for life. Start tonight.
+Save Changes.
 
-Block B, badge icons. In Badges, for each of the three badges click the emoji/icon control and
+Block 2, badge icons. In Badges, for each of the three badges click the emoji/icon control and
 choose the option to upload an image. Upload, in order:
 1. New classes every week → ~/Downloads/checkout-icons/icon-calendar.png
 2. Coach answers in minutes → ~/Downloads/checkout-icons/icon-chat.png
 3. Cancel anytime → ~/Downloads/checkout-icons/icon-unlock.png
 If the badge has text and background colour swatches, pick the darkest text option and the
-lightest background option. If a file picker opens that you cannot operate, stop and tell me
-which file to pick, then wait for "done".
+lightest background option. Save Changes.
 
-Block C, benefit icons and section title. In Benefits, set the section Title field to exactly:
+Block 3, benefit icons and section title. In Benefits, set the section Title field to exactly:
 Everything your kid gets for $49 a month
 Then for each of the seven benefits replace the emoji with the uploaded image:
 1. Real instructors, real credentials → icon-cap.png
@@ -464,21 +467,22 @@ Then for each of the seven benefits replace the emoji with the uploaded image:
 5. Ask Coach → icon-chat.png
 6. Safe by design → icon-shield.png
 7. Locked in for life → icon-lock.png
+Save Changes.
 
-Block D, price callout. In Price details > Callouts, set the callout text for the $49 monthly
-price to exactly: Founding rate · cancel anytime
-Set the callout colour to #FFC245 (type the hex if the picker allows it; otherwise the closest
-yellow). Then open the three-dot menu next to the $49 price option and choose Highlight, so the
-callout renders as a filled yellow badge with dark text instead of yellow text on grey. Leave
-Reduced price off and Countdown price lock off.
+Block 4, price callout. In Price details > Callouts, set the callout text for the $49 monthly
+price to exactly (30 characters, which is the limit): Founding rate · cancel anytime
+If the editor still refuses it, use: Locked in · cancel anytime
+Keep the callout colour #FFC245. Then open the three-dot menu next to the $49 price option and
+choose Highlight, so the callout renders as a filled yellow badge with dark text instead of
+yellow text on grey. Leave Reduced price off and Countdown price lock off. Save Changes.
 
-Block E, check. Open https://www.joinlearnai.com/checkout/founding-member on a phone-width
-window and screenshot the top. Confirm: title reads "Learn AI Founding Membership", the three
-badges show blue square icons (not emoji), the $49 option shows a filled yellow badge reading
-"Founding rate · cancel anytime", and the benefits section is titled "Everything your kid gets
-for $49 a month" with blue square icons. Then, without paying, type a test email into the
-account field and confirm the payment form (card fields, Apple Pay or Google Pay or Link button)
-renders with no error text. Screenshot it and STOP.
+Block 5, check. Open https://www.joinlearnai.com/checkout/founding-member in a logged-out,
+phone-width window and screenshot the top. Confirm: the description shows in full with no "See
+more" link, the three badges show blue square icons (not emoji), the $49 option shows a filled
+yellow badge reading "Founding rate · cancel anytime", and the benefits section is titled
+"Everything your kid gets for $49 a month" with blue square icons. Then, without paying, type a
+test email into the account field and confirm the payment form renders card fields and an Apple
+Pay, Google Pay or Link button with no red error text anywhere. Screenshot it and STOP.
 
 ## Brief 10: Pull the funnel report (Meta Events Manager, Ads Manager, Stripe, Circle)
 
