@@ -378,49 +378,54 @@ lock". If a "choose file" window opens that you cannot operate, stop, tell me to
 Block 1, cover image. In the sidebar click Paywall cover image. Use the option under the current
 thumbnail to replace the image with checkout-cover.png. Save Changes.
 
-Block 2, product details. Click Product details. Keep the title exactly "Founding Member".
+Block 2, product details. Click Product details. Replace the title with exactly:
+The AI class their school doesn't have.
 Replace the description with exactly:
-Give your kid the head start. Real instructors, new classes every week, and a coach that answers
-in minutes. Founding rate for the first 200 families: $49/month, locked in for as long as you stay.
+Real instructors, a finished project every class, and a coach that answers in minutes. Founding rate for the first 200 families, locked in for life. Your kid can start tonight.
+Save Changes. If the title field refuses the full text or the preview truncates it, use instead:
+Real AI teachers for kids 11 to 17
+and tell me which one you used.
+
+Block 3, badges. Click Badges. Show badges: on. Edit the existing badges so that exactly three
+remain, in this order, with this exact text and emoji (if each badge has an icon or emoji picker,
+pick the one in brackets; if it only takes text, put the emoji at the start of the text):
+1. New classes every week  [📅 calendar]
+2. Coach answers in minutes  [💬 speech bubble]
+3. Cancel anytime  [🔓 open padlock]
+Delete every other badge, including "Founding rate · first 200 families" and "Ages 11 to 17".
 Save Changes.
 
-Block 3, badges. Click Badges. Show badges: on. Edit the existing badges in place so that exactly
-five remain, in this order, with this exact text (if each badge takes an icon or emoji, use the
-one in brackets):
-1. Founding rate · first 200 families  [⏳]
-2. New classes every week  [🆕]
-3. Coach answers in minutes  [💬]
-4. Ages 11 to 17  [👦]
-5. Cancel anytime  [🔓]
-Delete "Built for parents and kids", "17 classes, 3 levels" and "Moderated, no member DMs".
-Save Changes.
-
-Block 4, benefits. Click Benefits. Show benefits: on. Replace the current nine benefits so that
-exactly these six remain, in this order. Each has a title and a description:
-1. Beginner-friendly AI classes — College-level material, taught so a 12-year-old gets it.
-2. Project classes — Make a game, an app, a website, a chatbot and more. No code required.
-3. New classes every week — Chosen by member vote, from real instructors.
-4. Ask Coach — Help in minutes, any day, with a person reading every thread.
-5. A safe, moderated space — No messaging between members. Parent consent at signup.
-6. Your rate never goes up — Join at $49 and it stays $49 every month, for as long as you're a member.
-Delete "Show and Tell", "Weekly live build-along and Q&A sessions", "A Parent Hub", "New classes
-added by member vote", "Build real projects", "17 video classes" and anything else left over.
-Keep icons if the editor has them; pick the closest match for each. Save Changes.
+Block 4, benefits. Click Benefits. Show benefits: on. Replace the current list so that exactly
+these seven remain, in this order. Each has an icon, a title and a description. Where the
+editor offers an icon picker, choose the one described in brackets; the chat bubble must be on
+Ask Coach and nowhere else, and nothing may use a film, movie or clapperboard icon.
+1. [🎓 graduation cap] Real instructors, real credentials — A former Microsoft product manager, a Google product marketer, a former Meta data scientist, IBM's own engineers. College-level material, taught so a 12-year-old gets it.
+2. [🧠 brain] How AI actually works — Short classes on what it is, where it gets things wrong, and how to use it well. Watch the first one together tonight.
+3. [🛠️ tools] A finished project every class — A game, an app, a website, a chatbot, an AI agent and more. Things they can turn the laptop around and show you.
+4. [📅 calendar] New classes every week — Members ask for the class they want next and vote on it.
+5. [💬 speech bubble] Ask Coach — Stuck at 9pm? An answer in minutes, and a real person on our team reads every thread.
+6. [🛡️ shield] Safe by design — No messaging between members. Parent consent at signup. Built for ages 11 to 17.
+7. [🔒 closed padlock] Locked in for life — Join at $49 and it stays $49 every month, for as long as you're a member. Cancel anytime.
+Delete anything else left over ("Beginner-friendly AI classes", "Project classes", "A safe,
+moderated space", "Your rate never goes up" and any older items). Save Changes.
 
 Block 5, price callout. Click Price details. Next to the $49 monthly price, set Callout text to
 exactly: Founding rate · first 200 families. Callout colour: the yellow/amber option (closest to
 #FFC245). Leave Reduced price off and Countdown price lock off. Save Changes.
-Then open the paywall's Pricing tab. If the $49 monthly price has a description field (it
-currently shows "Founding rate, locked in."), change it to: Founding rate, locked in for life.
+Then open the paywall's Pricing tab. If the $49 monthly price has a description field, change it
+to: Locked in for life. Less than a family dinner out.
 If there is no such field, skip this and tell me.
 
 Block 6, testimonials. Click Testimonials and make sure Show testimonials is OFF. Do not add any.
 
 Block 7, check. Click View (top right) and preview on mobile, then on desktop; screenshot both.
-Then open https://www.joinlearnai.com/checkout/founding-member in a new tab and screenshot the
-top of the page. Confirm: the cover reads "Kids don't learn this in school.", the five badges
-read as in Block 3, the yellow callout shows on the $49 price, and the benefits list has exactly
-the six items from Block 4. Show me the screenshots and STOP.
+Then open https://www.joinlearnai.com/checkout/founding-member in a new tab on a phone-width
+window and screenshot the top of the page. Confirm: the cover reads "Your kids use AI. Nobody has
+taught them how." with five small faces on it, the title under the cover is "The AI class their
+school doesn't have.", the description shows in full with no "See more" link, exactly three
+badges show (calendar, speech bubble, open padlock), the yellow callout shows on the $49 price,
+and the benefits list has exactly the seven items from Block 4 with the speech bubble only on
+Ask Coach. Show me the screenshots and STOP.
 
 ## Brief 10: Pull the funnel report (Meta Events Manager, Ads Manager, Stripe, Circle)
 

@@ -170,13 +170,21 @@ body = f'''<div class="ground" style="width:1200px;height:630px">{nodes_svg(1200
 render("og-image", 1200, 630, page(1200, 630, body))
 
 # ---- Paywall checkout cover, Circle recommends 540x303; rendered at 2x for sharp text ----
-# Copy mirrors the ad landing pages: the headline parents tapped on, the three heavy hitters, the
-# founding cap. Text fills the frame; the constellation is pushed to a narrow strip on the right.
-body = f'''<div class="ground" style="width:1080px;height:606px"><div style="position:absolute;left:800px;top:0;width:280px;height:606px;opacity:.5">{nodes_svg(280,606,BLUE,seed=42,count=8)}</div>
-  <div style="position:absolute;left:56px;top:0;height:606px;display:flex;flex-direction:column;justify-content:center;gap:22px;max-width:960px">
+# Copy mirrors the "8 in 10" ad landing page (/the-gap): the headline parents just read, the
+# three heavy hitters, the instructors' faces for legitimacy, and the founding rate. Text fills
+# the frame; the constellation is pushed to a narrow strip on the right.
+ASSETS = os.path.join(HERE, "assets")
+def face(name, size=46):
+    return f'<img src="file://{os.path.join(ASSETS, name)}" style="width:{size}px;height:{size}px;border-radius:50%;object-fit:cover;border:3px solid {NAVY};margin-left:-12px;box-shadow:0 4px 12px rgba(0,0,0,.4)">'
+faces = "".join(face(n) for n in ("avatar-jeff.jpg", "avatar-kevin-3.jpg", "avatar-tina-2.jpg", "avatar-tim-3.jpg", "avatar-jagger-3.jpg"))
+body = f'''<div class="ground" style="width:1080px;height:606px"><div style="position:absolute;left:820px;top:0;width:260px;height:606px;opacity:.45">{nodes_svg(260,606,BLUE,seed=42,count=8)}</div>
+  <div style="position:absolute;left:56px;top:0;height:606px;display:flex;flex-direction:column;justify-content:center;gap:22px;max-width:1000px">
     <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap">{wordmark(34)}<div class="chip" style="font-size:17px;color:{NAVY};background:{SPARK};padding:9px 16px;border-radius:999px;letter-spacing:.1em">Founding rate · first 200 families</div></div>
-    <div class="title" style="font-size:88px;line-height:1.02;margin-top:4px">Kids don't learn this<br>in school.</div>
-    <div class="sub" style="font-size:30px;line-height:1.35;max-width:900px;color:{INK}">Real instructors. New classes every week. A coach that answers in minutes. Ages 11 to 17.</div>
+    <div class="title" style="font-size:68px;line-height:1.04;margin-top:2px">Your kids use AI.<br><span style="color:{SPARK}">Nobody has taught them how.</span></div>
+    <div class="sub" style="font-size:29px;line-height:1.35;max-width:900px;color:{INK}">Real instructors. A finished project every class. A coach that answers in minutes. Ages 11 to 17.</div>
+    <div style="display:flex;align-items:center;gap:22px;margin-top:2px">
+      <div style="display:flex;padding-left:12px">{faces}</div>
+      <div class="sub" style="font-size:21px;color:{MUTED};font-weight:600">Taught by instructors from Microsoft, Google, Meta and IBM</div></div>
     <div class="sub" style="font-size:24px;color:{SPARK};font-weight:700">$49/month, locked in for life. Cancel anytime.</div></div>
   <div style="position:absolute;left:0;bottom:0;width:1080px;height:8px;background:linear-gradient(90deg,{SPARK},{BLUE},{MINT})"></div></div>'''
 render("checkout-cover", 1080, 606, page(1080, 606, body))
