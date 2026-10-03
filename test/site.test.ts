@@ -71,7 +71,7 @@ describe("the site", () => {
     expect(html).toContain("11 to 17");
     expect(html).not.toMatch(/no refunds/i);
     expect(html).not.toMatch(/classes are filling up/i);
-    expect(html).toContain("figuring out AI alone");
+    expect(html).toContain("Nobody has taught them how");
     const face = await app.request("/assets/avatar-kevin-3.jpg");
     expect(face.status).toBe(200);
     expect(face.headers.get("content-type")).toBe("image/jpeg");

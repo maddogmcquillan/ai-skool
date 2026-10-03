@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>They've Been Figuring Out AI Alone. Give Them a Real Teacher Tonight. | Learn AI</title>
+<title>Your Kids Use AI. Nobody Has Taught Them How. | Learn AI</title>
 <meta name="description" content="Your kid already uses AI. More than 8 in 10 students say no teacher has taught them how. Learn AI is where kids 11 to 17 learn how AI actually works from real instructors, then build real things with it.">
-<meta property="og:title" content="They've been figuring out AI alone. Give them a real teacher tonight.">
+<meta property="og:title" content="Your kids use AI. Nobody has taught them how.">
 <meta property="og:description" content="Your kid already uses AI. Nobody has taught them how. Learn AI fills the gap: real instructors, real projects, help in minutes. Ages 11 to 17.">
 <meta property="og:image" content="https://joinlearnai.com/assets/og-image.png">
 <meta property="og:url" content="https://joinlearnai.com/the-gap">
@@ -196,9 +196,9 @@
   .proof-stat p { margin-top:10px; color:#DDE1F0; font-size:16px; }
   .proof-stat p b { color:var(--spark); }
   .proof-stat .src { color:#AEB4C8; margin-top:10px; display:block; }
-  .proof blockquote { margin:0; background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--indigo); border-radius:0 16px 16px 0; padding:16px 18px; }
+  .proof blockquote { margin:0; background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--indigo); border-radius:0 16px 16px 0; padding:14px 16px; }
   .proof blockquote p { font-family:var(--display); font-weight:700; font-size:16.5px; line-height:1.35; }
-  .proof blockquote footer { margin-top:8px; font-size:13px; color:var(--muted); font-weight:600; }
+  .proof blockquote footer { margin-top:6px; font-size:13px; color:var(--muted); font-weight:600; }
 
   /* 9. Offer */
   .offer { background:linear-gradient(160deg, var(--indigo) 0%, var(--indigo2) 100%); color:#fff; border-radius:24px; padding:26px 20px; box-shadow:0 24px 60px rgba(46,38,153,.35); }
@@ -234,9 +234,9 @@
   .faq[open] summary::after { content:"–"; }
   .faq p { padding-bottom:14px; color:var(--muted); font-size:15.5px; }
 
-  footer { padding:30px 0 20px; color:var(--muted); font-size:13.5px; }
-  footer nav { display:flex; gap:16px; flex-wrap:wrap; margin-bottom:10px; }
-  footer a { text-decoration:none; }
+  body > footer { padding:30px 0 20px; color:var(--muted); font-size:13.5px; }
+  body > footer nav { display:flex; gap:16px; flex-wrap:wrap; margin-bottom:10px; }
+  body > footer a { text-decoration:none; }
 
   .sticky { position:fixed; left:0; right:0; bottom:0; transform:translateY(110%); transition:transform .25s ease; background:rgba(255,255,255,.96); backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:10px 16px calc(10px + env(safe-area-inset-bottom)); z-index:50; }
   .sticky.on { transform:translateY(0); }
@@ -267,17 +267,17 @@
     .two.one { grid-template-columns:1fr; }
     .two.one .checks { grid-template-columns:1fr 1fr; gap:12px 24px; }
     .cost { padding:28px 32px; }
-    .proof { grid-template-columns:1.1fr 1fr 1fr 1fr; align-items:stretch; }
+    .proof { grid-template-columns:1.1fr 1fr 1fr 1fr; align-items:start; }
     .offer { padding:40px; display:grid; grid-template-columns:1.05fr .95fr; gap:36px; align-items:start; }
     .stack { margin-top:0; }
     .faqs { columns:2; column-gap:16px; }
     .why { padding:32px 36px; }
     .faq { break-inside:avoid; }
-    footer .row { display:flex; justify-content:space-between; align-items:center; }
+    body > footer .row { display:flex; justify-content:space-between; align-items:center; }
     .sticky .p { display:block; flex:1; }
     .sticky .p b { display:block; font-family:var(--display); }
     .sticky .p span { font-size:13.5px; color:var(--muted); }
-    .sticky .btn { flex:none; min-width:240px; }
+    .sticky .btn { flex:none; width:auto; min-width:240px; }
   }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } .sticky { transition:none; } .fill-bar i { transition:none; } }
 </style>
@@ -317,9 +317,9 @@
       <div>
         <div class="ticket">
           <span class="q" aria-hidden="true">8/10</span>
-          <p>More than <b>8 in 10 students</b> say no teacher has taught them how to use AI.<span class="src">RAND, national student survey, 2025</span></p>
+          <p>More than <b>8 in 10 students</b> say no teacher has taught them how to use AI.<span class="src">RAND, national student survey</span></p>
         </div>
-        <h1>They've been figuring out AI alone. <span class="u">Give them a real teacher tonight.</span></h1>
+        <h1>Your kids use AI. <span class="u">Nobody has taught them how.</span></h1>
         <p class="lede">They already use it for homework. You can't quite explain it, and neither can school. Watch the first class together tonight, it's eight minutes, and by the weekend they've built something they can show you.</p>
         <div class="hero-cta">
           <a class="btn" id="hero-cta" href="#enroll">Enroll now <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -340,8 +340,8 @@
         <div class="meta"><b>Intro · How ChatGPT Actually Works</b><span>Watch it together and learn how AI works. Eight minutes. Then they pick a project.</span></div>
         <div class="next" aria-label="Then they build">
           <span class="lab">Then</span>
-          <figure><div class="mini"><svg viewBox="0 0 160 90" preserveAspectRatio="none" aria-hidden="true"><polyline points="98,58 114,38 130,44 146,20 158,10" fill="none" stroke="#4FD1C5" stroke-width="1.2" opacity=".75"/><circle cx="98" cy="58" r="2.6" fill="#4FD1C5"/><circle cx="114" cy="38" r="1.8" fill="#AEE9E1"/><circle cx="130" cy="44" r="2.6" fill="#4FD1C5"/><circle cx="146" cy="20" r="1.8" fill="#AEE9E1"/><circle cx="158" cy="10" r="2.6" fill="#4FD1C5"/></svg><b>Make a Game</b></div><figcaption><img class="face" src="/assets/avatar-jagger-2.jpg" alt=""><span><b>Make a Game</b>Builds games with AI for a living</span></figcaption></figure>
-          <figure><div class="mini"><svg viewBox="0 0 160 90" preserveAspectRatio="none" aria-hidden="true"><polyline points="96,62 112,44 128,48 144,24 158,12" fill="none" stroke="#4FD1C5" stroke-width="1.2" opacity=".75"/><circle cx="96" cy="62" r="2.6" fill="#4FD1C5"/><circle cx="112" cy="44" r="1.8" fill="#AEE9E1"/><circle cx="128" cy="48" r="2.6" fill="#4FD1C5"/><circle cx="144" cy="24" r="1.8" fill="#AEE9E1"/><circle cx="158" cy="12" r="2.6" fill="#4FD1C5"/></svg><b>Make an App</b></div><figcaption><img class="face" src="/assets/avatar-tim-2.jpg" alt=""><span><b>Make an App</b>Teaches millions to code with AI</span></figcaption></figure>
+          <figure><div class="mini"><svg viewBox="0 0 160 90" preserveAspectRatio="none" aria-hidden="true"><polyline points="98,58 114,38 130,44 146,20 158,10" fill="none" stroke="#4FD1C5" stroke-width="1.2" opacity=".75"/><circle cx="98" cy="58" r="2.6" fill="#4FD1C5"/><circle cx="114" cy="38" r="1.8" fill="#AEE9E1"/><circle cx="130" cy="44" r="2.6" fill="#4FD1C5"/><circle cx="146" cy="20" r="1.8" fill="#AEE9E1"/><circle cx="158" cy="10" r="2.6" fill="#4FD1C5"/></svg><b>Make a Game</b></div><figcaption><img class="face" src="/assets/avatar-jagger-3.jpg" alt=""><span><b>Make a Game</b>Builds games with AI for a living</span></figcaption></figure>
+          <figure><div class="mini"><svg viewBox="0 0 160 90" preserveAspectRatio="none" aria-hidden="true"><polyline points="96,62 112,44 128,48 144,24 158,12" fill="none" stroke="#4FD1C5" stroke-width="1.2" opacity=".75"/><circle cx="96" cy="62" r="2.6" fill="#4FD1C5"/><circle cx="112" cy="44" r="1.8" fill="#AEE9E1"/><circle cx="128" cy="48" r="2.6" fill="#4FD1C5"/><circle cx="144" cy="24" r="1.8" fill="#AEE9E1"/><circle cx="158" cy="12" r="2.6" fill="#4FD1C5"/></svg><b>Make an App</b></div><figcaption><img class="face" src="/assets/avatar-tim-3.jpg" alt=""><span><b>Make an App</b>Teaches millions to code with AI</span></figcaption></figure>
           <figure><div class="mini"><svg viewBox="0 0 160 90" preserveAspectRatio="none" aria-hidden="true"><polyline points="100,60 116,40 132,46 148,22 158,10" fill="none" stroke="#4FD1C5" stroke-width="1.2" opacity=".75"/><circle cx="100" cy="60" r="2.6" fill="#4FD1C5"/><circle cx="116" cy="40" r="1.8" fill="#AEE9E1"/><circle cx="132" cy="46" r="2.6" fill="#4FD1C5"/><circle cx="148" cy="22" r="1.8" fill="#AEE9E1"/><circle cx="158" cy="10" r="2.6" fill="#4FD1C5"/></svg><b>Make an AI Agent</b></div><figcaption><img class="face" src="/assets/avatar-kevin-3.jpg" alt=""><span><b>Make an AI Agent</b>Ex-Microsoft PM</span></figcaption></figure>
         </div>
       </div>
@@ -426,7 +426,7 @@
     <p class="eyebrow">Who teaches</p>
     <h2 class="sub">The teachers your kid's school doesn't have.</h2>
     <div class="faces" aria-label="Some of the instructors">
-      <img src="/assets/avatar-jeff.jpg" alt="Jeff S."><img src="/assets/avatar-tina.jpg" alt="Tina H."><img src="/assets/avatar-kevin-3.jpg" alt="Kevin S."><img src="/assets/avatar-tim-2.jpg" alt="Tim R."><img src="/assets/avatar-jagger-2.jpg" alt="Jagger B."><img src="/assets/avatar-ibm.jpg" alt="IBM Technology">
+      <img src="/assets/avatar-jeff.jpg" alt="Jeff S."><img src="/assets/avatar-tina-2.jpg" alt="Tina H."><img src="/assets/avatar-kevin-3.jpg" alt="Kevin S."><img src="/assets/avatar-tim-3.jpg" alt="Tim R."><img src="/assets/avatar-jagger-3.jpg" alt="Jagger B."><img src="/assets/avatar-ibm.jpg" alt="IBM Technology">
     </div>
     <p class="lede sub">Every class is taught by a real person with real credentials: a former Microsoft product manager, a Google product marketer, an ex-Meta data scientist, IBM's own engineers. We picked the clearest lesson on each topic and put them in the right order, so college-level material lands with a 12-year-old.</p>
   </div>
