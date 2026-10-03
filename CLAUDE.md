@@ -96,6 +96,10 @@ The community's public name is **Learn AI** (the repo name "ai-skool" is histori
   checkout copy (`docs/CHECKOUT-COPY.md`) and `FOUNDING_CAP` together.
 - Ad copy, campaign structure and creative briefs are in `docs/ADS.md`. The checkout page text
   and cover are in `docs/CHECKOUT-COPY.md` and `brand/assets/checkout-cover.png`.
+- Every Enroll button and ad points at `https://www.joinlearnai.com/checkout/founding-member`.
+  Circle regenerates that slug whenever the paywall's display name is edited, and the old URL
+  then redirects to a sign-in page. Any brief that touches the paywall title must also pin the
+  Checkout URL slug back to `founding-member` and verify the URL in a private window.
 
 ## When asked for funnel statistics
 

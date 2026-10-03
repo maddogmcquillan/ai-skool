@@ -379,12 +379,14 @@ Block 1, cover image. In the sidebar click Paywall cover image. Use the option u
 thumbnail to replace the image with checkout-cover.png. Save Changes.
 
 Block 2, product details. Click Product details. Replace the title with exactly:
-The AI class their school doesn't have.
+Learn AI Founding Membership
 Replace the description with exactly:
 Real instructors, a finished project every class, and a coach that answers in minutes. Founding rate for the first 200 families, locked in for life. Your kid can start tonight.
-Save Changes. If the title field refuses the full text or the preview truncates it, use instead:
-Real AI teachers for kids 11 to 17
-and tell me which one you used.
+IMPORTANT: Circle regenerates the Checkout URL slug from the title. Before saving, find the
+Checkout URL field (in Product details, or on the paywall's main edit form) and make sure the slug
+is exactly founding-member, so the URL stays https://www.joinlearnai.com/checkout/founding-member.
+If it changed, type founding-member back in. Save Changes. Then open that URL in a private
+window and confirm it shows the checkout page, not a sign-in page, before continuing.
 
 Block 3, badges. Click Badges. Show badges: on. Edit the existing badges so that exactly three
 remain, in this order, with this exact text and emoji (if each badge has an icon or emoji picker,
@@ -435,9 +437,13 @@ Prerequisite: save the nine icon files from the chat into `~/Downloads/checkout-
 Three corrections and two upgrades to the checkout, same place as before (Paywalls > Founding
 Member > Checkout > Customize). Save Changes after each block and tell me when each is done.
 
-Block A, title. In Product details, set the title to exactly: Learn AI Founding Membership
+Block A, title and URL. In Product details, set the title to exactly: Learn AI Founding Membership
 (This is Circle's display name and it also prints on receipts, so it must read as a product name.
-Replace "The AI class their school doesn't have." if that was already entered.)
+Replace "The AI class their school doesn't have." if that was already entered.) Then check the
+Checkout URL field: the slug must be exactly founding-member. Changing the title earlier made
+Circle regenerate it, which broke every Enroll button on the website. Type founding-member back
+in if it shows anything else, Save Changes, and confirm in a private window that
+https://www.joinlearnai.com/checkout/founding-member shows the checkout, not a sign-in page.
 
 Block B, badge icons. In Badges, for each of the three badges click the emoji/icon control and
 choose the option to upload an image. Upload, in order:
