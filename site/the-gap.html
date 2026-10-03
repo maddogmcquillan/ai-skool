@@ -82,14 +82,14 @@
   .tonight .meta { padding:12px 6px 6px; }
   .tonight .meta b { display:block; font-family:var(--display); font-size:17px; }
   .tonight .meta span { display:block; color:#C9CDE0; font-size:14px; margin-top:2px; }
-  .tonight .next { display:grid; grid-template-columns:auto repeat(3, minmax(0,1fr)); gap:8px; align-items:start; padding:10px 6px 4px; border-top:1px solid rgba(255,255,255,.1); margin-top:8px; }
-  .tonight .next .lab { font-family:var(--display); font-weight:700; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#AEB4C8; padding-right:4px; }
+  .tonight .next { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:8px; align-items:start; padding:10px 6px 4px; border-top:1px solid rgba(255,255,255,.1); margin-top:8px; }
+  .tonight .next .lab { grid-column:1 / -1; font-family:var(--display); font-weight:700; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#AEB4C8; }
   .tonight .next figure { margin:0; min-width:0; }
   .tonight .next img { width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:8px; border:1px solid rgba(255,255,255,.12); }
   .tonight .next figcaption { display:flex; align-items:center; gap:6px; margin-top:6px; min-width:0; }
   .tonight .next figcaption .face { width:26px; height:26px; border-radius:50%; object-fit:cover; border:2px solid rgba(255,255,255,.35); flex:none; aspect-ratio:1; }
-  .tonight .next figcaption span { display:block; min-width:0; font-size:10.5px; color:#AEB4C8; line-height:1.2; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .tonight .next figcaption span b { display:block; color:#fff; font-size:11.5px; font-family:var(--display); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .tonight .next figcaption span { display:block; min-width:0; font-size:10.5px; color:#AEB4C8; line-height:1.2; }
+  .tonight .next figcaption span b { display:block; color:#fff; font-size:11.5px; font-family:var(--display); }
   .hero-cta { margin-top:22px; }
   .hero .cta-note { color:#AEB4C8; }
 
@@ -246,6 +246,8 @@
     .hero-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:40px; align-items:center; }
     .hero h1 { font-size:50px; }
     .tonight { margin-top:0; }
+    .tonight .next { grid-template-columns:auto repeat(3, minmax(0,1fr)); align-items:center; }
+    .tonight .next .lab { grid-column:auto; padding-right:4px; }
     .hero-cta { max-width:420px; }
     .hero .btn { width:auto; min-width:260px; }
     .nums { grid-template-columns:repeat(3, 1fr); }
