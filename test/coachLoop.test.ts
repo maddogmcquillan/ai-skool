@@ -63,6 +63,36 @@ function fakeCircle(state: { posts: PostRecord[]; comments: Record<number, Comme
 
 const answerStub = () => vi.fn<typeof composeReply>(async () => ({ answer: "Store the name in a variable.", escalate: false, sources: ["classroom/11-make-a-chatbot.md"] }));
 
+/** Poll until `check` passes or `ms` has gone by; the loops run their follow-up ticks on their own. */
+async function settle(check: () => boolean, ms = 2000): Promise<void> {
+  const until = Date.now() + ms;
+  while (!check() && Date.now() < until) await new Promise((r) => setTimeout(r, 5));
+}
+
+describe("CoachLoop nudge", () => {
+  it("runs a tick at once when idle, and exactly one more when a tick is already in flight", async () => {
+    resetAuthScheme();
+    const state = { posts: [member(1, "Sam", "sam@example.com", "Hi", "<p>How do I start?</p>", NOW.toISOString())], comments: {} as Record<number, CommentRecord[]> };
+    const { fetchImpl, posted } = fakeCircle(state);
+    const loop = new CoachLoop(cfg(), { kb: () => kb, fetchImpl, now: () => NOW, log: () => {}, compose: answerStub() });
+
+    const first = loop.tick();
+    loop.nudge();
+    loop.nudge();
+    loop.nudge();
+    await first;
+    await settle(() => loop.status().ticks >= 2);
+    await new Promise((r) => setTimeout(r, 30));
+    expect(loop.status().ticks).toBe(2);
+    expect(posted).toHaveLength(1);
+
+    loop.nudge();
+    await settle(() => loop.status().ticks >= 3);
+    expect(loop.status().ticks).toBe(3);
+    expect(posted).toHaveLength(1);
+  });
+});
+
 describe("CoachLoop", () => {
   it("answers a new member post once and leaves team, old and already-answered posts alone", async () => {
     resetAuthScheme();

@@ -15,7 +15,8 @@ import { composeReply, type ReplyOptions, type ThreadMessage } from "./respond.j
  * - A post older than the lookback window is not answered retroactively; the loop records how
  *   many comments it has and only reacts when that number grows.
  * - Comments are fetched only when a post's comment count changed, so a quiet community costs
- *   one request a minute.
+ *   one request per poll. Every poll is a billed Admin API call, so the interval is minutes, not
+ *   seconds, and a Circle workflow webhook on POST /hooks/circle/nudge wakes the loop early.
  * - State is in memory. After a restart the thread itself says whether Coach owes a reply, so
  *   nothing is answered twice.
  *
@@ -102,6 +103,7 @@ export class CoachLoop {
   private spaceId?: number;
   private timer?: ReturnType<typeof setInterval>;
   private busy = false;
+  private again = false;
   private stats = { ticks: 0, answered: 0, escalated: 0, skipped: 0 };
   private lastTickAt?: string;
   private lastError?: string;
@@ -137,6 +139,19 @@ export class CoachLoop {
     this.timer = undefined;
   }
 
+  /**
+   * Run a tick now because a webhook said something changed in the space. A tick already in
+   * flight is followed by exactly one more, so a comment posted during it is not missed and a
+   * burst of webhooks costs at most two passes.
+   */
+  nudge(): void {
+    if (this.busy) {
+      this.again = true;
+      return;
+    }
+    void this.tick();
+  }
+
   /** One pass over the newest posts. Exposed so tests and operators can drive it by hand. */
   async tick(): Promise<{ answered: number; skipped: number; failed: number }> {
     const result = { answered: 0, skipped: 0, failed: 0 };
@@ -156,6 +171,10 @@ export class CoachLoop {
       this.log(`tick failed: ${this.lastError}`);
     } finally {
       this.busy = false;
+      if (this.again) {
+        this.again = false;
+        void this.tick();
+      }
     }
     return result;
   }

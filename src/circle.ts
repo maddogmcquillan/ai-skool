@@ -23,6 +23,42 @@ export function resetAuthScheme(): void {
   authScheme = "Bearer";
 }
 
+/**
+ * Every request sent to Circle since the process started. Circle bills Admin API calls above
+ * the plan's monthly allowance (5,000 on Business, $0.005 each beyond it), so /healthz reports
+ * the count and the monthly rate it implies. The 401 retry below is a second call, as billed.
+ */
+const calls = { total: 0, since: Date.now(), byPath: new Map<string, number>() };
+
+export interface CircleCallStats {
+  total: number;
+  since: string;
+  /** Calls a day at the rate seen since `since`; a projection that settles after the first hour. */
+  perDay: number;
+  perMonth: number;
+  /** `GET /posts`, `GET /comments`, ... without query strings. */
+  byPath: Record<string, number>;
+}
+
+export function circleCallStats(now: number = Date.now()): CircleCallStats {
+  const elapsedMs = Math.max(now - calls.since, 3_600_000);
+  const perDay = Math.round((calls.total / elapsedMs) * 86_400_000);
+  return { total: calls.total, since: new Date(calls.since).toISOString(), perDay, perMonth: perDay * 30, byPath: Object.fromEntries(calls.byPath) };
+}
+
+/** Test hook: forget the calls counted so far. */
+export function resetCircleCallStats(now: number = Date.now()): void {
+  calls.total = 0;
+  calls.since = now;
+  calls.byPath.clear();
+}
+
+function countCall(method: string, path: string): void {
+  const key = `${method} ${path.split("?")[0]}`;
+  calls.total++;
+  calls.byPath.set(key, (calls.byPath.get(key) ?? 0) + 1);
+}
+
 export async function circleRequest<T>(
   cfg: CircleClientConfig,
   method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE",
@@ -31,8 +67,9 @@ export async function circleRequest<T>(
   fetchImpl: typeof fetch = fetch,
 ): Promise<T> {
   const base = (cfg.baseUrl ?? "https://app.circle.so/api/admin/v2").replace(/\/$/, "");
-  const send = (scheme: "Bearer" | "Token") =>
-    fetchImpl(`${base}${path}`, {
+  const send = (scheme: "Bearer" | "Token") => {
+    countCall(method, path);
+    return fetchImpl(`${base}${path}`, {
       method,
       headers: {
         authorization: `${scheme} ${cfg.token}`,
@@ -41,6 +78,7 @@ export async function circleRequest<T>(
       },
       body: payload === undefined ? undefined : JSON.stringify(payload),
     });
+  };
   let res = await send(authScheme);
   if (res.status === 401 && authScheme === "Bearer") {
     const retry = await send("Token");

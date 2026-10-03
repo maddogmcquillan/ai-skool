@@ -9,6 +9,9 @@ import { circleRequest, type CircleClientConfig } from "./circle.js";
  *
  * On start the loop looks back `lookbackMs` and (re)sends what it finds; Meta drops duplicates
  * by event_id, so a restart never double counts.
+ *
+ * Every poll is a billed Admin API call, so the default interval is an hour; a Circle workflow
+ * webhook on POST /hooks/circle/nudge/meta sends a purchase within seconds instead.
  */
 export interface ChargeLoopConfig {
   circle: CircleClientConfig;
@@ -102,6 +105,7 @@ export class ChargeLoop {
   private since: Date;
   private timer?: ReturnType<typeof setInterval>;
   private busy = false;
+  private again = false;
   private stats = { ticks: 0, sent: 0, skipped: 0 };
   private lastTickAt?: string;
   private lastEventId?: string;
@@ -135,6 +139,15 @@ export class ChargeLoop {
     this.timer = undefined;
   }
 
+  /** Run a tick now (a webhook reported a charge); a tick in flight is followed by one more. */
+  nudge(): void {
+    if (this.busy) {
+      this.again = true;
+      return;
+    }
+    void this.tick();
+  }
+
   async tick(): Promise<{ sent: number; skipped: number; failed: number }> {
     const result = { sent: 0, skipped: 0, failed: 0 };
     if (this.busy) return result;
@@ -158,6 +171,10 @@ export class ChargeLoop {
       this.log(`tick failed: ${this.lastError}`);
     } finally {
       this.busy = false;
+      if (this.again) {
+        this.again = false;
+        void this.tick();
+      }
     }
     return result;
   }

@@ -41,6 +41,31 @@ function fake(state: { charges: ChargeRecord[] }) {
   return { fetchImpl: fetchImpl as unknown as typeof fetch, sent, circleCalls };
 }
 
+describe("ChargeLoop nudge", () => {
+  it("runs a tick now and coalesces nudges that arrive during one", async () => {
+    resetAuthScheme();
+    const state = { charges: [charge(1, "ann@example.com", "Ann Lee", new Date(NOW.getTime() - 60_000).toISOString())] };
+    const { fetchImpl, sent, circleCalls } = fake(state);
+    const loop = new ChargeLoop(cfg(), { fetchImpl, now: () => NOW, log: () => {} });
+
+    const first = loop.tick();
+    loop.nudge();
+    loop.nudge();
+    await first;
+    const until = Date.now() + 2000;
+    while (loop.status().ticks < 2 && Date.now() < until) await new Promise((r) => setTimeout(r, 5));
+    await new Promise((r) => setTimeout(r, 30));
+    expect(loop.status().ticks).toBe(2);
+    expect(circleCalls).toHaveLength(2);
+    expect(sent).toHaveLength(1); // the charge was sent once, by the first tick
+
+    loop.nudge();
+    while (loop.status().ticks < 3 && Date.now() < until) await new Promise((r) => setTimeout(r, 5));
+    expect(loop.status().ticks).toBe(3);
+    expect(sent).toHaveLength(1);
+  });
+});
+
 describe("paywall keys", () => {
   it("slugifies the display name unless the map says otherwise", () => {
     expect(paywallKeyFor("Founding Member", {})).toBe("founding-member");

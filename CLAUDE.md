@@ -77,6 +77,13 @@ The community's public name is **Learn AI** (the repo name "ai-skool" is histori
   names when they differ.
 - Deployment is on Railway from this repo's default branch; the click path is in
   `docs/DEPLOY-RAILWAY.md`. `GET /healthz` shows both pollers' counters.
+- Circle bills Admin API calls above the Business plan's 5,000 a month ($0.005 each), and every
+  poll is one call. Defaults: Coach every 300 s, Meta every 3600 s, founding count cached 60 min
+  (`COACH_POLL_SECONDS`, `META_POLL_SECONDS`, `FOUNDING_TTL_MINUTES`); `GET /healthz` reports
+  `circle.total` and a projected `circle.perMonth`. The cheap path is a Circle workflow webhook
+  on `POST /hooks/circle/nudge/coach` and `/nudge/meta` (Brief 11 in `docs/COWORK-BRIEFS.md`);
+  with it the intervals are only a safety net (1800 and 3600). Never set a poller below 300 s
+  without saying what it costs; the arithmetic is in `docs/DEPLOY-RAILWAY.md`.
 - Coach's knowledge is the `knowledge/` folder, baked into the image. After editing it, push
   and let Railway redeploy (or call `POST /admin/reload-knowledge` with the hook secret).
 

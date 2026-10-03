@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { circleRequest, resetAuthScheme, unwrapRecord } from "../src/circle.js";
+import { circleCallStats, circleRequest, resetAuthScheme, resetCircleCallStats, unwrapRecord } from "../src/circle.js";
 
 const cfg = { token: "abc123" };
 
@@ -48,5 +48,42 @@ describe("unwrapRecord", () => {
   it("throws with the raw body when neither shape carries an id", () => {
     expect(() => unwrapRecord({ success: true, message: "Space created." }, "space")).toThrow(/no "space" record.*Space created/);
     expect(() => unwrapRecord(null, "space")).toThrow(/no "space" record/);
+  });
+});
+
+describe("circleCallStats", () => {
+  beforeEach(() => {
+    resetAuthScheme();
+    resetCircleCallStats(0);
+  });
+
+  it("counts every request by method and path, without the query string", async () => {
+    const fetchImpl = vi.fn(async () => new Response(JSON.stringify({ records: [] }), { status: 200 }));
+    await circleRequest(cfg, "GET", "/posts?space_id=7&per_page=20", undefined, fetchImpl as unknown as typeof fetch);
+    await circleRequest(cfg, "GET", "/posts?space_id=7&per_page=20", undefined, fetchImpl as unknown as typeof fetch);
+    await circleRequest(cfg, "POST", "/comments", { post_id: 1, body: "hi" }, fetchImpl as unknown as typeof fetch);
+    const stats = circleCallStats(86_400_000);
+    expect(stats.total).toBe(3);
+    expect(stats.byPath).toEqual({ "GET /posts": 2, "POST /comments": 1 });
+    expect(stats.since).toBe("1970-01-01T00:00:00.000Z");
+    // Three calls in a day project to three a day and ninety a month.
+    expect(stats.perDay).toBe(3);
+    expect(stats.perMonth).toBe(90);
+  });
+
+  it("counts the Token retry as a second call, as Circle bills it", async () => {
+    const fetchImpl = vi.fn(async (_url: string, init: RequestInit) => {
+      const auth = (init.headers as Record<string, string>).authorization;
+      return auth.startsWith("Token ") ? new Response("{}", { status: 200 }) : new Response("{}", { status: 401 });
+    });
+    await circleRequest(cfg, "GET", "/spaces", undefined, fetchImpl as unknown as typeof fetch);
+    expect(circleCallStats().total).toBe(2);
+  });
+
+  it("spreads a boot burst over at least an hour before projecting a rate", async () => {
+    const fetchImpl = vi.fn(async () => new Response("{}", { status: 200 }));
+    for (let i = 0; i < 3; i++) await circleRequest(cfg, "GET", "/spaces", undefined, fetchImpl as unknown as typeof fetch);
+    // Three calls one second after boot: 72 a day (3 an hour), not 259,200.
+    expect(circleCallStats(1_000).perDay).toBe(72);
   });
 });

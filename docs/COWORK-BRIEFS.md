@@ -524,3 +524,50 @@ Report format: a table with rows Impressions, Link clicks, Landing page views, L
 PageViews (pixel), ViewContent, InitiateCheckout, Checkout PageViews (pixel), Stripe incomplete
 payments, Stripe succeeded payments, Circle subscriptions, Amount spent, Cost per purchase.
 Add one line per ad with its link clicks, landing page views and checkouts initiated. STOP.
+
+## Brief 11: Stop paying for Circle API polling (Circle Workflows → webhook)
+
+Context for me, not for the other Claude: Circle billed $52 of Admin API overage in the first
+five days the service was live, because both pollers asked Circle every 60 seconds (about 2,900
+calls a day against an allowance of 5,000 a month). The code now polls every 5 minutes (Coach)
+and hourly (Meta), which keeps the overage near $25 a month. This brief makes Circle tell the
+service when something happens, so polling can drop to a safety net and the overage to zero.
+Chrome needs to be signed in to www.joinlearnai.com as admin and to railway.com. The HOOK_SECRET
+value lives in Railway → the service → Variables; it is copied inside the browser and never
+pasted into chat.
+
+You are setting up Circle workflows that call my service's webhook, working in my signed-in
+Chrome. Do not change any paywall, price, member, space, or Railway variable other than the one
+named in block 4. After each block tell me what you did, with a screenshot, and write down the
+exact names Circle uses for the trigger and the action you picked.
+
+Block 1, the values. Open railway.com, the ai-skool project, the service, Variables. Find
+HOOK_SECRET and reveal its value. Also note the service's public domain under Settings →
+Networking (ai-skool-production.up.railway.app unless it changed). Build two URLs and keep them
+for the next blocks, using the Railway domain, not joinlearnai.com:
+  https://<domain>/hooks/circle/nudge/coach?secret=<HOOK_SECRET>
+  https://<domain>/hooks/circle/nudge/meta?secret=<HOOK_SECRET>
+
+Block 2, Coach. On www.joinlearnai.com open the admin area → Workflows → New workflow →
+Automation. Name it "Nudge Coach: new post". Trigger: the one for a new post published in a
+space, scoped to the space "Ask Coach". Action: the one that sends to a webhook (Circle may call
+it "Send to webhook" or similar). Paste the coach URL. If the action lets you add a header, add
+X-Hook-Secret with the secret as its value and remove "?secret=..." from the URL. Save and turn
+it on. Then make a second workflow, "Nudge Coach: new comment", with the trigger for a new
+comment on a post (scoped to Ask Coach if it allows) and the same action and URL. If Circle
+offers no comment trigger, say so in your report and skip this one.
+
+Block 3, purchases. New workflow "Nudge Meta: purchase". Trigger: the one for a successful
+paywall payment or purchase (scoped to the paywall "Learn AI Founding Membership" if it asks).
+Action: send to webhook with the meta URL (header variant if available). Save and turn it on.
+
+Block 4, test and slow the poll. In a private window, signed in as the test member, post a
+question in Ask Coach, for example "How do I give my chatbot a memory?". Coach should reply
+within a minute. Open https://<domain>/healthz and screenshot it: coach.ticks should have gone up
+by one right after the post. If Coach replied within a minute, go to Railway → Variables and set
+COACH_POLL_SECONDS to 1800 (add it if it is missing). If block 2 found no comment trigger, set it
+to 300 instead. Do not touch any other variable; Railway redeploys on its own.
+
+Block 5, the usage number. On www.joinlearnai.com, admin → Settings → Developers (the API tokens
+page) shows the API usage for this billing cycle. Screenshot it, so I have today's number to
+compare against tomorrow's. STOP.

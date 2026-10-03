@@ -7,8 +7,11 @@ import type { StatsCounter } from "./stats.js";
 import { KnowledgeBase } from "./bot/knowledge.js";
 import { isBotAuthor } from "./bot/policy.js";
 import { composeReply } from "./bot/respond.js";
-import { createCircleComment } from "./circle.js";
+import { createCircleComment, type CircleCallStats } from "./circle.js";
 import { mountSite } from "./site.js";
+
+/** Which poller a Circle workflow webhook wakes through POST /hooks/circle/nudge. */
+export type NudgeTarget = "coach" | "meta";
 
 export interface ServerConfig {
   hookSecret: string;
@@ -70,6 +73,10 @@ export interface AppDeps {
   coachStatus?: () => CoachLoopStatus | undefined;
   /** Reported on /healthz when the purchase-to-Meta poller is running. */
   metaStatus?: () => ChargeLoopStatus | undefined;
+  /** Reported on /healthz when a Circle token is configured: Admin API calls made so far. */
+  circleStats?: () => CircleCallStats;
+  /** Wakes a poller for POST /hooks/circle/nudge; returns false when that poller is off. */
+  nudge?: (what: NudgeTarget) => boolean;
   /** Serves /api/founding-spots for the landing pages' "spots taken" bar. Absent means 404. */
   foundingSpots?: () => Promise<FoundingSpots>;
   /** First-party funnel counters behind POST /api/track and GET /api/stats. Absent means 404. */
@@ -85,11 +92,23 @@ export async function createApp(cfg: ServerConfig, deps: AppDeps = {}) {
   const app = new Hono();
 
   app.get("/healthz", (c) =>
-    c.json({ ok: true, dryRun: cfg.dryRun, knowledgeChunks: kb.chunks.length, coach: deps.coachStatus?.() ?? null, meta: deps.metaStatus?.() ?? null }),
+    c.json({
+      ok: true,
+      dryRun: cfg.dryRun,
+      knowledgeChunks: kb.chunks.length,
+      coach: deps.coachStatus?.() ?? null,
+      meta: deps.metaStatus?.() ?? null,
+      circle: deps.circleStats?.() ?? null,
+    }),
   );
 
+  // Hooks carry the shared secret in the X-Hook-Secret header. The nudge route, which carries no
+  // data, also takes it as ?secret= because a Circle workflow webhook may not set custom headers.
   app.use("/hooks/*", async (c, next) => {
-    if (!cfg.hookSecret || c.req.header("x-hook-secret") !== cfg.hookSecret) {
+    const header = c.req.header("x-hook-secret");
+    const query = c.req.path.startsWith("/hooks/circle/nudge") ? c.req.query("secret") : undefined;
+    const provided = header ?? query;
+    if (!cfg.hookSecret || !provided || provided !== cfg.hookSecret) {
       return c.json({ error: "unauthorized" }, 401);
     }
     await next();
@@ -119,6 +138,17 @@ export async function createApp(cfg: ServerConfig, deps: AppDeps = {}) {
     }
     const result = await sendToMeta([event], cfg.capi, fetchImpl);
     return c.json({ ok: result.ok, event_id: event.event_id, event_name: event.event_name, meta: result.body }, result.ok ? 200 : 502);
+  });
+
+  // Circle workflow "send to webhook" (any payload, ignored): run the poller now instead of at the
+  // next interval. /nudge wakes both pollers, /nudge/coach or /nudge/meta one of them. A nudge
+  // costs the same Circle calls as one poll, so with webhooks the poll intervals can be long.
+  app.post("/hooks/circle/nudge/:what?", (c) => {
+    const what = c.req.param("what");
+    const targets: NudgeTarget[] = what === undefined ? ["coach", "meta"] : what === "coach" || what === "meta" ? [what] : [];
+    if (!targets.length) return c.json({ error: "unknown target: use /nudge, /nudge/coach or /nudge/meta" }, 404);
+    const nudged = targets.filter((t) => deps.nudge?.(t) ?? false);
+    return c.json({ ok: true, nudged }, 202);
   });
 
   // Zapier: Circle "New Post" or "New Comment Posted" -> here -> answer (returned, or posted directly)

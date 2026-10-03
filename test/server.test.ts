@@ -29,7 +29,51 @@ describe("webhook auth", () => {
     const app = await createApp(cfg(), { kb });
     const res = await app.request("/healthz");
     expect(res.status).toBe(200);
-    expect(await res.json()).toMatchObject({ ok: true, dryRun: true });
+    expect(await res.json()).toMatchObject({ ok: true, dryRun: true, circle: null });
+  });
+
+  it("reports Circle API usage on healthz when a token is configured", async () => {
+    const stats = { total: 12, since: "2026-10-03T00:00:00.000Z", perDay: 288, perMonth: 8640, byPath: { "GET /posts": 12 } };
+    const app = await createApp(cfg(), { kb, circleStats: () => stats });
+    expect(await (await app.request("/healthz")).json()).toMatchObject({ circle: stats });
+  });
+});
+
+describe("POST /hooks/circle/nudge", () => {
+  it("wakes both pollers with the header secret and reports which ones ran", async () => {
+    const nudge = vi.fn((_what: string) => true);
+    const app = await createApp(cfg(), { kb, nudge });
+    const res = await app.request("/hooks/circle/nudge", { method: "POST", headers, body: '{"event":"post.created"}' });
+    expect(res.status).toBe(202);
+    expect(await res.json()).toEqual({ ok: true, nudged: ["coach", "meta"] });
+    expect(nudge.mock.calls.map((c) => c[0])).toEqual(["coach", "meta"]);
+  });
+
+  it("takes the secret as a query parameter and a target in the path, for webhooks without headers", async () => {
+    const nudge = vi.fn((what: string) => what === "coach");
+    const app = await createApp(cfg(), { kb, nudge });
+    const res = await app.request("/hooks/circle/nudge/coach?secret=s3cret", { method: "POST" });
+    expect(res.status).toBe(202);
+    expect(await res.json()).toEqual({ ok: true, nudged: ["coach"] });
+    const meta = await app.request("/hooks/circle/nudge/meta?secret=s3cret", { method: "POST" });
+    expect(await meta.json()).toEqual({ ok: true, nudged: [] }); // the Meta poller is off
+  });
+
+  it("rejects a wrong or missing secret, and never takes the query secret on data hooks", async () => {
+    const nudge = vi.fn(() => true);
+    const app = await createApp(cfg(), { kb, nudge });
+    expect((await app.request("/hooks/circle/nudge", { method: "POST" })).status).toBe(401);
+    expect((await app.request("/hooks/circle/nudge?secret=nope", { method: "POST" })).status).toBe(401);
+    expect((await app.request("/hooks/circle/charge?secret=s3cret", { method: "POST", body: "{}" })).status).toBe(401);
+    expect(nudge).not.toHaveBeenCalled();
+  });
+
+  it("404s an unknown target and answers without any poller wired", async () => {
+    const app = await createApp(cfg(), { kb });
+    expect((await app.request("/hooks/circle/nudge/zapier", { method: "POST", headers })).status).toBe(404);
+    const res = await app.request("/hooks/circle/nudge", { method: "POST", headers });
+    expect(res.status).toBe(202);
+    expect(await res.json()).toEqual({ ok: true, nudged: [] });
   });
 });
 

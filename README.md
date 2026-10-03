@@ -29,19 +29,25 @@ belongs to a member, posts Coach's reply as a comment. That covers the first que
 and every follow-up under it; the model sees the whole thread and continues the conversation.
 Coach stays quiet when a team member replied last, and after it has handed a thread to a human
 (billing, account, safety and personal-info questions get the hand-off reply). Comments are only
-fetched when a post's comment count changes, so a quiet community costs one request a minute.
+fetched when a post's comment count changes, so a quiet community costs one request per poll
+(every five minutes by default).
 The comment is authored by whoever created the API token, so create the service's token while
 signed in as the Coach account (see `docs/DEPLOY-RAILWAY.md`).
 
 **Purchases to Meta** work the same way: with `META_PIXEL_ID` and `META_CAPI_ACCESS_TOKEN` set,
-the service polls Circle's paid charges every minute and sends each new one to the Meta
+the service polls Circle's paid charges (hourly by default) and sends each new one to the Meta
 Conversions API as a Purchase. Email and names are hashed, and the `event_id` is derived the same
 way as in the paywall thank-you snippet, so Meta counts each sale once even though it hears about
 it twice.
 
 Two webhook routes remain for anyone who prefers Zapier (`COACH_POLL=0` / `META_POLL=0`):
 `POST /hooks/circle/charge` and `POST /hooks/circle/question`, both behind the `X-Hook-Secret`
-header. `GET /healthz` reports both pollers' counters.
+header. A third, `POST /hooks/circle/nudge` (or `/nudge/coach`, `/nudge/meta`), takes any payload
+and simply runs the poller now: point a Circle workflow webhook at it and the pollers wake within
+seconds, so their intervals can be long. That matters because Circle bills Admin API calls above
+5,000 a month and every poll is one call. `GET /healthz` reports both pollers' counters and the
+calls made since the last deploy (`circle.total`, projected `circle.perMonth`); the arithmetic is
+in `docs/DEPLOY-RAILWAY.md`.
 
 ```bash
 cp .env.example .env      # fill in
