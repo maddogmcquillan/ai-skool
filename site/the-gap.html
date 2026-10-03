@@ -58,7 +58,7 @@
   .hero { background:radial-gradient(900px 500px at 85% -10%, #2A2470 0%, transparent 60%), linear-gradient(180deg, var(--navy) 0%, var(--navy2) 100%); color:#fff; padding:14px 0 36px; }
   .nav { display:flex; align-items:center; justify-content:space-between; margin-bottom:22px; }
   .logo { display:inline-flex; align-items:center; gap:9px; font-family:var(--display); font-weight:800; font-size:21px; text-decoration:none; color:#fff; }
-  .logo .badge { width:30px; height:30px; border-radius:9px; background:var(--indigo); display:inline-grid; place-items:center; }
+  .logo .badge { width:30px; height:30px; border-radius:9px; background:#3B7BFF; display:inline-grid; place-items:center; }
   .logo .ai { color:var(--spark); }
   .login { font-size:13.5px; font-weight:600; color:#C9CDE0; text-decoration:none; }
   .ticket { display:inline-flex; align-items:flex-start; gap:12px; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:12px 14px; margin-bottom:18px; }
@@ -80,7 +80,7 @@
   .tonight .play svg { margin-left:3px; width:18px; height:18px; }
   .tonight .dur { position:absolute; right:10px; top:10px; background:rgba(11,18,32,.85); color:#fff; font-size:12.5px; font-weight:700; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.14); }
   .tonight .who { position:absolute; right:10px; bottom:12px; display:flex; align-items:center; gap:8px; background:rgba(11,18,32,.85); backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,.14); border-radius:999px; padding:4px 12px 4px 4px; max-width:calc(100% - 72px); }
-  .tonight .who img { width:32px; height:32px; border-radius:50%; object-fit:cover; flex:none; border:2px solid var(--spark); }
+  .tonight .who .cap { width:32px; height:32px; border-radius:50%; background:#8C1515; display:grid; place-items:center; flex:none; border:2px solid var(--spark); }
   .tonight .who span { color:#fff; font-size:11.5px; font-weight:700; line-height:1.2; }
   .tonight .meta { padding:12px 6px 6px; }
   .tonight .meta b { display:block; font-family:var(--display); font-size:17px; }
@@ -310,7 +310,7 @@
 <header class="hero">
   <div class="wrap">
     <div class="nav">
-      <a class="logo" href="/"><span class="badge"><svg width="18" height="18" viewBox="0 0 100 100"><path d="M50 14l8 22 22 8-22 8-8 22-8-22-22-8 22-8z" fill="#FFC245"/></svg></span>Learn <span class="ai">AI</span></a>
+      <span class="logo"><span class="badge"><svg width="18" height="18" viewBox="0 0 100 100"><path d="M50 14l8 22 22 8-22 8-8 22-8-22-22-8 22-8z" fill="#FFC245"/></svg></span>Learn <span class="ai">AI</span></span>
       <a class="login" href="https://www.joinlearnai.com/">Member sign in</a>
     </div>
     <div class="hero-grid">
@@ -332,17 +332,17 @@
           <i class="wm" aria-hidden="true">AI</i>
           <span class="k">Start here · Beginner</span>
           <b class="t">How ChatGPT Actually Works</b>
-          <span class="st">Large Language Models, Explained Briefly</span>
+          <span class="st">Large Language Models, Explained Simply</span>
           <span class="play" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="#141A2A"><path d="M8 5v14l11-7z"/></svg></span>
           <span class="dur">8 min</span>
-          <div class="who"><img src="/assets/avatar-3b1b.jpg" alt=""><span>Taught by a Stanford mathematician</span></div>
+          <div class="who"><i class="cap" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-4 10 4-10 4z"/><path d="M6 11v4c0 1.5 3 3 6 3s6-1.5 6-3v-4"/><path d="M22 9v6"/></svg></i><span>Taught by a Stanford mathematician</span></div>
         </div>
-        <div class="meta"><b>Tonight · How ChatGPT Actually Works</b><span>Watch it together and learn how AI works, together. Eight minutes. Then they pick a project.</span></div>
+        <div class="meta"><b>Intro · How ChatGPT Actually Works</b><span>Watch it together and learn how AI works. Eight minutes. Then they pick a project.</span></div>
         <div class="next" aria-label="Then they build">
           <span class="lab">Then</span>
-          <figure><div class="mini"><svg viewBox="0 0 160 90" preserveAspectRatio="none" aria-hidden="true"><polyline points="98,58 114,38 130,44 146,20 158,10" fill="none" stroke="#4FD1C5" stroke-width="1.2" opacity=".75"/><circle cx="98" cy="58" r="2.6" fill="#4FD1C5"/><circle cx="114" cy="38" r="1.8" fill="#AEE9E1"/><circle cx="130" cy="44" r="2.6" fill="#4FD1C5"/><circle cx="146" cy="20" r="1.8" fill="#AEE9E1"/><circle cx="158" cy="10" r="2.6" fill="#4FD1C5"/></svg><b>Make a Game</b></div><figcaption><img class="face" src="/assets/avatar-jagger.jpg" alt=""><span><b>Make a Game</b>Builds games with AI for a living</span></figcaption></figure>
-          <figure><div class="mini"><svg viewBox="0 0 160 90" preserveAspectRatio="none" aria-hidden="true"><polyline points="96,62 112,44 128,48 144,24 158,12" fill="none" stroke="#4FD1C5" stroke-width="1.2" opacity=".75"/><circle cx="96" cy="62" r="2.6" fill="#4FD1C5"/><circle cx="112" cy="44" r="1.8" fill="#AEE9E1"/><circle cx="128" cy="48" r="2.6" fill="#4FD1C5"/><circle cx="144" cy="24" r="1.8" fill="#AEE9E1"/><circle cx="158" cy="12" r="2.6" fill="#4FD1C5"/></svg><b>Make an App</b></div><figcaption><img class="face" src="/assets/avatar-tim.jpg" alt=""><span><b>Make an App</b>Teaches millions to code with AI</span></figcaption></figure>
-          <figure><div class="mini"><svg viewBox="0 0 160 90" preserveAspectRatio="none" aria-hidden="true"><polyline points="100,60 116,40 132,46 148,22 158,10" fill="none" stroke="#4FD1C5" stroke-width="1.2" opacity=".75"/><circle cx="100" cy="60" r="2.6" fill="#4FD1C5"/><circle cx="116" cy="40" r="1.8" fill="#AEE9E1"/><circle cx="132" cy="46" r="2.6" fill="#4FD1C5"/><circle cx="148" cy="22" r="1.8" fill="#AEE9E1"/><circle cx="158" cy="10" r="2.6" fill="#4FD1C5"/></svg><b>Make an AI Agent</b></div><figcaption><img class="face" src="/assets/avatar-kevin-2.jpg?v=2" alt=""><span><b>Make an AI Agent</b>Ex-Microsoft PM</span></figcaption></figure>
+          <figure><div class="mini"><svg viewBox="0 0 160 90" preserveAspectRatio="none" aria-hidden="true"><polyline points="98,58 114,38 130,44 146,20 158,10" fill="none" stroke="#4FD1C5" stroke-width="1.2" opacity=".75"/><circle cx="98" cy="58" r="2.6" fill="#4FD1C5"/><circle cx="114" cy="38" r="1.8" fill="#AEE9E1"/><circle cx="130" cy="44" r="2.6" fill="#4FD1C5"/><circle cx="146" cy="20" r="1.8" fill="#AEE9E1"/><circle cx="158" cy="10" r="2.6" fill="#4FD1C5"/></svg><b>Make a Game</b></div><figcaption><img class="face" src="/assets/avatar-jagger-2.jpg" alt=""><span><b>Make a Game</b>Builds games with AI for a living</span></figcaption></figure>
+          <figure><div class="mini"><svg viewBox="0 0 160 90" preserveAspectRatio="none" aria-hidden="true"><polyline points="96,62 112,44 128,48 144,24 158,12" fill="none" stroke="#4FD1C5" stroke-width="1.2" opacity=".75"/><circle cx="96" cy="62" r="2.6" fill="#4FD1C5"/><circle cx="112" cy="44" r="1.8" fill="#AEE9E1"/><circle cx="128" cy="48" r="2.6" fill="#4FD1C5"/><circle cx="144" cy="24" r="1.8" fill="#AEE9E1"/><circle cx="158" cy="12" r="2.6" fill="#4FD1C5"/></svg><b>Make an App</b></div><figcaption><img class="face" src="/assets/avatar-tim-2.jpg" alt=""><span><b>Make an App</b>Teaches millions to code with AI</span></figcaption></figure>
+          <figure><div class="mini"><svg viewBox="0 0 160 90" preserveAspectRatio="none" aria-hidden="true"><polyline points="100,60 116,40 132,46 148,22 158,10" fill="none" stroke="#4FD1C5" stroke-width="1.2" opacity=".75"/><circle cx="100" cy="60" r="2.6" fill="#4FD1C5"/><circle cx="116" cy="40" r="1.8" fill="#AEE9E1"/><circle cx="132" cy="46" r="2.6" fill="#4FD1C5"/><circle cx="148" cy="22" r="1.8" fill="#AEE9E1"/><circle cx="158" cy="10" r="2.6" fill="#4FD1C5"/></svg><b>Make an AI Agent</b></div><figcaption><img class="face" src="/assets/avatar-kevin-3.jpg" alt=""><span><b>Make an AI Agent</b>Ex-Microsoft PM</span></figcaption></figure>
         </div>
       </div>
     </div>
@@ -389,8 +389,8 @@
 <!-- ============ 4. WHERE TO START: tonight, this week, every week, when stuck ============ -->
 <section id="start" style="padding-top:0">
   <div class="wrap">
-    <p class="eyebrow">Here's where to start</p>
-    <h2 class="sub">Start tonight. Learn it together.</h2>
+    <p class="eyebrow">The plan</p>
+    <h2 class="sub">Where to start.</h2>
     <p class="lede sub">You don't need to understand AI to help your kid learn it. Watch the first classes with them and you both will.</p>
     <div class="steps">
         <div class="step"><span class="n">1</span><div><span class="when">Tonight</span><h3>Watch the first class together</h3><p>Eight minutes on how ChatGPT actually works. Then where it gets things wrong, and how to use it well. You'll both get it.</p></div></div>
@@ -426,7 +426,7 @@
     <p class="eyebrow">Who teaches</p>
     <h2 class="sub">The teachers your kid's school doesn't have.</h2>
     <div class="faces" aria-label="Some of the instructors">
-      <img src="/assets/avatar-jeff.jpg" alt="Jeff S."><img src="/assets/avatar-tina.jpg" alt="Tina H."><img src="/assets/avatar-kevin-2.jpg?v=2" alt="Kevin S."><img src="/assets/avatar-tim.jpg" alt="Tim R."><img src="/assets/avatar-jagger.jpg" alt="Jagger B."><img src="/assets/avatar-ibm.jpg" alt="IBM Technology">
+      <img src="/assets/avatar-jeff.jpg" alt="Jeff S."><img src="/assets/avatar-tina.jpg" alt="Tina H."><img src="/assets/avatar-kevin-3.jpg" alt="Kevin S."><img src="/assets/avatar-tim-2.jpg" alt="Tim R."><img src="/assets/avatar-jagger-2.jpg" alt="Jagger B."><img src="/assets/avatar-ibm.jpg" alt="IBM Technology">
     </div>
     <p class="lede sub">Every class is taught by a real person with real credentials: a former Microsoft product manager, a Google product marketer, an ex-Meta data scientist, IBM's own engineers. We picked the clearest lesson on each topic and put them in the right order, so college-level material lands with a 12-year-old.</p>
   </div>
@@ -491,7 +491,7 @@
       <div>
         <p class="eyebrow">Founding Member offer</p>
         <h2 class="sub">Don't let them figure it out alone.</h2>
-        <p class="lede sub">Everything your kid needs to understand AI and build with it, starting tonight. It won't be this price forever.</p>
+        <p class="lede sub">Everything your kid needs to understand AI and build with it. It won't be this price forever.</p>
         <div class="pricebox"><span class="was">Total value <s>$1,332</s></span><span class="now">$49<small>/month</small></span><span class="tag">Founding rate</span></div>
         <div class="scarce">
           <!-- The cap is also FOUNDING_CAP on the service, which feeds the live "spots taken" bar below. -->

@@ -72,7 +72,7 @@ describe("the site", () => {
     expect(html).not.toMatch(/no refunds/i);
     expect(html).not.toMatch(/classes are filling up/i);
     expect(html).toContain("figuring out AI alone");
-    const face = await app.request("/assets/avatar-kevin-2.jpg");
+    const face = await app.request("/assets/avatar-kevin-3.jpg");
     expect(face.status).toBe(200);
     expect(face.headers.get("content-type")).toBe("image/jpeg");
   });
