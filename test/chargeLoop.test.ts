@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { ChargeLoop, chargeToHook, parsePaywallKeys, paywallKeyFor, type ChargeLoopConfig, type ChargeRecord } from "../src/chargeLoop.js";
+import { ChargeLoop, chargeToHook, DEFAULT_PAYWALL_KEYS, parsePaywallKeys, paywallKeyFor, type ChargeLoopConfig, type ChargeRecord } from "../src/chargeLoop.js";
 import { purchaseEventId } from "../src/lib/eventId.js";
 import { resetAuthScheme } from "../src/circle.js";
 
@@ -70,7 +70,12 @@ describe("paywall keys", () => {
   it("slugifies the display name unless the map says otherwise", () => {
     expect(paywallKeyFor("Founding Member", {})).toBe("founding-member");
     expect(paywallKeyFor("Founding Member", parsePaywallKeys("Founding Member=founder, Other=other-plan"))).toBe("founder");
-    expect(parsePaywallKeys(undefined)).toEqual({});
+    // The paywall was renamed on the checkout page; both names must keep the key the thank-you
+    // snippet hardcodes, or Meta would count browser and server Purchase events separately.
+    expect(paywallKeyFor("Learn AI Founding Membership", parsePaywallKeys(undefined))).toBe("founding-member");
+    expect(paywallKeyFor("Learn AI Founding Membership", parsePaywallKeys("Founding Member=founding-member"))).toBe("founding-member");
+    expect(paywallKeyFor("Learn AI Founding Membership", {})).toBe("learn-ai-founding-membership"); // what an empty map would do
+    expect(parsePaywallKeys(undefined)).toEqual(DEFAULT_PAYWALL_KEYS);
   });
 
   it("turns a charge into the webhook shape with dollars, names and the processor id", () => {

@@ -28,11 +28,18 @@ describe("FoundingCounter", () => {
         { id: 3, status: "paid", paywall_name: "Adult Course", community_member_email: "bob@example.com" },
         { id: 4, status: "refunded", paywall_name: "Founding Member", community_member_email: "cat@example.com" },
       ],
-      [{ id: 5, status: "paid", paywall_name: "Founding Member", community_member_id: 77, community_member_email: null }],
+      [
+        { id: 5, status: "paid", paywall_name: "Founding Member", community_member_id: 77, community_member_email: null },
+        { id: 6, status: "paid", paywall_name: "Learn AI Founding Membership", community_member_email: "dee@example.com" }, // after the rename
+      ],
     ]);
     let now = 1_000;
-    const counter = new FoundingCounter({ circle: { token: "t", baseUrl: "https://api.test/v2" }, cap: 200, ttlMs: 60_000, paywallName: "Founding Member" }, fetchImpl, () => now);
-    expect(await counter.spots()).toMatchObject({ cap: 200, taken: 2 });
+    const counter = new FoundingCounter(
+      { circle: { token: "t", baseUrl: "https://api.test/v2" }, cap: 200, ttlMs: 60_000, paywallNames: ["Founding Member", "learn ai founding membership "] },
+      fetchImpl,
+      () => now,
+    );
+    expect(await counter.spots()).toMatchObject({ cap: 200, taken: 3 });
     expect(calls).toHaveLength(2);
 
     // Cached inside the TTL, refreshed after it.

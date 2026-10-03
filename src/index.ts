@@ -1,7 +1,7 @@
 import { serve } from "@hono/node-server";
 import { CoachLoop } from "./bot/coachLoop.js";
 import { KnowledgeBase } from "./bot/knowledge.js";
-import { ChargeLoop, parsePaywallKeys } from "./chargeLoop.js";
+import { ChargeLoop, DEFAULT_PAYWALL_KEYS, parsePaywallKeys } from "./chargeLoop.js";
 import { circleCallStats } from "./circle.js";
 import { FoundingCounter } from "./founding.js";
 import { configFromEnv, createApp } from "./server.js";
@@ -60,13 +60,14 @@ const meta =
 
 // The "spots taken" bar on the landing pages: distinct paying families, capped at FOUNDING_CAP.
 // The count is cached for FOUNDING_TTL_MINUTES, so page views cost at most one call per page of
-// charges in that window.
+// charges in that window. A charge counts when its paywall's display name is one the founding
+// paywall has had (DEFAULT_PAYWALL_KEYS) or is listed in FOUNDING_PAYWALL_NAME.
 const founding = cfg.circle
   ? new FoundingCounter({
       circle: cfg.circle,
       cap: Number(env.FOUNDING_CAP ?? 200),
       ttlMs: Math.max(1, Number(env.FOUNDING_TTL_MINUTES) || 60) * 60_000,
-      paywallName: env.FOUNDING_PAYWALL_NAME ?? "Founding Member",
+      paywallNames: [...Object.keys(DEFAULT_PAYWALL_KEYS), ...(env.FOUNDING_PAYWALL_NAME ?? "").split(",")],
     })
   : undefined;
 

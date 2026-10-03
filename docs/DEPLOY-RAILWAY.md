@@ -77,9 +77,9 @@ name.
 - Coach's knowledge is the `knowledge/` folder. Edit it, push, and Railway redeploys.
 - Railway → Deployments → Logs shows every reply and every skip with the reason.
 - To pause Coach, set `COACH_POLL` to `0` in Variables. To stop it entirely, remove the service.
-- Meta purchase tracking is the same service: add `META_PIXEL_ID`, `META_CAPI_ACCESS_TOKEN` and
-  `META_PAYWALL_KEYS=Founding Member=founding-member` to Variables when the Meta step is done, and
-  `/healthz` gains a `meta` block. No Zapier.
+- Meta purchase tracking is the same service: add `META_PIXEL_ID` and `META_CAPI_ACCESS_TOKEN` to
+  Variables when the Meta step is done, and `/healthz` gains a `meta` block. No Zapier. The
+  founding paywall's names are built in; `META_PAYWALL_KEYS` is only for a second paywall.
 
 ## Circle API usage and cost
 

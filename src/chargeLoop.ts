@@ -71,9 +71,22 @@ export function paywallKeyFor(displayName: string | null | undefined, map: Recor
     .replace(/^-+|-+$/g, "");
 }
 
-/** Parse `Founding Member=founding-member,Other Plan=other` into a map. */
+/**
+ * Every display name the founding paywall has had, all mapped to the key the thank-you snippet
+ * hardcodes (`circle/paywall-thank-you-tracking.html`). Circle reports a charge under the
+ * paywall's current display name, and a name missing here would slugify to a different key, so
+ * the browser and server events would stop deduplicating and Meta would count each sale twice.
+ * Add the new name here whenever the checkout title changes; the founding counter uses the same
+ * list to decide which charges are founding families.
+ */
+export const DEFAULT_PAYWALL_KEYS: Readonly<Record<string, string>> = {
+  "Founding Member": "founding-member",
+  "Learn AI Founding Membership": "founding-member",
+};
+
+/** Parse `Founding Member=founding-member,Other Plan=other` over the built-in map. */
 export function parsePaywallKeys(raw: string | undefined): Record<string, string> {
-  const out: Record<string, string> = {};
+  const out: Record<string, string> = { ...DEFAULT_PAYWALL_KEYS };
   for (const pair of (raw ?? "").split(",")) {
     const [k, v] = pair.split("=");
     if (k?.trim() && v?.trim()) out[k.trim()] = v.trim();

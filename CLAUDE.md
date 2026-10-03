@@ -106,7 +106,11 @@ The community's public name is **Learn AI** (the repo name "ai-skool" is histori
 - Every Enroll button and ad points at `https://www.joinlearnai.com/checkout/founding-member`.
   Circle regenerates that slug whenever the paywall's display name is edited, and the old URL
   then redirects to a sign-in page. Any brief that touches the paywall title must also pin the
-  Checkout URL slug back to `founding-member` and verify the URL in a private window.
+  Checkout URL slug back to `founding-member` and verify the URL in a private window. The
+  display name is also how Circle labels charges, so the new name goes into
+  `DEFAULT_PAYWALL_KEYS` in `src/chargeLoop.ts` too: otherwise the server's Meta Purchase event
+  gets a different `event_id` from the browser's and each sale is counted twice, and the
+  founding counter stops counting new families.
 
 ## When asked for funnel statistics
 

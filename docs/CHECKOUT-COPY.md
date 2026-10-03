@@ -86,6 +86,10 @@ carry invented quotes.
 
 - The cap (200) appears in the cover, the description, the callout and on the landing pages; the
   service's `FOUNDING_CAP` feeds the live "spots taken" bar. Change all of them together.
+- The title (display name) is the paywall's name on receipts, in the checkout slug (see
+  `CLAUDE.md`) and on every charge the Admin API reports. After renaming it, add the new name to
+  `DEFAULT_PAYWALL_KEYS` in `src/chargeLoop.ts`, or Meta counts each sale twice and the founding
+  counter misses new families.
 - Every credential above is verified in `site/the-gap.html` and the research doc. Do not add
   names of companies the instructors have not worked for.
 - Never write "no refunds" anywhere on the checkout. The terms carry the one gentle clause.

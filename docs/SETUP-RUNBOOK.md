@@ -84,9 +84,9 @@ Brief 4 in `docs/COWORK-BRIEFS.md` runs this through Claude in Chrome.
 2. Business settings > Brand safety and suitability > Domains > add `joinlearnai.com`, pick DNS
    verification, add the TXT record in Cloudflare DNS, verify. (Done 2026-09-28. Meta no longer
    offers manual Aggregated Event Measurement ranking; Purchase is prioritised automatically.)
-3. Railway > Variables: `META_PIXEL_ID` = the dataset id, `META_CAPI_ACCESS_TOKEN` = the token,
-   `META_PAYWALL_KEYS` = `Founding Member=founding-member`. The service redeploys and `/healthz`
-   gains a `meta` block.
+3. Railway > Variables: `META_PIXEL_ID` = the dataset id, `META_CAPI_ACCESS_TOKEN` = the token.
+   (The founding paywall's names are built into the service; `META_PAYWALL_KEYS` is only for a
+   second paywall.) The service redeploys and `/healthz` gains a `meta` block.
 4. Circle > Site > Code snippets > **JavaScript code snippets**: paste
    `circle/meta-pixel-javascript-snippet.js` with the Pixel ID in place of `REPLACE_WITH_PIXEL_ID`.
    Do not add `<script>` tags in this field.

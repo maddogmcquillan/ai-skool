@@ -11,8 +11,8 @@ export interface FoundingConfig {
   /** Founding spots on offer, as printed on the page. */
   cap: number;
   ttlMs: number;
-  /** Only count charges on this paywall; empty counts every paid charge. */
-  paywallName?: string;
+  /** Only count charges whose paywall has one of these display names; empty counts every paid charge. */
+  paywallNames?: string[];
 }
 
 export interface FoundingSpots {
@@ -38,12 +38,15 @@ export class FoundingCounter {
   private cached?: FoundingSpots;
   private fetchedAt = 0;
   private inflight?: Promise<FoundingSpots>;
+  private readonly names: Set<string>;
 
   constructor(
     private readonly cfg: FoundingConfig,
     private readonly fetchImpl: typeof fetch = fetch,
     private readonly now: () => number = Date.now,
-  ) {}
+  ) {
+    this.names = new Set((cfg.paywallNames ?? []).map((n) => n.trim().toLowerCase()).filter(Boolean));
+  }
 
   async spots(): Promise<FoundingSpots> {
     if (this.cached && this.now() - this.fetchedAt < this.cfg.ttlMs) return this.cached;
@@ -71,7 +74,7 @@ export class FoundingCounter {
       const records = Array.isArray(res) ? res : (res.records ?? []);
       for (const c of records) {
         if (c.status && c.status !== "paid") continue;
-        if (this.cfg.paywallName && c.paywall_name && c.paywall_name !== this.cfg.paywallName) continue;
+        if (this.names.size && c.paywall_name && !this.names.has(c.paywall_name.trim().toLowerCase())) continue;
         const key = (c.community_member_email ?? "").trim().toLowerCase() || (c.community_member_id ? `id:${c.community_member_id}` : "");
         if (key) members.add(key);
       }
