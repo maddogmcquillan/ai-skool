@@ -237,8 +237,10 @@ thumbnail, title, "For Ages 11-18" and a star rating). Each prompt below goes to
 that ad attached as the reference image. Rules kept in every prompt: ages 11 to 17, no star
 rating or review count (we have no reviews yet; the yellow pill carries a true credential or
 promise instead), no real instructor likenesses, every class title is a class in the catalogue,
-every stat is from `docs/RESEARCH-AVATARS.md` Part 1.6. Same primary text as the "8 in 10" ad,
-landing page `/the-gap`, except 4 to 7 and 10, which can also run on `/ai-for-kids`.
+every stat is from `docs/RESEARCH-AVATARS.md` Part 1.6. Same primary text as the "8 in 10" ad.
+Landing page for all ten: `/classes` (`site/classes.html`), a class-page layout modeled on
+Outschool's class page and Harvard's HDSR program page, opening on the ads' own line "Learn AI's
+got a class for that." and listing every class the cards name.
 
 Shared style block (pasted at the top of every prompt):
 

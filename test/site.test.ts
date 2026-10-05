@@ -77,6 +77,37 @@ describe("the site", () => {
     expect(face.headers.get("content-type")).toBe("image/jpeg");
   });
 
+  it("serves the class-card ad landing page, congruent with the ads and honest about the offer", async () => {
+    const app = await createApp(cfg, { kb });
+    const res = await app.request("/classes");
+    expect(res.status).toBe(200);
+    const html = await res.text();
+    expect(html).toContain("https://www.joinlearnai.com/checkout/founding-member");
+    expect(html).toContain('"2050628052248432"');
+    expect(html).toContain("lp-classes");
+    expect(html.indexOf("history.replaceState")).toBeLessThan(html.indexOf("<body>"));
+    // The ads end "Learn AI's got a class for that!", so the page opens on the same line.
+    expect(html).toContain("Learn AI's got a class for that.");
+    // Every class the ads put on a card exists here under its catalogue name.
+    for (const name of ["How ChatGPT Actually Works", "ChatGPT Power User in 30 Minutes", "Make a Game", "Make an AI Agent", "Make a Cartoon", "Make an App", "The Perfect ChatGPT Prompt Formula", "AI Agents Fundamentals in 21 Minutes", "Make a Chatbot"]) {
+      expect(html).toContain(name);
+    }
+    expect(html).toContain("Ages 11–17");
+    expect(html).toContain("11 to 17");
+    // No invented reviews or ratings, and no banned phrases.
+    expect(html).not.toMatch(/\d\.\d\s*\(\d+\s*reviews?\)/i);
+    expect(html).not.toMatch(/★|⭐/);
+    expect(html).not.toMatch(/no refunds/i);
+    expect(html).not.toMatch(/classes are filling up/i);
+    // The quotes are labelled as public threads, not customer reviews.
+    expect(html).toContain("not customer reviews yet");
+    for (const img of ["/assets/class-game.jpg", "/assets/class-cartoon.jpg", "/assets/avatar-ibm.jpg"]) {
+      const r = await app.request(img);
+      expect(r.status).toBe(200);
+      expect(r.headers.get("content-type")).toBe("image/jpeg");
+    }
+  });
+
   it("serves any extra page in site/ by its slug and 404s the rest", async () => {
     const app = await createApp(cfg, { kb });
     expect((await app.request("/parents")).status).toBe(200);

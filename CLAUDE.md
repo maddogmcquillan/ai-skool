@@ -94,7 +94,9 @@ The community's public name is **Learn AI** (the repo name "ai-skool" is histori
   from the same Railway service. Edit, run `npm test`, push; Railway redeploys.
 - One landing page per ad group: `site/<slug>.html` is served at `/<slug>` with no code change
   (`site/ai-for-kids.html` is the "head start" ad set's page; `site/the-gap.html` is the page for
-  the "8 in 10 students" ad, and continues that ad's story: the stat, the gap, the in-between). Copy its pixel block and checkout
+  the "8 in 10 students" ad, and continues that ad's story: the stat, the gap, the in-between;
+  `site/classes.html` is the page for the Outschool-style "got a class for that" card statics, a
+  class-page layout that lists every class the cards name). Copy its pixel block and checkout
   links, match the page's headline and image to the ads that point at it, and keep it honest:
   ages 11 to 17, no invented ratings or reviews, and never "no refunds" in marketing copy.
 - The offer block's "spots taken" bar reads `GET /api/founding-spots` (`src/founding.ts`): distinct
