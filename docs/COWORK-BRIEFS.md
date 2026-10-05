@@ -571,3 +571,35 @@ to 300 instead. Do not touch any other variable; Railway redeploys on its own.
 Block 5, the usage number. On www.joinlearnai.com, admin → Settings → Developers (the API tokens
 page) shows the API usage for this billing cycle. Screenshot it, so I have today's number to
 compare against tomorrow's. STOP.
+
+## Brief 12: Rename Ask Coach to Get Unstuck in Circle, update the checkout badges
+
+Context for me, not for the other Claude: the help space is called Get Unstuck in the code, on
+the website and in Coach's knowledge; the slug stays `ask-coach` so the poller is unchanged.
+Circle's Admin API has no call to rename a space, so the live rename is a click job. The new
+cover, thumbnail and welcome banner are in `brand/assets/` (`cover-ask-coach.png`,
+`thumb-ask-coach.png`, `welcome-banner.png`); `npm run brand` uploads them from an environment
+that has `CIRCLE_ADMIN_TOKEN`, or the other Claude uploads the cover by hand in block 1. Chrome
+signed in to www.joinlearnai.com as admin.
+
+You are renaming one space and editing the checkout page in my Circle community, working in my
+signed-in Chrome. Change nothing else. Screenshot each step and report what you did.
+
+Block 1, the space. Open the space currently named "Ask Coach" (in the Start Here group) and
+open its settings. Change the name to exactly "Get Unstuck". Do not touch the URL slug: it must
+stay ask-coach. Save. If I have given you the file cover-ask-coach.png, open Customize for the
+space and replace the cover image with it. Reopen the space and confirm the sidebar shows
+"Get Unstuck" and the URL still ends in /ask-coach.
+
+Block 2, the checkout. Payments → Paywalls → "Learn AI Founding Membership" → Checkout →
+Customize. In Benefits, open the benefit titled "Ask Coach", change the title to "Get Unstuck"
+and the description to: "Ask anything. Coach answers in minutes, and a real person reads every
+thread." Keep its icon. In Badges, change the badge "Cancel anytime" to "Pause or cancel
+anytime". In Callout, change the text to "Pause or cancel anytime" (23 characters, within the
+30 limit) and keep Highlight on. Save. Do not change the paywall's display name, price, access,
+Tracking tab, or the Checkout URL slug.
+
+Block 3, check. In a private window open https://www.joinlearnai.com/checkout/founding-member
+on a phone-sized window. Confirm it opens the checkout (not a sign-in page), the three badges
+read "New classes every week", "Coach answers in minutes" and "Pause or cancel anytime", and
+the benefit list shows "Get Unstuck". Screenshot it. STOP.

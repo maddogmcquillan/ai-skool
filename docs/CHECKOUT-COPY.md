@@ -38,14 +38,14 @@ on-brand set is in `brand/assets/checkout-icons/` (blue tile, white line icon).
 
 1. `icon-calendar.png` New classes every week
 2. `icon-chat.png` Coach answers in minutes
-3. `icon-unlock.png` Cancel anytime
+3. `icon-unlock.png` Pause or cancel anytime
 
 Badge text colour: dark (#141A2A); background: the light option, so the blue tiles carry the colour.
 
 ## Price details: callout on the $49 monthly price
 
-Callout text (Circle enforces 30 characters, this is exactly 30): Founding rate · cancel anytime
-Fallback if the editor still refuses it: Locked in · cancel anytime (26).
+Callout text (Circle enforces 30 characters, this is 23): Pause or cancel anytime
+Fallback if the editor refuses it: Pause or cancel any time (24).
 Callout colour: #FFC245. Then use the price option's three-dot menu and choose **Highlight**:
 Circle renders a highlighted callout as a filled badge in the callout colour with auto-contrast
 text, which fixes the unreadable yellow-on-grey text of the plain callout. The 200-family cap
@@ -70,10 +70,10 @@ this order, each with its custom icon from `brand/assets/checkout-icons/`)
 6. `icon-shield.png` **Safe by design** — No messaging between members. Parent consent at signup. Built for
    ages 11 to 17.
 7. `icon-lock.png` **Locked in for life** — Join at $49 and it stays $49 every month, for as long as you're
-   a member. Cancel anytime.
+   a member. Pause or cancel anytime.
 
 Icon rules: the chat bubble belongs to Get Unstuck only. New classes gets the calendar, safety the
-shield, the price lock the closed padlock, cancel anytime the open padlock. No emoji, no film or
+shield, the price lock the closed padlock, pause or cancel anytime the open padlock. No emoji, no film or
 clapperboard icons anywhere. Regenerate the set with `node` from the snippet in
 `docs/COWORK-BRIEFS.md` Brief 9 notes if a new icon is needed.
 

@@ -29,12 +29,12 @@ winner by 20% every two days. Add a StartTrial or lead objective only if a free 
    Body about learning how it works, not just how to use it.
 4. **The creator angle.** "We licensed the clearest AI teachers on the internet and put them in
    order." Name three creators.
-5. **The founding-member angle.** "$49 a month, locked in for founding members. Cancel anytime."
+5. **The founding-member angle.** "$49 a month, locked in for founding members. Pause or cancel anytime."
    Use this one in retargeting.
 
 ## Primary text (parent-facing, under 125 characters before the fold)
 
-- Your kid can build real things with AI this month: a game, an app, a website, a chatbot. No coding needed. Ages 11 to 17. $49/month, cancel anytime.
+- Your kid can build real things with AI this month: a game, an app, a website, a chatbot. No coding needed. Ages 11 to 17. $49/month, pause or cancel anytime.
 - Seventeen short classes, ten real projects, a coach that answers in minutes, and a community with no private messaging. Built for parents to trust.
 - Most kids use AI. Few understand it. Learn AI teaches how it works, then has them build with it. From $49 a month. Founding rate locked in.
 
@@ -48,7 +48,7 @@ winner by 20% every two days. Add a StartTrial or lead objective only if a free 
 
 ## Descriptions
 
-- Cancel anytime. No member messaging. An adult reads every thread.
+- Pause or cancel anytime. No member messaging. An adult reads every thread.
 - 17 classes, 10 projects, weekly live build-along.
 
 ## Ready-made statics

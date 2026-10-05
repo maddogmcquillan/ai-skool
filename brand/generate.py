@@ -210,7 +210,7 @@ def ad_frame(w, h, inner, footer_price=True):
     pad = 88
     price = (f'<div style="display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:2px solid rgba(255,255,255,.14);padding-top:34px">'
              f'<div><div class="chip" style="font-size:20px;color:{SPARK}">Founding Member</div>'
-             f'<div class="title" style="font-size:56px;margin-top:6px">$49<span style="font-size:26px;color:{MUTED};font-weight:600"> /month · cancel anytime</span></div></div>'
+             f'<div class="title" style="font-size:56px;margin-top:6px">$49<span style="font-size:26px;color:{MUTED};font-weight:600"> /month · pause or cancel anytime</span></div></div>'
              f'<div style="background:{BLUE};color:#fff;font-family:Outfit;font-weight:800;font-size:28px;padding:22px 34px;border-radius:18px;white-space:nowrap">joinlearnai.com</div></div>') if footer_price else ""
     return f'''<div class="ground" style="width:{w}px;height:{h}px">
   <div style="position:absolute;left:{w-420}px;top:0;width:420px;height:{h}px;opacity:.55">{nodes_svg(420,h,BLUE,seed=7,count=10)}</div>

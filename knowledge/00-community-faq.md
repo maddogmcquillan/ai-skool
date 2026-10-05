@@ -21,4 +21,4 @@ Post one idea per post in the Course Requests space. Like the posts you agree wi
 Be kind. No sharing of personal information like your full name, school, address, phone number, or social media. No asking to meet up. Member-to-member direct messages are turned off on purpose. Report anything that feels wrong using the report button, or tell a parent.
 
 ## Membership, billing and account questions
-These are handled by the team, not by Coach. Post in Get Unstuck and a person will reply, or email the support address on the website.
+These are handled by the team, not by Coach. Post in Get Unstuck and a person will reply, or email the support address on the website. Members can cancel from their account settings at any time, or email to pause billing and keep their place.
