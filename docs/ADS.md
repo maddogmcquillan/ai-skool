@@ -277,8 +277,8 @@ ChatGPT for a 1:1 version of any winner by changing the first line to "Square 1:
 
 ### Primary text, headlines and description for the card statics (modeled on the Outschool ad)
 
-Reference structure: a hook question, what the course teaches and applies, "Built for ages 11–18.
-Ahead of the curve for the world they're growing up in.", then the offer line. Same meat in both
+Reference structure, followed exactly: three sections (hook, one body sentence that teaches
+then applies, the "built for ages" line) and then the offer line on its own. Same body in both
 variations; only the hook changes. Landing page `/classes`. $49 against $199 is 75% off.
 
 Variation A (hook kept almost word for word from the reference, the winning ad):
@@ -286,13 +286,11 @@ Variation A (hook kept almost word for word from the reference, the winning ad):
 ```
 AI is already shaping your child's world. Shouldn't they understand how it actually works?
 
-Learn AI teaches kids how AI really works — how it thinks, where it goes wrong, how to use it as a tool instead of a crutch — then puts it to work on things they can show you: a game, an app, a chatbot, an AI agent.
-
-Taught by working experts from Microsoft, Google, Meta and IBM. Real help the moment they're stuck. A new class every week.
+Learn AI teaches kids how AI really works — with instructors from Microsoft, Google, Meta and IBM — and applies it directly to building: a game, an app, a chatbot, and an AI agent they can show you.
 
 Built for ages 11–17. Ahead of the curve, not behind it.
 
-GET 75% OFF 👉 $49 a month, not $199. Pause or cancel anytime.
+GET 75% OFF 👉
 ```
 
 Variation B (hook from the research stat):
@@ -300,13 +298,11 @@ Variation B (hook from the research stat):
 ```
 More than 8 in 10 students say no teacher has taught them how to use AI. Who's teaching yours?
 
-Learn AI teaches kids how AI really works — how it thinks, where it goes wrong, how to use it as a tool instead of a crutch — then puts it to work on things they can show you: a game, an app, a chatbot, an AI agent.
-
-Taught by working experts from Microsoft, Google, Meta and IBM. Real help the moment they're stuck. A new class every week.
+Learn AI teaches kids how AI really works — with instructors from Microsoft, Google, Meta and IBM — and applies it directly to building: a game, an app, a chatbot, and an AI agent they can show you.
 
 Built for ages 11–17. Ahead of the curve, not behind it.
 
-GET 75% OFF 👉 $49 a month, not $199. Pause or cancel anytime.
+GET 75% OFF 👉
 ```
 
 Headlines (40 characters or fewer):
