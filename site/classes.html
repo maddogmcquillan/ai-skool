@@ -276,7 +276,7 @@
 
 <div class="bts" id="bts">
   <svg class="clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-  <div class="l1"><b>Back in School Access.</b> Enroll by midnight Eastern to start tonight:</div>
+  <div class="l1"><b>Back in School Access</b> ends in</div>
   <div class="cd" aria-live="off"><span class="u"><span class="n" id="cd-d" data-cd="d">00</span><small>days</small></span><span class="c">:</span><span class="u"><span class="n" id="cd-h" data-cd="h">--</span><small>hours</small></span><span class="c">:</span><span class="u"><span class="n" id="cd-m" data-cd="m">--</span><small>minutes</small></span><span class="c">:</span><span class="u"><span class="n" id="cd-s" data-cd="s">--</span><small>seconds</small></span></div>
   <button type="button" aria-label="Close" onclick="document.getElementById('bts').remove()">&times;</button>
 </div>
@@ -312,7 +312,7 @@
           <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Get unstuck in minutes. A real person reads every thread</span></li>
           <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>A new class every week</span></li>
         </ul>
-        <div class="cdwrap">Enroll by midnight Eastern to start tonight:<div class="cd" aria-live="off"><span class="u"><span class="n" data-cd="d">00</span><small>days</small></span><span class="c">:</span><span class="u"><span class="n" data-cd="h">--</span><small>hours</small></span><span class="c">:</span><span class="u"><span class="n" data-cd="m">--</span><small>minutes</small></span><span class="c">:</span><span class="u"><span class="n" data-cd="s">--</span><small>seconds</small></span></div></div>
+        <div class="cdwrap">Back in School Access ends in<div class="cd" aria-live="off"><span class="u"><span class="n" data-cd="d">00</span><small>days</small></span><span class="c">:</span><span class="u"><span class="n" data-cd="h">--</span><small>hours</small></span><span class="c">:</span><span class="u"><span class="n" data-cd="m">--</span><small>minutes</small></span><span class="c">:</span><span class="u"><span class="n" data-cd="s">--</span><small>seconds</small></span></div></div>
         <div class="pr"><s class="was">$199</s><b>$49</b><span>/ month</span></div>
         <p class="sub">About $1.60 a day.</p>
         <a class="btn sun" id="hero-cta" data-checkout href="https://www.joinlearnai.com/checkout/founding-member">Enroll Now</a>
@@ -431,7 +431,7 @@
           <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Get unstuck in minutes. A real person reads every thread</span></li>
           <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>A new class every week</span></li>
         </ul>
-        <div class="cdwrap">Enroll by midnight Eastern to start tonight:<div class="cd" aria-live="off"><span class="u"><span class="n" data-cd="d">00</span><small>days</small></span><span class="c">:</span><span class="u"><span class="n" data-cd="h">--</span><small>hours</small></span><span class="c">:</span><span class="u"><span class="n" data-cd="m">--</span><small>minutes</small></span><span class="c">:</span><span class="u"><span class="n" data-cd="s">--</span><small>seconds</small></span></div></div>
+        <div class="cdwrap">Back in School Access ends in<div class="cd" aria-live="off"><span class="u"><span class="n" data-cd="d">00</span><small>days</small></span><span class="c">:</span><span class="u"><span class="n" data-cd="h">--</span><small>hours</small></span><span class="c">:</span><span class="u"><span class="n" data-cd="m">--</span><small>minutes</small></span><span class="c">:</span><span class="u"><span class="n" data-cd="s">--</span><small>seconds</small></span></div></div>
         <div class="pr"><s class="was">$199</s><b>$49</b><span>/ month</span></div>
         <p class="sub">About $1.60 a day.</p>
         <a class="btn sun" data-checkout href="https://www.joinlearnai.com/checkout/founding-member">Enroll Now</a>
@@ -520,9 +520,8 @@ window.track = function (e) {
     else if (t.getAttribute("href") === "#enroll") track("syllabus_open");
   });
 })();
-// Countdown to midnight in New York, so "enroll by midnight Eastern to start tonight" is literal.
-// Reads the Eastern clock through Intl, so daylight saving is handled by the browser. Every
-// element with data-cd shows the same clock (the banner and the offer).
+// Countdown to midnight in New York, shown in the banner and both offer cards (every element
+// with data-cd). Reads the Eastern clock through Intl, so daylight saving is handled by the browser.
 (function () {
   var els = document.querySelectorAll("[data-cd]");
   if (!els.length || !window.Intl || !Intl.DateTimeFormat) return;
