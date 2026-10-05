@@ -279,18 +279,18 @@ ChatGPT for a 1:1 version of any winner by changing the first line to "Square 1:
 
 Reference structure: a hook question, what the course teaches and applies, "Built for ages 11–18.
 Ahead of the curve for the world they're growing up in.", then the offer line. Same meat in both
-variations; only the hook changes. Landing page `/classes`.
+variations; only the hook changes. Landing page `/classes`. $49 against $199 is 75% off.
 
-Variation A (hook mirrors the reference):
+Variation A (hook kept almost word for word from the reference, the winning ad):
 
 ```
-Your kid already uses AI. Shouldn't they understand how it actually works?
+AI is already shaping your child's world. Shouldn't they understand how it actually works?
 
 Learn AI teaches kids how AI really works — the same material adults pay for, from instructors at Microsoft, Google, Meta and IBM — then has them build with it: a game, an app, a chatbot, an AI agent. When they get stuck, real help in minutes. New classes every week.
 
 Built for ages 11–17. Ahead of the curve, not behind it.
 
-BACK IN SCHOOL ACCESS 👉 $49 a month instead of $199. Pause or cancel anytime.
+GET 75% OFF 👉 Back in School Access, $49 a month instead of $199. Pause or cancel anytime.
 ```
 
 Variation B (hook from the research stat):
@@ -302,14 +302,14 @@ Learn AI teaches kids how AI really works — the same material adults pay for, 
 
 Built for ages 11–17. Ahead of the curve, not behind it.
 
-BACK IN SCHOOL ACCESS 👉 $49 a month instead of $199. Pause or cancel anytime.
+GET 75% OFF 👉 Back in School Access, $49 a month instead of $199. Pause or cancel anytime.
 ```
 
 Headlines (40 characters or fewer):
 - Descriptive, like the reference: `AI Skills for the Next Generation` (33)
-- Offer-based: `Back in School Access: $49, not $199` (36)
+- Offer-based: `Back in School Access: 75% Off` (30)
 
-Description: `Ages 11–17 · New classes every week · Pause or cancel anytime`
+Description: `Ages 11–17 · Pause or cancel anytime`
 
-Sources: 8 in 10 is RAND (student survey, Part 1.6 of the research doc). The $199 line is only
-honest once $199 is the paywall's listed standard price (see `docs/CHECKOUT-COPY.md`).
+Sources: 8 in 10 is RAND (student survey, Part 1.6 of the research doc). The 75% off and $199
+lines are only honest once $199 is the paywall's listed standard price (see `docs/CHECKOUT-COPY.md`).
