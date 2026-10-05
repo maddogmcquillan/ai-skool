@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 import { buildMetaEvent, metaEventsUrl, parseAmount, sendToMeta } from "../src/capi.js";
 import { purchaseEventId, sha256Hex } from "../src/lib/eventId.js";
 
-const cfg = { defaultSourceUrl: "https://learn.example.com/checkout/founding-member", currency: "USD" };
+const cfg = { defaultSourceUrl: "https://learn.example.com/checkout/back-in-school-access", currency: "USD" };
 
 describe("buildMetaEvent", () => {
   it("builds a hashed Purchase event with a deterministic event_id", () => {

@@ -18,7 +18,7 @@ describe("the site", () => {
     expect(res.status).toBe(200);
     expect(res.headers.get("content-type")).toContain("text/html");
     const html = await res.text();
-    expect(html).toContain("https://www.joinlearnai.com/checkout/founding-member");
+    expect(html).toContain("https://www.joinlearnai.com/checkout/back-in-school-access");
     expect(html).toContain('"2050628052248432"');
     expect(html).toContain("$49");
   });
@@ -40,7 +40,7 @@ describe("the site", () => {
     const res = await app.request("/ai-for-kids");
     expect(res.status).toBe(200);
     const html = await res.text();
-    expect(html).toContain("https://www.joinlearnai.com/checkout/founding-member");
+    expect(html).toContain("https://www.joinlearnai.com/checkout/back-in-school-access");
     expect(html).toContain('"2050628052248432"');
     expect(html).toContain("Kids don't learn this in school");
     // No price above the fold: the first price mention must come after the hero.
@@ -60,7 +60,7 @@ describe("the site", () => {
     const res = await app.request("/the-gap");
     expect(res.status).toBe(200);
     const html = await res.text();
-    expect(html).toContain("https://www.joinlearnai.com/checkout/founding-member");
+    expect(html).toContain("https://www.joinlearnai.com/checkout/back-in-school-access");
     expect(html).toContain('"2050628052248432"');
     expect(html).toContain("lp-the-gap");
     // The hero repeats the ad's headline stat so the page matches what the visitor just read.
@@ -82,7 +82,7 @@ describe("the site", () => {
     const res = await app.request("/classes");
     expect(res.status).toBe(200);
     const html = await res.text();
-    expect(html).toContain("https://www.joinlearnai.com/checkout/founding-member");
+    expect(html).toContain("https://www.joinlearnai.com/checkout/back-in-school-access");
     expect(html).toContain('"2050628052248432"');
     expect(html).toContain("lp-classes");
     expect(html.indexOf("history.replaceState")).toBeLessThan(html.indexOf("<body>"));

@@ -106,10 +106,13 @@ The community's public name is **Learn AI** (the repo name "ai-skool" is histori
   checkout copy (`docs/CHECKOUT-COPY.md`) and `FOUNDING_CAP` together.
 - Ad copy, campaign structure and creative briefs are in `docs/ADS.md`. The checkout page text
   and cover are in `docs/CHECKOUT-COPY.md` and `brand/assets/checkout-cover.png`.
-- Every Enroll button and ad points at `https://www.joinlearnai.com/checkout/founding-member`.
-  Circle regenerates that slug whenever the paywall's display name is edited, and the old URL
-  then redirects to a sign-in page. Any brief that touches the paywall title must also pin the
-  Checkout URL slug back to `founding-member` and verify the URL in a private window. The
+- Every Enroll button and ad points at `https://www.joinlearnai.com/checkout/back-in-school-access`
+  (the slug Circle generated from the title "Back in School Access"; it was `founding-member`
+  before 2026-10-05). Circle regenerates that slug whenever the paywall's display name is
+  edited, and the old URL then lands on a sign-in page, so every Enroll button breaks. Any brief
+  that touches the paywall title must either leave the slug alone or set it back to
+  `back-in-school-access`, then verify the URL in a private window; and every checkout link in
+  `site/` and the docs must match. The
   display name is also how Circle labels charges, so the new name goes into
   `DEFAULT_PAYWALL_KEYS` in `src/chargeLoop.ts` too: otherwise the server's Meta Purchase event
   gets a different `event_id` from the browser's and each sale is counted twice, and the

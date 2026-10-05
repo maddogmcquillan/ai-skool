@@ -4,7 +4,7 @@ Audience: parents of 11 to 17 year olds in the United States, 25 and up. Never t
 Landing page: https://joinlearnai.com (served by the service from `site/index.html`).
 Per-ad-group pages: https://joinlearnai.com/ai-for-kids (`site/ai-for-kids.html`) for the
 "most kids won't learn this in school / head start" ad set; add `site/<slug>.html` for the next.
-Checkout: https://www.joinlearnai.com/checkout/founding-member. Price: $49 a month.
+Checkout: https://www.joinlearnai.com/checkout/back-in-school-access. Price: $49 a month.
 Prefix every campaign with `LAI -` so spend splits cleanly from the other business.
 
 ## Structure for launch (one campaign, three ad sets)
@@ -286,7 +286,7 @@ Variation A (hook kept almost word for word from the reference, the winning ad):
 ```
 AI is already shaping your child's world. Shouldn't they understand how it actually works?
 
-Learn AI teaches kids how AI really works — the kind of material adults pay for — and puts it straight to use: a game, an app, a chatbot, an AI agent, built by them.
+Learn AI teaches kids how AI really works, then puts it straight to use: a game, an app, a chatbot, an AI agent, built by them.
 
 Taught by instructors from Microsoft, Google, Meta and IBM. Real help when they're stuck. New classes every week.
 
@@ -300,7 +300,7 @@ Variation B (hook from the research stat):
 ```
 More than 8 in 10 students say no teacher has taught them how to use AI. Who's teaching yours?
 
-Learn AI teaches kids how AI really works — the kind of material adults pay for — and puts it straight to use: a game, an app, a chatbot, an AI agent, built by them.
+Learn AI teaches kids how AI really works, then puts it straight to use: a game, an app, a chatbot, an AI agent, built by them.
 
 Taught by instructors from Microsoft, Google, Meta and IBM. Real help when they're stuck. New classes every week.
 

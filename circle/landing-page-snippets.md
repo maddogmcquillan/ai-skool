@@ -34,7 +34,7 @@ carries it through to the Circle checkout, so the affiliate is credited even tho
 passed through your page first.
 
 Make the buy button link straight to the live checkout URL:
-`https://www.joinlearnai.com/checkout/founding-member`
+`https://www.joinlearnai.com/checkout/back-in-school-access`
 
 ## 3. Landing page checklist
 

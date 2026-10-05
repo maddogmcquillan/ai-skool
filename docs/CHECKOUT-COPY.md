@@ -1,6 +1,6 @@
 # Checkout page copy (Circle paywall, Checkout tab > Customize)
 
-The live checkout is https://www.joinlearnai.com/checkout/founding-member. Circle's Admin API
+The live checkout is https://www.joinlearnai.com/checkout/back-in-school-access. Circle's Admin API
 cannot edit paywall customization, so everything here is pasted by hand: Circle admin > Payments >
 Paywalls > the paywall > Checkout tab > Customize (sidebar sections: Paywall cover image, Product
 details, Badges, Benefits, Testimonials, Price details). Brief 13 in `docs/COWORK-BRIEFS.md` is the
@@ -20,8 +20,9 @@ Back in School Access
 
 The display name is the checkout headline, the name on receipts and on the member's billing page,
 and the label Circle puts on every charge. Three things follow from changing it, all handled in
-Brief 13: Circle regenerates the Checkout URL slug (pin it back to `founding-member` and verify in
-a private window), the name must be in `DEFAULT_PAYWALL_KEYS` in `src/chargeLoop.ts` (it is), and
+Brief 13: Circle regenerates the Checkout URL slug (it is now `back-in-school-access`, and every
+link on the site matches it; verify in a private window), the name must be in
+`DEFAULT_PAYWALL_KEYS` in `src/chargeLoop.ts` (it is), and
 receipts will read "Back in School Access". If the owner would rather see the brand on receipts,
 use "Learn AI: Back in School Access" and add that exact string to `DEFAULT_PAYWALL_KEYS` first.
 

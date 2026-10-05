@@ -8,7 +8,7 @@ const NOW = new Date("2026-09-28T12:00:00Z");
 function cfg(overrides: Partial<ChargeLoopConfig> = {}): ChargeLoopConfig {
   return {
     circle: { token: "tok", baseUrl: "https://api.test/v2" },
-    capi: { pixelId: "123", accessToken: "meta-tok", apiVersion: "v25.0", defaultSourceUrl: "https://www.joinlearnai.com/checkout/founding-member", currency: "USD" },
+    capi: { pixelId: "123", accessToken: "meta-tok", apiVersion: "v25.0", defaultSourceUrl: "https://www.joinlearnai.com/checkout/back-in-school-access", currency: "USD" },
     intervalMs: 60_000,
     lookbackMs: 24 * 3_600_000,
     paywallKeys: {},

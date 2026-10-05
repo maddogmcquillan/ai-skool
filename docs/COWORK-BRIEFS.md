@@ -384,7 +384,7 @@ Replace the description with exactly:
 Real instructors, a finished project every class, and a coach that answers in minutes. Founding rate for the first 200 families, locked in for life. Your kid can start tonight.
 IMPORTANT: Circle regenerates the Checkout URL slug from the title. Before saving, find the
 Checkout URL field (in Product details, or on the paywall's main edit form) and make sure the slug
-is exactly founding-member, so the URL stays https://www.joinlearnai.com/checkout/founding-member.
+is exactly founding-member, so the URL stays https://www.joinlearnai.com/checkout/back-in-school-access.
 If it changed, type founding-member back in. Save Changes. Then open that URL in a private
 window and confirm it shows the checkout page, not a sign-in page, before continuing.
 
@@ -421,7 +421,7 @@ If there is no such field, skip this and tell me.
 Block 6, testimonials. Click Testimonials and make sure Show testimonials is OFF. Do not add any.
 
 Block 7, check. Click View (top right) and preview on mobile, then on desktop; screenshot both.
-Then open https://www.joinlearnai.com/checkout/founding-member in a new tab on a phone-width
+Then open https://www.joinlearnai.com/checkout/back-in-school-access in a new tab on a phone-width
 window and screenshot the top of the page. Confirm: the cover reads "Your kids use AI. Nobody has
 taught them how." with five small faces on it, the title under the cover is "The AI class their
 school doesn't have.", the description shows in full with no "See more" link, exactly three
@@ -433,7 +433,7 @@ Ask Coach. Show me the screenshots and STOP.
 
 Status after the first run, verified from a logged-out phone on Oct 3: cover, title "Learn AI
 Founding Membership", three badges, seven benefits and the callout are live, and
-/checkout/founding-member renders the checkout again. Still open: custom icons (badges and
+/checkout/back-in-school-access renders the checkout again. Still open: custom icons (badges and
 benefits still show emoji), the benefits section title, the callout text and highlight, and the
 description, which is still cut off behind "See more" on phones.
 
@@ -476,7 +476,7 @@ Keep the callout colour #FFC245. Then open the three-dot menu next to the $49 pr
 choose Highlight, so the callout renders as a filled yellow badge with dark text instead of
 yellow text on grey. Leave Reduced price off and Countdown price lock off. Save Changes.
 
-Block 5, check. Open https://www.joinlearnai.com/checkout/founding-member in a logged-out,
+Block 5, check. Open https://www.joinlearnai.com/checkout/back-in-school-access in a logged-out,
 phone-width window and screenshot the top. Confirm: the description shows in full with no "See
 more" link, the three badges show blue square icons (not emoji), the $49 option shows a filled
 yellow badge reading "Founding rate · cancel anytime", and the benefits section is titled
@@ -499,7 +499,7 @@ business portfolio, open the dataset "Learn AI Web" (pixel id 2050628052248432),
 Set the date range. Record the count for each event: PageView, ViewContent, InitiateCheckout,
 Purchase, and any others listed. Then click PageView, then "View details", and look for the URL
 breakdown: record how many PageViews were on joinlearnai.com/ai-for-kids, how many on
-joinlearnai.com/ (the home page), and how many on www.joinlearnai.com/checkout/founding-member
+joinlearnai.com/ (the home page), and how many on www.joinlearnai.com/checkout/back-in-school-access
 (that number is how many people reached the checkout). Do the same URL breakdown for
 InitiateCheckout. Screenshot each view.
 
@@ -594,7 +594,7 @@ space and replace the cover image with it. Reopen the space and confirm the side
 Block 2, the checkout. Superseded by Brief 13, which rebuilds the whole checkout page. Skip
 this block and run Brief 13 instead.
 
-Block 3, check. In a private window open https://www.joinlearnai.com/checkout/founding-member
+Block 3, check. In a private window open https://www.joinlearnai.com/checkout/back-in-school-access
 on a phone-sized window. Confirm it opens the checkout (not a sign-in page), the three badges
 read "New classes every week", "Coach answers in minutes" and "Pause or cancel anytime", and
 the benefit list shows "Get Unstuck". Screenshot it. STOP.
@@ -614,14 +614,12 @@ Chrome. Do not change the price, the access settings, the Tracking tab, or anyth
 paywall. Screenshot after each block and report what you did, including any field that refused
 a value and what you used instead.
 
-Block 1, the title. Go to Payments → Paywalls and open the paywall currently named "Learn AI
-Founding Membership". Change its display name to exactly: Back in School Access. Save. Now open
-its Checkout tab: the Checkout URL will have changed to something like
-/checkout/back-in-school-access. Edit the Checkout URL slug and set it back to exactly:
-founding-member. Save. In a private window open
-https://www.joinlearnai.com/checkout/founding-member and confirm it opens this checkout, not a
-sign-in page. Screenshot it. If the slug field refuses "founding-member", stop and tell me
-before doing anything else.
+Block 1, the title. Go to Payments → Paywalls and open the paywall. Its display name must be
+exactly: Back in School Access (set it if it is not). Open its Checkout tab and confirm the
+Checkout URL slug is exactly: back-in-school-access. Do not change the slug to anything else:
+every Enroll button on the website points at
+https://www.joinlearnai.com/checkout/back-in-school-access. In a private window open that URL
+and confirm it opens this checkout, not a sign-in page. Screenshot it.
 
 Block 2, strip the page. Checkout tab → Customize. In "Paywall cover image", remove the cover
 image. In "Product details", set the description to empty; if the editor requires text, use:
@@ -656,7 +654,7 @@ Back in School: cancel anytime
 Highlight. Leave "Countdown price lock" off. Save.
 
 Block 5, check. In a private window, phone-sized, open
-https://www.joinlearnai.com/checkout/founding-member. Confirm, top to bottom: the title "Back in
+https://www.joinlearnai.com/checkout/back-in-school-access. Confirm, top to bottom: the title "Back in
 School Access", no cover image, the six benefits in order under "What's included", the price
 showing $199 struck through and $49 a month with the yellow callout, and the payment form right
 below. Screenshot it. STOP.
