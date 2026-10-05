@@ -69,8 +69,8 @@
   .media img { width:100%; height:100%; object-fit:cover; }
 
   /* Title block */
-  .title { padding-top:18px; }
-  .kicker { color:var(--peri-ink); font-weight:800; font-size:15px; margin-bottom:8px; }
+  .title { padding-top:22px; }
+  .kicker { color:var(--blue-ink); font-weight:800; font-size:15px; margin-bottom:8px; }
   .chips { display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:14px; font-weight:700; font-size:16px; }
   .chips span { display:inline-flex; align-items:center; gap:8px; }
   .chips svg { width:20px; height:20px; }
@@ -96,6 +96,7 @@
   .vetted svg { flex:none; width:26px; height:26px; margin-top:1px; }
 
   section { padding-top:36px; }
+  .offer-top { padding-top:22px; }
   .sec-h { margin-bottom:6px; }
   .sec-sub { color:var(--muted); font-weight:600; font-size:16px; margin-bottom:16px; }
   .center { text-align:center; }
@@ -164,6 +165,9 @@
   .fan .ctile:nth-child(3) { right:0; top:30px; transform:rotate(6deg); }
   .fan .ctile:nth-child(1) b, .fan .ctile:nth-child(1) small, .fan .ctile:nth-child(1) .who, .fan .ctile:nth-child(3) b, .fan .ctile:nth-child(3) small, .fan .ctile:nth-child(3) .who { visibility:hidden; }
   .fan .count { position:absolute; left:50%; bottom:0; transform:translateX(-50%); background:var(--sun); color:var(--ink); font-weight:800; font-size:14px; padding:6px 12px; border-radius:999px; z-index:2; white-space:nowrap; }
+  .ctile.life { justify-content:flex-end; }
+  .chips-life { position:absolute; left:14px; top:52px; display:flex; flex-wrap:wrap; gap:6px; max-width:80%; }
+  .chips-life span { background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.35); color:#fff; font-size:12px; font-weight:700; padding:4px 9px; border-radius:999px; }
   .dashed { border:2px dashed #C9C6E8; border-radius:14px; padding:28px 18px; background:var(--soft); display:grid; place-items:center; gap:8px; }
   .dashed svg { width:44px; height:44px; }
   .dashed b { font-size:19px; font-weight:800; }
@@ -282,10 +286,6 @@
   <a class="signin" href="https://www.joinlearnai.com/">Sign in</a>
 </header>
 
-<div class="media" aria-label="What is included in Learn AI">
-  <img src="/assets/classes-hero.jpg" width="1672" height="941" alt="AI School for Kids: learn how AI works, build something real every class, get unstuck with Coach; taught by instructors from Microsoft, Google, Meta and IBM" fetchpriority="high">
-</div>
-
 <main class="wrap">
 
   <div class="title">
@@ -297,32 +297,28 @@
     </div>
     <p class="summary">Your kid already uses AI. Nobody has taught them how it works. Here they learn what is really going on, from real experts. Then they build something they can turn the laptop around and show you.</p>
 
-    <div class="teacher">
-      <div class="stack" aria-hidden="true">
-        <img src="/assets/avatar-kevin-3.jpg" alt=""><img src="/assets/avatar-tina-2.jpg" alt=""><img src="/assets/avatar-jeff.jpg" alt=""><img src="/assets/avatar-tim-3.jpg" alt=""><img src="/assets/avatar-jagger-3.jpg" alt="">
-      </div>
-      <div>
-        <b>Taught by working experts</b>
-        <span>Instructors from Microsoft, Google, Meta and IBM</span>
-        <em class="newpill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 3v18M3 12h18"/></svg>New class every week</em>
-      </div>
-    </div>
-
-    <hr class="rule">
-
-    <p class="will">In these classes, your kid will</p>
-    <ul class="facts">
-      <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Understand how AI actually works.</span></li>
-      <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Use it as a tool, not a crutch.</span></li>
-      <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Build real things they can show you: a game, an app, a chatbot, an AI agent, a cartoon, a website.</span></li>
-      <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Get unstuck in minutes, with a real person reading every thread.</span></li>
-    </ul>
-
-    <div class="cta-row">
-      <a class="btn" id="hero-cta" href="#enroll">Enroll Now</a>
-      <p class="cta-note">Start tonight. Pause or cancel anytime.</p>
-    </div>
   </div>
+
+  <section class="offer-top">
+      <div class="offer" id="top-offer">
+        <h3>Back in School Access</h3>
+        <p class="inc-h">Everything included</p>
+        <div class="fan" aria-hidden="true"><div class="ctile g3"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4M8 4h8M9 14h.01M15 14h.01M9 17h6"/></svg><b>Make an AI Agent</b><small>with AI</small><img class="who" src="/assets/avatar-kevin-3.jpg" alt=""></div><div class="ctile g4"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="11" rx="5"/><path d="M6 12h4M8 10v4M15 11h.01M18 13h.01"/></svg><b>Make a Game</b><small>with AI</small><img class="who" src="/assets/avatar-jagger-3.jpg" alt=""></div><div class="ctile g8"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></svg><b>The Perfect ChatGPT Prompt Formula</b><small>how it works</small><img class="who" src="/assets/avatar-jeff.jpg" alt=""></div><span class="count">New classes every week</span></div>
+        <div class="faces"><img src="/assets/avatar-kevin-3.jpg" alt="Kevin S."><img src="/assets/avatar-tina-2.jpg" alt="Tina H."><img src="/assets/avatar-jeff.jpg" alt="Jeff S."><img src="/assets/avatar-tim-3.jpg" alt="Tim R."><img src="/assets/avatar-jagger-3.jpg" alt="Jagger B."><img src="/assets/avatar-ibm.jpg" alt="IBM Technology"></div>
+        <p class="taught">Taught by experts<span>Instructors from Microsoft, Google, Meta and IBM</span></p>
+        <ul class="inc">
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Learn how AI really works</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Build real projects: a game, an app, a chatbot, an AI agent</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Get unstuck in minutes. A real person reads every thread</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>A new class every week</span></li>
+        </ul>
+        <div class="cdwrap">Enroll by midnight Eastern to start tonight:<div class="cd" aria-live="off"><span class="u"><span class="n" data-cd="d">00</span><small>days</small></span><span class="c">:</span><span class="u"><span class="n" data-cd="h">--</span><small>hours</small></span><span class="c">:</span><span class="u"><span class="n" data-cd="m">--</span><small>minutes</small></span><span class="c">:</span><span class="u"><span class="n" data-cd="s">--</span><small>seconds</small></span></div></div>
+        <div class="pr"><s class="was">$199</s><b>$49</b><span>/ month</span></div>
+        <p class="sub">About $1.60 a day.</p>
+        <a class="btn sun" id="hero-cta" data-checkout href="https://www.joinlearnai.com/checkout/founding-member">Enroll Now</a>
+        <p class="fine">Enroll now and your rate stays $49 a month for as long as you're a member. It never goes back up to $199. Pause or cancel anytime.</p>
+      </div>
+  </section>
 
   <section>
     <div class="vetted">
@@ -387,7 +383,7 @@
       <h2>What your kid actually gets</h2>
       <div class="gets">
         <div class="get">
-          <div class="art fan" aria-hidden="true"><div class="ctile g2"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-8 8H8l-5 3 1.5-4.5A8 8 0 1 1 21 12z"/></svg><b>Make a Chatbot</b><small>with AI</small><img class="who" src="/assets/avatar-kevin-3.jpg" alt=""></div><div class="ctile g1"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg><b>Make an App</b><small>with AI</small><img class="who" src="/assets/avatar-tim-3.jpg" alt=""></div><div class="ctile g5"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20M2 15h20M7 4v16M17 4v16"/></svg><b>Make a Cartoon</b><small>with AI</small></div><span class="count">17 classes and counting</span></div>
+          <div class="art fan" aria-hidden="true"><div class="ctile g2"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-8 8H8l-5 3 1.5-4.5A8 8 0 1 1 21 12z"/></svg><b>Make a Chatbot</b><small>with AI</small><img class="who" src="/assets/avatar-kevin-3.jpg" alt=""></div><div class="ctile g1"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg><b>Make an App</b><small>with AI</small><img class="who" src="/assets/avatar-tim-3.jpg" alt=""></div><div class="ctile g5"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20M2 15h20M7 4v16M17 4v16"/></svg><b>Make a Cartoon</b><small>with AI</small></div><span class="count">New classes every week</span></div>
           <h4>Every class, every week</h4>
           <p>Start with what AI is. Then learn how it works. Then build with it. A new class drops every week, and members vote on what comes next.</p>
         </div>
@@ -397,7 +393,7 @@
           <p>A game they can play. An app that works. A chatbot that answers. Something real to show you at dinner.</p>
         </div>
         <div class="get">
-          <div class="dashed"><svg viewBox="0 0 24 24" fill="none" stroke="#1F55C7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a7 7 0 0 1 4 12.7V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.3A7 7 0 0 1 12 2zM9 21h6"/></svg><b>Skills they keep for life</b><span>Not just for school</span></div>
+          <div class="art"><div class="ctile g7 life"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a7 7 0 0 1 4 12.7V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.3A7 7 0 0 1 12 2zM9 21h6"/></svg><div class="chips-life" aria-hidden="true"><span>How to ask</span><span>How to check</span><span>When it's wrong</span></div><b>Skills they keep for life</b><small>Not just for school</small></div></div>
           <h4>How to think with AI, not just type into it</h4>
           <p>How to ask. How to check. How to spot a bad answer. Those habits work in every class, every job, and every new tool that comes next.</p>
         </div>
@@ -426,7 +422,7 @@
       <div class="offer">
         <h3>Back in School Access</h3>
         <p class="inc-h">Everything included</p>
-        <div class="fan" aria-hidden="true"><div class="ctile g3"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4M8 4h8M9 14h.01M15 14h.01M9 17h6"/></svg><b>Make an AI Agent</b><small>with AI</small><img class="who" src="/assets/avatar-kevin-3.jpg" alt=""></div><div class="ctile g4"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="11" rx="5"/><path d="M6 12h4M8 10v4M15 11h.01M18 13h.01"/></svg><b>Make a Game</b><small>with AI</small><img class="who" src="/assets/avatar-jagger-3.jpg" alt=""></div><div class="ctile g8"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></svg><b>The Perfect ChatGPT Prompt Formula</b><small>how it works</small><img class="who" src="/assets/avatar-jeff.jpg" alt=""></div><span class="count">17 classes and counting</span></div>
+        <div class="fan" aria-hidden="true"><div class="ctile g3"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4M8 4h8M9 14h.01M15 14h.01M9 17h6"/></svg><b>Make an AI Agent</b><small>with AI</small><img class="who" src="/assets/avatar-kevin-3.jpg" alt=""></div><div class="ctile g4"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="11" rx="5"/><path d="M6 12h4M8 10v4M15 11h.01M18 13h.01"/></svg><b>Make a Game</b><small>with AI</small><img class="who" src="/assets/avatar-jagger-3.jpg" alt=""></div><div class="ctile g8"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></svg><b>The Perfect ChatGPT Prompt Formula</b><small>how it works</small><img class="who" src="/assets/avatar-jeff.jpg" alt=""></div><span class="count">New classes every week</span></div>
         <div class="faces"><img src="/assets/avatar-kevin-3.jpg" alt="Kevin S."><img src="/assets/avatar-tina-2.jpg" alt="Tina H."><img src="/assets/avatar-jeff.jpg" alt="Jeff S."><img src="/assets/avatar-tim-3.jpg" alt="Tim R."><img src="/assets/avatar-jagger-3.jpg" alt="Jagger B."><img src="/assets/avatar-ibm.jpg" alt="IBM Technology"></div>
         <p class="taught">Taught by experts<span>Instructors from Microsoft, Google, Meta and IBM</span></p>
         <ul class="inc">
@@ -467,7 +463,7 @@
 
 <div class="sticky" id="sticky">
   <div class="p"><b><s>$199</s> $49<small>/month</small></b><span>Stays $49 · pause or cancel anytime</span></div>
-  <a class="btn" href="#enroll">Enroll Now</a>
+  <a class="btn" data-checkout href="https://www.joinlearnai.com/checkout/founding-member">Enroll Now</a>
 </div>
 
 <script>
@@ -547,15 +543,15 @@ window.track = function (e) {
 // The bottom bar appears once the first Enroll button has started to leave the top of the screen,
 // and hides again while the offer (with the real Enroll button) is on screen, so it never covers it.
 (function () {
-  var bar = document.getElementById("sticky"), cta = document.getElementById("hero-cta"), offer = document.querySelector(".offer");
+  var bar = document.getElementById("sticky"), cta = document.getElementById("hero-cta"), offers = document.querySelectorAll(".offer");
   if (!bar || !cta) return;
+  function onScreen(el) { var r = el.getBoundingClientRect(); return r.top < window.innerHeight && r.bottom > 0; }
   function update() {
-    var past = cta.getBoundingClientRect().top < 0;
-    var r = offer ? offer.getBoundingClientRect() : null;
-    var offerOnScreen = r ? r.top < window.innerHeight && r.bottom > 0 : false;
-    bar.classList.toggle("show", past && !offerOnScreen);
+    var past = cta.getBoundingClientRect().top < 0, covering = false;
+    offers.forEach(function (o) { if (onScreen(o)) covering = true; });
+    bar.classList.toggle("show", past && !covering);
   }
-  if (window.IntersectionObserver) { var io = new IntersectionObserver(update, { threshold: [0, 1] }); io.observe(cta); if (offer) io.observe(offer); }
+  if (window.IntersectionObserver) { var io = new IntersectionObserver(update, { threshold: [0, 1] }); io.observe(cta); offers.forEach(function (o) { io.observe(o); }); }
   window.addEventListener("scroll", update, { passive: true });
   window.addEventListener("touchmove", update, { passive: true });
   window.addEventListener("resize", update);
