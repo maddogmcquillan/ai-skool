@@ -202,6 +202,27 @@
   .ctile.short small { font-size:14px; margin-top:6px; }
   .themes .ctile b { font-size:17px; padding-right:0; }
   .themes .ctile small { font-size:12px; margin-top:4px; }
+  /* Floating orbs on the theme tiles. Transform-only keyframes run on the compositor, so they
+     never touch layout or scrolling; soft edges come from the gradient, not a blur filter. */
+  .themes .ctile::before { display:none; }
+  .themes .ctile { contain:paint; }
+  .themes .ctile > .ic, .themes .ctile > b, .themes .ctile > small, .themes .ctile > .chev { position:relative; z-index:1; }
+  .themes .ctile > .ic, .themes .ctile > .chev { position:absolute; }
+  .orbs { position:absolute; inset:0; z-index:0; pointer-events:none; }
+  .orbs i { position:absolute; display:block; border-radius:50%; background:radial-gradient(circle at 35% 35%, rgba(255,255,255,.34) 0%, rgba(255,255,255,.14) 42%, rgba(255,255,255,0) 70%); will-change:transform; animation-timing-function:ease-in-out; animation-iteration-count:infinite; animation-play-state:paused; }
+  .themes.live .orbs i { animation-play-state:running; }
+  .orbs i:nth-child(1) { width:150px; height:150px; right:-50px; top:-55px; animation-name:drift-a; animation-duration:22s; }
+  .orbs i:nth-child(2) { width:96px; height:96px; left:-30px; bottom:-36px; animation-name:drift-b; animation-duration:27s; animation-delay:-9s; }
+  .orbs i:nth-child(3) { width:58px; height:58px; left:52%; top:22%; animation-name:drift-c; animation-duration:19s; animation-delay:-4s; }
+  /* the second tile drifts on different timings and starts elsewhere in each loop, so the two never move in step */
+  .themes .ctile:nth-child(2) .orbs i:nth-child(1) { animation-duration:26s; animation-delay:-13s; animation-direction:alternate; }
+  .themes .ctile:nth-child(2) .orbs i:nth-child(2) { animation-duration:21s; animation-delay:-5s; }
+  .themes .ctile:nth-child(2) .orbs i:nth-child(3) { animation-duration:31s; animation-delay:-17s; animation-direction:alternate; }
+  @keyframes drift-a { 0% { transform:translate3d(0,0,0) scale(1); } 30% { transform:translate3d(-26px,22px,0) scale(1.08); } 55% { transform:translate3d(-48px,4px,0) scale(.96); } 80% { transform:translate3d(-14px,34px,0) scale(1.04); } 100% { transform:translate3d(0,0,0) scale(1); } }
+  @keyframes drift-b { 0% { transform:translate3d(0,0,0) scale(1); } 35% { transform:translate3d(34px,-26px,0) scale(1.1); } 65% { transform:translate3d(58px,-6px,0) scale(.94); } 100% { transform:translate3d(0,0,0) scale(1); } }
+  @keyframes drift-c { 0% { transform:translate3d(0,0,0); } 25% { transform:translate3d(-22px,18px,0); } 50% { transform:translate3d(18px,30px,0); } 75% { transform:translate3d(26px,-12px,0); } 100% { transform:translate3d(0,0,0); } }
+  @media (prefers-reduced-motion: reduce) { .orbs i { animation:none; } }
+
   .weekpill { text-align:center; margin-top:-16px; position:relative; z-index:1; }
   .weekpill span { display:inline-block; background:var(--sun); color:var(--ink); font-weight:800; font-size:14px; padding:6px 12px; border-radius:999px; box-shadow:0 4px 12px rgba(23,24,43,.12); }
   .offer .weekpill span { background:#fff; }
@@ -318,7 +339,7 @@
 
   <section class="offer-top">
     <p class="inc-h dark">Everything included</p>
-    <div class="themes"><button type="button" class="ctile g1" data-theme="intro" aria-expanded="false" aria-controls="themes-panel"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a7 7 0 0 1 4 12.7V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.3A7 7 0 0 1 12 2zM9 21h6"/></svg><b>Learn how AI works</b><small>Intro classes</small><span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button><button type="button" class="ctile g4" data-theme="project" aria-expanded="false" aria-controls="themes-panel"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4l-6.5 6.5a1.5 1.5 0 0 0 2.1 2.1l6.5-6.5a4 4 0 0 0 5.4-5.4l-2.4 2.4-2.1-.4-.4-2.1z"/></svg><b>Make things with AI</b><small>Project classes</small><span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button></div>
+    <div class="themes"><button type="button" class="ctile g1" data-theme="intro" aria-expanded="false" aria-controls="themes-panel"><span class="orbs" aria-hidden="true"><i></i><i></i><i></i></span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a7 7 0 0 1 4 12.7V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.3A7 7 0 0 1 12 2zM9 21h6"/></svg><b>Learn how AI works</b><small>Intro classes</small><span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button><button type="button" class="ctile g4" data-theme="project" aria-expanded="false" aria-controls="themes-panel"><span class="orbs" aria-hidden="true"><i></i><i></i><i></i></span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4l-6.5 6.5a1.5 1.5 0 0 0 2.1 2.1l6.5-6.5a4 4 0 0 0 5.4-5.4l-2.4 2.4-2.1-.4-.4-2.1z"/></svg><b>Make things with AI</b><small>Project classes</small><span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button></div>
     <div class="themes-panel" id="themes-panel" hidden>
       <div data-list="intro">
         <p class="tp-h">Intro classes</p>
@@ -441,7 +462,7 @@
       <div class="offer">
         <h3>Back in School Access</h3>
         <p class="inc-h">Everything included</p>
-        <div class="themes" aria-hidden="true"><div class="ctile g1"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a7 7 0 0 1 4 12.7V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.3A7 7 0 0 1 12 2zM9 21h6"/></svg><b>Learn how AI works</b><small>Intro classes</small></div><div class="ctile g4"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4l-6.5 6.5a1.5 1.5 0 0 0 2.1 2.1l6.5-6.5a4 4 0 0 0 5.4-5.4l-2.4 2.4-2.1-.4-.4-2.1z"/></svg><b>Make things with AI</b><small>Project classes</small></div></div><p class="weekpill"><span>New classes every week</span></p>
+        <div class="themes" aria-hidden="true"><div class="ctile g1"><span class="orbs" aria-hidden="true"><i></i><i></i><i></i></span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a7 7 0 0 1 4 12.7V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.3A7 7 0 0 1 12 2zM9 21h6"/></svg><b>Learn how AI works</b><small>Intro classes</small></div><div class="ctile g4"><span class="orbs" aria-hidden="true"><i></i><i></i><i></i></span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4l-6.5 6.5a1.5 1.5 0 0 0 2.1 2.1l6.5-6.5a4 4 0 0 0 5.4-5.4l-2.4 2.4-2.1-.4-.4-2.1z"/></svg><b>Make things with AI</b><small>Project classes</small></div></div><p class="weekpill"><span>New classes every week</span></p>
         <div class="faces"><img src="/assets/avatar-kevin-3.jpg" alt="Kevin S."><img src="/assets/avatar-tina-2.jpg" alt="Tina H."><img src="/assets/avatar-jeff.jpg" alt="Jeff S."><img src="/assets/avatar-tim-3.jpg" alt="Tim R."><img src="/assets/avatar-jagger-3.jpg" alt="Jagger B."><img src="/assets/avatar-ibm.jpg" alt="IBM Technology"></div>
         <p class="taught">Taught by experts<span>Instructors from Microsoft, Google, Meta and IBM</span></p>
         <ul class="inc">
@@ -497,6 +518,16 @@
     ev.preventDefault();
     target.scrollIntoView({ behavior: "smooth", block: "start" });
   });
+})();
+// The orbs on the theme tiles only animate while that tile group is on screen.
+(function () {
+  var groups = document.querySelectorAll(".themes");
+  if (!groups.length) return;
+  if (!window.IntersectionObserver) { groups.forEach(function (g) { g.classList.add("live"); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { e.target.classList.toggle("live", e.isIntersecting); });
+  }, { rootMargin: "80px 0px" });
+  groups.forEach(function (g) { io.observe(g); });
 })();
 // The two theme tiles up top open a list of example classes under them.
 (function () {
