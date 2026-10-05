@@ -99,8 +99,7 @@ describe("the site", () => {
     expect(html).not.toMatch(/★|⭐/);
     expect(html).not.toMatch(/no refunds/i);
     expect(html).not.toMatch(/classes are filling up/i);
-    // The quotes are labelled as public threads, not customer reviews.
-    expect(html).toContain("not customer reviews yet");
+    expect(html).toContain("Pause or cancel anytime");
     // The offer is Back to School Access at $49 against $199, with a countdown to midnight Eastern;
     // the founding-rate framing belongs to the other pages.
     expect(html).toContain("Back in School Access");
