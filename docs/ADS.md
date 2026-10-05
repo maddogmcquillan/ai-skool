@@ -228,3 +228,47 @@ Headline B (the funnel's closing line): 🚀 Give Them the Head Start 👉
 Description (one, category line like the reference ads): Online AI Classes for Kids 11–17
 Display link shows JOINLEARNAI.COM automatically. Both headlines are under 40 characters, the
 description under 35, so nothing truncates in mobile feed.
+
+## Card statics modeled on Outschool's "Is your kid obsessed with using A.I.?" ad (10 image prompts)
+
+Reference: Outschool's card static (periwinkle background, white chunky headline with one phrase
+in yellow, chalk underline and arrow, "Outschool's got a class for that!", white class card with
+thumbnail, title, "For Ages 11-18" and a star rating). Each prompt below goes to ChatGPT with
+that ad attached as the reference image. Rules kept in every prompt: ages 11 to 17, no star
+rating or review count (we have no reviews yet; the yellow pill carries a true credential or
+promise instead), no real instructor likenesses, every class title is a class in the catalogue,
+every stat is from `docs/RESEARCH-AVATARS.md` Part 1.6. Same primary text as the "8 in 10" ad,
+landing page `/the-gap`, except 4 to 7 and 10, which can also run on `/ai-for-kids`.
+
+Shared style block (pasted at the top of every prompt):
+
+> Use the attached ad as the exact layout and style reference. Portrait 4:5, 1080 by 1350. Flat
+> solid periwinkle-blue background, hex 6C63FF. Top half: a large centered headline in a chunky,
+> rounded, extra-bold sans-serif like the reference, white, up to three lines, with the words in
+> [brackets] set in warm yellow, hex FFC245 (remove the brackets). Under the headline, a
+> hand-drawn white chalk-style underline that becomes a short down arrow pointing at the
+> subheadline. Subheadline: one line, white, bold, about half the headline size. Bottom half: a
+> white card with large rounded corners and a soft shadow, inset from the edges, containing from
+> top to bottom: a landscape thumbnail with rounded corners filling the card width; the class
+> title in black, bold, centered, up to two lines; a thin light-grey divider; a bottom row with
+> "For Ages 11-17" in bold dark grey on the left and a small rounded yellow pill (hex FFC245,
+> dark text) on the right. No star rating, no review count, no logos, no watermark, no faces of
+> real people, and no text anywhere except the strings given. Render every string exactly as
+> written, correctly spelled, large enough to read on a phone.
+
+| # | Headline (yellow in brackets) | Subheadline | Class title | Pill | Thumbnail |
+|---|---|---|---|---|---|
+| 1 | Is your kid obsessed with using [A.I.]? | Learn AI's got a class for that! | How ChatGPT Actually Works | Taught by a Stanford mathematician | Laptop with a glowing chat window, small friendly orange robot peeking in, warm red-orange gradient like the reference |
+| 2 | Your kid already uses [A.I.] Nobody taught them how. | Learn AI's got a class for that! | ChatGPT Power User in 30 Minutes | Watch it together tonight | Over-the-shoulder teen at a kitchen table at night, laptop chat window open, parent's mug in the foreground |
+| 3 | 8 in 10 students say no teacher has taught them [A.I.] | Learn AI's got the class their school doesn't. | How ChatGPT Actually Works | New class every week | Empty school desk, stack of textbooks, a photocopied sheet headed "AI POLICY", a glowing laptop beside it |
+| 4 | Your kid could build a [video game] with A.I. this week. | Learn AI's got a class for that! | Make a Game with AI | Taught by a pro game developer | Laptop showing a bright 2D platformer the kid made, kid's hand on the trackpad |
+| 5 | Your 14-year-old can build an [A.I. agent]. Most adults can't. | Learn AI's got a class for that! | Make an AI Agent | Taught by an ex-Microsoft PM | Laptop with a clean agent dashboard: a to-do list being ticked off by a small robot icon |
+| 6 | Same screen time. Except tonight they [made a cartoon]. | Turn screen time into skill time with Learn AI. | Make a Cartoon with AI | A finished project every class | Tablet showing three storyboard frames of an original cartoon character, crayons and a sketchbook beside it |
+| 7 | From "can I have the iPad?" to ["look what I built."] | Learn AI's got a class for that! | Make an App with AI | Instructor teaches millions to code | Teen holding a phone up toward the camera showing a simple colourful app they built, face out of frame |
+| 8 | Every answer online is "ban [A.I.]" or "let them cheat." | Learn AI is the in-between. | The Perfect ChatGPT Prompt Formula | Instructors from Google and Microsoft | Teen at a desk with a chat window on the laptop and their own handwritten notes and sketches in a notebook beside it |
+| 9 | 71% of bosses would rather hire the kid with [A.I. skills]. | Learn AI's got a class for that! | AI Agents Fundamentals in 21 Minutes | Taught by an ex-Meta data scientist | Teen's desk, laptop split between a chat window and a finished presentation, notebook with a checklist |
+| 10 | They could build a chatbot that [quizzes them] for Friday's test. | Learn AI's got a class for that! | Make a Chatbot with AI | Taught by an ex-Microsoft PM | Phone on a desk showing a chat: "Quiz me on chapter 4" and the bot's first question, textbook open beside it |
+
+Source for 3: RAND, national student survey. Source for 9: Microsoft and LinkedIn Work Trend
+Index 2024 (71% of leaders would rather hire a less experienced candidate with AI skills). Ask
+ChatGPT for a 1:1 version of any winner by changing the first line to "Square 1:1, 1080 by 1080".
