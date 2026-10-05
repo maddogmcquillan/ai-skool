@@ -286,23 +286,27 @@ Variation A (hook kept almost word for word from the reference, the winning ad):
 ```
 AI is already shaping your child's world. Shouldn't they understand how it actually works?
 
-Learn AI teaches kids how AI really works — the same material adults pay for, from instructors at Microsoft, Google, Meta and IBM — then has them build with it: a game, an app, a chatbot, an AI agent. When they get stuck, real help in minutes. New classes every week.
+Learn AI teaches kids how AI really works — the kind of material adults pay for — and puts it straight to use: a game, an app, a chatbot, an AI agent, built by them.
 
-Built for ages 11–17. Ahead of the curve, not behind it.
+Taught by instructors from Microsoft, Google, Meta and IBM. Real help when they're stuck. New classes every week.
 
-GET 75% OFF 👉 Back in School Access, $49 a month instead of $199. Pause or cancel anytime.
+Built for ages 11–17. Ready for the world they're growing up in.
+
+GET 75% OFF 👉 $49 a month, not $199. Pause or cancel anytime.
 ```
 
 Variation B (hook from the research stat):
 
 ```
-More than 8 in 10 students say no teacher has taught them how to use AI. Yours is probably one of them.
+More than 8 in 10 students say no teacher has taught them how to use AI. Who's teaching yours?
 
-Learn AI teaches kids how AI really works — the same material adults pay for, from instructors at Microsoft, Google, Meta and IBM — then has them build with it: a game, an app, a chatbot, an AI agent. When they get stuck, real help in minutes. New classes every week.
+Learn AI teaches kids how AI really works — the kind of material adults pay for — and puts it straight to use: a game, an app, a chatbot, an AI agent, built by them.
 
-Built for ages 11–17. Ahead of the curve, not behind it.
+Taught by instructors from Microsoft, Google, Meta and IBM. Real help when they're stuck. New classes every week.
 
-GET 75% OFF 👉 Back in School Access, $49 a month instead of $199. Pause or cancel anytime.
+Built for ages 11–17. Ready for the world they're growing up in.
+
+GET 75% OFF 👉 $49 a month, not $199. Pause or cancel anytime.
 ```
 
 Headlines (40 characters or fewer):
