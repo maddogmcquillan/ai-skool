@@ -101,6 +101,15 @@ describe("the site", () => {
     expect(html).not.toMatch(/classes are filling up/i);
     // The quotes are labelled as public threads, not customer reviews.
     expect(html).toContain("not customer reviews yet");
+    // The offer is Back to School Access at $49 against $199, with a countdown to midnight Eastern;
+    // the founding-rate framing belongs to the other pages.
+    expect(html).toContain("Back to School Access");
+    expect(html).toContain("<s>$199</s>");
+    expect(html).toContain("America/New_York");
+    expect(html).not.toMatch(/founding rate|first 200/i);
+    // The bottom bar starts hidden and is shown by script once the first Enroll button scrolls past.
+    expect(html).toMatch(/<div class="sticky" id="sticky">/);
+    expect(html).toContain('classList.toggle("show"');
     for (const img of ["/assets/class-game.jpg", "/assets/class-cartoon.jpg", "/assets/avatar-ibm.jpg"]) {
       const r = await app.request(img);
       expect(r.status).toBe(200);
