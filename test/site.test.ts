@@ -103,9 +103,14 @@ describe("the site", () => {
     expect(html).toContain("not customer reviews yet");
     // The offer is Back to School Access at $49 against $199, with a countdown to midnight Eastern;
     // the founding-rate framing belongs to the other pages.
-    expect(html).toContain("Back to School Access");
+    expect(html).toContain("Back in School Access");
+    expect(html).not.toContain("Back to School");
     expect(html).toContain("<s>$199</s>");
     expect(html).toContain("America/New_York");
+    // The banner carries the countdown (days included) and no price; the price lives lower down.
+    const banner = html.slice(html.indexOf('<div class="bts"'), html.indexOf('<header class="top">'));
+    expect(banner).toContain('id="cd-d"');
+    expect(banner).not.toContain("$");
     expect(html).not.toMatch(/founding rate|first 200/i);
     // The bottom bar starts hidden and is shown by script once the first Enroll button scrolls past.
     expect(html).toMatch(/<div class="sticky" id="sticky">/);
