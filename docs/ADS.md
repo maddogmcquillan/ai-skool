@@ -286,11 +286,11 @@ Variation A (hook kept almost word for word from the reference, the winning ad):
 ```
 AI is already shaping your child's world. Shouldn't they understand how it actually works?
 
-Learn AI teaches kids how AI really works, then puts it straight to use: a game, an app, a chatbot, an AI agent, built by them.
+Learn AI teaches kids how AI really works — how it thinks, where it goes wrong, how to use it as a tool instead of a crutch — then puts it to work on things they can show you: a game, an app, a chatbot, an AI agent.
 
-Taught by instructors from Microsoft, Google, Meta and IBM. Real help when they're stuck. New classes every week.
+Taught by working experts from Microsoft, Google, Meta and IBM. Real help the moment they're stuck. A new class every week.
 
-Built for ages 11–17. Ready for the world they're growing up in.
+Built for ages 11–17. Ahead of the curve, not behind it.
 
 GET 75% OFF 👉 $49 a month, not $199. Pause or cancel anytime.
 ```
@@ -300,11 +300,11 @@ Variation B (hook from the research stat):
 ```
 More than 8 in 10 students say no teacher has taught them how to use AI. Who's teaching yours?
 
-Learn AI teaches kids how AI really works, then puts it straight to use: a game, an app, a chatbot, an AI agent, built by them.
+Learn AI teaches kids how AI really works — how it thinks, where it goes wrong, how to use it as a tool instead of a crutch — then puts it to work on things they can show you: a game, an app, a chatbot, an AI agent.
 
-Taught by instructors from Microsoft, Google, Meta and IBM. Real help when they're stuck. New classes every week.
+Taught by working experts from Microsoft, Google, Meta and IBM. Real help the moment they're stuck. A new class every week.
 
-Built for ages 11–17. Ready for the world they're growing up in.
+Built for ages 11–17. Ahead of the curve, not behind it.
 
 GET 75% OFF 👉 $49 a month, not $199. Pause or cancel anytime.
 ```
