@@ -114,7 +114,7 @@
   .stat .src { font-size:12.5px; opacity:.75; font-weight:600; }
   .stat .srow { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
   .ring { flex:none; width:104px; height:104px; border-radius:50%; background:conic-gradient(var(--sun) calc(var(--p) * 1%), rgba(255,255,255,.22) 0); -webkit-mask:radial-gradient(circle, transparent 58%, #000 59%); mask:radial-gradient(circle, transparent 58%, #000 59%); }
-  .tens { display:grid; grid-template-columns:repeat(5, 18px); gap:8px; margin-top:4px; }
+  .tens { display:grid; grid-template-columns:repeat(5, 18px); gap:8px; margin-top:16px; }
   .tens i { width:18px; height:18px; border-radius:50%; background:rgba(255,255,255,.22); }
   .tens i.on { background:var(--sun); }
   .dots { display:flex; gap:7px; justify-content:center; margin-top:6px; }
@@ -128,8 +128,10 @@
   .pain .where svg { width:22px; height:22px; }
   .pain .card p { margin-top:10px; color:var(--ink2); font-weight:500; font-size:16.5px; }
   .pain .card p q, .pain .card p em { font-style:italic; }
-  .callout { margin-top:14px; background:linear-gradient(135deg, #3B7BFF 0%, #4B3FE0 100%); color:#fff; border-radius:18px; padding:24px 22px; text-align:center; font-size:18px; font-weight:600; line-height:1.5; }
-  .callout b { color:var(--sun); }
+  .pain .card.us { background:linear-gradient(135deg, #3B7BFF 0%, #4B3FE0 100%); border-color:transparent; color:#fff; }
+  .pain .card.us .where { color:#fff; }
+  .pain .card.us p { color:#fff; }
+  .pain .card.us b { color:var(--sun); }
 
   /* Class tiles drawn in CSS: title on a colour, the instructor in the corner */
   .ctile { position:relative; aspect-ratio:16/9; border-radius:14px; overflow:hidden; color:#fff; padding:14px; display:flex; flex-direction:column; justify-content:flex-end; background:linear-gradient(135deg, #3B7BFF, #4B3FE0); box-shadow:0 8px 20px rgba(23,24,43,.12); }
@@ -179,9 +181,27 @@
   .offer .inc-h { font-size:13px; letter-spacing:.1em; text-transform:uppercase; opacity:.85; font-weight:800; margin-top:20px; text-align:center; }
   .inc-h.dark { font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:var(--blue-ink); font-weight:800; text-align:center; }
   .themes { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:14px; }
-  .themes .ctile { aspect-ratio:4/3; padding:12px; }
+  .themes .ctile { aspect-ratio:4/3; padding:46px 12px 20px; justify-content:flex-start; }
+  button.ctile { width:100%; border:0; font:inherit; text-align:left; cursor:pointer; -webkit-appearance:none; appearance:none; }
+  button.ctile:focus-visible { outline:3px solid var(--sun); outline-offset:2px; }
+  .ctile .chev { position:absolute; right:10px; bottom:10px; width:26px; height:26px; border-radius:50%; background:rgba(255,255,255,.24); color:#fff; display:grid; place-items:center; transition:transform .2s, background .2s; }
+  .ctile .chev svg { width:16px; height:16px; }
+  .ctile[aria-expanded="true"] .chev { transform:rotate(180deg); background:#fff; color:var(--blue-ink); }
+  .themes-panel { margin-top:12px; background:#fff; border:1px solid var(--line); border-radius:14px; padding:14px 16px; text-align:left; box-shadow:0 8px 20px rgba(23,24,43,.06); }
+  .themes-panel + .weekpill { margin-top:18px; }
+  .tp-h { font-size:12.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--blue-ink); font-weight:800; }
+  .themes-panel ul { list-style:none; padding:0; margin:10px 0 0; display:grid; gap:9px; }
+  .themes-panel li { display:flex; align-items:center; gap:10px; font-weight:600; font-size:15.5px; }
+  .themes-panel li i { flex:none; width:22px; height:22px; border-radius:50%; background:var(--blue); position:relative; }
+  .themes-panel li i::after { content:""; position:absolute; left:8px; top:6px; border-left:8px solid #fff; border-top:5px solid transparent; border-bottom:5px solid transparent; }
+  .tp-more { margin-top:10px; font-size:14px; color:var(--muted); font-weight:600; }
+  .ctile.short { aspect-ratio:auto; padding:18px; justify-content:center; }
+  .ctile.short .row { display:flex; align-items:center; gap:10px; }
+  .ctile.short .ic { position:static; width:26px; height:26px; }
+  .ctile.short b { font-size:22px; padding-right:0; }
+  .ctile.short small { font-size:14px; margin-top:6px; }
   .themes .ctile b { font-size:17px; padding-right:0; }
-  .themes .ctile small { font-size:12px; }
+  .themes .ctile small { font-size:12px; margin-top:4px; }
   .weekpill { text-align:center; margin-top:-16px; position:relative; z-index:1; }
   .weekpill span { display:inline-block; background:var(--sun); color:var(--ink); font-weight:800; font-size:14px; padding:6px 12px; border-radius:999px; box-shadow:0 4px 12px rgba(23,24,43,.12); }
   .offer .weekpill span { background:#fff; }
@@ -237,7 +257,8 @@
     h2 { font-size:32px; }
     .media { margin:20px auto 0; max-width:720px; border-radius:20px; }
     .band .wrap { max-width:980px; }
-    .pain, .why { grid-template-columns:repeat(2, minmax(0,1fr)); }
+    .pain { grid-template-columns:repeat(3, minmax(0,1fr)); }
+    .why { grid-template-columns:repeat(2, minmax(0,1fr)); }
     .why { grid-template-columns:repeat(2, minmax(0,1fr)); }
     .faq, .offer, .result { max-width:720px; margin-inline:auto; }
     .stat { flex-basis:420px; }
@@ -297,7 +318,19 @@
 
   <section class="offer-top">
     <p class="inc-h dark">Everything included</p>
-    <div class="themes" aria-hidden="true"><div class="ctile g1"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a7 7 0 0 1 4 12.7V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.3A7 7 0 0 1 12 2zM9 21h6"/></svg><b>Learn how AI works</b><small>Intro classes</small></div><div class="ctile g4"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4l-6.5 6.5a1.5 1.5 0 0 0 2.1 2.1l6.5-6.5a4 4 0 0 0 5.4-5.4l-2.4 2.4-2.1-.4-.4-2.1z"/></svg><b>Make things with AI</b><small>Project classes</small></div></div><p class="weekpill"><span>New classes every week</span></p>
+    <div class="themes"><button type="button" class="ctile g1" data-theme="intro" aria-expanded="false" aria-controls="themes-panel"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a7 7 0 0 1 4 12.7V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.3A7 7 0 0 1 12 2zM9 21h6"/></svg><b>Learn how AI works</b><small>Intro classes</small><span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button><button type="button" class="ctile g4" data-theme="project" aria-expanded="false" aria-controls="themes-panel"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4l-6.5 6.5a1.5 1.5 0 0 0 2.1 2.1l6.5-6.5a4 4 0 0 0 5.4-5.4l-2.4 2.4-2.1-.4-.4-2.1z"/></svg><b>Make things with AI</b><small>Project classes</small><span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button></div>
+    <div class="themes-panel" id="themes-panel" hidden>
+      <div data-list="intro">
+        <p class="tp-h">Intro classes</p>
+        <ul><li><i aria-hidden="true"></i>What is AI?</li><li><i aria-hidden="true"></i>How ChatGPT Actually Works</li><li><i aria-hidden="true"></i>The Perfect ChatGPT Prompt Formula</li></ul>
+        <p class="tp-more">and 4 more intro classes</p>
+      </div>
+      <div data-list="project" hidden>
+        <p class="tp-h">Project classes</p>
+        <ul><li><i aria-hidden="true"></i>Make a Game</li><li><i aria-hidden="true"></i>Make an App</li><li><i aria-hidden="true"></i>Make a Chatbot</li></ul>
+        <p class="tp-more">and 7 more project classes</p>
+      </div>
+    </div><p class="weekpill"><span>New classes every week</span></p>
     <div class="faces"><img src="/assets/avatar-kevin-3.jpg" alt="Kevin S."><img src="/assets/avatar-tina-2.jpg" alt="Tina H."><img src="/assets/avatar-jeff.jpg" alt="Jeff S."><img src="/assets/avatar-tim-3.jpg" alt="Tim R."><img src="/assets/avatar-jagger-3.jpg" alt="Jagger B."><img src="/assets/avatar-ibm.jpg" alt="IBM Technology"></div>
     <p class="taught">Taught by experts<span>Instructors from Microsoft, Google, Meta and IBM</span></p>
     <ul class="inc">
@@ -305,7 +338,7 @@
           <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Build real projects: a game, an app, a chatbot, an AI agent</span></li>
           <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Get unstuck in minutes. A real person reads every thread</span></li>
           <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>A new class every week</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>The result: a kid who is fluent in AI and ahead of the curve, not behind it</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>The result: skills they keep for life, for school, for work and for whatever comes next</span></li>
         </ul>
     <div class="offer compact" id="top-offer">
       <div class="cdwrap">Back in School Access ends in<div class="cd" aria-live="off"><span class="u"><span class="n" data-cd="d">00</span><small>days</small></span><span class="c">:</span><span class="u"><span class="n" data-cd="h">--</span><small>hours</small></span><span class="c">:</span><span class="u"><span class="n" data-cd="m">--</span><small>minutes</small></span><span class="c">:</span><span class="u"><span class="n" data-cd="s">--</span><small>seconds</small></span></div></div>
@@ -331,8 +364,8 @@
         <p class="src">Common Sense Media, 2026</p>
       </article>
       <article class="stat s2">
-        <div class="srow"><div><b class="big">8 in 10</b><p class="line">students say no teacher has taught them how to use AI.</p></div></div>
-        <div><div class="tens" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div><p class="src">RAND, national student survey</p></div>
+        <div class="srow"><div><b class="big">8 in 10</b><p class="line">students say no teacher has taught them how to use AI.</p><div class="tens" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div></div>
+        <p class="src">RAND, national student survey</p>
       </article>
       <article class="stat s3">
         <div class="srow"><div><b class="big">85%</b><p class="line">of parents say AI skills matter for their kid's career.</p></div><div class="ring" style="--p:85" aria-hidden="true"></div></div>
@@ -347,8 +380,8 @@
     <div class="pain">
       <div class="card"><span class="where"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>At school</span><p>More than 8 in 10 students say no teacher has taught them how to use AI. Schools are busy writing rules. Nobody is teaching the skill.</p></div>
       <div class="card"><span class="where"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 12 3l9 8M5 10v10h5v-6h4v6h5V10"/></svg>At home</span><p><em>"My son came home talking about AI and I realized I had no idea how to explain it to him."</em> Most of us never learned it either.</p></div>
+      <div class="card us"><span class="where"><svg viewBox="0 0 100 100" fill="#FFC245" aria-hidden="true"><path d="M50 14l8 22 22 8-22 8-8 22-8-22-22-8 22-8z"/></svg>Learn AI</span><p>This is where they learn it. Your kid learns how AI <b>really works</b> from the people who explain it best. Then they build real things with it. And a real person is there when they get stuck.</p></div>
     </div>
-    <div class="callout">This is where they learn it. Your kid learns how AI <b>really works</b> from the people who explain it best. Then they build real things with it. And a real person is there when they get stuck.</div>
   </section>
 
   <section id="classes">
@@ -377,7 +410,7 @@
       <h2>Skills they keep for life</h2>
       <div class="gets">
         <div class="get">
-          <div class="art"><div class="ctile g7"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h8l-1 8 10-12h-8z"/></svg><b>Fluent in AI</b><small>For school, for work, for whatever comes next</small></div></div>
+          <div class="art"><div class="ctile g7 short"><div class="row"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h8l-1 8 10-12h-8z"/></svg><b>Fluent in AI</b></div><small>For school, for work, for whatever comes next</small></div></div>
           <h4>Why these skills matter</h4>
           <p>71% of hiring managers would rather hire the less experienced person with AI skills. Jobs that need AI skills pay about 28% more. The kids who understand AI now are the ones who will use it well later, in every class, every job and every new tool that comes next.</p>
           <p class="src">Microsoft and LinkedIn Work Trend Index, 2024; Lightcast, 2025</p>
@@ -391,7 +424,7 @@
         <div class="card"><h4>Short enough to actually happen</h4><p>The first classes are short. One class and one project a week is a good pace. It's all self-paced, so a busy week just means picking up where they left off.</p></div>
         <div class="card"><h4>Real instructors, real credentials</h4><p>A former Microsoft product manager. A Google product marketer. An ex-Meta data scientist. IBM's own engineers. These are the courses adults pay for, put in the right order for a 12-year-old.</p></div>
         <div class="card"><h4>Nobody phoning you</h4><p>No demo call. No annual plan. No sales team. $49 a month, and you can pause or cancel whenever you want.</p></div>
-        <div class="card"><h4>Every question gets answered</h4><p>Stuck at 9pm? They post it in Get Unstuck. Coach answers in minutes, and a real person on our team reads every thread.</p></div>
+        <div class="card"><h4>Every question gets answered</h4><p>Coach answers in minutes, and a real person on our team reads every thread.</p></div>
       </div>
     </section>
 
@@ -416,7 +449,7 @@
           <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Build real projects: a game, an app, a chatbot, an AI agent</span></li>
           <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Get unstuck in minutes. A real person reads every thread</span></li>
           <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>A new class every week</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>The result: a kid who is fluent in AI and ahead of the curve, not behind it</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>The result: skills they keep for life, for school, for work and for whatever comes next</span></li>
         </ul>
         <div class="cdwrap">Back in School Access ends in<div class="cd" aria-live="off"><span class="u"><span class="n" data-cd="d">00</span><small>days</small></span><span class="c">:</span><span class="u"><span class="n" data-cd="h">--</span><small>hours</small></span><span class="c">:</span><span class="u"><span class="n" data-cd="m">--</span><small>minutes</small></span><span class="c">:</span><span class="u"><span class="n" data-cd="s">--</span><small>seconds</small></span></div></div>
         <div class="pr"><s class="was">$199</s><b>$49</b><span>/ month</span></div>
@@ -463,6 +496,24 @@
     if (!target) return;
     ev.preventDefault();
     target.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+})();
+// The two theme tiles up top open a list of example classes under them.
+(function () {
+  var panel = document.getElementById("themes-panel");
+  if (!panel) return;
+  var btns = document.querySelectorAll("[data-theme]"), lists = panel.querySelectorAll("[data-list]");
+  btns.forEach(function (b) {
+    b.addEventListener("click", function () {
+      var key = b.getAttribute("data-theme"), wasOpen = b.getAttribute("aria-expanded") === "true";
+      btns.forEach(function (o) { o.setAttribute("aria-expanded", "false"); });
+      lists.forEach(function (l) { l.hidden = true; });
+      if (wasOpen) { panel.hidden = true; return; }
+      b.setAttribute("aria-expanded", "true");
+      panel.querySelector('[data-list="' + key + '"]').hidden = false;
+      panel.hidden = false;
+      if (window.track) track("syllabus_open");
+    });
   });
 })();
 // Dots under each swipe row.
