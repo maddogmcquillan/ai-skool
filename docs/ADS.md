@@ -286,7 +286,7 @@ Variation A (hook kept almost word for word from the reference, the winning ad):
 ```
 AI is already shaping your child's world. Shouldn't they understand how it actually works?
 
-Learn AI teaches kids how AI really works — with instructors from Microsoft, Google, Meta and IBM — and applies it directly to building: a game, an app, a chatbot, and an AI agent they can show you.
+Learn AI teaches kids how AI really works — not just how to type prompts — and applies it directly to building: a game, an app, a chatbot, and an AI agent they can show you.
 
 Built for ages 11–17. Ahead of the curve, not behind it.
 
@@ -298,7 +298,7 @@ Variation B (hook from the research stat):
 ```
 More than 8 in 10 students say no teacher has taught them how to use AI. Who's teaching yours?
 
-Learn AI teaches kids how AI really works — with instructors from Microsoft, Google, Meta and IBM — and applies it directly to building: a game, an app, a chatbot, and an AI agent they can show you.
+Learn AI teaches kids how AI really works — not just how to type prompts — and applies it directly to building: a game, an app, a chatbot, and an AI agent they can show you.
 
 Built for ages 11–17. Ahead of the curve, not behind it.
 
