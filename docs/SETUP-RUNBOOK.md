@@ -48,7 +48,7 @@ If you would rather click, the spaces are listed below. Key settings per space:
 | Space | Type | Members can post | Notes |
 |---|---|---|---|
 | Welcome and Announcements | Post | No | Pin a "Start here" post |
-| Ask Coach | Post | Yes | The bot watches this space |
+| Get Unstuck | Post | Yes | The bot watches this space |
 | Course Requests | Post | Yes | Pin a post explaining "one idea per post, like to vote" |
 | Parent Hub | Post | Yes | Consider access-gating to a "parent" tag |
 | Each course | Course | n/a | Sections and lessons per the yaml; upload videos to lessons |
@@ -106,7 +106,7 @@ the Coach account, deploy the repo on Railway with the variables from `.env.exam
 `GET https://<service>/healthz` returns `{"ok":true,"dryRun":false,"coach":{...}}`. If `dryRun`
 is true the Anthropic key is missing; if `coach` is null the Circle token is missing.
 
-Coach polls the Ask Coach space itself, so Zap 2 and Zap 3 below are only needed if you turn the
+Coach polls the Get Unstuck space itself, so Zap 2 and Zap 3 below are only needed if you turn the
 poller off (`COACH_POLL=0`).
 
 ## 8. Zapier (not needed: both pollers replace it)
@@ -135,7 +135,7 @@ with `COACH_POLL=0` / `META_POLL=0`.
 
 ### Zap 2: questions to the answer bot (only with `COACH_POLL=0`)
 
-1. Trigger: **Circle > New Post**, Space = Ask Coach.
+1. Trigger: **Circle > New Post**, Space = Get Unstuck.
 2. Filter (optional): author email is not the bot's account.
 3. Action: **Webhooks by Zapier > Custom Request**
    - Method POST, URL `https://<service>/hooks/circle/question`
@@ -143,9 +143,9 @@ with `COACH_POLL=0` / `META_POLL=0`.
    - Data (JSON):
      ```json
      {"kind":"post","post_id":"<post id>","title":"<post name>","body_html":"<post body>",
-      "author_name":"<author name>","author_email":"<author email>","space_name":"Ask Coach","post_url":"<post url>"}
+      "author_name":"<author name>","author_email":"<author email>","space_name":"Get Unstuck","post_url":"<post url>"}
      ```
-4. Posting the reply. Add a **Circle > Create Comment** action: Space = Ask Coach, Post = post id
+4. Posting the reply. Add a **Circle > Create Comment** action: Space = Get Unstuck, Post = post id
    from the trigger, Body = `answer` from the webhook response, Member email = the Coach account
    (`BOT_AUTHOR_EMAIL`). This is what makes the reply appear as Coach.
    Alternative: with `CIRCLE_ADMIN_TOKEN` on the service, add `"post_directly": true` to the JSON
@@ -157,7 +157,7 @@ with `COACH_POLL=0` / `META_POLL=0`.
 
 ### Zap 3: follow-up comments (only with `COACH_POLL=0`)
 
-Same as Zap 2 with trigger **New Comment Posted** in Ask Coach, `kind = "comment"`, and
+Same as Zap 2 with trigger **New Comment Posted** in Get Unstuck, `kind = "comment"`, and
 `parent_post_body` mapped to the original post body. The service already ignores comments
 written by the bot account and by admins.
 
@@ -191,7 +191,7 @@ Settings > Payments > Affiliates settings:
 - [ ] Test purchase shows in Stripe, Circle, and Meta (one deduplicated Purchase with value).
 - [ ] Affiliate test: open an affiliate's link in a private window, make the real test purchase, confirm the
       sale appears under that affiliate in Payments > Affiliates.
-- [ ] Post a question in Ask Coach from a test member; the bot replies within a few minutes.
+- [ ] Post a question in Get Unstuck from a test member; the bot replies within a few minutes.
 - [ ] Post "can I get a refund" from a test member; the bot escalates and a human is notified.
 - [ ] A test member cannot DM another test member.
 - [ ] Refund the test purchase in Stripe, remove test members, clear test events in Meta.

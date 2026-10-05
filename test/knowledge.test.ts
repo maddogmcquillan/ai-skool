@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { chunkMarkdown, KnowledgeBase } from "../src/bot/knowledge.js";
 
-const faq = `# Community FAQ\n\n## Where to ask\nPost in Ask Coach.\n`;
+const faq = `# Community FAQ\n\n## Where to ask\nPost in Get Unstuck.\n`;
 const lesson = `# What AI is and is not
 
 ## Definition

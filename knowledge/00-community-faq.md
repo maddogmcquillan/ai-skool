@@ -12,7 +12,7 @@ One Classroom course with three sections. Beginner AI has three lessons: What is
 Most project classes use tools with a free tier. Midjourney, used in Make AI Art, is paid with no free tier. Sora may require a paid ChatGPT plan. Ask a parent before signing up for anything.
 
 ## Where to ask questions
-Post in the Ask Coach space. Coach, the AI helper, replies within a few minutes. A real person on the team reads every thread and steps in when needed.
+Post in the Get Unstuck space. Coach, the AI helper, replies within a few minutes. A real person on the team reads every thread and steps in when needed.
 
 ## How to request a new course
 Post one idea per post in the Course Requests space. Like the posts you agree with. The most-liked requests get built first.
@@ -21,4 +21,4 @@ Post one idea per post in the Course Requests space. Like the posts you agree wi
 Be kind. No sharing of personal information like your full name, school, address, phone number, or social media. No asking to meet up. Member-to-member direct messages are turned off on purpose. Report anything that feels wrong using the report button, or tell a parent.
 
 ## Membership, billing and account questions
-These are handled by the team, not by Coach. Post in Ask Coach and a person will reply, or email the support address on the website.
+These are handled by the team, not by Coach. Post in Get Unstuck and a person will reply, or email the support address on the website.

@@ -65,14 +65,14 @@ this order, each with its custom icon from `brand/assets/checkout-icons/`)
 3. `icon-tools.png` **A finished project every class** — A game, an app, a website, a chatbot, an AI agent
    and more. Things they can turn the laptop around and show you.
 4. `icon-calendar.png` **New classes every week** — Members ask for the class they want next and vote on it.
-5. `icon-chat.png` **Ask Coach** — Stuck at 9pm? An answer in minutes, and a real person on our team reads
+5. `icon-chat.png` **Get Unstuck** — Stuck at 9pm? An answer in minutes, and a real person on our team reads
    every thread.
 6. `icon-shield.png` **Safe by design** — No messaging between members. Parent consent at signup. Built for
    ages 11 to 17.
 7. `icon-lock.png` **Locked in for life** — Join at $49 and it stays $49 every month, for as long as you're
    a member. Cancel anytime.
 
-Icon rules: the chat bubble belongs to Ask Coach only. New classes gets the calendar, safety the
+Icon rules: the chat bubble belongs to Get Unstuck only. New classes gets the calendar, safety the
 shield, the price lock the closed padlock, cancel anytime the open padlock. No emoji, no film or
 clapperboard icons anywhere. Regenerate the set with `node` from the snippet in
 `docs/COWORK-BRIEFS.md` Brief 9 notes if a new icon is needed.

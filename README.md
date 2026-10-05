@@ -24,7 +24,7 @@ outside Circle's click-through settings.
 ## The service
 
 **Coach** runs inside the service with no Zapier in the loop: every minute it lists the newest
-posts in the Ask Coach space through Circle's Admin API and, wherever the last word in a thread
+posts in the Get Unstuck space (slug ask-coach) through Circle's Admin API and, wherever the last word in a thread
 belongs to a member, posts Coach's reply as a comment. That covers the first question on a post
 and every follow-up under it; the model sees the whole thread and continues the conversation.
 Coach stays quiet when a team member replied last, and after it has handed a thread to a human

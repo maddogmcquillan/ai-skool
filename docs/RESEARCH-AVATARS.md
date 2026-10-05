@@ -885,7 +885,7 @@ from these in `docs/ADS.md`; every stat used must appear in Part 1.6 with its so
    college".
 
 **Avatar 3, the kid who already builds**
-7. *9pm.* Hook: "It's 9pm. Her game won't run. Who does she ask?" Proof: Ask Coach thread
+7. *9pm.* Hook: "It's 9pm. Her game won't run. Who does she ask?" Proof: Get Unstuck thread
    screenshot with timestamps, "a real person reads every thread". Visual: the thread, phone
    frame, dark mode.
 8. *Camp vs. this.* Hook: "$1,400 for a week of camp where he played Roblox. Or $49 a month to

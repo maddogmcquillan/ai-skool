@@ -15,7 +15,7 @@ if (!cfg.hookSecret) {
 
 let kb = await KnowledgeBase.fromDir(cfg.knowledgeDir);
 
-// Coach polls the Ask Coach space itself whenever a Circle token is present (no Zapier needed).
+// Coach polls the Get Unstuck space (slug ask-coach) itself whenever a Circle token is present (no Zapier needed).
 // Set COACH_POLL=0 to turn the poller off and use the /hooks/circle/question webhook instead.
 //
 // Every poll is one Circle Admin API call, and Circle bills calls above the plan's 5,000 a month

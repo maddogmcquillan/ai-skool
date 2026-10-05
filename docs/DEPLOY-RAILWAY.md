@@ -2,7 +2,7 @@
 
 Live since 2026-09-28 at `https://ai-skool-production.up.railway.app` (health: `/healthz`).
 
-Coach is the poller inside the service in `src/`. Once deployed it watches the Ask Coach space
+Coach is the poller inside the service in `src/`. Once deployed it watches the Get Unstuck space
 through Circle's API and replies within about five minutes (within a minute once the webhook in
 the last section is set up), to new questions and to every follow-up comment, keeping the thread
 going until a team member steps in. No Zapier is involved. Railway's Hobby plan (a few dollars a
@@ -55,14 +55,14 @@ name.
    something like `learn-ai-production.up.railway.app`.
 5. **Deployments** → open the latest → Logs. Two lines mean success:
    `learn-ai service listening on :8787 (dryRun=false, coach=polling every 300s, meta=off)` and
-   `[coach] watching "Ask Coach" (space NNN)`.
+   `[coach] watching "Get Unstuck" (space NNN)`.
 
 ## 4. Check it
 
 1. Open `https://<your railway domain>/healthz`. Expect `"ok":true`, `"dryRun":false` and a
    `coach` object with `ticks` counting up. `dryRun:true` means the Anthropic key is missing or
    wrong; `coach:null` means the Circle token is missing.
-2. In a private window, as the test member, post a question in Ask Coach, for example
+2. In a private window, as the test member, post a question in Get Unstuck, for example
    "How do I make my chatbot remember my name?". Within five minutes (the poll interval) Coach
    replies.
 3. Reply to Coach's comment with a follow-up such as "What is a variable?". Coach answers again
@@ -104,7 +104,7 @@ and `circle.byPath`. The variables are `COACH_POLL_SECONDS`, `META_POLL_SECONDS`
 A Circle workflow can call a webhook when something happens in the community. Pointed at the
 service's nudge route it runs the poller at once, so the interval becomes a safety net:
 
-1. Circle admin → Workflows → new automation. Trigger: a new post published in the **Ask Coach**
+1. Circle admin → Workflows → new automation. Trigger: a new post published in the **Get Unstuck**
    space. Action: send to a webhook, URL
    `https://<railway domain>/hooks/circle/nudge/coach?secret=<HOOK_SECRET>`. Use the Railway
    domain, not joinlearnai.com, so Cloudflare cannot challenge the call. If the action can set

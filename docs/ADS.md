@@ -64,7 +64,7 @@ price or copy change.
    per second, brand chips over each ("Make a game" ... "Make a comic"), end card with the
    headline and price. No faces needed. Music: upbeat, no lyrics.
 2. **Parent voice, 30 seconds.** A parent-aged presenter (the owner works) on camera: "Here is
-   exactly how this community is moderated." Three cuts to the Circle screens: Ask Coach with a
+   exactly how this community is moderated." Three cuts to the Circle screens: Get Unstuck with a
    reply, the rules post, the settings showing messaging off. End on the price.
 3. **Static, the list.** Navy background, the ten project chips, one line: "Your kid builds all
    ten. $49/month." Use the brand generator (`brand/generate.py`) style.
@@ -136,7 +136,7 @@ The "top 3%" line is a flattery device from the reference, not a measured figure
 
 Here's the thing most parents get wrong: they sign their kid up, the laptop stays closed for a week, and the momentum is gone. The first ten minutes decide whether this sticks, so don't let a slow start hold back skills they'll use for the rest of their life. ⚠️📉
 
-Good news: there is nothing to install. Every class runs in the browser, so your kid can start the night you enroll. Here's the 3-step setup so they dive straight in without a hitch. Grab any laptop or Chromebook, sit with them for Class 1 (it's under ten minutes, from a real instructor), and have them post their first question in Ask Coach, where an answer comes back in minutes and a real person reads every thread. 🚀💡
+Good news: there is nothing to install. Every class runs in the browser, so your kid can start the night you enroll. Here's the 3-step setup so they dive straight in without a hitch. Grab any laptop or Chromebook, sit with them for Class 1 (it's under ten minutes, from a real instructor), and have them post their first question in Get Unstuck, where an answer comes back in minutes and a real person reads every thread. 🚀💡
 
 ⚡ 𝐆𝐞𝐭 𝐓𝐡𝐞𝐢𝐫 𝐒𝐞𝐭𝐮𝐩 𝐑𝐞𝐚𝐝𝐲 𝐀𝐧𝐝 𝐒𝐭𝐚𝐫𝐭 𝐓𝐡𝐞 𝐅𝐢𝐫𝐬𝐭 𝐂𝐥𝐚𝐬𝐬 𝐓𝐨𝐧𝐢𝐠𝐡𝐭! 👇
 ```
@@ -146,7 +146,7 @@ Good news: there is nothing to install. Every class runs in the browser, so your
 ```
 𝐂𝐨𝐧𝐠𝐫𝐚𝐭𝐮𝐥𝐚𝐭𝐢𝐨𝐧𝐬! 𝐘𝐨𝐮'𝐫𝐞 𝐨𝐧𝐞 𝐨𝐟 𝐭𝐡𝐞 𝐟𝐞𝐰 𝐩𝐚𝐫𝐞𝐧𝐭𝐬 𝐠𝐞𝐭𝐭𝐢𝐧𝐠 𝐭𝐡𝐞𝐢𝐫 𝐤𝐢𝐝 𝐚𝐡𝐞𝐚𝐝 𝐰𝐢𝐭𝐡 𝐀𝐈, 𝐧𝐨𝐭 𝐣𝐮𝐬𝐭 𝐥𝐞𝐭𝐭𝐢𝐧𝐠 𝐭𝐡𝐞𝐦 𝐬𝐜𝐫𝐨𝐥𝐥. 🎉🤖
 
-Most kids who quit a program quit in week one, because starting felt like homework. ⚠️ With Learn AI there's nothing to install and nothing to schedule. Any laptop or Chromebook works, Class 1 is under ten minutes with a real instructor, and the project classes go in any order, so they can start building a game on night one. Stuck at 9pm? Ask Coach answers in minutes, and a person reads every thread. 🚀
+Most kids who quit a program quit in week one, because starting felt like homework. ⚠️ With Learn AI there's nothing to install and nothing to schedule. Any laptop or Chromebook works, Class 1 is under ten minutes with a real instructor, and the project classes go in any order, so they can start building a game on night one. Stuck at 9pm? Get Unstuck answers in minutes, and a person reads every thread. 🚀
 
 Founding rate for the first 200 families, locked in for as long as you stay.
 

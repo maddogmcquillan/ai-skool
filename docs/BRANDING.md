@@ -11,7 +11,7 @@ the name, colors, or copy change.
 | Blue | `#3B7BFF` | Circle brand color (light theme), links, buttons, Classroom accent |
 | Blue, dark theme | `#7FA8FF` | Circle brand color (dark theme) |
 | Spark | `#FFC245` | logo mark, Course Requests, Live Sessions |
-| Violet | `#9B7BFF` | Ask Coach |
+| Violet | `#9B7BFF` | Get Unstuck |
 | Mint | `#4FD1B3` | Parent Hub |
 | Coral | `#FF7A59` | Show and Tell |
 
@@ -39,7 +39,7 @@ Circle's API has no fields for these. Files are in `brand/assets/`.
    show-and-tell, live-sessions. Until then the emoji set by the script is shown.
 3. **Home page.** Circle's Home is configured in the community's Home settings (Eclipse: the
    Home item in the left nav → Customize). Set the welcome banner to `welcome-banner.png`
-   (1680x600), pin the "Start here" post, and feature the Classroom, Ask Coach, and Show and
+   (1680x600), pin the "Start here" post, and feature the Classroom, Get Unstuck, and Show and
    Tell spaces in that order.
 4. **Course directory banner.** Courses → three dots → Banner. Circle lays this out as a white text
    column on the left and an image on the right, so the image carries no headline. Turn the banner on
@@ -52,7 +52,7 @@ Circle's API has no fields for these. Files are in `brand/assets/`.
 5. **Social preview.** Settings → SEO / Social sharing: `og-image.png` (1200x630).
 6. **Theme.** Settings → Theme: default to light, allow members to switch. Check the brand blue on
    both themes.
-7. **Sidebar order.** Drag spaces in the sidebar so Start Here reads Welcome, Ask Coach, Course
+7. **Sidebar order.** Drag spaces in the sidebar so Start Here reads Welcome, Get Unstuck, Course
    Requests, Parent Hub; then Classroom; then Community.
 8. **Lesson thumbnails.** `brand/assets/lesson-01-*.png` through `lesson-17-*.png` (800x450), one
    per class, numbered in order. In the Classroom, open each class in the editor and set its

@@ -111,7 +111,7 @@ describe("POST /hooks/circle/question", () => {
     const res = await app.request("/hooks/circle/question", {
       method: "POST",
       headers,
-      body: JSON.stringify({ post_id: 42, title: "Memory?", body_html: "<p>How do I make my <b>bot</b> remember my name?</p>", author_name: "Ava K", author_email: "ava@example.com", space_name: "Ask Coach" }),
+      body: JSON.stringify({ post_id: 42, title: "Memory?", body_html: "<p>How do I make my <b>bot</b> remember my name?</p>", author_name: "Ava K", author_email: "ava@example.com", space_name: "Get Unstuck" }),
     });
     expect(res.status).toBe(200);
     const json = await res.json();

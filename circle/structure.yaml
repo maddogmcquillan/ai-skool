@@ -57,7 +57,7 @@ profile_fields:
 # The account that authors the pinned posts and announcements. Email comes from TEAM_AUTHOR_EMAIL.
 team_member:
   name: Learn AI Team
-  headline: The people behind Learn AI. Post in Ask Coach or Parent Hub to reach us.
+  headline: The people behind Learn AI. Post in Get Unstuck or Parent Hub to reach us.
   spaces: [welcome, ask-coach, course-requests, parent-hub, show-and-tell, live-sessions]
   avatar: brand/assets/avatar-team.png
 
@@ -92,7 +92,7 @@ space_groups:
               Start with **Beginner AI** and watch the three lessons in order. Then **Intermediate AI**, also in order. After that, the **Project Classes** are yours to pick from: make a game, an app, a website, a chatbot, a song, a comic, and more.
 
               ## 2. Ask when you're stuck
-              Post in **Ask Coach**. Coach, our AI helper, replies within a few minutes, and a real person on the team reads every thread.
+              Post in **Get Unstuck**. Coach, our AI helper, replies within a few minutes, and a real person on the team reads every thread.
 
               ## 3. Show what you build
               Share screenshots, links and demos in **Show and Tell**. Every project class ends with something you made.
@@ -102,7 +102,7 @@ space_groups:
               - Never share personal information: full name, school, address, phone, social handles, photos of yourself.
               - No meeting up. Direct messages between members are turned off on purpose.
               - See something wrong? Use the report button, or tell a parent.
-      - name: Ask Coach
+      - name: Get Unstuck
         slug: ask-coach
         type: basic
         members_can_post: true

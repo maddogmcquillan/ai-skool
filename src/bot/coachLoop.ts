@@ -5,7 +5,7 @@ import { composeReply, type ReplyOptions, type ThreadMessage } from "./respond.j
 
 /**
  * Coach without Zapier. Every `intervalMs` the loop lists the newest published posts in the
- * Ask Coach space through the Admin API and, for each thread where the last word belongs to a
+ * Get Unstuck space (slug ask-coach) through the Admin API and, for each thread where the last word belongs to a
  * member, posts Coach's reply as a comment. That covers the first question on a new post and
  * every follow-up comment after it, so a thread reads as a conversation.
  *

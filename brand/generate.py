@@ -29,7 +29,7 @@ VIOLET = "#9B7BFF"     # parent hub / coach
 # Per-space accent + short subtitle
 SPACES = {
     "welcome":        dict(title="Welcome", sub="Start here. How Learn AI works and how to get the most out of it.", accent=BLUE, glyph="door"),
-    "ask-coach":      dict(title="Ask Coach", sub="Stuck on a lesson? Ask. Coach replies in minutes, a human reads every thread.", accent=VIOLET, glyph="chat"),
+    "ask-coach":      dict(title="Get Unstuck", sub="Stuck on a lesson? Ask. Coach replies in minutes, a human reads every thread.", accent=VIOLET, glyph="chat"),
     "course-requests":dict(title="Course Requests", sub="Tell us what to build next. Likes are votes.", accent=SPARK, glyph="bulb"),
     "parent-hub":     dict(title="Parent Hub", sub="How this community is run, and how to help at home.", accent=MINT, glyph="shield"),
     "classroom":      dict(title="Classroom", sub="Beginner AI. Intermediate AI. Then make real things with AI.", accent=BLUE, glyph="cap"),
@@ -258,7 +258,7 @@ body = f'''<div class="ground" style="width:1680px;height:600px">{nodes_svg(1680
   <div style="position:absolute;left:84px;top:0;height:600px;display:flex;flex-direction:column;justify-content:center;gap:24px;max-width:1000px">
     {wordmark(44)}
     <div class="title" style="font-size:96px;margin-top:10px">Welcome to Learn AI</div>
-    <div class="sub" style="font-size:30px;max-width:900px">Start in the Classroom with Beginner AI. Ask Coach when you're stuck. Show off what you build.</div></div>
+    <div class="sub" style="font-size:30px;max-width:900px">Start in the Classroom with Beginner AI. Head to Get Unstuck when you're stuck. Show off what you build.</div></div>
   <div style="position:absolute;left:0;bottom:0;width:1680px;height:8px;background:linear-gradient(90deg,{SPARK},{BLUE},{MINT})"></div></div>'''
 render("welcome-banner", 1680, 600, page(1680, 600, body))
 

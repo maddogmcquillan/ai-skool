@@ -24,7 +24,7 @@ function cfg(overrides: Partial<CoachLoopConfig> = {}): CoachLoopConfig {
 }
 
 const member = (id: number, name: string, email: string, title: string, html: string, published: string, comments = 0): PostRecord => ({
-  id, name: title, body: { body: html }, user_email: email, user_name: name, space_name: "Ask Coach", published_at: published, comments_count: comments,
+  id, name: title, body: { body: html }, user_email: email, user_name: name, space_name: "Get Unstuck", published_at: published, comments_count: comments,
 });
 const comment = (id: number, email: string, name: string, html: string, created: string, parent: number | null = null): CommentRecord => ({
   id, parent_comment_id: parent, created_at: created, body: { body: html }, user: { email, name },
@@ -37,7 +37,7 @@ function fakeCircle(state: { posts: PostRecord[]; comments: Record<number, Comme
   const fetchImpl = vi.fn(async (url: string, init?: RequestInit) => {
     const u = new URL(url);
     const json = (body: unknown) => new Response(JSON.stringify(body), { status: 200, headers: { "content-type": "application/json" } });
-    if (u.pathname.endsWith("/spaces")) return json({ records: [{ id: 3, slug: "welcome", name: "Welcome" }, { id: 7, slug: "ask-coach", name: "Ask Coach" }], has_next_page: false });
+    if (u.pathname.endsWith("/spaces")) return json({ records: [{ id: 3, slug: "welcome", name: "Welcome" }, { id: 7, slug: "ask-coach", name: "Get Unstuck" }], has_next_page: false });
     if (u.pathname.endsWith("/posts")) {
       expect(u.searchParams.get("space_id")).toBe("7");
       return json({ records: state.posts, has_next_page: false });
@@ -99,7 +99,7 @@ describe("CoachLoop", () => {
     const state = {
       posts: [
         member(101, "Sam Lee", "kid@example.com", "How do I give my chatbot memory?", "<p>It forgets my name every time.</p>", "2026-09-27T10:00:00Z"),
-        member(102, "Learn AI Team", TEAM, "Welcome to Ask Coach", "<p>How to ask.</p>", "2026-09-20T10:00:00Z"),
+        member(102, "Learn AI Team", TEAM, "Welcome to Get Unstuck", "<p>How to ask.</p>", "2026-09-20T10:00:00Z"),
         member(103, "Ava", "kid2@example.com", "Already answered", "<p>Old question.</p>", "2026-09-26T10:00:00Z", 1),
         member(104, "Max", "kid3@example.com", "Ancient thread", "<p>From ages ago.</p>", "2026-06-01T10:00:00Z", 2),
       ],
@@ -112,7 +112,7 @@ describe("CoachLoop", () => {
     expect(await loop.tick()).toEqual({ answered: 1, skipped: 3, failed: 0 });
     expect(posted).toEqual([{ post_id: 101, body: "Store the name in a variable.", parent_comment_id: undefined, skip_notifications: false }]);
     expect(compose).toHaveBeenCalledTimes(1);
-    expect(compose.mock.calls[0][0]).toMatchObject({ title: "How do I give my chatbot memory?", authorName: "Sam Lee", spaceName: "Ask Coach" });
+    expect(compose.mock.calls[0][0]).toMatchObject({ title: "How do I give my chatbot memory?", authorName: "Sam Lee", spaceName: "Get Unstuck" });
     expect(compose.mock.calls[0][0].thread).toBeUndefined();
     expect(calls.comments).toBe(3); // the ancient post was baselined without a fetch
 
