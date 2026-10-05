@@ -74,6 +74,7 @@ describe("paywall keys", () => {
     // snippet hardcodes, or Meta would count browser and server Purchase events separately.
     expect(paywallKeyFor("Learn AI Founding Membership", parsePaywallKeys(undefined))).toBe("founding-member");
     expect(paywallKeyFor("Learn AI Founding Membership", parsePaywallKeys("Founding Member=founding-member"))).toBe("founding-member");
+    expect(paywallKeyFor("Back in School Access", parsePaywallKeys(undefined))).toBe("founding-member");
     expect(paywallKeyFor("Learn AI Founding Membership", {})).toBe("learn-ai-founding-membership"); // what an empty map would do
     expect(parsePaywallKeys(undefined)).toEqual(DEFAULT_PAYWALL_KEYS);
   });

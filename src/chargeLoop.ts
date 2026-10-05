@@ -82,6 +82,7 @@ export function paywallKeyFor(displayName: string | null | undefined, map: Recor
 export const DEFAULT_PAYWALL_KEYS: Readonly<Record<string, string>> = {
   "Founding Member": "founding-member",
   "Learn AI Founding Membership": "founding-member",
+  "Back in School Access": "founding-member",
 };
 
 /** Parse `Founding Member=founding-member,Other Plan=other` over the built-in map. */

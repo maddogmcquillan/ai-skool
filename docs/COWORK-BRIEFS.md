@@ -591,15 +591,72 @@ stay ask-coach. Save. If I have given you the file cover-ask-coach.png, open Cus
 space and replace the cover image with it. Reopen the space and confirm the sidebar shows
 "Get Unstuck" and the URL still ends in /ask-coach.
 
-Block 2, the checkout. Payments → Paywalls → "Learn AI Founding Membership" → Checkout →
-Customize. In Benefits, open the benefit titled "Ask Coach", change the title to "Get Unstuck"
-and the description to: "Ask anything. Coach answers in minutes, and a real person reads every
-thread." Keep its icon. In Badges, change the badge "Cancel anytime" to "Pause or cancel
-anytime". In Callout, change the text to "Pause or cancel anytime" (23 characters, within the
-30 limit) and keep Highlight on. Save. Do not change the paywall's display name, price, access,
-Tracking tab, or the Checkout URL slug.
+Block 2, the checkout. Superseded by Brief 13, which rebuilds the whole checkout page. Skip
+this block and run Brief 13 instead.
 
 Block 3, check. In a private window open https://www.joinlearnai.com/checkout/founding-member
 on a phone-sized window. Confirm it opens the checkout (not a sign-in page), the three badges
 read "New classes every week", "Coach answers in minutes" and "Pause or cancel anytime", and
 the benefit list shows "Get Unstuck". Screenshot it. STOP.
+\n
+## Brief 13: Simplify the checkout page (title, six benefits, struck $199)
+
+Context for me, not for the other Claude: the landing page now does the selling, so the checkout
+drops the cover image and the badges and restates what is included in six lines above the payment
+form. The title changes to "Back in School Access", which makes Circle regenerate the Checkout URL
+slug, so the brief pins it back and verifies the URL. The code already maps the new name to the
+Meta event key (`DEFAULT_PAYWALL_KEYS`). Source of truth: `docs/CHECKOUT-COPY.md`. Chrome signed
+in to www.joinlearnai.com as admin. Icons are in `brand/assets/checkout-icons/`; give the other
+Claude the six files named below, or let it reuse the ones already uploaded.
+
+You are editing the checkout page of one paywall in my Circle community, working in my signed-in
+Chrome. Do not change the price, the access settings, the Tracking tab, or anything outside this
+paywall. Screenshot after each block and report what you did, including any field that refused
+a value and what you used instead.
+
+Block 1, the title. Go to Payments → Paywalls and open the paywall currently named "Learn AI
+Founding Membership". Change its display name to exactly: Back in School Access. Save. Now open
+its Checkout tab: the Checkout URL will have changed to something like
+/checkout/back-in-school-access. Edit the Checkout URL slug and set it back to exactly:
+founding-member. Save. In a private window open
+https://www.joinlearnai.com/checkout/founding-member and confirm it opens this checkout, not a
+sign-in page. Screenshot it. If the slug field refuses "founding-member", stop and tell me
+before doing anything else.
+
+Block 2, strip the page. Checkout tab → Customize. In "Paywall cover image", remove the cover
+image. In "Product details", set the description to empty; if the editor requires text, use:
+Everything your kid needs to learn AI and build with it. In "Badges", turn "Show badges" off.
+In "Testimonials", leave it off. Save.
+
+Block 3, the six benefits. In "Benefits", turn "Show benefits" on and set the section title to:
+What's included. Delete every existing benefit, then add these six in this order. Each has a
+title and an icon; leave the description empty, and if the editor requires one, use the line in
+brackets. Upload the icon image named for each (280 x 280 PNG) or pick it from the already
+uploaded set.
+  1. icon-tools.png — Classes from AI basics to building games, apps and chatbots
+     [17 classes, from what AI is to real projects.]
+  2. icon-calendar.png — New classes every week
+     [Members vote on what comes next.]
+  3. icon-cap.png — Taught by working experts from Microsoft, Google, Meta and IBM
+     [The same instructors adults learn from.]
+     If this title is refused for length, use: Instructors from Microsoft, Google, Meta and IBM
+  4. icon-chat.png — Stuck? Real help in minutes
+     [Coach answers fast, and a real person reads every thread.]
+  5. icon-unlock.png — Pause or cancel anytime
+     [From your account, or by email.]
+  6. icon-rocket.png — The result: skills they keep for life
+     [For school, for work and for whatever comes next.]
+Save.
+
+Block 4, the price line. In "Price details", find the $49 monthly price option. Turn on
+"Reduced price" and enter 199 as the original price, so the page shows $199 struck through
+beside $49. Do not change the $49. Set the callout text to exactly:
+Back in School: cancel anytime
+(30 characters). Callout colour #FFC245, and in the price option's three-dot menu choose
+Highlight. Leave "Countdown price lock" off. Save.
+
+Block 5, check. In a private window, phone-sized, open
+https://www.joinlearnai.com/checkout/founding-member. Confirm, top to bottom: the title "Back in
+School Access", no cover image, the six benefits in order under "What's included", the price
+showing $199 struck through and $49 a month with the yellow callout, and the payment form right
+below. Screenshot it. STOP.
