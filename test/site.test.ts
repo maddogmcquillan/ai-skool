@@ -114,7 +114,8 @@ describe("the site", () => {
     // The bottom bar starts hidden and is shown by script once the first Enroll button scrolls past.
     expect(html).toMatch(/<div class="sticky" id="sticky">/);
     expect(html).toContain('classList.toggle("show"');
-    for (const img of ["/assets/classes-hero.jpg", "/assets/class-game.jpg", "/assets/class-cartoon.jpg", "/assets/avatar-ibm.jpg"]) {
+    expect(html).toContain("won a Technology Innovation Award at school");
+    for (const img of ["/assets/testimonial-wen.jpg", "/assets/classes-hero.jpg", "/assets/class-game.jpg", "/assets/class-cartoon.jpg", "/assets/avatar-ibm.jpg"]) {
       const r = await app.request(img);
       expect(r.status).toBe(200);
       expect(r.headers.get("content-type")).toBe("image/jpeg");

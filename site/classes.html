@@ -71,7 +71,12 @@
   /* Title block */
   .title { padding-top:22px; }
   .kicker { color:var(--blue-ink); font-weight:800; font-size:15px; margin-bottom:8px; }
-  .chips { display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:14px; font-weight:700; font-size:16px; }
+  .proof { display:grid; grid-template-columns:92px 1fr; gap:14px; align-items:center; margin:18px 0 4px; padding:12px; background:var(--soft); border:1px solid var(--line); border-radius:16px; }
+  .proof img { width:92px; height:auto; aspect-ratio:3/4; object-fit:cover; border-radius:12px; display:block; }
+  .proof blockquote { margin:0; }
+  .proof p { font-size:15px; line-height:1.45; color:var(--ink2); font-weight:500; }
+  .proof footer { margin-top:8px; font-size:13.5px; color:var(--muted); font-weight:700; }
+  .chips { display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:16px; font-weight:700; font-size:16px; }
   .chips span { display:inline-flex; align-items:center; gap:8px; }
   .chips svg { width:20px; height:20px; }
   .summary { margin-top:16px; font-size:17.5px; line-height:1.55; color:var(--ink2); }
@@ -275,6 +280,9 @@
 
   @media (min-width:720px) {
     h1 { font-size:38px; }
+    .proof { grid-template-columns:120px 1fr; gap:18px; padding:14px; }
+    .proof img { width:120px; }
+    .proof p { font-size:16px; }
     h2 { font-size:32px; }
     .media { margin:20px auto 0; max-width:720px; border-radius:20px; }
     .band .wrap { max-width:980px; }
@@ -329,6 +337,13 @@
   <div class="title">
     <p class="kicker">Learn AI's got a class for that.</p>
     <h1>Learn How AI Actually Works, Then Build Real Things With It</h1>
+    <figure class="proof">
+      <img src="/assets/testimonial-wen.jpg" width="300" height="400" alt="A student holding up a Technology Innovation Award certificate" loading="eager">
+      <blockquote>
+        <p>“He started the course just curious about AI. A few months later, he built his own project and won a Technology Innovation Award at school. Very pleased with the program.”</p>
+        <footer>— Trevor Wen</footer>
+      </blockquote>
+    </figure>
     <div class="chips">
       <span><svg viewBox="0 0 24 24" fill="none" stroke="#17182B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21h16M5 21v-7a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v7M12 11V7M9 7h6M12 3v1"/></svg>Ages 11–17</span>
       <span><svg viewBox="0 0 24 24" fill="none" stroke="#17182B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>Self-paced · new class every week</span>
