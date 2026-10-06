@@ -71,17 +71,18 @@
   /* Title block */
   .title { padding-top:22px; }
   .kicker { color:var(--blue-ink); font-weight:800; font-size:15px; margin-bottom:8px; }
-  .proof { display:grid; grid-template-columns:72px minmax(0,1fr); gap:12px; align-items:center; margin:18px 0 4px; padding:12px; background:var(--soft); border:2px solid var(--blue); border-radius:16px; }
+  .proof { position:relative; display:grid; grid-template-columns:72px minmax(0,1fr); gap:12px; align-items:center; margin:18px 0 4px; padding:12px 12px 16px; background:var(--soft); border:2px solid var(--blue); border-radius:16px; }
   .proof img { width:72px; height:auto; aspect-ratio:3/4; object-fit:cover; border-radius:12px; display:block; }
   .proof blockquote { margin:0; min-width:0; }
   .proof p { font-size:15px; line-height:1.45; color:var(--ink2); font-weight:500; }
-  .proof footer { margin-top:8px; font-size:clamp(10.5px, 3vw, 13.5px); color:var(--muted); font-weight:600; display:flex; align-items:center; gap:5px; flex-wrap:nowrap; white-space:nowrap; overflow:hidden; }
-  .proof footer b { color:var(--ink); font-weight:700; }
+  /* The attribution sits in a gap cut into the bottom border: the label's background is the page
+     background, so it masks the border exactly where the text is. */
+  .proof .tag { position:absolute; left:50%; bottom:-9px; transform:translateX(-50%); display:inline-flex; align-items:center; gap:6px; padding:0 10px; background:linear-gradient(to bottom, var(--soft) 0 50%, var(--ground) 50% 100%); color:var(--muted); font-size:13px; font-weight:600; white-space:nowrap; line-height:20px; }
+  .proof .tag b { color:var(--ink); font-weight:700; }
   .stars { display:inline-flex; gap:1px; flex:none; }
-  .stars svg { width:clamp(10px, 3vw, 15px); height:clamp(10px, 3vw, 15px); fill:#FFC245; }
-  .chips .rating svg { fill:#FFC245; }
+  .stars svg { width:14px; height:14px; fill:#FFC245; }
   @media (min-width:380px) { .proof { grid-template-columns:84px minmax(0,1fr); } .proof img { width:84px; } }
-  .chips { display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:16px; font-weight:700; font-size:16px; }
+  .chips { display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:24px; font-weight:700; font-size:16px; }
   .chips span { display:inline-flex; align-items:center; gap:8px; }
   .chips svg { width:20px; height:20px; }
   .summary { margin-top:16px; font-size:17.5px; line-height:1.55; color:var(--ink2); }
@@ -297,10 +298,11 @@
 
   @media (min-width:720px) {
     h1 { font-size:38px; }
-    .proof { grid-template-columns:120px 1fr; gap:18px; padding:14px; }
+    .proof { grid-template-columns:120px 1fr; gap:18px; padding:14px 14px 18px; }
     .proof img { width:120px; }
     .proof p { font-size:16px; }
-    .proof footer { gap:8px; }
+    .proof .tag { font-size:14px; gap:8px; padding:0 12px; }
+    .proof .stars svg { width:15px; height:15px; }
     h2 { font-size:32px; }
     .media { margin:20px auto 0; max-width:720px; border-radius:20px; }
     .band .wrap { max-width:980px; }
@@ -360,8 +362,8 @@
       <img src="/assets/testimonial-wen.jpg" width="300" height="400" alt="A student holding up a Technology Innovation Award certificate" loading="eager">
       <blockquote>
         <p>“He started the course just curious about AI. A few months later, he built his own app and won a Technology Innovation Award at school. Very pleased with the program.”</p>
-        <footer><span class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg></span><span><b>Parent of Justen</b>, age 14</span></footer>
       </blockquote>
+      <figcaption class="tag"><span class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg></span><span><b>Parent of Justen</b>, age 14</span></figcaption>
     </figure>
     <div class="chips">
       <span><svg viewBox="0 0 24 24" fill="none" stroke="#17182B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21h16M5 21v-7a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v7M12 11V7M9 7h6M12 3v1"/></svg>Ages 11–17</span>
