@@ -71,15 +71,16 @@
   /* Title block */
   .title { padding-top:22px; }
   .kicker { color:var(--blue-ink); font-weight:800; font-size:15px; margin-bottom:8px; }
-  .proof { display:grid; grid-template-columns:92px 1fr; gap:14px; align-items:center; margin:18px 0 4px; padding:12px; background:var(--soft); border:2px solid var(--blue); border-radius:16px; }
-  .proof img { width:92px; height:auto; aspect-ratio:3/4; object-fit:cover; border-radius:12px; display:block; }
-  .proof blockquote { margin:0; }
+  .proof { display:grid; grid-template-columns:72px minmax(0,1fr); gap:12px; align-items:center; margin:18px 0 4px; padding:12px; background:var(--soft); border:2px solid var(--blue); border-radius:16px; }
+  .proof img { width:72px; height:auto; aspect-ratio:3/4; object-fit:cover; border-radius:12px; display:block; }
+  .proof blockquote { margin:0; min-width:0; }
   .proof p { font-size:15px; line-height:1.45; color:var(--ink2); font-weight:500; }
-  .proof footer { margin-top:8px; font-size:13.5px; color:var(--muted); font-weight:600; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .proof footer { margin-top:8px; font-size:clamp(10.5px, 3vw, 13.5px); color:var(--muted); font-weight:600; display:flex; align-items:center; gap:5px; flex-wrap:nowrap; white-space:nowrap; overflow:hidden; }
   .proof footer b { color:var(--ink); font-weight:700; }
-  .stars { display:inline-flex; gap:2px; }
-  .stars svg { width:15px; height:15px; fill:#FFC245; }
+  .stars { display:inline-flex; gap:1px; flex:none; }
+  .stars svg { width:clamp(10px, 3vw, 15px); height:clamp(10px, 3vw, 15px); fill:#FFC245; }
   .chips .rating svg { fill:#FFC245; }
+  @media (min-width:380px) { .proof { grid-template-columns:84px minmax(0,1fr); } .proof img { width:84px; } }
   .chips { display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:16px; font-weight:700; font-size:16px; }
   .chips span { display:inline-flex; align-items:center; gap:8px; }
   .chips svg { width:20px; height:20px; }
@@ -299,6 +300,7 @@
     .proof { grid-template-columns:120px 1fr; gap:18px; padding:14px; }
     .proof img { width:120px; }
     .proof p { font-size:16px; }
+    .proof footer { gap:8px; }
     h2 { font-size:32px; }
     .media { margin:20px auto 0; max-width:720px; border-radius:20px; }
     .band .wrap { max-width:980px; }
