@@ -711,3 +711,52 @@ https://www.joinlearnai.com/checkout/back-in-school-access. Confirm, top to bott
 image with the rating pill and trust row, the title, the three badges, the price with $199 struck
 and the yellow callout, the payment form, "What's included" with seven lines, and the five reviews
 below. Screenshot the whole page. STOP.
+
+## Brief 15: Checkout fixes (new cover, badges off, callout, shorter benefits, legal links)
+
+Context for me, not for the other Claude: fixes from the first phone review of the Brief 14
+checkout. The cover doubled the logo and its trust row was unevenly spaced, so there is a new
+cover without the wordmark. Badges go off (the cover carries them). The callout spells the
+guarantee out in full. Benefits are shorter. The terms checkbox linked to Circle's default
+documents, so the community's legal URLs get set to our pages. Source of truth:
+`docs/CHECKOUT-COPY.md`. File to hand over: `brand/assets/checkout-header.png` (replaces the
+previous one). Chrome signed in to www.joinlearnai.com as admin.
+
+You are editing the checkout page of one paywall and two community settings in my Circle
+community, working in my signed-in Chrome. Do not change the paywall's display name, its Checkout
+URL slug, the price, the access settings, or the Tracking tab. Screenshot after each block and
+report what you did, including any field that refused a value and what you used instead.
+
+Block 1, cover. Payments → Paywalls → "Back in School Access" → Checkout tab → Customize →
+"Paywall cover image": remove the current image and upload the new checkout-header.png. Save.
+
+Block 2, badges. In "Badges", turn "Show badges" off. Save.
+
+Block 3, benefits. In "Benefits", edit the seven so they read exactly, in this order (keep the
+icon already on each; the title is first, the description second):
+  1. From AI basics to real projects — Games, apps, chatbots and more.
+  2. New classes every week — Members vote on what comes next.
+  3. Instructors from Microsoft, Google, Meta and IBM — Taught by working experts.
+  4. Live answers to questions — Fast help, and a real person reads every thread.
+  5. 30-day money-back guarantee — Not what we described? Full refund.
+  6. Pause or cancel anytime — From your account, or by email.
+  7. Skills they keep for life — For school, work and whatever comes next.
+Save.
+
+Block 4, callout. In "Price details", on the $49 price option, change the callout text to
+exactly: 30-day money-back guarantee
+(27 characters). Keep #FFC245 and Highlight on. Keep Reduced price on at 199. Save.
+
+Block 5, legal links. Leave the paywall. Open the community's admin Settings and find the legal
+or general section that holds "Terms of Service URL" and "Privacy Policy URL" (Circle usually
+puts them under Settings → General, or Settings → Legal). Set Terms of Service URL to
+https://joinlearnai.com/terms and Privacy Policy URL to https://joinlearnai.com/privacy. Save.
+If you cannot find these fields, tell me exactly which settings pages you looked at and stop.
+
+Block 6, check. In a private window, phone-sized, open
+https://www.joinlearnai.com/checkout/back-in-school-access. Confirm: one Learn AI logo at the
+top (not two), the cover with the rating pill and the three trust columns, the title, the price
+with $199 struck and the yellow callout reading "30-day money-back guarantee", no badges, the
+payment form, "What's included" with the seven shortened lines, the five reviews. Tap the "terms
+of service" link in the agreement line and confirm it opens joinlearnai.com/terms with "Last
+updated October 6, 2026"; do the same for "privacy policy". Screenshot each. STOP.

@@ -11,45 +11,50 @@ cover image, title, description, up to 5 badges, up to 10 benefits, a price call
 price strikethrough, up to 10 testimonials. It does not give us an FAQ accordion, a collapsible
 benefits list, a custom header, or any custom code on the checkout page itself.
 
-## Cover image (the "header")
+## Cover image
 
 Upload `brand/assets/checkout-header.png` (1080 x 606, renders at 540 x 303). White background,
-the Learn AI wordmark, a yellow "4.9 rating · 1,000+ students" pill, and a trust row:
-Money-back guarantee · Secure checkout · Pause or cancel anytime. This is the closest Circle gets
-to a brand header with trust badges, because the community logo at the very top cannot be changed.
+a yellow "4.9 rating · 1,000+ students" pill, and three evenly spaced trust columns with icons:
+Money-back guarantee · Secure checkout · Pause or cancel anytime. No wordmark: Circle already
+shows the community logo directly above the cover, so a logo in the image doubled up.
 
 ## Product details
 
 Title (display name, do not change: it regenerates the checkout slug): Back in School Access
 Description: empty. If Circle insists: Everything your kid needs to learn AI and build with it.
 
-## Badges (Show badges on, three, custom icons from `brand/assets/checkout-icons/`)
+## Badges
 
-1. `icon-shield.png` Money-back guarantee
-2. `icon-lock.png` Secure checkout by Stripe
-3. `icon-unlock.png` Pause or cancel anytime
+Off. The cover carries the three trust points; badges repeated them under the title.
 
-## Benefits (Show benefits on, section title "What's included", title then description)
+## Benefits (Show benefits on, section title "What's included", title then one short line)
 
-1. `icon-tools.png` **AI basics to building games, apps and chatbots** — 17 classes, from what AI is to real projects.
+1. `icon-tools.png` **From AI basics to real projects** — Games, apps, chatbots and more.
 2. `icon-calendar.png` **New classes every week** — Members vote on what comes next.
-3. `icon-cap.png` **Instructors from Microsoft, Google, Meta and IBM** — The same instructors adults learn from.
-4. `icon-chat.png` **Live answers to questions** — Coach answers fast, and a real person reads every thread.
-5. `icon-shield.png` **Money-back guarantee** — Not what we described? Email within 30 days of your first payment for a full refund.
+3. `icon-cap.png` **Instructors from Microsoft, Google, Meta and IBM** — Taught by working experts.
+4. `icon-chat.png` **Live answers to questions** — Fast help, and a real person reads every thread.
+5. `icon-shield.png` **30-day money-back guarantee** — Not what we described? Full refund.
 6. `icon-unlock.png` **Pause or cancel anytime** — From your account, or by email.
-7. `icon-rocket.png` **Skills they keep for life** — For school, for work and for whatever comes next.
+7. `icon-rocket.png` **Skills they keep for life** — For school, work and whatever comes next.
 
-Circle caps titles at 50 characters and shows a placeholder when a description is blank, so every
-line above has both.
+Circle sets the type: titles and descriptions render at the sizes Circle chooses, so the only
+lever for a bolder title is a shorter description, which these are. Titles are under the 50-character cap.
 
 ## Price details
 
-- Reduced price on, original price $199, actual price $49. (Only honest while $199 is the listed
-  standard price; see the note at the end.)
-- Callout, 30-character limit: `Money back · pause or cancel` (28). Colour #FFC245, Highlight on.
-- Countdown price lock: off. Circle's countdown is a per-visitor timer that ends the reduced price
-  for that visitor when it expires, which would send a returning parent to $199. The landing page
-  already carries the urgency. Turn it on only with a fixed end date and a real price change.
+- Reduced price on, original price $199, actual price $49.
+- Callout, 30-character hard limit: `30-day money-back guarantee` (27). "Money-back guarantee ·
+  Pause or cancel anytime" is 46 characters and will not save. Pause or cancel is on the cover,
+  in the benefits and in the fine print, so the callout carries the guarantee in full.
+  Colour #FFC245, Highlight on.
+- Countdown price lock: off.
+
+## Terms and privacy links
+
+Circle's checkout always shows the "I agree to the terms of service and have read the privacy
+policy" checkbox; it cannot be removed. The links go to whatever Circle Settings has under the
+legal URLs. Until set, they go to Circle's own documents (last updated December 1, 2025). Set
+them to https://joinlearnai.com/terms and https://joinlearnai.com/privacy (Brief 15).
 
 ## Testimonials (Show testimonials on, five, in this order)
 

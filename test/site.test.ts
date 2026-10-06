@@ -105,6 +105,7 @@ describe("the site", () => {
     expect(html).toContain("Parent of Justen");
     const terms = await (await app.request("/terms")).text();
     expect(terms).toContain("Money-back guarantee");
+    expect(terms).toContain("Last updated October 6, 2026");
     expect(terms).not.toMatch(/no refunds/i);
     // The offer is Back to School Access at $49 against $199, with a countdown to midnight Eastern;
     // the founding-rate framing belongs to the other pages.
