@@ -41,11 +41,11 @@ if the editor requires a description, use the short line in brackets)
 
 Icons are the uploaded 280 x 280 tiles in `brand/assets/checkout-icons/`.
 
-1. `icon-tools.png` **Classes from AI basics to building games, apps and chatbots**
+1. `icon-tools.png` **AI basics to building games, apps and chatbots**
    [17 classes, from what AI is to real projects.]
 2. `icon-calendar.png` **New classes every week**
    [Members vote on what comes next.]
-3. `icon-cap.png` **Taught by working experts from Microsoft, Google, Meta and IBM**
+3. `icon-cap.png` **Instructors from Microsoft, Google, Meta and IBM**
    [The same instructors adults learn from.]
 4. `icon-chat.png` **Stuck? Real help in minutes**
    [Coach answers fast, and a real person reads every thread.]
@@ -54,9 +54,8 @@ Icons are the uploaded 280 x 280 tiles in `brand/assets/checkout-icons/`.
 6. `icon-rocket.png` **The result: skills they keep for life**
    [For school, for work and for whatever comes next.]
 
-Benefit titles are capped at 50 characters; the longest above is 49 (line 3: "Taught by working
-experts from Microsoft, Google, Meta and IBM" is 58, so if Circle refuses it use "Taught by experts
-from Microsoft, Google and Meta" at 48, or "Instructors from Microsoft, Google, Meta and IBM" at 48).
+As built on 2026-10-06. Circle caps benefit titles at 50 characters (Save is disabled past it) and
+shows a placeholder when a description is blank, so the bracketed lines are live as descriptions.
 
 ## Price details
 
