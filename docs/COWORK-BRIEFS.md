@@ -658,3 +658,56 @@ https://www.joinlearnai.com/checkout/back-in-school-access. Confirm, top to bott
 School Access", no cover image, the six benefits in order under "What's included", the price
 showing $199 struck through and $49 a month with the yellow callout, and the payment form right
 below. Screenshot it. STOP.
+
+## Brief 14: Checkout page, trust layout (header image, badges, guarantee, reviews)
+
+Context for me, not for the other Claude: this reworks the checkout toward a direct-to-consumer
+layout: brand header with a review line and trust badges (as the cover image), three badges,
+seven benefits including the money-back guarantee, the callout, and the five verified reviews
+as testimonials under the payment form. Source of truth: `docs/CHECKOUT-COPY.md`. Files to hand
+over: `brand/assets/checkout-header.png`, the icons in `brand/assets/checkout-icons/`, and
+`brand/assets/community-icon.png` in case testimonials require an image. Chrome signed in to
+www.joinlearnai.com as admin.
+
+You are editing the checkout page of one paywall in my Circle community, working in my signed-in
+Chrome. Do not change the paywall's display name, its Checkout URL slug, the price, the access
+settings, or the Tracking tab. Screenshot after each block and report what you did, including any
+field that refused a value and what you used instead.
+
+Block 1, header. Payments → Paywalls → "Back in School Access" → Checkout tab → Customize. In
+"Paywall cover image", upload checkout-header.png. Save.
+
+Block 2, badges. In "Badges", turn "Show badges" on and add exactly three, with the uploaded icon
+images: icon-shield.png "Money-back guarantee"; icon-lock.png "Secure checkout by Stripe";
+icon-unlock.png "Pause or cancel anytime". Dark text, light background. Save.
+
+Block 3, benefits. In "Benefits", keep "Show benefits" on and the section title "What's
+included". Edit the list so it reads, in this order, with these icons:
+  1. icon-tools.png — AI basics to building games, apps and chatbots — 17 classes, from what AI is to real projects.
+  2. icon-calendar.png — New classes every week — Members vote on what comes next.
+  3. icon-cap.png — Instructors from Microsoft, Google, Meta and IBM — The same instructors adults learn from.
+  4. icon-chat.png — Live answers to questions — Coach answers fast, and a real person reads every thread.
+  5. icon-shield.png — Money-back guarantee — Not what we described? Email within 30 days of your first payment for a full refund.
+  6. icon-unlock.png — Pause or cancel anytime — From your account, or by email.
+  7. icon-rocket.png — Skills they keep for life — For school, for work and for whatever comes next.
+Save.
+
+Block 4, price. In "Price details", keep Reduced price on with 199 as the original price. Change
+the callout text to exactly: Money back · pause or cancel
+(28 characters). Keep colour #FFC245 and Highlight on. Leave "Countdown price lock" off. Save.
+
+Block 5, testimonials. In "Testimonials", turn it on and add five, in this order. Name field,
+then role or title field, then the quote exactly as written. If an image is required, upload
+community-icon.png. If there is a star rating, set 5.
+  1. Name: Parent of Mason — Role: Age 16, verified review — Quote: "My son is now creating websites and apps, and he's gotten so good that people have started asking him to build websites and apps for their businesses."
+  2. Name: Parent of Sophia — Role: Age 12, verified review — Quote: "My daughter has improved greatly since joining. Her teacher makes the classes engaging, and now she looks forward to learning and completing her projects."
+  3. Name: Parent of Ethan — Role: Age 16, verified review — Quote: "My son started traditional coding classes in high school, but with everything changing because of AI, we wanted something more current. This gave him a structured introduction to AI coding and helped him decide whether computer science might be something he wants to pursue in college."
+  4. Name: Parent of Ava & Noah — Role: Ages 13 & 15, verified review — Quote: "I enrolled my kids and followed along with them. They stayed interested and motivated throughout the entire course. The assignments challenged them without being overwhelming and helped them build real understanding."
+  5. Name: Parent of Lucas — Role: Age 14, verified review — Quote: "My son has taken several courses and keeps asking for more classes and more challenges. He willingly wakes up early to attend class and complete his assignments."
+Save.
+
+Block 6, check. In a private window, phone-sized, open
+https://www.joinlearnai.com/checkout/back-in-school-access. Confirm, top to bottom: the header
+image with the rating pill and trust row, the title, the three badges, the price with $199 struck
+and the yellow callout, the payment form, "What's included" with seven lines, and the five reviews
+below. Screenshot the whole page. STOP.

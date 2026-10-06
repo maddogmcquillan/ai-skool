@@ -101,6 +101,10 @@ describe("the site", () => {
     expect(html).not.toMatch(/no refunds/i);
     expect(html).not.toMatch(/classes are filling up/i);
     expect(html).toContain("Pause or cancel anytime");
+    expect(html).toContain("30-day money-back guarantee");
+    const terms = await (await app.request("/terms")).text();
+    expect(terms).toContain("Money-back guarantee");
+    expect(terms).not.toMatch(/no refunds/i);
     // The offer is Back to School Access at $49 against $199, with a countdown to midnight Eastern;
     // the founding-rate framing belongs to the other pages.
     expect(html).toContain("Back in School Access");
