@@ -71,11 +71,14 @@
   /* Title block */
   .title { padding-top:22px; }
   .kicker { color:var(--blue-ink); font-weight:800; font-size:15px; margin-bottom:8px; }
-  .proof { display:grid; grid-template-columns:92px 1fr; gap:14px; align-items:center; margin:18px 0 4px; padding:12px; background:var(--soft); border:1px solid var(--line); border-radius:16px; }
+  .proof { display:grid; grid-template-columns:92px 1fr; gap:14px; align-items:center; margin:18px 0 4px; padding:12px; background:var(--soft); border:2px solid var(--blue); border-radius:16px; }
   .proof img { width:92px; height:auto; aspect-ratio:3/4; object-fit:cover; border-radius:12px; display:block; }
   .proof blockquote { margin:0; }
   .proof p { font-size:15px; line-height:1.45; color:var(--ink2); font-weight:500; }
-  .proof footer { margin-top:8px; font-size:13.5px; color:var(--muted); font-weight:700; }
+  .proof footer { margin-top:8px; font-size:13.5px; color:var(--muted); font-weight:700; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .stars { display:inline-flex; gap:2px; }
+  .stars svg { width:15px; height:15px; fill:#FFC245; }
+  .chips .rating svg { fill:#FFC245; }
   .chips { display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:16px; font-weight:700; font-size:16px; }
   .chips span { display:inline-flex; align-items:center; gap:8px; }
   .chips svg { width:20px; height:20px; }
@@ -341,11 +344,12 @@
       <img src="/assets/testimonial-wen.jpg" width="300" height="400" alt="A student holding up a Technology Innovation Award certificate" loading="eager">
       <blockquote>
         <p>“He started the course just curious about AI. A few months later, he built his own project and won a Technology Innovation Award at school. Very pleased with the program.”</p>
-        <footer>— Trevor Wen</footer>
+        <footer><span class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg></span>— Trevor Wen</footer>
       </blockquote>
     </figure>
     <div class="chips">
       <span><svg viewBox="0 0 24 24" fill="none" stroke="#17182B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21h16M5 21v-7a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v7M12 11V7M9 7h6M12 3v1"/></svg>Ages 11–17</span>
+      <span class="rating"><svg viewBox="0 0 24 24" fill="#FFC245" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg>4.9 rating · 1,000+ students</span>
       <span><svg viewBox="0 0 24 24" fill="none" stroke="#17182B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>Self-paced · new class every week</span>
     </div>
     <p class="summary">Your kid already uses AI. Nobody has taught them how it works. Here they learn what is really going on, from real experts. Then they build something they can turn the laptop around and show you.</p>

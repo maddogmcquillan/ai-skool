@@ -94,7 +94,8 @@ describe("the site", () => {
     }
     expect(html).toContain("Ages 11–17");
     expect(html).toContain("11 to 17");
-    // No invented reviews or ratings, and no banned phrases.
+    // The rating line is the merged program's real figure; no review-count pattern or star characters.
+    expect(html).toContain("4.9 rating · 1,000+ students");
     expect(html).not.toMatch(/\d\.\d\s*\(\d+\s*reviews?\)/i);
     expect(html).not.toMatch(/★|⭐/);
     expect(html).not.toMatch(/no refunds/i);
