@@ -102,6 +102,7 @@ describe("the site", () => {
     expect(html).not.toMatch(/classes are filling up/i);
     expect(html).toContain("Pause or cancel anytime");
     expect(html).toContain("30-day money-back guarantee");
+    expect(html).toContain("Parent of Justen");
     const terms = await (await app.request("/terms")).text();
     expect(terms).toContain("Money-back guarantee");
     expect(terms).not.toMatch(/no refunds/i);
