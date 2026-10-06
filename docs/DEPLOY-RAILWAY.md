@@ -118,3 +118,10 @@ service's nudge route it runs the poller at once, so the interval becomes a safe
    keep Coach at 300 so follow-ups are still answered within five minutes.
 
 Brief 11 in `docs/COWORK-BRIEFS.md` is this list written for Claude in Chrome.
+
+### Before launch: the one-variable version
+
+While no students are in the community (ads paused, 2026-10-06), `COACH_POLL_SECONDS=1800` in
+Railway Variables is enough on its own: Coach checks every 30 minutes, total usage lands near
+2,500 calls a month, and the overage is zero. At launch set it back to `300`, or finish the
+webhook workflows above and leave it at 1800.
