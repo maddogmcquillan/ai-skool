@@ -73,7 +73,7 @@
 
   /* Title block */
   .title { padding-top:22px; }
-  .kicker { color:var(--blue-ink); font-weight:800; font-size:15px; margin-bottom:8px; }
+  .kicker { color:var(--blue-ink); font-weight:800; font-size:clamp(11px, 3.8vw, 15px); margin-bottom:8px; white-space:nowrap; }
   /* Gold frame: a bevelled gradient border (light at the top left, deep at the bottom right) with a
      warm lift shadow. The shimmer is one highlight band that slides along the ring every few seconds;
      it moves with transform only and a mask clips it to the ring, so the card itself never repaints. */
@@ -373,7 +373,7 @@
 <main class="wrap">
 
   <div class="title">
-    <p class="kicker">Learn AI's got a class for that.</p>
+    <p class="kicker">Kids who learn AI today will lead tomorrow.</p>
     <h1>Learn How AI Actually Works, Then Build Real Things With It</h1>
     <figure class="proof">
       <span class="ring" aria-hidden="true"><i></i></span>

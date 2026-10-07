@@ -86,8 +86,9 @@ describe("the site", () => {
     expect(html).toContain('"2050628052248432"');
     expect(html).toContain("lp-classes");
     expect(html.indexOf("history.replaceState")).toBeLessThan(html.indexOf("<body>"));
-    // The ads end "Learn AI's got a class for that!", so the page opens on the same line.
-    expect(html).toContain("Learn AI's got a class for that.");
+    // The line over the headline; it must stay on one line on a phone (nowrap, fluid size).
+    expect(html).toContain("Kids who learn AI today will lead tomorrow.");
+    expect(html).toMatch(/\.kicker \{[^}]*white-space:nowrap/);
     // Every class the ads put on a card exists here under its catalogue name.
     for (const name of ["How ChatGPT Actually Works", "ChatGPT Power User in 30 Minutes", "Make a Game", "Make an AI Agent", "Make a Cartoon", "Make an App", "The Perfect ChatGPT Prompt Formula", "AI Agents Fundamentals in 21 Minutes", "Make a Chatbot"]) {
       expect(html).toContain(name);
