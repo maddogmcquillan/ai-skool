@@ -208,11 +208,12 @@
   .offer { margin-top:22px; background:linear-gradient(160deg, #3B7BFF 0%, #2F6BE6 100%); color:#fff; border-radius:22px; padding:26px 20px; box-shadow:0 0 0 6px #E4EDFF; text-align:left; }
   .offer h3 { font-size:23px; font-weight:800; line-height:1.2; text-align:center; }
   .offer .inc-h { font-size:13px; letter-spacing:.1em; text-transform:uppercase; opacity:.85; font-weight:800; margin-top:20px; text-align:center; }
-  .inc-h.dark { display:flex; align-items:center; gap:14px; font-size:clamp(11.5px, 3.6vw, 16px); letter-spacing:.1em; text-transform:uppercase; color:var(--blue-ink); font-weight:800; text-align:center; }
-  .inc-h.dark::before, .inc-h.dark::after { content:""; flex:1; min-width:12px; height:2px; background:var(--blue); border-radius:2px; opacity:.85; }
+  .inc-h.dark { --row-blue:#2D68E3; /* one blue for the whole row: midway between the logo blue and the ink blue */ display:flex; align-items:center; gap:14px; font-size:clamp(11.5px, 3.6vw, 16px); letter-spacing:.1em; text-transform:uppercase; color:var(--row-blue); font-weight:800; text-align:center; }
+  .inc-h.dark::before, .inc-h.dark::after { content:""; flex:1; min-width:12px; height:2px; background:var(--row-blue); border-radius:2px; }
   .inc-h.dark .inc-l { display:inline-flex; align-items:center; gap:10px; white-space:nowrap; }
   .logo.mini { font-size:inherit; gap:6px; letter-spacing:-0.01em; text-transform:none; }
-  .logo.mini .badge { width:1.25em; height:1.25em; border-radius:.375em; }
+  .logo.mini .badge { width:1.25em; height:1.25em; border-radius:.375em; background:var(--row-blue); }
+  .logo.mini .ai { color:var(--row-blue); }
   .logo.mini .badge svg { width:.75em; height:.75em; }
   @media (max-width:339px) { .inc-h.dark::before, .inc-h.dark::after { min-width:0; } }
   .themes { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:14px; }
