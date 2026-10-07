@@ -17,8 +17,9 @@ One design, rendered at four times the 1080-wide slot so text stays sharp on a p
 shows the cover about 540 px wide). White background, two rows, trimmed to the content with
 almost no margin above or below so it is easy to place: the rating banner, then three evenly
 spaced trust columns (Money-back guarantee · Secure checkout · Pause or cancel anytime). The
-banner is a pill that fades from deep orange on the left to the brand yellow on the right, with
-five overlapping white stars as its graphic and "4.9 · 1,000+ students" beside them. No offer
+banner is a flat pill with a soft fade from a slightly deeper orange on the left to the brand
+yellow on the right, five overlapping ink stars with a thin pale outline as its graphic, and
+"4.9 · 1,000+ students" beside them. No shadow or gloss, so it stays quiet. No offer
 line ("ends today" is gone) and no wordmark: Circle shows the community logo directly above.
 
 - `brand/assets/checkout-header-slim.png`: 4320 x 1424, content height only. Upload this first.

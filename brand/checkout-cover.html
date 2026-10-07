@@ -4,15 +4,16 @@
   html,body{margin:0;width:1080px;background:#fff;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:#17182B;-webkit-font-smoothing:antialiased}
   .wrap{width:1080px;display:flex;flex-direction:column;align-items:center;gap:30px;padding:18px 40px 22px;box-sizing:border-box}
   body.boxed .wrap{height:606px;justify-content:center;gap:40px}
-  /* the rating banner: deeper orange on the left fading to the brand yellow on the right,
-     five overlapping white stars as the graphic, then the two facts */
-  .pill{position:relative;display:inline-flex;align-items:center;gap:26px;height:116px;padding:0 56px 0 34px;border-radius:999px;color:#17182B;font-weight:800;font-size:54px;letter-spacing:-0.01em;
-        background:linear-gradient(90deg,#F08A14 0%,#FFA62B 38%,#FFC245 72%,#FFD36A 100%);box-shadow:0 14px 34px -16px rgba(240,138,20,.6)}
-  .pill::after{content:"";position:absolute;inset:0;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,0) 55%);pointer-events:none}
-  .stars{display:flex;align-items:center;position:relative;z-index:1}
-  .stars svg{width:66px;height:66px;margin-left:-17px;filter:drop-shadow(0 4px 5px rgba(140,70,0,.30))}
+  /* the rating banner: a quiet fade from a slightly deeper orange on the left to the brand yellow
+     on the right, five overlapping ink stars as the graphic, then the two facts; flat, no shadow */
+  .pill{display:inline-flex;align-items:center;gap:26px;height:116px;padding:0 56px 0 36px;border-radius:999px;color:#17182B;font-weight:800;font-size:54px;letter-spacing:-0.01em;
+        background:linear-gradient(90deg,#F5A024 0%,#FFB63A 45%,#FFC245 80%,#FFCB5E 100%)}
+  .stars{display:flex;align-items:center}
+  /* each star is painted outline first, so the pale outline only shows where it meets the star before it */
+  .stars svg{width:64px;height:64px;margin-left:-19px;overflow:visible}
+  .stars svg path{fill:#17182B;stroke:rgba(255,255,255,.92);stroke-width:1.6;stroke-linejoin:round;paint-order:stroke fill}
   .stars svg:first-child{margin-left:0}
-  .copy{position:relative;z-index:1;display:inline-flex;align-items:baseline;gap:20px}
+  .copy{display:inline-flex;align-items:baseline;gap:20px}
   .copy .dot{opacity:.55;font-weight:800}
   .trust{display:grid;grid-template-columns:repeat(3,330px);align-items:start}
   .trust span{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;font-size:31px;font-weight:700;color:#2B2D42;line-height:1.18;padding:0 16px}
@@ -22,11 +23,11 @@
 </style></head><body><div class="wrap">
   <div class="pill">
     <span class="stars" aria-hidden="true">
-      <svg viewBox="0 0 24 24"><path d="M12 2.2l2.95 6.2 6.75.85-4.95 4.7 1.3 6.75L12 17.4l-6.05 3.3 1.3-6.75L2.3 9.25l6.75-.85z" fill="#fff" stroke="#D9780A" stroke-width=".9" stroke-linejoin="round"/></svg>
-      <svg viewBox="0 0 24 24"><path d="M12 2.2l2.95 6.2 6.75.85-4.95 4.7 1.3 6.75L12 17.4l-6.05 3.3 1.3-6.75L2.3 9.25l6.75-.85z" fill="#fff" stroke="#D9780A" stroke-width=".9" stroke-linejoin="round"/></svg>
-      <svg viewBox="0 0 24 24"><path d="M12 2.2l2.95 6.2 6.75.85-4.95 4.7 1.3 6.75L12 17.4l-6.05 3.3 1.3-6.75L2.3 9.25l6.75-.85z" fill="#fff" stroke="#D9780A" stroke-width=".9" stroke-linejoin="round"/></svg>
-      <svg viewBox="0 0 24 24"><path d="M12 2.2l2.95 6.2 6.75.85-4.95 4.7 1.3 6.75L12 17.4l-6.05 3.3 1.3-6.75L2.3 9.25l6.75-.85z" fill="#fff" stroke="#D9780A" stroke-width=".9" stroke-linejoin="round"/></svg>
-      <svg viewBox="0 0 24 24"><path d="M12 2.2l2.95 6.2 6.75.85-4.95 4.7 1.3 6.75L12 17.4l-6.05 3.3 1.3-6.75L2.3 9.25l6.75-.85z" fill="#fff" stroke="#D9780A" stroke-width=".9" stroke-linejoin="round"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 2.2l2.95 6.2 6.75.85-4.95 4.7 1.3 6.75L12 17.4l-6.05 3.3 1.3-6.75L2.3 9.25l6.75-.85z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 2.2l2.95 6.2 6.75.85-4.95 4.7 1.3 6.75L12 17.4l-6.05 3.3 1.3-6.75L2.3 9.25l6.75-.85z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 2.2l2.95 6.2 6.75.85-4.95 4.7 1.3 6.75L12 17.4l-6.05 3.3 1.3-6.75L2.3 9.25l6.75-.85z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 2.2l2.95 6.2 6.75.85-4.95 4.7 1.3 6.75L12 17.4l-6.05 3.3 1.3-6.75L2.3 9.25l6.75-.85z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 2.2l2.95 6.2 6.75.85-4.95 4.7 1.3 6.75L12 17.4l-6.05 3.3 1.3-6.75L2.3 9.25l6.75-.85z"/></svg>
     </span>
     <span class="copy">4.9 <span class="dot">·</span> 1,000+ students</span>
   </div>

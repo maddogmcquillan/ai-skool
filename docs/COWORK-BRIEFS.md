@@ -827,7 +827,7 @@ Screenshot. STOP.
 
 Context for me, not for the other Claude: the owner dropped the "ends today" line from the cover
 and moved the rating banner to the top, restyled after a direct-to-consumer checkout: an orange
-fade, five overlapping stars as the graphic, "4.9 · 1,000+ students" without the word rating,
+fade with no shadow, five overlapping ink stars with a pale outline as the graphic, "4.9 · 1,000+ students" without the word rating,
 and the image trimmed to its content so there is no white band above or below. It is rendered
 at 4x (4320 x 1424). Circle recommends 540 x 303; if it crops or stretches the slim image the
 brief falls back to the same art boxed in that ratio. Files to hand over:
