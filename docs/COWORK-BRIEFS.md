@@ -822,3 +822,36 @@ https://www.joinlearnai.com/checkout/back-in-school-access. Confirm the Learn AI
 centred with about the same space above it as below it, the cover's dark pill reads "Ends today"
 (or the full line, if the title is hidden), and "Back in School Access" appears on the page once.
 Screenshot. STOP.
+
+## Brief 18: Checkout cover, slim version with the star banner on top
+
+Context for me, not for the other Claude: the owner dropped the "ends today" line from the cover
+and moved the rating banner to the top, restyled after a direct-to-consumer checkout: an orange
+fade, five overlapping stars as the graphic, "4.9 · 1,000+ students" without the word rating,
+and the image trimmed to its content so there is no white band above or below. It is rendered
+at 4x (4320 x 1424). Circle recommends 540 x 303; if it crops or stretches the slim image the
+brief falls back to the same art boxed in that ratio. Files to hand over:
+`brand/assets/checkout-header-slim.png`, `brand/assets/checkout-header-boxed.png`. Chrome
+signed in to www.joinlearnai.com as admin.
+
+You are replacing one image on a paywall checkout in my Circle community, working in my
+signed-in Chrome. Do not change the paywall's display name, its Checkout URL slug, the price,
+the access settings, the Tracking tab, or anything else on the page. Screenshot after each block
+and report what you did.
+
+Block 1, cover. Payments → Paywalls → "Back in School Access" → Checkout tab → Customize →
+"Paywall cover image": remove the current image and upload checkout-header-slim.png (it is
+4320 by 1424; if Circle refuses it for size or dimensions, tell me the exact message and stop).
+Save.
+
+Block 2, check how it displays. In a private window, phone-sized, open
+https://www.joinlearnai.com/checkout/back-in-school-access. The cover should show the whole
+image: the orange banner with five stars and "4.9 · 1,000+ students", and all three trust
+columns (Money-back guarantee, Secure checkout, Pause or cancel anytime), nothing cut off at the
+sides or the top and bottom, and no large white band above or below it. Zoom in: the text
+should be crisp.
+  - If Circle cropped it (part of the banner or the trust row missing), stretched it, or boxed it
+    in a tall frame with white bands: go back to Customize, replace the cover with
+    checkout-header-boxed.png instead, save, and check the page again the same way.
+Also note whether the words "Back in School Access" appear under the cover as the title; do
+not change that either way, just tell me. Screenshot. STOP.

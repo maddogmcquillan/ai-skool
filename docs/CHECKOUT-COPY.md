@@ -13,16 +13,19 @@ benefits list, a custom header, or any custom code on the checkout page itself.
 
 ## Cover image
 
-Two renders, both 3240 x 1818 (three times the 1080 x 606 slot, so text stays sharp on a phone;
-Circle shows the cover at 540 x 303), white background, three rows filling the frame: a dark
-pill, the yellow "4.9 rating · 1,000+ students" pill, and three evenly spaced trust columns
-(Money-back guarantee · Secure checkout · Pause or cancel anytime). No wordmark: Circle shows
-the community logo directly above the cover.
+One design, rendered at four times the 1080-wide slot so text stays sharp on a phone (Circle
+shows the cover about 540 px wide). White background, two rows, trimmed to the content with
+almost no margin above or below so it is easy to place: the rating banner, then three evenly
+spaced trust columns (Money-back guarantee · Secure checkout · Pause or cancel anytime). The
+banner is a pill that fades from deep orange on the left to the brand yellow on the right, with
+five overlapping white stars as its graphic and "4.9 · 1,000+ students" beside them. No offer
+line ("ends today" is gone) and no wordmark: Circle shows the community logo directly above.
 
-- `brand/assets/checkout-header.png`: dark pill reads "Ends today". Use this while Circle shows
-  the paywall title under the cover, so the words "Back in School Access" appear once.
-- `brand/assets/checkout-header-full.png`: dark pill reads "Back in School Access ends today".
-  Use this only if Circle's Product details section offers a way to hide the title.
+- `brand/assets/checkout-header-slim.png`: 4320 x 1424, content height only. Upload this first.
+- `brand/assets/checkout-header-boxed.png`: 4320 x 2424, the same art centred in Circle's
+  recommended 540 x 303 ratio. Use it only if Circle crops or stretches the slim one.
+
+Source: `brand/checkout-cover.html`, rendered by `node brand/render-checkout-cover.mjs`.
 
 The title is the paywall's display name, so it cannot be blanked and renaming it regenerates the
 checkout slug (every Enroll button breaks until the site is repointed) and prints on receipts.
