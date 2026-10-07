@@ -760,3 +760,32 @@ with $199 struck and the yellow callout reading "30-day money-back guarantee", n
 payment form, "What's included" with the seven shortened lines, the five reviews. Tap the "terms
 of service" link in the agreement line and confirm it opens joinlearnai.com/terms with "Last
 updated October 6, 2026"; do the same for "privacy policy". Screenshot each. STOP.
+
+## Brief 16: Checkout cover (sharp, with "ends today") and a centred logo
+
+Context for me, not for the other Claude: the second phone review found the cover slightly
+blurred (it was uploaded at 1x; this one is 3x), too much dead space, and the community logo
+sitting left of centre (the logo files had uneven transparent padding; both are re-centred).
+Files to hand over: `brand/assets/checkout-header.png`, `brand/assets/logo-light.png`,
+`brand/assets/logo-dark.png`. Chrome signed in to www.joinlearnai.com as admin.
+
+You are replacing one image on a paywall checkout and two logo images in community settings in
+my Circle community, working in my signed-in Chrome. Change nothing else. Screenshot after each
+block and report what you did.
+
+Block 1, cover. Payments → Paywalls → "Back in School Access" → Checkout tab → Customize →
+"Paywall cover image": remove the current image and upload the new checkout-header.png (it is
+3240 by 1818; if Circle refuses it for size, tell me the exact message and stop). Save.
+
+Block 2, logo. Settings → the Theme or Branding page where the community logo is set. Replace
+the light-mode logo with logo-light.png and the dark-mode logo with logo-dark.png. Save.
+
+Block 3, legal links, if not done in the previous brief. In Settings, find "Terms of Service
+URL" and "Privacy Policy URL" and set them to https://joinlearnai.com/terms and
+https://joinlearnai.com/privacy. Save.
+
+Block 4, check. In a private window, phone-sized, open
+https://www.joinlearnai.com/checkout/back-in-school-access. Confirm the Learn AI logo at the
+top is centred over the card below it, the cover shows the dark "ends today" pill, the rating
+pill and the three trust columns with crisp text when you zoom in, and the agreement line's
+"terms of service" link opens joinlearnai.com/terms dated October 6, 2026. Screenshot. STOP.

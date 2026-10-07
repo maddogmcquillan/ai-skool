@@ -13,10 +13,17 @@ benefits list, a custom header, or any custom code on the checkout page itself.
 
 ## Cover image
 
-Upload `brand/assets/checkout-header.png` (1080 x 606, renders at 540 x 303). White background,
-a yellow "4.9 rating · 1,000+ students" pill, and three evenly spaced trust columns with icons:
-Money-back guarantee · Secure checkout · Pause or cancel anytime. No wordmark: Circle already
-shows the community logo directly above the cover, so a logo in the image doubled up.
+Upload `brand/assets/checkout-header.png` (3240 x 1818, three times the 1080 x 606 slot, so it
+stays sharp on a phone's high-density screen; Circle shows it at 540 x 303). White background,
+three rows filling the frame: a dark "Back in School Access ends today" pill, the yellow
+"4.9 rating · 1,000+ students" pill, and three evenly spaced trust columns with icons:
+Money-back guarantee · Secure checkout · Pause or cancel anytime. No wordmark: Circle shows
+the community logo directly above the cover.
+
+The "ends today" line lives in the cover rather than in the title because the title is the
+paywall's display name: changing it regenerates the checkout slug (breaking every Enroll
+button until the site is repointed), prints on receipts, and at 32 characters would wrap to two
+lines on a phone anyway.
 
 ## Product details
 
