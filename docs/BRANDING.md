@@ -31,9 +31,10 @@ Assets live in `brand/assets/`. Regenerate them with the generator in `brand/gen
 Circle's API has no fields for these. Files are in `brand/assets/`.
 
 1. **Logo and community icon.** Settings → Theme (or Branding). Upload `logo-light.png` for light
-   mode and `logo-dark.png` for dark mode (960x240, transparent, wordmark centred in the canvas:
-   Circle centres the image box, so uneven transparent padding shows as an off-centre logo on the
-   checkout). Upload `community-icon.png` as the community icon.
+   mode and `logo-dark.png` for dark mode (960x240, transparent, wordmark centred and sitting 32 px below
+   the canvas middle: Circle centres the image box, so uneven side padding reads as an off-centre
+   logo, and its checkout leaves more room under the logo than above, which the offset evens out).
+   Upload `community-icon.png` as the community icon.
 2. **Custom space icons.** For each space: open the space, click the dropdown beside its name →
    Customize → click the icon → Custom tab → Upload a file → pick the matching `icon-<slug>.png`
    (280x280). Do this for welcome, ask-coach, course-requests, parent-hub, classroom,

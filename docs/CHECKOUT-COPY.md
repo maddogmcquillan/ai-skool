@@ -13,17 +13,19 @@ benefits list, a custom header, or any custom code on the checkout page itself.
 
 ## Cover image
 
-Upload `brand/assets/checkout-header.png` (3240 x 1818, three times the 1080 x 606 slot, so it
-stays sharp on a phone's high-density screen; Circle shows it at 540 x 303). White background,
-three rows filling the frame: a dark "Back in School Access ends today" pill, the yellow
-"4.9 rating · 1,000+ students" pill, and three evenly spaced trust columns with icons:
-Money-back guarantee · Secure checkout · Pause or cancel anytime. No wordmark: Circle shows
+Two renders, both 3240 x 1818 (three times the 1080 x 606 slot, so text stays sharp on a phone;
+Circle shows the cover at 540 x 303), white background, three rows filling the frame: a dark
+pill, the yellow "4.9 rating · 1,000+ students" pill, and three evenly spaced trust columns
+(Money-back guarantee · Secure checkout · Pause or cancel anytime). No wordmark: Circle shows
 the community logo directly above the cover.
 
-The "ends today" line lives in the cover rather than in the title because the title is the
-paywall's display name: changing it regenerates the checkout slug (breaking every Enroll
-button until the site is repointed), prints on receipts, and at 32 characters would wrap to two
-lines on a phone anyway.
+- `brand/assets/checkout-header.png`: dark pill reads "Ends today". Use this while Circle shows
+  the paywall title under the cover, so the words "Back in School Access" appear once.
+- `brand/assets/checkout-header-full.png`: dark pill reads "Back in School Access ends today".
+  Use this only if Circle's Product details section offers a way to hide the title.
+
+The title is the paywall's display name, so it cannot be blanked and renaming it regenerates the
+checkout slug (every Enroll button breaks until the site is repointed) and prints on receipts.
 
 ## Product details
 

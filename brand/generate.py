@@ -137,9 +137,10 @@ for key, p in POSTS.items():
 # ---- Logo 960x240 (4:1) light-mode (dark text) and dark-mode (light text), transparent ----
 for mode, color in (("dark", INK), ("light", "#0B1220")):
     body = f'<div style="width:960px;height:240px;display:flex;align-items:center;padding-left:24px">{wordmark(132, color=color)}</div>'
-    # Centre the wordmark in the canvas: Circle centres the image box, so uneven transparent
-    # padding shows up as an off-centre logo on the checkout page.
-    body = f'<div style="display:flex;justify-content:center;align-items:center;width:960px;height:240px">{body}</div>'
+    # Centre the wordmark in the canvas (Circle centres the image box, so uneven side padding shows
+    # as an off-centre logo) and sit it 32 px low: Circle's checkout leaves more room under the logo
+    # than above it, and the offset (6.5 css px at the 48 px render height) evens the two gaps.
+    body = f'<div style="display:flex;justify-content:center;align-items:center;width:960px;height:240px"><div style="transform:translateY(32px)">{body}</div></div>'
     render(f"logo-{mode}", 960, 240, page(960, 240, body), transparent=True)
 # community icon 128x128 (renders at 4x of 32)
 body = f'<div style="width:128px;height:128px;border-radius:34px;background:{BLUE};display:flex;align-items:center;justify-content:center">{glyph_svg("spark", SPARK, 92, stroke="none")}</div>'

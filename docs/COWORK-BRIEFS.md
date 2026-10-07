@@ -789,3 +789,36 @@ https://www.joinlearnai.com/checkout/back-in-school-access. Confirm the Learn AI
 top is centred over the card below it, the cover shows the dark "ends today" pill, the rating
 pill and the three trust columns with crisp text when you zoom in, and the agreement line's
 "terms of service" link opens joinlearnai.com/terms dated October 6, 2026. Screenshot. STOP.
+
+## Brief 17: Checkout title, cover variant, logo spacing
+
+Context for me, not for the other Claude: the owner wants the "Back in School Access" title
+line between the cover and the price gone, since the cover now carries the offer. Circle may or
+may not allow hiding the title; the brief checks, and uploads the matching cover. The logo files
+now sit the wordmark 32 px low so the checkout's uneven margins above and below the logo even
+out. Files to hand over: `brand/assets/checkout-header.png`, `brand/assets/checkout-header-full.png`,
+`brand/assets/logo-light.png`, `brand/assets/logo-dark.png`. Chrome signed in to
+www.joinlearnai.com as admin.
+
+You are editing one paywall checkout and the community logo in my Circle community, working in
+my signed-in Chrome. Do not change the paywall's display name, its Checkout URL slug, the price,
+the access settings, or the Tracking tab. Screenshot after each block and report what you did.
+
+Block 1, the title. Payments → Paywalls → "Back in School Access" → Checkout tab → Customize →
+"Product details". Look carefully for any control that hides the title on the checkout page (a
+toggle such as "Show title", "Show product name" or "Show product details", or an eye icon). Do
+not edit the title text itself. Report exactly what controls that section has.
+  - If a hide-title control exists: turn the title off, then in "Paywall cover image" replace the
+    cover with checkout-header-full.png.
+  - If there is none: leave the title alone, and in "Paywall cover image" replace the cover with
+    checkout-header.png.
+Save.
+
+Block 2, logo. Settings → the Theme or Branding page where the community logo is set. Replace
+the light-mode logo with logo-light.png and the dark-mode logo with logo-dark.png. Save.
+
+Block 3, check. In a private window, phone-sized, open
+https://www.joinlearnai.com/checkout/back-in-school-access. Confirm the Learn AI logo is
+centred with about the same space above it as below it, the cover's dark pill reads "Ends today"
+(or the full line, if the title is hidden), and "Back in School Access" appears on the page once.
+Screenshot. STOP.
